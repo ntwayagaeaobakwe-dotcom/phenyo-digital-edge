@@ -333,12 +333,6 @@ function Services() {
 function Projects() {
   const projects = [
     {
-      title: "ZoomEx Capital", tag: "Investment Platform",
-      desc: "An institutional-style investment and trading platform concept with a premium black-and-gold brand identity, investor portal, staff dashboard, manual approval flow, and Supabase backend.",
-      features: ["Investor dashboard", "Staff approval system", "Supabase auth/database", "Manual wallet assignment", "Premium trading-style UI", "Vercel/VPS deployment"],
-      accent: "from-primary/20 to-transparent",
-    },
-    {
       title: "Ms. A — AI Influencer", tag: "AI Creator System",
       desc: "A visual AI influencer concept focused on consistent identity, cinematic social content, luxury branding, and AI-generated media workflows across TikTok, Instagram, Higgsfield, Kling, and Veo.",
       features: ["Consistent character identity", "Short-form social videos", "Luxury black/gold/espresso branding", "AI image/video prompts", "IG/TikTok content direction"],
