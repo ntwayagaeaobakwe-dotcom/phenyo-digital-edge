@@ -531,7 +531,7 @@ export function IndustryAutomationDemo() {
             Choose an industry to see how a routine customer inquiry could be acknowledged,
             organized, and prepared for follow-up.
           </p>
-          <p className="mt-2 text-xs font-mono text-muted-foreground/60">
+          <p className="mt-2 text-xs font-mono text-muted-foreground/70">
             Interactive Example — Example workflow, not a live customer conversation.
           </p>
         </div>
@@ -576,7 +576,7 @@ export function IndustryAutomationDemo() {
 
                   {/* Replay row — outside aria-hidden so screen readers can use it */}
                   <div className="mt-3 flex items-center justify-between px-1">
-                    <p className="text-[11px] text-muted-foreground/50 font-mono">
+                    <p className="text-[11px] text-muted-foreground/70 font-mono">
                       Interactive Example
                     </p>
                     {showReplay && (
@@ -632,7 +632,7 @@ export function IndustryAutomationDemo() {
         <ComparisonSection />
 
         {/* Bottom disclaimer */}
-        <p className="mt-8 text-center text-xs font-mono text-muted-foreground/50">
+        <p className="mt-8 text-center text-xs font-mono text-muted-foreground/70">
           Examples shown for real estate and cleaning services. Similar systems can be adapted to
           other service businesses.
         </p>

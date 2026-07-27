@@ -133,7 +133,7 @@ export function IndustrySolutionsSection() {
         </div>
 
         {/* Disclaimer */}
-        <p className="mt-8 text-center text-xs font-mono text-muted-foreground/50">
+        <p className="mt-8 text-center text-xs font-mono text-muted-foreground/70">
           Examples shown for real estate and cleaning services. Similar systems can be adapted to
           other service businesses.
         </p>
