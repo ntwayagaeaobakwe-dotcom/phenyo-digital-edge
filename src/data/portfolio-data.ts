@@ -28,6 +28,13 @@ export interface ProjectItem {
   potentialValue: string;
   toolsUsed: string[];
   disclaimer?: string;
+  /**
+   * Screenshot(s) or workflow-diagram export(s) shown in a browser-chrome frame
+   * on the project card and in the detail modal. Paths currently point at
+   * placeholder files that do not exist yet — see the comment above PROJECTS
+   * below for how to wire in real exports.
+   */
+  imageUrls?: string[];
   accent: string;
   // Backward compatibility fields
   challenge: string;
@@ -90,6 +97,13 @@ export const TICKER_ITEMS = [
   "Vercel",
   "GitHub",
   "Business Systems",
+];
+
+export const TRUST_SIGNALS = [
+  { label: "< 24h Response Time", iconName: "Clock" },
+  { label: "Fixed-Scope Quoting", iconName: "FileCheck" },
+  { label: "Direct WhatsApp Access", iconName: "MessageSquare" },
+  { label: "n8n + AI Automation Stack", iconName: "Workflow" },
 ];
 
 export const ABOUT_PILLARS = [
@@ -261,40 +275,49 @@ export const SERVICES: ServiceItem[] = [
   },
 ];
 
+// TODO: The imageUrls below point at /src/assets/placeholder-project-*.jpg files
+// that do not exist yet. Drop real screenshots or n8n-workflow-canvas exports
+// (PNG/JPG, ~1280x800) at those exact paths, then wire each one in with a real
+// `import` at the top of this file (e.g. `import leadResearchImg from
+// "@/assets/placeholder-project-lead-research.jpg";`) and reference the
+// imported variable here instead of the literal string — that's required for
+// Vite to fingerprint and bundle the asset correctly in production. Leaving
+// them as plain strings for now keeps the build green until the files exist.
 export const PROJECTS: ProjectItem[] = [
   {
     id: "lead-research-automation",
     title: "Automated Business Lead Research",
-    tag: "Personal Project",
-    status: "Personal Project",
-    desc: "An automated system that researches target companies, enriches contact details via APIs, and delivers clean, structured spreadsheets.",
+    tag: "Completed Build",
+    status: "Completed Build",
+    desc: "An n8n workflow that searched, enriched, and deduplicated business contact data across 15 target areas, delivering 600+ ready-to-contact leads directly into a spreadsheet.",
     problem:
       "Building a useful business lead list manually requires repeated searching, copying, checking, and spreadsheet updates.",
     solution:
-      "A workflow that searches for relevant businesses, collects available details, organizes the information, and prepares it for review.",
+      "Built and ran a workflow that searched for relevant businesses across 15 target areas, enriched each result with available contact details, removed duplicates, and delivered a clean spreadsheet ready for outreach.",
     howItWorks: [
-      "Defines target business criteria & search parameters",
-      "Gathers public company data & contact information",
-      "Cleans data, removes duplicates, & verifies fields",
-      "Delivers formatted spreadsheet ready for review",
+      "Defined target business criteria & search parameters for 15 areas",
+      "Gathered public company data & contact information per area",
+      "Cleaned data, removed duplicates, & verified fields",
+      "Delivered 600+ formatted, deduplicated leads ready for outreach",
     ],
     potentialValue:
-      "Designed to reduce manual research time and keep lead information consistent and organized.",
+      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing what would have been days of manual searching and spreadsheet cleanup.",
     toolsUsed: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Formatting Logic"],
+    imageUrls: ["/src/assets/placeholder-project-lead-research.jpg"],
     accent: "from-cyan-500/15 to-transparent",
     challenge:
       "Building a useful business lead list manually requires repeated searching, copying, checking, and spreadsheet updates.",
     objective:
-      "A workflow that searches for relevant businesses, collects available details, organizes the information, and prepares it for review.",
+      "Built and ran a workflow that searched for relevant businesses across 15 target areas, enriched each result with available contact details, removed duplicates, and delivered a clean spreadsheet ready for outreach.",
     techStack: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Formatting Logic"],
     features: [
-      "Defines target business criteria & search parameters",
-      "Gathers public company data & contact information",
-      "Cleans data, removes duplicates, & verifies fields",
-      "Delivers formatted spreadsheet ready for review",
+      "Defined target business criteria & search parameters for 15 areas",
+      "Gathered public company data & contact information per area",
+      "Cleaned data, removed duplicates, & verified fields",
+      "Delivered 600+ formatted, deduplicated leads ready for outreach",
     ],
     valueCreated:
-      "Designed to reduce manual research time and keep lead information consistent and organized.",
+      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing what would have been days of manual searching and spreadsheet cleanup.",
   },
   {
     id: "inquiry-follow-up-workflow",
@@ -315,6 +338,7 @@ export const PROJECTS: ProjectItem[] = [
     potentialValue:
       "Intended to make inquiry handling faster, clearer, and more consistent.",
     toolsUsed: ["Webhooks", "n8n", "CRM Integration", "Instant Messaging APIs"],
+    imageUrls: ["/src/assets/placeholder-project-inquiry-workflow.jpg"],
     accent: "from-primary/25 to-transparent",
     challenge:
       "Website inquiries can be missed or handled inconsistently when they arrive through different channels.",
@@ -349,6 +373,7 @@ export const PROJECTS: ProjectItem[] = [
     potentialValue:
       "Designed to reduce repeated administrative work and make routine operations more consistent.",
     toolsUsed: ["n8n", "APIs", "Google Sheets", "Email Notifications", "Database Sync"],
+    imageUrls: ["/src/assets/placeholder-project-operations-automation.jpg"],
     accent: "from-emerald-500/15 to-transparent",
     challenge:
       "Small businesses often manage recurring tasks across spreadsheets, emails, forms, and disconnected applications.",
@@ -383,6 +408,7 @@ export const PROJECTS: ProjectItem[] = [
     potentialValue:
       "Designed to help a service provider communicate more clearly, build credibility, and make it easier for prospective customers to take the next step.",
     toolsUsed: ["React", "TypeScript", "Vite", "Tailwind CSS", "TanStack Router", "Responsive UI Design"],
+    imageUrls: ["/src/assets/placeholder-project-conversion-website.jpg"],
     accent: "from-amber-500/15 to-transparent",
     challenge:
       "Many service businesses have websites that look acceptable but fail to explain their offer clearly or guide visitors toward making an inquiry.",
@@ -417,6 +443,7 @@ export const PROJECTS: ProjectItem[] = [
     potentialValue:
       "Intended to simplify content preparation and reduce manual video formatting time.",
     toolsUsed: ["Python Scripts", "n8n", "Speech-to-Text AI", "Video Formatting Logic"],
+    imageUrls: ["/src/assets/placeholder-project-shorts-repurposing.jpg"],
     accent: "from-red-500/15 to-transparent",
     challenge:
       "Repurposing raw video recordings into short-form vertical content manually requires hours of clip scanning and script formatting.",

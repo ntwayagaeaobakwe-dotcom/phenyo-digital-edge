@@ -164,9 +164,24 @@
   50% { opacity: 1 }
 }
 
+/* ─── Hero background accent: slow mesh-gradient drift + signal-line sweep ─── */
+@keyframes mesh-drift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(4%, -5%) scale(1.1); }
+  66% { transform: translate(-5%, 4%) scale(0.94); }
+}
+@keyframes signal-sweep {
+  0% { transform: translateX(-130%); opacity: 0; }
+  15% { opacity: 0.7; }
+  85% { opacity: 0.7; }
+  100% { transform: translateX(130%); opacity: 0; }
+}
+
 .animate-float { animation: float-slow 7s ease-in-out infinite; }
 .animate-ticker { animation: ticker 35s linear infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-mesh-drift { animation: mesh-drift 16s ease-in-out infinite; }
+.animate-signal-sweep { animation: signal-sweep 7s ease-in-out infinite; }
 
 /* ─── Typing indicator (three-dot bounce) ─────────────────────────────── */
 @keyframes typingDot {
@@ -189,7 +204,9 @@
   html { scroll-behavior: auto; }
 
   .animate-float,
-  .animate-pulse-glow { animation: none; }
+  .animate-pulse-glow,
+  .animate-mesh-drift,
+  .animate-signal-sweep { animation: none; }
 
   .animate-ticker { animation-play-state: paused; }
 

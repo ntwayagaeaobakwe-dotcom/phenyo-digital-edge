@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { ProjectItem } from "@/data/portfolio-data";
 import { ArrowUpRight, CheckCircle2, Cpu, Target, Zap, Info } from "lucide-react";
+import { ProjectImageFrame } from "./ProjectImageFrame";
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -42,6 +43,11 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
         </DialogHeader>
 
         <div className="space-y-6 pt-3 text-sm">
+          {/* Screenshot(s) / workflow-diagram export(s) */}
+          {project.imageUrls && project.imageUrls.length > 0 && (
+            <ProjectImageFrame images={project.imageUrls} title={project.title} />
+          )}
+
           {/* Disclaimer if present */}
           {project.disclaimer && (
             <div className="glass p-4 rounded-xl border border-amber-500/40 bg-amber-500/10 text-xs text-amber-200 flex items-start gap-3">

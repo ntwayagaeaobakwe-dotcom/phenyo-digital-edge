@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 interface SectionShellProps {
   id: string;
@@ -9,6 +9,9 @@ interface SectionShellProps {
   hasDivider?: boolean;
 }
 
+// Avoids a "useLayoutEffect does nothing on the server" warning during SSR.
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export function SectionShell({
   id,
   eyebrow,
@@ -17,8 +20,58 @@ export function SectionShell({
   className = "",
   hasDivider = true,
 }: SectionShellProps) {
+  const sectionRef = useRef<HTMLElement>(null);
+  // Default to visible so SSR output and no-JS clients always show full content.
+  const [revealState, setRevealState] = useState<"visible" | "hidden">("visible");
+  const [allowTransform, setAllowTransform] = useState(true);
+
+  // Before first paint: if the section starts off-screen, hide it so the reveal
+  // animation can play when it scrolls into view. Runs pre-paint to avoid a
+  // visible-then-hidden flash on load.
+  useIsomorphicLayoutEffect(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    setAllowTransform(!prefersReducedMotion);
+
+    const rect = el.getBoundingClientRect();
+    const alreadyInView = rect.top < window.innerHeight && rect.bottom > 0;
+    if (!alreadyInView) setRevealState("hidden");
+  }, []);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || revealState !== "hidden") return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setRevealState("visible");
+            observer.disconnect();
+          }
+        }
+      },
+      { threshold: 0.12 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [revealState]);
+
+  const revealClasses =
+    revealState === "visible"
+      ? "opacity-100 translate-y-0"
+      : allowTransform
+        ? "opacity-0 translate-y-3"
+        : "opacity-0";
+
   return (
-    <section id={id} className={`relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className}`}>
+    <section
+      ref={sectionRef}
+      id={id}
+      className={`relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-[opacity,transform] duration-[400ms] ease-out ${revealClasses}`}
+    >
       {/* Subtle radial glow in background */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
         <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-80 w-[600px] rounded-full bg-primary/5 blur-3xl opacity-60" />

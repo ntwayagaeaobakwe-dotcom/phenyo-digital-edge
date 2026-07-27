@@ -1,8 +1,15 @@
+import { lazy, Suspense } from "react";
 import { ArrowUpRight, ChevronRight, CheckCircle2 } from "lucide-react";
 import heroImg from "@/assets/phenyo-hero.jpg";
 import bgGrid from "@/assets/bg-grid.jpg";
 import { PERSONAL_INFO, HERO_STATS } from "@/data/portfolio-data";
-import { BusinessSystemsDemo } from "./BusinessSystemsDemo";
+import { DemoSkeleton } from "./DemoSkeleton";
+import heroImgWebp from "@/assets/phenyo-hero.webp";
+import bgGridWebp from "@/assets/bg-grid.webp";
+
+const BusinessSystemsDemo = lazy(() =>
+  import("./BusinessSystemsDemo").then((m) => ({ default: m.BusinessSystemsDemo })),
+);
 
 export function HeroSection() {
   return (
@@ -12,7 +19,7 @@ export function HeroSection() {
       <div className="absolute inset-0 -z-10 grid-bg opacity-40" />
       <div
         className="absolute inset-0 -z-10 opacity-20 mix-blend-screen"
-        style={{ backgroundImage: `url(${bgGrid})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        style={{ backgroundImage: `url(${bgGridWebp})`, backgroundSize: "cover", backgroundPosition: "center" }}
       />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
@@ -72,16 +79,40 @@ export function HeroSection() {
         <div className="space-y-6">
           <div className="relative animate-float">
             <div className="absolute -inset-8 bg-primary/20 blur-3xl rounded-full" />
-            <div className="relative gold-border rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[4/3] shadow-[var(--shadow-elegant)]">
-              <img
-                src={heroImg}
-                alt="Phenyo — Business Automation & Web Development Specialist"
-                width={1024}
-                height={1280}
-                loading="eager"
-                fetchPriority="high"
-                className="h-full w-full object-cover object-top"
+
+            {/* Decorative animated accent layer — slow mesh-gradient drift + a
+                gold "signal line" sweep. Purely visual, so it's aria-hidden and
+                fully disabled under prefers-reduced-motion (see styles.css). */}
+            <div className="absolute -inset-12 -z-10 overflow-hidden rounded-[2.5rem] pointer-events-none" aria-hidden="true">
+              <div
+                className="absolute -top-10 -left-10 h-64 w-64 rounded-full blur-3xl opacity-50 animate-mesh-drift"
+                style={{ background: "radial-gradient(circle, oklch(0.82 0.15 85 / 0.35), transparent 70%)" }}
               />
+              <div
+                className="absolute -bottom-14 -right-8 h-72 w-72 rounded-full blur-3xl opacity-40 animate-mesh-drift"
+                style={{ background: "radial-gradient(circle, oklch(0.50 0.15 260 / 0.4), transparent 70%)", animationDelay: "-8s" }}
+              />
+              <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden">
+                <div
+                  className="h-px w-1/2 animate-signal-sweep"
+                  style={{ background: "linear-gradient(90deg, transparent, oklch(0.82 0.15 85 / 0.9), transparent)" }}
+                />
+              </div>
+            </div>
+
+            <div className="relative gold-border rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[4/3] shadow-[var(--shadow-elegant)]">
+              <picture>
+                <source srcSet={heroImgWebp} type="image/webp" />
+                <img
+                  src={heroImg}
+                  alt="Phenyo — Business Automation & Web Development Specialist"
+                  width={1024}
+                  height={1280}
+                  loading="eager"
+                  fetchPriority="high"
+                  className="h-full w-full object-cover object-top"
+                />
+              </picture>
               <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                 <div className="glass-gold rounded-xl px-4 py-2.5 flex items-center justify-between">
                   <div>
@@ -95,7 +126,9 @@ export function HeroSection() {
           </div>
 
           {/* Interactive Business Systems Demo */}
-          <BusinessSystemsDemo />
+          <Suspense fallback={<DemoSkeleton className="h-[280px]" />}>
+            <BusinessSystemsDemo />
+          </Suspense>
         </div>
       </div>
     </section>

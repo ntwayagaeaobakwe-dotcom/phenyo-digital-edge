@@ -3,6 +3,7 @@ import { ArrowRight, ChevronRight, Info } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { PROJECTS, ProjectItem } from "@/data/portfolio-data";
 import { ProjectModal } from "./ProjectModal";
+import { ProjectImageFrame } from "./ProjectImageFrame";
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
@@ -47,6 +48,11 @@ export function ProjectsSection() {
               className={`absolute inset-0 -z-10 bg-gradient-to-br ${project.accent} opacity-60`}
             />
             <div className="space-y-6">
+              {/* Screenshot / workflow-diagram preview */}
+              {project.imageUrls && project.imageUrls.length > 0 && (
+                <ProjectImageFrame images={[project.imageUrls[0]]} title={project.title} />
+              )}
+
               {/* Header with Title and Status */}
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4">
                 <div className="flex items-center gap-3">
