@@ -1,8 +1,10 @@
+import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { TickerBar } from "@/components/portfolio/TickerBar";
-import { IndustryAutomationDemo } from "@/components/portfolio/IndustryAutomationDemo";
+import { TrustBar } from "@/components/portfolio/TrustBar";
+import { DemoSkeleton } from "@/components/portfolio/DemoSkeleton";
 import { AboutSection } from "@/components/portfolio/AboutSection";
 import { ExpertiseSection } from "@/components/portfolio/ExpertiseSection";
 import { RoiCalculator } from "@/components/portfolio/RoiCalculator";
@@ -13,6 +15,12 @@ import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { FooterSection } from "@/components/portfolio/FooterSection";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
+
+const IndustryAutomationDemo = lazy(() =>
+  import("@/components/portfolio/IndustryAutomationDemo").then((m) => ({
+    default: m.IndustryAutomationDemo,
+  })),
+);
 
 const SITE_URL = typeof window !== "undefined" ? window.location.origin : "/";
 const PAGE_TITLE = "Phenyo | Business Automation & Conversion-Focused Websites";
@@ -130,8 +138,11 @@ function Home() {
       <Navbar />
       <HeroSection />
       <TickerBar />
+      <TrustBar />
       {/* Industry automation demo — placed early so visitors see it before core content */}
-      <IndustryAutomationDemo />
+      <Suspense fallback={<div className="mx-auto max-w-6xl px-4 sm:px-6 py-20"><DemoSkeleton className="h-[420px]" /></div>}>
+        <IndustryAutomationDemo />
+      </Suspense>
       <AboutSection />
       <ExpertiseSection />
       <RoiCalculator />
