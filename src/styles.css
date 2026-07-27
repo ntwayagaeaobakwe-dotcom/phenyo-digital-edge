@@ -43,33 +43,33 @@
 :root {
   --radius: 0.75rem;
 
-  /* Dark premium palette */
-  --background: oklch(0.14 0.012 260);
-  --foreground: oklch(0.97 0.005 250);
+  /* Dark premium luxury-tech palette */
+  --background: oklch(0.13 0.012 260);
+  --foreground: oklch(0.98 0.005 250);
 
-  --card: oklch(0.18 0.015 260 / 0.7);
-  --card-foreground: oklch(0.97 0.005 250);
+  --card: oklch(0.17 0.015 260 / 0.75);
+  --card-foreground: oklch(0.98 0.005 250);
 
   --popover: oklch(0.16 0.015 260);
-  --popover-foreground: oklch(0.97 0.005 250);
+  --popover-foreground: oklch(0.98 0.005 250);
 
-  --primary: oklch(0.82 0.15 85);          /* gold */
-  --primary-foreground: oklch(0.14 0.012 260);
+  --primary: oklch(0.82 0.15 85);          /* Metallic Gold */
+  --primary-foreground: oklch(0.13 0.012 260);
 
   --secondary: oklch(0.22 0.02 260);
-  --secondary-foreground: oklch(0.97 0.005 250);
+  --secondary-foreground: oklch(0.98 0.005 250);
 
   --muted: oklch(0.22 0.015 260);
-  --muted-foreground: oklch(0.68 0.02 260);
+  --muted-foreground: oklch(0.72 0.02 260);
 
   --accent: oklch(0.82 0.15 85);
-  --accent-foreground: oklch(0.14 0.012 260);
+  --accent-foreground: oklch(0.13 0.012 260);
 
   --destructive: oklch(0.62 0.24 27);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(1 0 0 / 0.08);
-  --input: oklch(1 0 0 / 0.1);
+  --border: oklch(1 0 0 / 0.09);
+  --input: oklch(1 0 0 / 0.12);
   --ring: oklch(0.82 0.15 85);
 
   --gold: oklch(0.82 0.15 85);
@@ -77,12 +77,13 @@
   --navy: oklch(0.20 0.04 265);
   --neon: oklch(0.78 0.16 195);
 
-  --gradient-gold: linear-gradient(135deg, oklch(0.88 0.13 90), oklch(0.72 0.16 70));
-  --gradient-hero: radial-gradient(ellipse at 20% 20%, oklch(0.82 0.15 85 / 0.15), transparent 60%),
-                   radial-gradient(ellipse at 80% 60%, oklch(0.55 0.15 260 / 0.25), transparent 60%),
-                   linear-gradient(180deg, oklch(0.12 0.01 260), oklch(0.14 0.012 260));
-  --shadow-gold: 0 20px 60px -20px oklch(0.82 0.15 85 / 0.35);
-  --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.7);
+  --gradient-gold: linear-gradient(135deg, oklch(0.90 0.14 90), oklch(0.74 0.17 72));
+  --gradient-hero: radial-gradient(ellipse at 30% 15%, oklch(0.82 0.15 85 / 0.18), transparent 55%),
+                   radial-gradient(ellipse at 85% 65%, oklch(0.50 0.15 260 / 0.25), transparent 60%),
+                   linear-gradient(180deg, oklch(0.11 0.01 260), oklch(0.14 0.012 260));
+  --shadow-gold: 0 15px 40px -15px oklch(0.82 0.15 85 / 0.35);
+  --shadow-gold-hover: 0 20px 50px -10px oklch(0.82 0.15 85 / 0.45);
+  --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.85);
 }
 
 @layer base {
@@ -97,7 +98,7 @@
   }
   h1, h2, h3, h4, .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 
@@ -109,15 +110,17 @@
 }
 
 @utility glass {
-  background: color-mix(in oklab, var(--card) 60%, transparent);
-  backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid oklch(1 0 0 / 0.08);
+  background: color-mix(in oklab, var(--card) 65%, transparent);
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid oklch(1 0 0 / 0.09);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @utility glass-gold {
-  background: linear-gradient(135deg, oklch(1 0 0 / 0.04), oklch(0.82 0.15 85 / 0.06));
-  backdrop-filter: blur(18px) saturate(140%);
-  border: 1px solid oklch(0.82 0.15 85 / 0.2);
+  background: linear-gradient(135deg, oklch(1 0 0 / 0.05), oklch(0.82 0.15 85 / 0.08));
+  backdrop-filter: blur(20px) saturate(140%);
+  border: 1px solid oklch(0.82 0.15 85 / 0.25);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @utility gold-border {
@@ -135,9 +138,18 @@
   background-size: 48px 48px;
 }
 
+.glass-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-hover:hover {
+  transform: translateY(-2px);
+  border-color: oklch(0.82 0.15 85 / 0.4);
+  box-shadow: 0 16px 36px -12px oklch(0.82 0.15 85 / 0.15);
+}
+
 @keyframes float-slow {
   0%, 100% { transform: translateY(0) }
-  50% { transform: translateY(-14px) }
+  50% { transform: translateY(-12px) }
 }
 @keyframes shimmer {
   0% { background-position: -200% 0 }
@@ -148,10 +160,10 @@
   to { transform: translateX(-50%) }
 }
 @keyframes pulse-glow {
-  0%,100% { opacity: 0.4 }
+  0%, 100% { opacity: 0.5 }
   50% { opacity: 1 }
 }
 
 .animate-float { animation: float-slow 7s ease-in-out infinite; }
-.animate-ticker { animation: ticker 40s linear infinite; }
+.animate-ticker { animation: ticker 35s linear infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }

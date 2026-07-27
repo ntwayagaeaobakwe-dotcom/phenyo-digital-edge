@@ -6,7 +6,7 @@ import { MarketAutomationTerminal } from "./MarketAutomationTerminal";
 
 export function HeroSection() {
   return (
-    <section className="relative pt-40 pb-24 sm:pt-48 sm:pb-32">
+    <section className="relative pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden" id="top">
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10 grid-bg opacity-40" />
@@ -18,18 +18,18 @@ export function HeroSection() {
       <div className="mx-auto max-w-6xl px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
         <div>
           {/* Availability Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1 text-xs text-muted-foreground">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" />
-            {PERSONAL_INFO.status}
+          <div className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1 text-xs text-muted-foreground border border-primary/20">
+            <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" aria-hidden="true" />
+            <span>{PERSONAL_INFO.status}</span>
           </div>
 
           {/* Main Headline */}
-          <h1 className="mt-6 font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02]">
-            Trading Markets.
+          <h1 className="mt-6 font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
+            Market Discipline.
             <br />
-            Building Systems.
+            AI Leverage.
             <br />
-            <span className="text-gradient-gold">Creating Digital Freedom.</span>
+            <span className="text-gradient-gold">Digital Dominance.</span>
           </h1>
 
           {/* Subheadline */}
@@ -38,24 +38,24 @@ export function HeroSection() {
           </p>
 
           {/* Call-to-action Buttons */}
-          <div className="mt-8 flex flex-wrap gap-3">
-            <a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity shadow-[var(--shadow-gold)]"
-            >
-              View my work <ArrowUpRight className="h-4 w-4" />
-            </a>
+          <div className="mt-8 flex flex-wrap gap-3.5">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full glass px-6 py-3 text-sm font-medium hover:bg-white/5 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-gold-hover)] font-display"
             >
-              Work with me
+              Book an Automation Audit <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              href="#projects"
+              className="inline-flex items-center gap-2 rounded-full glass glass-hover px-6 py-3.5 text-sm font-medium text-foreground transition-all"
+            >
+              Explore Case Studies
             </a>
             <a
               href="#roi-calculator"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              ROI Calculator <ChevronRight className="h-4 w-4" />
+              ROI Calculator <ChevronRight className="h-4 w-4 text-primary" aria-hidden="true" />
             </a>
           </div>
 
@@ -63,8 +63,8 @@ export function HeroSection() {
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border/40 pt-6">
             {HERO_STATS.map((stat) => (
               <div key={stat.label}>
-                <div className="text-2xl font-display font-bold text-gradient-gold">{stat.value}</div>
-                <div className="text-xs text-muted-foreground mt-1">{stat.label}</div>
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold">{stat.value}</div>
+                <div className="text-xs text-muted-foreground mt-1 font-mono">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -77,9 +77,11 @@ export function HeroSection() {
             <div className="relative gold-border rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[4/3] shadow-[var(--shadow-elegant)]">
               <img
                 src={heroImg}
-                alt="Phenyo — day trader and AI automation builder"
+                alt="Phenyo — day trader and AI automation architect"
                 width={1024}
                 height={1280}
+                loading="eager"
+                fetchPriority="high"
                 className="h-full w-full object-cover object-top"
               />
               <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
@@ -88,7 +90,7 @@ export function HeroSection() {
                     <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Operator</div>
                     <div className="text-sm font-medium">Market Execution · AI Workflows</div>
                   </div>
-                  <TrendingUp className="h-5 w-5 text-primary" />
+                  <TrendingUp className="h-5 w-5 text-primary" aria-hidden="true" />
                 </div>
               </div>
             </div>

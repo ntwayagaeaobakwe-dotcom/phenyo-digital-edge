@@ -13,25 +13,29 @@ export function Navbar() {
   }, []);
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all ${scrolled ? "py-3" : "py-5"}`}>
+    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all ${scrolled ? "glass shadow-[var(--shadow-elegant)]" : ""}`}>
-          <a href="#" className="flex items-center gap-2 font-display font-bold text-lg">
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground font-bold">
+        <div
+          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ${
+            scrolled ? "glass shadow-[var(--shadow-elegant)] border border-primary/20" : "bg-black/20 backdrop-blur-md border border-white/5"
+          }`}
+        >
+          <a href="#top" className="flex items-center gap-2.5 font-display font-bold text-lg group" aria-label="Phenyo Home">
+            <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground font-bold group-hover:scale-105 transition-transform">
               {PERSONAL_INFO.name.charAt(0)}
             </span>
-            <span>
+            <span className="tracking-tight">
               {PERSONAL_INFO.name}<span className="text-primary">.</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground">
+          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground" aria-label="Main navigation">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-foreground transition-colors"
+                className="hover:text-foreground transition-colors font-sans hover:text-primary"
               >
                 {link.label}
               </a>
@@ -42,17 +46,18 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4.5 py-2 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display"
             >
-              Work with me <ArrowUpRight className="h-4 w-4" />
+              Book Audit <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
 
           {/* Mobile Menu Toggle Button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden grid h-9 w-9 place-items-center rounded-lg glass text-foreground"
+            className="md:hidden grid h-9 w-9 place-items-center rounded-xl glass text-foreground border border-border/60 cursor-pointer"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
@@ -60,24 +65,25 @@ export function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
-          <div className="md:hidden mt-2 glass rounded-2xl p-5 border border-border animate-in fade-in slide-in-from-top-3">
-            <nav className="flex flex-col gap-4 text-base font-medium">
+          <div className="md:hidden mt-2 glass rounded-2xl p-5 border border-primary/30 shadow-2xl animate-in fade-in slide-in-from-top-3">
+            <nav className="flex flex-col gap-3.5 text-base font-medium" aria-label="Mobile navigation">
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-1"
+                  className="text-muted-foreground hover:text-foreground transition-colors py-1 flex items-center justify-between border-b border-border/40 pb-2"
                 >
-                  {link.label}
+                  <span>{link.label}</span>
+                  <ArrowUpRight className="h-4 w-4 text-primary" />
                 </a>
               ))}
               <a
                 href="#contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground font-display shadow-[var(--shadow-gold)]"
               >
-                Work with me <ArrowUpRight className="h-4 w-4" />
+                Book Audit <ArrowUpRight className="h-4 w-4" />
               </a>
             </nav>
           </div>

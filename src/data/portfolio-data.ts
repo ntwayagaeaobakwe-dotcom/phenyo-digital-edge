@@ -33,9 +33,9 @@ export const PERSONAL_INFO = {
   name: "Phenyo",
   title: "Day Trader & AI Automation Architect",
   tagline: "Market Discipline. AI Leverage. Digital Dominance.",
-  headline: "Trading Markets. Building Systems. Creating Digital Freedom.",
+  headline: "Market Discipline. AI Leverage. Digital Dominance.",
   subheadline:
-    "Phenyo is a day trader and AI automation builder focused on XAUUSD trading, intelligent n8n workflows, content systems, and high-converting digital business infrastructure.",
+    "Phenyo bridges XAUUSD market discipline with custom n8n AI workflows, automated content engines, and high-converting digital infrastructure.",
   status: "Available for select projects · Q1 2026",
   location: "Digital Nomad · International (UTC+4 / GMT)",
   email: "ntwayagaeaobakwe@gmail.com",

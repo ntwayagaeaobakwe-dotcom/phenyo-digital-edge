@@ -12,11 +12,11 @@ export function MarketAutomationTerminal() {
       {/* Header bar */}
       <div className="flex items-center justify-between border-b border-border/60 pb-3 mb-4">
         <div className="flex items-center gap-2">
-          <div className="h-3 w-3 rounded-full bg-red-500/80" />
-          <div className="h-3 w-3 rounded-full bg-yellow-500/80" />
-          <div className="h-3 w-3 rounded-full bg-green-500/80" />
+          <div className="h-3 w-3 rounded-full bg-red-500/80" aria-hidden="true" />
+          <div className="h-3 w-3 rounded-full bg-yellow-500/80" aria-hidden="true" />
+          <div className="h-3 w-3 rounded-full bg-green-500/80" aria-hidden="true" />
           <span className="ml-2 text-xs font-mono text-muted-foreground flex items-center gap-1.5">
-            <Terminal className="h-3.5 w-3.5 text-primary" /> status.terminal
+            <Terminal className="h-3.5 w-3.5 text-primary" aria-hidden="true" /> status.terminal
           </span>
         </div>
         <div className="flex items-center gap-1.5">
@@ -26,12 +26,16 @@ export function MarketAutomationTerminal() {
       </div>
 
       {/* Interactive Tabs */}
-      <div className="grid grid-cols-3 gap-1.5 p-1 bg-black/40 rounded-xl mb-4 text-xs font-mono">
+      <div className="grid grid-cols-3 gap-1.5 p-1 bg-black/40 rounded-xl mb-4 text-xs font-mono" role="tablist" aria-label="Status Terminal Tabs">
         {HERO_TERMINAL_TABS.map((tab) => (
           <button
             key={tab.id}
+            role="tab"
+            aria-selected={activeTab === tab.id}
+            aria-controls={`terminal-panel-${tab.id}`}
+            id={`terminal-tab-${tab.id}`}
             onClick={() => setActiveTab(tab.id)}
-            className={`py-2 px-2.5 rounded-lg font-medium transition-all text-center truncate ${
+            className={`py-2 px-2.5 rounded-lg font-medium transition-all text-center truncate cursor-pointer ${
               activeTab === tab.id
                 ? "bg-primary text-primary-foreground font-bold shadow-md"
                 : "text-muted-foreground hover:text-foreground hover:bg-white/5"
@@ -43,20 +47,25 @@ export function MarketAutomationTerminal() {
       </div>
 
       {/* Active Tab Panel Output */}
-      <div className="space-y-3 font-mono text-xs animate-in fade-in duration-200">
+      <div
+        id={`terminal-panel-${activeTab}`}
+        role="tabpanel"
+        aria-labelledby={`terminal-tab-${activeTab}`}
+        className="space-y-3 font-mono text-xs animate-in fade-in duration-200"
+      >
         {activeTabData.items.map((item) => (
           <div key={item.label} className="glass rounded-xl p-3 border border-border/50 flex flex-col gap-1">
             <div className="text-[10px] text-muted-foreground uppercase tracking-widest">{item.label}</div>
             <div className="text-foreground font-medium text-sm flex items-center justify-between">
               <span>{item.value}</span>
               {activeTab === "xauusd" && item.label === "Market focus" && (
-                <TrendingUp className="h-4 w-4 text-primary shrink-0" />
+                <TrendingUp className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
               )}
               {activeTab === "workflow" && item.label === "Stack" && (
-                <Cpu className="h-4 w-4 text-primary shrink-0" />
+                <Cpu className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
               )}
               {activeTab === "content" && item.label === "Channels" && (
-                <Workflow className="h-4 w-4 text-primary shrink-0" />
+                <Workflow className="h-4 w-4 text-primary shrink-0" aria-hidden="true" />
               )}
             </div>
           </div>

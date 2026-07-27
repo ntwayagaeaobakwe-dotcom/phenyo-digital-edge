@@ -27,18 +27,18 @@ export function ExpertiseSection() {
           return (
             <div
               key={skill.title}
-              className="glass rounded-2xl p-6 hover:border-primary/40 transition-all group"
+              className="glass glass-hover rounded-2xl p-6 border border-border/80 transition-all group"
             >
               <div className="flex items-center gap-3">
-                <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
-                  <IconComponent className="h-5 w-5" />
+                <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors shrink-0">
+                  <IconComponent className="h-5 w-5" aria-hidden="true" />
                 </div>
                 <h3 className="font-display text-lg font-semibold">{skill.title}</h3>
               </div>
               <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
                 {skill.items.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden="true" />
                     <span>{item}</span>
                   </li>
                 ))}

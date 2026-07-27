@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowUpRight, Cpu } from "lucide-react";
+import { Cpu } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { PROJECTS, ProjectItem } from "@/data/portfolio-data";
 import { ProjectModal } from "./ProjectModal";
@@ -27,7 +27,7 @@ export function ProjectsSection() {
         {PROJECTS.map((project, index) => (
           <article
             key={project.id}
-            className="glass rounded-2xl p-7 lg:p-9 group relative overflow-hidden hover:border-primary/40 transition-all border border-border/80"
+            className="glass glass-hover rounded-2xl p-7 lg:p-9 group relative overflow-hidden transition-all border border-border/80"
           >
             <div
               className={`absolute inset-0 -z-10 bg-gradient-to-br ${project.accent} opacity-60`}
@@ -46,9 +46,10 @@ export function ProjectsSection() {
                 <div className="mt-5 flex flex-wrap gap-3">
                   <button
                     onClick={() => handleOpenModal(project)}
-                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2.5 transition-all bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-full px-4 py-2"
+                    className="inline-flex items-center gap-1.5 text-sm font-medium text-primary hover:gap-2.5 transition-all bg-primary/10 hover:bg-primary/20 border border-primary/30 rounded-full px-4.5 py-2 cursor-pointer font-display"
+                    aria-label={`Explore architecture details for ${project.title}`}
                   >
-                    Explore Architecture <Cpu className="h-4 w-4" />
+                    Explore Architecture <Cpu className="h-4 w-4" aria-hidden="true" />
                   </button>
                 </div>
               </div>

@@ -2,25 +2,25 @@ import { PERSONAL_INFO, NAV_LINKS } from "@/data/portfolio-data";
 
 export function FooterSection() {
   return (
-    <footer className="border-t border-border py-12 bg-black/40">
+    <footer className="border-t border-border/60 py-12 bg-black/50">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6 text-sm text-muted-foreground">
         <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2 font-display font-bold text-foreground text-base">
-            <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground text-xs">
+          <a href="#top" className="flex items-center gap-2 font-display font-bold text-foreground text-base group" aria-label="Back to top">
+            <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground text-xs group-hover:scale-105 transition-transform">
               {PERSONAL_INFO.name.charAt(0)}
             </span>
             {PERSONAL_INFO.name}<span className="text-primary">.</span>
-          </div>
+          </a>
           <span className="text-border">|</span>
           <span className="text-xs font-mono">{PERSONAL_INFO.title}</span>
         </div>
 
-        <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium">
+        <nav className="flex flex-wrap items-center justify-center gap-6 text-xs font-medium" aria-label="Footer navigation">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="hover:text-foreground transition-colors"
+              className="hover:text-foreground transition-colors hover:text-primary"
             >
               {link.label}
             </a>
