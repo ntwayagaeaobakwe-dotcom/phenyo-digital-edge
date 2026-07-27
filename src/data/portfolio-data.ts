@@ -368,70 +368,34 @@ export const PROJECTS: ProjectItem[] = [
     title: "Conversion-Focused Service Website",
     tag: "Personal Project",
     status: "Personal Project",
-    desc: "A high-performance modern web template designed to present professional services clearly and guide visitors toward booking an inquiry.",
+    desc: "A premium responsive service website built with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
     problem:
-      "Many service business websites confuse prospective clients with complex jargon and unclear contact options.",
+      "Many service businesses have websites that look acceptable but fail to explain their offer clearly or guide visitors toward making an inquiry.",
     solution:
-      "A clean, responsive web application built with fast navigation, clear service positioning, and simple contact forms.",
+      "A premium responsive service website with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
     howItWorks: [
       "Visitor arrives on clear hero explaining core value",
       "Explores plain-language services & proof examples",
       "Calculates potential time savings on interactive tool",
-      "Submits structured inquiry with clear scope details",
+      "Sends direct inquiry via email or WhatsApp",
     ],
     potentialValue:
-      "Built to improve visitor clarity, build immediate trust, and increase inquiry rates.",
-    toolsUsed: ["React", "TypeScript", "Vite", "Tailwind CSS", "Responsive UI Design"],
+      "Designed to help a service provider communicate more clearly, build credibility, and make it easier for prospective customers to take the next step.",
+    toolsUsed: ["React", "TypeScript", "Vite", "Tailwind CSS", "TanStack Router", "Responsive UI Design"],
     accent: "from-amber-500/15 to-transparent",
     challenge:
-      "Many service business websites confuse prospective clients with complex jargon and unclear contact options.",
+      "Many service businesses have websites that look acceptable but fail to explain their offer clearly or guide visitors toward making an inquiry.",
     objective:
-      "A clean, responsive web application built with fast navigation, clear service positioning, and simple contact forms.",
-    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "Responsive UI Design"],
+      "A premium responsive service website with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
+    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "TanStack Router", "Responsive UI Design"],
     features: [
       "Visitor arrives on clear hero explaining core value",
       "Explores plain-language services & proof examples",
       "Calculates potential time savings on interactive tool",
-      "Submits structured inquiry with clear scope details",
+      "Sends direct inquiry via email or WhatsApp",
     ],
     valueCreated:
-      "Built to improve visitor clarity, build immediate trust, and increase inquiry rates.",
-  },
-  {
-    id: "zoomex-capital",
-    title: "Fintech Investor Portal Concept",
-    tag: "Concept Project",
-    status: "Concept Project",
-    disclaimer:
-      "Concept project created to demonstrate product design and web application architecture. It does not represent an active investment service or an offer of financial products.",
-    desc: "A user portal design concept demonstrating account management screens, authentication flows, user dashboards, and administrative approvals.",
-    problem:
-      "Financial applications often struggle to present multi-step approvals and account metrics in an intuitive user dashboard.",
-    solution:
-      "A responsive portal layout with secure user views, administrative approval controls, and structured account summary screens.",
-    howItWorks: [
-      "User authenticates into secure portal environment",
-      "Views account overview dashboard & activity history",
-      "Administrator reviews pending approvals & status",
-      "Notification triggers update user on account state",
-    ],
-    potentialValue:
-      "Demonstrates how complex financial interfaces can be organized into a clearer experience for users and administrators.",
-    toolsUsed: ["React", "TypeScript", "Secure Auth Architecture", "Tailwind CSS", "Dashboard Components"],
-    accent: "from-fuchsia-500/15 to-transparent",
-    challenge:
-      "Financial applications often struggle to present multi-step approvals and account metrics in an intuitive user dashboard.",
-    objective:
-      "A responsive portal layout with secure user views, administrative approval controls, and structured account summary screens.",
-    techStack: ["React", "TypeScript", "Secure Auth Architecture", "Tailwind CSS", "Dashboard Components"],
-    features: [
-      "User authenticates into secure portal environment",
-      "Views account overview dashboard & activity history",
-      "Administrator reviews pending approvals & status",
-      "Notification triggers update user on account state",
-    ],
-    valueCreated:
-      "Demonstrates how complex financial interfaces can be organized into a clearer experience for users and administrators.",
+      "Designed to help a service provider communicate more clearly, build credibility, and make it easier for prospective customers to take the next step.",
   },
   {
     id: "shorts-content-repurposing",
