@@ -446,8 +446,8 @@ function Contact() {
                 digital brand — let's build something that works.
               </p>
               <div className="mt-8 space-y-3 text-sm">
-                <ContactRow icon={Mail} label="Email" value="[ your email here ]" />
-                <ContactRow icon={Phone} label="Phone / WhatsApp" value="[ your phone number here ]" />
+                <ContactRow icon={Mail} label="Email" value="ntwayagaeaobakwe@gmail.com" />
+                <ContactRow icon={Phone} label="Phone / WhatsApp" value="+971555170113" />
                 <ContactRow icon={MapPin} label="Location" value="Digital nomad — currently based internationally" />
               </div>
             </div>
