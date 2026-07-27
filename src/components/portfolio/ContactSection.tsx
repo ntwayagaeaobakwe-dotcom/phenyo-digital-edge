@@ -23,9 +23,13 @@ const socialIconMap: Record<string, React.ComponentType<{ className?: string }>>
   Linkedin,
 };
 
+const CONTACT_WEBHOOK_URL = import.meta.env.VITE_CONTACT_WEBHOOK_URL as string | undefined;
+
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [industryContext, setIndustryContext] = useState("");
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [usedFallback, setUsedFallback] = useState(false);
 
   const {
     register,
@@ -66,16 +70,53 @@ export function ContactSection() {
     return () => window.removeEventListener("industryContextSet", handler);
   }, [setValue, getValues]);
 
-  const onSubmit = (data: ContactFormValues) => {
-    toast.success("Inquiry formatted! Opening your email client...");
-
+  const openMailtoFallback = (data: ContactFormValues) => {
     const subject = encodeURIComponent(`New Project Inquiry - ${data.service}`);
     const contextLine = industryContext ? `\nInquiry Context: ${industryContext}` : "";
     const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\nBudget: ${data.budget || "Not specified"}\n\nProblem / Project Description:\n${data.message}`;
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
-
-    setSubmitted(true);
     window.location.href = mailtoUrl;
+  };
+
+  const onSubmit = async (data: ContactFormValues) => {
+    setSubmitError(null);
+    setUsedFallback(false);
+
+    if (!CONTACT_WEBHOOK_URL) {
+      toast.success("Inquiry formatted! Opening your email client...");
+      setUsedFallback(true);
+      setSubmitted(true);
+      openMailtoFallback(data);
+      return;
+    }
+
+    try {
+      const response = await fetch(CONTACT_WEBHOOK_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          service: data.service,
+          budget: data.budget || "Not specified",
+          message: data.message,
+          industryContext: industryContext || null,
+          timestamp: new Date().toISOString(),
+        }),
+      });
+
+      if (!response.ok) throw new Error(`Webhook responded with ${response.status}`);
+
+      toast.success("Inquiry sent! I'll be in touch within 24 hours.");
+      setSubmitted(true);
+    } catch (error) {
+      console.error("Contact webhook submission failed, falling back to email:", error);
+      toast.error("Couldn't send automatically — opening your email client instead.");
+      setSubmitError("Your inquiry couldn't be delivered automatically, so we opened your email client instead. Please send that email to make sure I receive it.");
+      setUsedFallback(true);
+      setSubmitted(true);
+      openMailtoFallback(data);
+    }
   };
 
   return (
@@ -161,20 +202,33 @@ export function ContactSection() {
                   <div className="inline-grid h-14 w-14 place-items-center rounded-full bg-primary/20 text-primary mx-auto">
                     <CheckCircle className="h-7 w-7" />
                   </div>
-                  <h3 className="text-2xl font-display font-semibold">Inquiry Formatted!</h3>
+                  <h3 className="text-2xl font-display font-semibold">
+                    {usedFallback ? "Inquiry Formatted!" : "Inquiry Sent!"}
+                  </h3>
                   <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
-                    Your inquiry has been compiled into your default email client. If it didn't open automatically, click the button below or message directly on WhatsApp.
+                    {usedFallback
+                      ? "Your inquiry has been compiled into your default email client. If it didn't open automatically, click the button below or message directly on WhatsApp."
+                      : "Thanks for reaching out — I typically respond within 24 hours. Feel free to message directly on WhatsApp for anything urgent."}
                   </p>
+                  {submitError && (
+                    <p className="text-xs text-amber-300 max-w-sm mx-auto leading-relaxed bg-amber-500/10 border border-amber-500/30 rounded-xl px-3 py-2.5">
+                      {submitError}
+                    </p>
+                  )}
                   <div className="pt-2 flex flex-col gap-2.5">
-                    <a
-                      href={`mailto:${PERSONAL_INFO.email}`}
-                      className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-gold)] font-display"
-                    >
-                      Open Email Client <Send className="h-4 w-4" />
-                    </a>
+                    {usedFallback && (
+                      <a
+                        href={`mailto:${PERSONAL_INFO.email}`}
+                        className="inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-medium text-primary-foreground shadow-[var(--shadow-gold)] font-display"
+                      >
+                        Open Email Client <Send className="h-4 w-4" />
+                      </a>
+                    )}
                     <button
                       onClick={() => {
                         setSubmitted(false);
+                        setSubmitError(null);
+                        setUsedFallback(false);
                         setIndustryContext("");
                         reset();
                       }}

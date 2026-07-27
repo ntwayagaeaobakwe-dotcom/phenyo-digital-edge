@@ -54,10 +54,11 @@ export const PERSONAL_INFO = {
   email: "ntwayagaeaobakwe@gmail.com",
   phone: "+971555170113",
   socials: [
-    { label: "X / Twitter", href: "https://x.com", iconName: "Twitter" },
-    { label: "Instagram", href: "https://instagram.com", iconName: "Instagram" },
+    { label: "X / Twitter", href: "https://x.com/phenyont", iconName: "Twitter" },
+    { label: "Instagram", href: "https://www.instagram.com/phenyontwayagae", iconName: "Instagram" },
+    // TODO: add real GitHub profile URL
     { label: "GitHub", href: "https://github.com", iconName: "Github" },
-    { label: "LinkedIn", href: "https://linkedin.com", iconName: "Linkedin" },
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/", iconName: "Linkedin" },
   ],
 };
 

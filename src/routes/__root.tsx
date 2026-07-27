@@ -61,6 +61,8 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+const ROOT_SITE_URL = typeof window !== "undefined" ? window.location.origin : "";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -75,7 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Phenyo | Business Automation & Web Development" },
+      // Default OG/Twitter image — overridden per-route where a more specific one is set.
+      // TODO: replace public/og-image.jpg with a real designed export (Figma/Higgsfield) —
+      // currently a code-generated placeholder (see scripts/og-image.svg).
+      { property: "og:image", content: `${ROOT_SITE_URL}/og-image.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: `${ROOT_SITE_URL}/og-image.jpg` },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

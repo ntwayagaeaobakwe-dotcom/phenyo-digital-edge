@@ -35,9 +35,15 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: PAGE_DESC },
       { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
+      // TODO: swap for a real designed export once available — currently a code-generated
+      // placeholder built from scripts/og-image.svg (see that file for the source).
+      { property: "og:image", content: `${SITE_URL}/og-image.jpg` },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: PAGE_TITLE },
       { name: "twitter:description", content: PAGE_DESC },
+      { name: "twitter:image", content: `${SITE_URL}/og-image.jpg` },
     ],
     links: [{ rel: "canonical", href: SITE_URL }],
     scripts: [
