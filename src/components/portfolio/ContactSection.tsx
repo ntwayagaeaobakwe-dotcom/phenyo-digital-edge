@@ -11,7 +11,7 @@ const contactSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   service: z.string().min(1, "Please select a service option"),
   budget: z.string().optional(),
-  message: z.string().min(5, "Please provide a brief project message"),
+  message: z.string().min(5, "Please describe what is slowing you down or holding your business back"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -36,7 +36,7 @@ export function ContactSection() {
     defaultValues: {
       name: "",
       email: "",
-      service: FORM_SERVICE_OPTIONS[0],
+      service: FORM_SERVICE_OPTIONS[4] || FORM_SERVICE_OPTIONS[0],
       budget: FORM_BUDGET_OPTIONS[1],
       message: "",
     },
@@ -45,8 +45,8 @@ export function ContactSection() {
   const onSubmit = (data: ContactFormValues) => {
     toast.success("Inquiry formatted! Opening your email client...");
 
-    const subject = encodeURIComponent(`New Website Inquiry - ${data.service}`);
-    const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}\nBudget: ${data.budget || "Not specified"}\n\nMessage:\n${data.message}`;
+    const subject = encodeURIComponent(`New Project Inquiry - ${data.service}`);
+    const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}\nBudget: ${data.budget || "Not specified"}\n\nProblem / Project Description:\n${data.message}`;
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 
     setSubmitted(true);
@@ -63,13 +63,13 @@ export function ContactSection() {
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-12 items-start relative">
             <div>
               <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
-                Contact & Direct Line
+                Get In Touch
               </div>
               <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
-                Let's Engineer <span className="text-gradient-gold">Your Leverage</span>.
+                Tell Me What Is <span className="text-gradient-gold">Slowing You Down</span>.
               </h2>
               <p className="mt-5 text-lg text-muted-foreground max-w-lg leading-relaxed">
-                Whether you need custom n8n AI workflow automation, a trading content system, or a modern digital platform — let's build something that works.
+                Describe the manual tasks, disconnected tools, or website challenges holding your business back — I'll recommend a practical solution.
               </p>
 
               {/* Verified Contact Details */}
@@ -114,7 +114,7 @@ export function ContactSection() {
                 </div>
               </div>
 
-              {/* Secondary WhatsApp CTA Button */}
+              {/* Direct WhatsApp CTA Button */}
               <div className="mt-8 pt-6 border-t border-border/40">
                 <a
                   href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`}
@@ -123,13 +123,13 @@ export function ContactSection() {
                   className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full glass glass-hover px-6 py-3.5 text-sm font-medium text-foreground transition-all border border-emerald-500/30"
                 >
                   <MessageSquare className="h-4 w-4 text-emerald-400 shrink-0" />
-                  <span>Message on WhatsApp</span>
+                  <span>Message Me on WhatsApp</span>
                   <ArrowUpRight className="h-4 w-4 text-muted-foreground ml-auto sm:ml-0" />
                 </a>
               </div>
             </div>
 
-            {/* Functional Lead Capture Form */}
+            {/* Approachable Lead Capture Form */}
             <div className="glass rounded-2xl p-6 sm:p-8 border border-border/80 shadow-2xl">
               {submitted ? (
                 <div className="py-8 text-center space-y-4 animate-in fade-in">
@@ -138,7 +138,7 @@ export function ContactSection() {
                   </div>
                   <h3 className="text-2xl font-display font-semibold">Inquiry Formatted!</h3>
                   <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
-                    Your inquiry has been compiled into your default email client. If it didn't open automatically, use the mail button below or message directly on WhatsApp.
+                    Your inquiry has been compiled into your default email client. If it didn't open automatically, click the button below or message directly on WhatsApp.
                   </p>
                   <div className="pt-2 flex flex-col gap-2.5">
                     <a
@@ -220,7 +220,7 @@ export function ContactSection() {
                     )}
                   </div>
 
-                  {/* Budget Selection */}
+                  {/* Budget Selection with helper text */}
                   <div>
                     <label htmlFor="form-budget" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
                       Budget Range (Optional)
@@ -236,20 +236,26 @@ export function ContactSection() {
                         </option>
                       ))}
                     </select>
+                    <p className="text-[11px] text-muted-foreground mt-1">
+                      This helps me recommend an approach that fits your likely scope. It does not commit you to a project.
+                    </p>
                   </div>
 
-                  {/* Message */}
+                  {/* Message Field with custom label & helper text */}
                   <div>
                     <label htmlFor="form-message" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
-                      Project Details *
+                      What is taking too much time, not working properly, or holding your business back? *
                     </label>
                     <textarea
                       id="form-message"
                       rows={3}
-                      placeholder="Tell us about your automation or development requirements..."
+                      placeholder="Describe the problem you want to solve..."
                       {...register("message")}
                       className="w-full rounded-xl bg-black/40 border border-border px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
                     />
+                    <p className="text-[11px] text-muted-foreground mt-1">
+                      You do not need to know which technology you need. Describe the problem and the result you want.
+                    </p>
                     {errors.message && (
                       <p className="text-xs text-red-400 mt-1 font-mono">{errors.message.message}</p>
                     )}
@@ -261,7 +267,7 @@ export function ContactSection() {
                     disabled={isSubmitting}
                     className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display cursor-pointer"
                   >
-                    Send Project Inquiry <Send className="h-4 w-4" />
+                    Tell Me What You Need <Send className="h-4 w-4" />
                   </button>
 
                   {/* Social Links */}

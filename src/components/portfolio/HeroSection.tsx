@@ -1,8 +1,8 @@
-import { ArrowUpRight, ChevronRight, TrendingUp } from "lucide-react";
+import { ArrowUpRight, ChevronRight, CheckCircle2 } from "lucide-react";
 import heroImg from "@/assets/phenyo-hero.jpg";
 import bgGrid from "@/assets/bg-grid.jpg";
 import { PERSONAL_INFO, HERO_STATS } from "@/data/portfolio-data";
-import { MarketAutomationTerminal } from "./MarketAutomationTerminal";
+import { BusinessSystemsDemo } from "./BusinessSystemsDemo";
 
 export function HeroSection() {
   return (
@@ -23,16 +23,14 @@ export function HeroSection() {
             <span>{PERSONAL_INFO.status}</span>
           </div>
 
-          {/* Main Headline */}
-          <h1 className="mt-6 font-display font-bold text-5xl sm:text-6xl lg:text-7xl leading-[1.02] tracking-tight">
-            Market Discipline.
+          {/* Customer-Focused Headline */}
+          <h1 className="mt-6 font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-foreground">
+            Automations That Save You Time.
             <br />
-            AI Leverage.
-            <br />
-            <span className="text-gradient-gold">Digital Dominance.</span>
+            <span className="text-gradient-gold">Websites That Help You Grow.</span>
           </h1>
 
-          {/* Subheadline */}
+          {/* Customer-Focused Subheadline */}
           <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
             {PERSONAL_INFO.subheadline}
           </p>
@@ -43,19 +41,19 @@ export function HeroSection() {
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-gold-hover)] font-display"
             >
-              Book an Automation Audit <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              Tell Me What You Need <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
             </a>
             <a
               href="#projects"
               className="inline-flex items-center gap-2 rounded-full glass glass-hover px-6 py-3.5 text-sm font-medium text-foreground transition-all"
             >
-              Explore Case Studies
+              See What I Can Build
             </a>
             <a
               href="#roi-calculator"
               className="inline-flex items-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              ROI Calculator <ChevronRight className="h-4 w-4 text-primary" aria-hidden="true" />
+              Estimate Time Saved <ChevronRight className="h-4 w-4 text-primary" aria-hidden="true" />
             </a>
           </div>
 
@@ -63,21 +61,21 @@ export function HeroSection() {
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border/40 pt-6">
             {HERO_STATS.map((stat) => (
               <div key={stat.label}>
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold">{stat.value}</div>
-                <div className="text-xs text-muted-foreground mt-1 font-mono">{stat.label}</div>
+                <div className="text-xl sm:text-2xl font-display font-bold text-gradient-gold">{stat.value}</div>
+                <div className="text-xs text-muted-foreground mt-1 font-sans">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Hero Visual Container + Interactive Terminal */}
+        {/* Hero Visual Container + Interactive Demo */}
         <div className="space-y-6">
           <div className="relative animate-float">
             <div className="absolute -inset-8 bg-primary/20 blur-3xl rounded-full" />
             <div className="relative gold-border rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[4/3] shadow-[var(--shadow-elegant)]">
               <img
                 src={heroImg}
-                alt="Phenyo — day trader and AI automation architect"
+                alt="Phenyo — Business Automation & Web Development Specialist"
                 width={1024}
                 height={1280}
                 loading="eager"
@@ -87,17 +85,17 @@ export function HeroSection() {
               <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                 <div className="glass-gold rounded-xl px-4 py-2.5 flex items-center justify-between">
                   <div>
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Operator</div>
-                    <div className="text-sm font-medium">Market Execution · AI Workflows</div>
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Focus</div>
+                    <div className="text-sm font-medium">Business Automation · Conversion Websites</div>
                   </div>
-                  <TrendingUp className="h-5 w-5 text-primary" aria-hidden="true" />
+                  <CheckCircle2 className="h-5 w-5 text-primary" aria-hidden="true" />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Interactive Market Automation Terminal */}
-          <MarketAutomationTerminal />
+          {/* Interactive Business Systems Demo */}
+          <BusinessSystemsDemo />
         </div>
       </div>
     </section>

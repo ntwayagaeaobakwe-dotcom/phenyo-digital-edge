@@ -1,12 +1,12 @@
-import { LineChart, Bot, Code2, Sparkles, Brain } from "lucide-react";
+import { Workflow, Code2, Layers, Target, Brain } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { EXPERTISE_SKILLS } from "@/data/portfolio-data";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  LineChart,
-  Bot,
+  Workflow,
   Code2,
-  Sparkles,
+  Layers,
+  Target,
   Brain,
 };
 
@@ -14,16 +14,16 @@ export function ExpertiseSection() {
   return (
     <SectionShell
       id="expertise"
-      eyebrow="Core Expertise"
+      eyebrow="Core Capabilities"
       title={
         <>
-          Five disciplines. <span className="text-gradient-gold">One operator.</span>
+          Five core disciplines. <span className="text-gradient-gold">Practical execution.</span>
         </>
       }
     >
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {EXPERTISE_SKILLS.map((skill) => {
-          const IconComponent = iconMap[skill.iconName] || Sparkles;
+          const IconComponent = iconMap[skill.iconName] || Workflow;
           return (
             <div
               key={skill.title}

@@ -28,7 +28,7 @@ export function FooterSection() {
         </nav>
 
         <div className="text-xs text-muted-foreground font-mono text-center md:text-right">
-          © {new Date().getFullYear()} {PERSONAL_INFO.name}. Built between trades & automations.
+          © {new Date().getFullYear()} {PERSONAL_INFO.name}. Business Automation & Web Development.
         </div>
       </div>
     </footer>

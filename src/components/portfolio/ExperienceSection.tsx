@@ -1,13 +1,13 @@
-import { LineChart, Layers, Workflow, Sparkles, Zap, Cpu, CheckCircle2 } from "lucide-react";
+import { Workflow, Layers, Zap, Target, Code2, Cpu, CheckCircle2 } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { FOCUS_AREAS, CREDENTIALS_SUMMARY } from "@/data/portfolio-data";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
-  LineChart,
-  Layers,
   Workflow,
-  Sparkles,
+  Layers,
   Zap,
+  Target,
+  Code2,
   Cpu,
 };
 
@@ -15,16 +15,16 @@ export function ExperienceSection() {
   return (
     <SectionShell
       id="experience"
-      eyebrow="Experience & Focus"
+      eyebrow="Experience & Focus Areas"
       title={
         <>
-          A working <span className="text-gradient-gold">operating system</span>.
+          A working <span className="text-gradient-gold">operating approach</span>.
         </>
       }
     >
       <div className="grid md:grid-cols-2 gap-5">
         {FOCUS_AREAS.map((area) => {
-          const IconComponent = iconMap[area.iconName] || Sparkles;
+          const IconComponent = iconMap[area.iconName] || Workflow;
           return (
             <div
               key={area.label}
@@ -41,7 +41,7 @@ export function ExperienceSection() {
 
       <div className="mt-8 glass rounded-2xl p-6 border border-border/80 text-sm space-y-3">
         <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold mb-1">
-          Execution Track Record & Credentials
+          Execution Track Record & Capability Summary
         </div>
         {CREDENTIALS_SUMMARY.map((cred, idx) => (
           <div key={idx} className="flex items-center gap-3 text-muted-foreground">

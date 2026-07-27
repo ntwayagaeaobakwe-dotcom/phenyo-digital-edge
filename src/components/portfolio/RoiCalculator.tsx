@@ -21,15 +21,15 @@ export function RoiCalculator() {
   return (
     <SectionShell
       id="roi-calculator"
-      eyebrow="Interactive Business Tool"
+      eyebrow="Estimate Your Savings"
       title={
         <>
-          Calculate Your <span className="text-gradient-gold">Automation Leverage</span>
+          See How Much Time Automation <span className="text-gradient-gold">Could Save Your Team</span>
         </>
       }
     >
       <div className="text-muted-foreground text-lg max-w-2xl -mt-6 mb-10 leading-relaxed">
-        Estimate how many hours and dollars your business could save by replacing manual workflows with AI-powered n8n automation systems.
+        Estimate how many hours and dollars your business could save by replacing manual tasks with automated workflows.
       </div>
 
       <div className="glass rounded-3xl p-6 sm:p-10 border border-primary/20 shadow-[var(--shadow-elegant)] grid lg:grid-cols-2 gap-10">
@@ -60,7 +60,7 @@ export function RoiCalculator() {
               className="w-full accent-primary bg-white/10 rounded-lg h-2 cursor-pointer"
             />
             <div className="flex justify-between text-[10px] font-mono text-muted-foreground">
-              <span>5 hrs (Minimal)</span>
+              <span>5 hrs (Light)</span>
               <span>25 hrs (Medium)</span>
               <span>50 hrs (Heavy)</span>
             </div>
@@ -143,7 +143,7 @@ export function RoiCalculator() {
             <div className="flex justify-between text-[10px] font-mono text-muted-foreground">
               <span>20% (Partial)</span>
               <span>60% (Standard)</span>
-              <span>90% (Autonomous)</span>
+              <span>90% (High)</span>
             </div>
           </div>
         </div>
@@ -152,7 +152,7 @@ export function RoiCalculator() {
         <div className="glass-gold rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-primary/40 shadow-xl">
           <div>
             <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold border-b border-primary/20 pb-3 mb-6 flex items-center justify-between">
-              <span>Estimated ROI Metrics</span>
+              <span>Estimated Potential Metrics</span>
               <span className="text-[10px] text-muted-foreground font-normal">Calculated Live</span>
             </div>
 
@@ -170,7 +170,7 @@ export function RoiCalculator() {
                 <div className="text-2xl font-display font-bold text-gradient-gold mt-1">
                   {monthlyHoursSaved} hrs
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">per month saved</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5 font-sans">per month saved</div>
               </div>
 
               <div className="glass p-4 rounded-xl border border-border/60">
@@ -178,15 +178,15 @@ export function RoiCalculator() {
                 <div className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-1">
                   {formatCurrency(monthlySavings)}
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">reclaimed monthly</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5">estimated monthly savings</div>
               </div>
 
               <div className="glass-gold p-4 rounded-xl border border-primary/50 bg-primary/10 shadow-lg">
-                <div className="text-xs text-primary font-mono font-bold">Annualized Value</div>
+                <div className="text-xs text-primary font-mono font-bold">Estimated Annual Value</div>
                 <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold mt-1">
                   {formatCurrency(annualSavings)}
                 </div>
-                <div className="text-[11px] text-primary/90 mt-0.5 font-medium">annual operational ROI</div>
+                <div className="text-[11px] text-primary/90 mt-0.5 font-medium">potential annual savings</div>
               </div>
             </div>
           </div>
@@ -196,7 +196,7 @@ export function RoiCalculator() {
               href="#contact"
               className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display"
             >
-              Book an Automation Audit <ArrowUpRight className="h-4 w-4" />
+              Tell Me What You Need <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </div>
