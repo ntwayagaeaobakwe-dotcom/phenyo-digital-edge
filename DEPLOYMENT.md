@@ -54,3 +54,9 @@ with. Everything else (routes, SSR entry, build command) stays the same.
 
 No production deployment has been triggered as part of this branch. Review the
 diff first, then deploy from whichever target you choose.
+
+## Current Vercel status
+
+Checked via the Vercel connector: the "Phenyo" Vercel team has **no existing
+project** for this repo yet — nothing is connected or deployed there today.
+Cloudflare remains the only target this build has actually run against so far.
