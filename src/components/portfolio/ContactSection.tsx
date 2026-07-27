@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, Phone, Twitter, Instagram, Github, Linkedin, ArrowUpRight, Send, CheckCircle, MessageSquare } from "lucide-react";
+import { Mail, MapPin, Phone, Twitter, Instagram, Github, Linkedin, ArrowUpRight, Send, CheckCircle, MessageSquare, X } from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS, FORM_BUDGET_OPTIONS } from "@/data/portfolio-data";
 
 const contactSchema = z.object({
@@ -25,11 +25,14 @@ const socialIconMap: Record<string, React.ComponentType<{ className?: string }>>
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
+  const [industryContext, setIndustryContext] = useState("");
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
+    getValues,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactSchema),
@@ -42,11 +45,33 @@ export function ContactSection() {
     },
   });
 
+  // Listen for industry-context events dispatched by CTA buttons
+  useEffect(() => {
+    const handler = (): void => {
+      try {
+        const pending = sessionStorage.getItem("pendingIndustryContext");
+        if (!pending) return;
+        sessionStorage.removeItem("pendingIndustryContext");
+        setIndustryContext(pending);
+        // Only pre-select service if user has not changed it from the default
+        const currentService = getValues("service");
+        if (currentService === FORM_SERVICE_OPTIONS[4] || currentService === FORM_SERVICE_OPTIONS[0]) {
+          setValue("service", "Business Automation", { shouldDirty: false });
+        }
+      } catch {
+        // sessionStorage may be restricted in some browser contexts
+      }
+    };
+    window.addEventListener("industryContextSet", handler);
+    return () => window.removeEventListener("industryContextSet", handler);
+  }, [setValue, getValues]);
+
   const onSubmit = (data: ContactFormValues) => {
     toast.success("Inquiry formatted! Opening your email client...");
 
     const subject = encodeURIComponent(`New Project Inquiry - ${data.service}`);
-    const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}\nBudget: ${data.budget || "Not specified"}\n\nProblem / Project Description:\n${data.message}`;
+    const contextLine = industryContext ? `\nInquiry Context: ${industryContext}` : "";
+    const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\nBudget: ${data.budget || "Not specified"}\n\nProblem / Project Description:\n${data.message}`;
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
 
     setSubmitted(true);
@@ -150,6 +175,7 @@ export function ContactSection() {
                     <button
                       onClick={() => {
                         setSubmitted(false);
+                        setIndustryContext("");
                         reset();
                       }}
                       className="text-xs font-mono text-primary underline hover:opacity-80 pt-2 cursor-pointer"
@@ -164,6 +190,22 @@ export function ContactSection() {
                     <span>Project Inquiry Form</span>
                     <span className="text-[10px] text-muted-foreground">Response &lt; 24h</span>
                   </div>
+
+                  {/* Industry context badge — shown when a CTA pre-filled the context */}
+                  {industryContext && (
+                    <div className="flex items-center gap-2 rounded-xl bg-primary/10 border border-primary/25 px-3 py-2 text-xs font-mono text-primary">
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                      <span className="truncate">Context: {industryContext}</span>
+                      <button
+                        type="button"
+                        onClick={() => setIndustryContext("")}
+                        aria-label="Clear inquiry context"
+                        className="ml-auto text-muted-foreground hover:text-foreground transition-colors cursor-pointer shrink-0"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    </div>
+                  )}
 
                   {/* Full Name */}
                   <div>

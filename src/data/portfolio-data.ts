@@ -501,3 +501,218 @@ export const ROI_CALCULATOR_DEFAULTS = {
   hourlyCost: 45,
   automationPct: 70,
 };
+
+// ─── Industry Automation Demo ─────────────────────────────────────────────────
+
+export interface DemoMessage {
+  from: "customer" | "bot" | "system";
+  text: string;
+  /** Speaker label shown visually and in the sr-only transcript */
+  label: string;
+  /** 0-indexed step that activates when this message becomes visible */
+  activatesStep?: number;
+}
+
+export interface WorkflowStep {
+  label: string;
+  description: string;
+}
+
+export interface IndustryDemoIndustry {
+  id: string;
+  label: string;
+  messages: DemoMessage[];
+  workflowSteps: WorkflowStep[];
+  problems: string[];
+  capabilities: string[];
+  benefitStatement: string;
+  ctaLabel: string;
+  /** Stored in sessionStorage and appended to the email inquiry body */
+  ctaIndustryContext: string;
+  formServiceValue: string;
+}
+
+export const INDUSTRY_DEMOS: IndustryDemoIndustry[] = [
+  {
+    id: "real-estate",
+    label: "Real Estate",
+    messages: [
+      {
+        from: "customer",
+        text: "Hi, is the two-bedroom apartment still available?",
+        label: "Customer",
+        activatesStep: 0,
+      },
+      {
+        from: "bot",
+        text: "Thanks for your inquiry. When are you hoping to move?",
+        label: "Automated Assistant",
+        activatesStep: 1,
+      },
+      {
+        from: "customer",
+        text: "Next month.",
+        label: "Customer",
+      },
+      {
+        from: "bot",
+        text: "Would you prefer to request a viewing on Thursday evening or Saturday morning?",
+        label: "Automated Assistant",
+      },
+      {
+        from: "customer",
+        text: "Saturday morning.",
+        label: "Customer",
+        activatesStep: 2,
+      },
+      {
+        from: "system",
+        text: "Viewing preference recorded. An agent can now review the request and confirm availability.",
+        label: "Automated Assistant",
+        activatesStep: 3,
+      },
+    ],
+    workflowSteps: [
+      {
+        label: "Receive",
+        description: "Inquiry arrives from website, WhatsApp Business, or contact form",
+      },
+      {
+        label: "Understand",
+        description: "System asks qualifying questions and records the requirements",
+      },
+      {
+        label: "Organize",
+        description: "Customer details collected and prepared for the agent",
+      },
+      {
+        label: "Continue",
+        description: "Agent notified with full context - ready to confirm and follow up",
+      },
+    ],
+    problems: [
+      "Inquiries arrive outside working hours without acknowledgment",
+      "Agents repeatedly ask the same qualifying questions",
+      "Information is spread across portals, messages, email, and spreadsheets",
+      "Viewing requests require excessive back-and-forth",
+      "Follow-ups can be missed during busy periods",
+    ],
+    capabilities: [
+      "Inquiry-response and lead-qualification workflows",
+      "Viewing-request collection and preparation",
+      "Agent notification with full lead context",
+      "CRM or spreadsheet updates",
+      "Property landing pages and inquiry forms",
+      "Follow-up reminders and lead-routing systems",
+    ],
+    benefitStatement:
+      "Collect the information an agent needs before continuing the conversation, keep the lead organized, and reduce repetitive back-and-forth.",
+    ctaLabel: "Discuss My Property Inquiry Process",
+    ctaIndustryContext: "Real Estate - Property Inquiry and Viewing Process",
+    formServiceValue: "Business Automation",
+  },
+  {
+    id: "cleaning-services",
+    label: "Cleaning Services",
+    messages: [
+      {
+        from: "customer",
+        text: "Hi, I need a deep clean for a two-bedroom apartment.",
+        label: "Customer",
+        activatesStep: 0,
+      },
+      {
+        from: "bot",
+        text: "Certainly. Is the property furnished, and which area is it located in?",
+        label: "Automated Assistant",
+        activatesStep: 1,
+      },
+      {
+        from: "customer",
+        text: "It is furnished and located in Dubai Marina.",
+        label: "Customer",
+      },
+      {
+        from: "bot",
+        text: "Thank you. When would you prefer the service?",
+        label: "Automated Assistant",
+      },
+      {
+        from: "customer",
+        text: "Saturday morning.",
+        label: "Customer",
+        activatesStep: 2,
+      },
+      {
+        from: "system",
+        text: "Request recorded. The team can now review the details and prepare a quote or availability for review.",
+        label: "Automated Assistant",
+        activatesStep: 3,
+      },
+    ],
+    workflowSteps: [
+      {
+        label: "Receive",
+        description: "Service request arrives from website, WhatsApp Business, or form",
+      },
+      {
+        label: "Understand",
+        description: "System collects property details, location, and service type",
+      },
+      {
+        label: "Organize",
+        description: "Job details recorded and prepared for the operations team",
+      },
+      {
+        label: "Continue",
+        description: "Team notified with complete details - ready to quote or schedule",
+      },
+    ],
+    problems: [
+      "Staff repeatedly request the same property information",
+      "Quote requests arrive through several channels without a consistent process",
+      "Scheduling requires unnecessary back-and-forth messages",
+      "Job details can arrive incomplete",
+      "Review requests and recurring-service reminders are forgotten",
+    ],
+    capabilities: [
+      "Service-request intake and quote-information collection",
+      "Booking-request workflows and team notifications",
+      "Job dashboards and operational summaries",
+      "Review-request automations",
+      "Recurring-service reminders",
+      "Conversion-focused service pages and inquiry forms",
+    ],
+    benefitStatement:
+      "Collect complete job details earlier, organize each request, and make quoting, scheduling, and follow-up easier to manage.",
+    ctaLabel: "Discuss My Quote and Booking Process",
+    ctaIndustryContext: "Cleaning Services - Quote and Booking Process",
+    formServiceValue: "Business Automation",
+  },
+];
+
+export const PROCESS_STEPS = [
+  {
+    number: "01",
+    label: "Receive",
+    description:
+      "An inquiry arrives through your website, WhatsApp Business, advertisement, or contact form.",
+  },
+  {
+    number: "02",
+    label: "Understand",
+    description: "The system asks the essential questions and records what the customer needs.",
+  },
+  {
+    number: "03",
+    label: "Organize",
+    description:
+      "The request is saved and sent to the correct place - a spreadsheet, CRM, or internal tool.",
+  },
+  {
+    number: "04",
+    label: "Continue",
+    description:
+      "Your team receives the context needed to quote, confirm, follow up, or complete the next action.",
+  },
+];

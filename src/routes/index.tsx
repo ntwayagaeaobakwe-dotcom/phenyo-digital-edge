@@ -2,10 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { TickerBar } from "@/components/portfolio/TickerBar";
+import { IndustryAutomationDemo } from "@/components/portfolio/IndustryAutomationDemo";
 import { AboutSection } from "@/components/portfolio/AboutSection";
 import { ExpertiseSection } from "@/components/portfolio/ExpertiseSection";
 import { RoiCalculator } from "@/components/portfolio/RoiCalculator";
 import { ServicesSection } from "@/components/portfolio/ServicesSection";
+import { IndustrySolutionsSection } from "@/components/portfolio/IndustrySolutionsSection";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
@@ -122,10 +124,14 @@ function Home() {
       <Navbar />
       <HeroSection />
       <TickerBar />
+      {/* Industry automation demo — placed early so visitors see it before core content */}
+      <IndustryAutomationDemo />
       <AboutSection />
       <ExpertiseSection />
       <RoiCalculator />
       <ServicesSection />
+      {/* Industry-specific cards + 4-step process + web+automation connection */}
+      <IndustrySolutionsSection />
       <ProjectsSection />
       <ExperienceSection />
       <ContactSection />
