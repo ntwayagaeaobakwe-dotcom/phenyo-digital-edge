@@ -96,7 +96,8 @@ export const Route = createFileRoute("/")({
                     itemOffered: {
                       "@type": "Service",
                       name: "Business Automation",
-                      description: "Custom n8n pipelines, API integrations, and lead research tools.",
+                      description:
+                        "Custom n8n pipelines, API integrations, and lead research tools.",
                     },
                   },
                   {
@@ -104,7 +105,8 @@ export const Route = createFileRoute("/")({
                     itemOffered: {
                       "@type": "Service",
                       name: "Websites That Generate Inquiries",
-                      description: "Professional, mobile-friendly websites designed to convert visitors into inquiries.",
+                      description:
+                        "Professional, mobile-friendly websites designed to convert visitors into inquiries.",
                     },
                   },
                   {
@@ -112,7 +114,8 @@ export const Route = createFileRoute("/")({
                     itemOffered: {
                       "@type": "Service",
                       name: "Client Portals and Business Dashboards",
-                      description: "Secure online spaces that centralize operational data and client account management.",
+                      description:
+                        "Secure online spaces that centralize operational data and client account management.",
                     },
                   },
                 ],
@@ -140,7 +143,13 @@ function Home() {
       <TickerBar />
       <TrustBar />
       {/* Industry automation demo — placed early so visitors see it before core content */}
-      <Suspense fallback={<div className="mx-auto max-w-6xl px-4 sm:px-6 py-20"><DemoSkeleton className="h-[420px]" /></div>}>
+      <Suspense
+        fallback={
+          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
+            <DemoSkeleton className="h-[420px]" />
+          </div>
+        }
+      >
         <IndustryAutomationDemo />
       </Suspense>
       <AboutSection />

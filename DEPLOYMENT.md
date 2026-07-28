@@ -46,11 +46,11 @@ with. Everything else (routes, SSR entry, build command) stays the same.
 
 ## Summary
 
-| Target | Works out of the box? | Notes |
-|---|---|---|
-| GitHub Pages | ❌ No | Static-only host, no server runtime — do not use for this project |
-| Cloudflare Pages/Workers | ✅ Yes | Current default Nitro preset |
-| Vercel | ⚠️ One config change | Needs Nitro `preset: "vercel"` instead of the Cloudflare default |
+| Target                   | Works out of the box? | Notes                                                             |
+| ------------------------ | --------------------- | ----------------------------------------------------------------- |
+| GitHub Pages             | ❌ No                 | Static-only host, no server runtime — do not use for this project |
+| Cloudflare Pages/Workers | ✅ Yes                | Current default Nitro preset                                      |
+| Vercel                   | ⚠️ One config change  | Needs Nitro `preset: "vercel"` instead of the Cloudflare default  |
 
 No production deployment has been triggered as part of this branch. Review the
 diff first, then deploy from whichever target you choose.

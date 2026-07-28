@@ -16,7 +16,11 @@ export function RoiCalculator() {
   const annualSavings = monthlySavings * 12;
 
   const formatCurrency = (val: number) =>
-    new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(val);
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(val);
 
   return (
     <SectionShell
@@ -24,12 +28,14 @@ export function RoiCalculator() {
       eyebrow="Estimate Your Savings"
       title={
         <>
-          See How Much Time Automation <span className="text-gradient-gold">Could Save Your Team</span>
+          See How Much Time Automation{" "}
+          <span className="text-gradient-gold">Could Save Your Team</span>
         </>
       }
     >
       <div className="text-muted-foreground text-lg max-w-2xl -mt-6 mb-10 leading-relaxed">
-        Estimate how many hours and dollars your business could save by replacing manual tasks with automated workflows.
+        Estimate how many hours and dollars your business could save by replacing manual tasks with
+        automated workflows.
       </div>
 
       <div className="glass rounded-3xl p-6 sm:p-10 border border-primary/20 shadow-[var(--shadow-elegant)] grid lg:grid-cols-2 gap-10">
@@ -162,7 +168,9 @@ export function RoiCalculator() {
                 <div className="text-2xl font-display font-bold text-gradient-gold mt-1">
                   {weeklyHoursSaved} hrs
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">reclaimed across team</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5">
+                  reclaimed across team
+                </div>
               </div>
 
               <div className="glass p-4 rounded-xl border border-border/60">
@@ -170,7 +178,9 @@ export function RoiCalculator() {
                 <div className="text-2xl font-display font-bold text-gradient-gold mt-1">
                   {monthlyHoursSaved} hrs
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5 font-sans">per month saved</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5 font-sans">
+                  per month saved
+                </div>
               </div>
 
               <div className="glass p-4 rounded-xl border border-border/60">
@@ -178,15 +188,21 @@ export function RoiCalculator() {
                 <div className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-1">
                   {formatCurrency(monthlySavings)}
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">estimated monthly savings</div>
+                <div className="text-[11px] text-muted-foreground mt-0.5">
+                  estimated monthly savings
+                </div>
               </div>
 
               <div className="glass-gold p-4 rounded-xl border border-primary/50 bg-primary/10 shadow-lg">
-                <div className="text-xs text-primary font-mono font-bold">Estimated Annual Value</div>
+                <div className="text-xs text-primary font-mono font-bold">
+                  Estimated Annual Value
+                </div>
                 <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold mt-1">
                   {formatCurrency(annualSavings)}
                 </div>
-                <div className="text-[11px] text-primary/90 mt-0.5 font-medium">potential annual savings</div>
+                <div className="text-[11px] text-primary/90 mt-0.5 font-medium">
+                  potential annual savings
+                </div>
               </div>
             </div>
           </div>

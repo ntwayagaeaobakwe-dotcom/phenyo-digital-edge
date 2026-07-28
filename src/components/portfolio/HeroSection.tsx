@@ -19,14 +19,21 @@ export function HeroSection() {
       <div className="absolute inset-0 -z-10 grid-bg opacity-40" />
       <div
         className="absolute inset-0 -z-10 opacity-20 mix-blend-screen"
-        style={{ backgroundImage: `url(${bgGridWebp})`, backgroundSize: "cover", backgroundPosition: "center" }}
+        style={{
+          backgroundImage: `url(${bgGridWebp})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
       />
 
       <div className="mx-auto max-w-6xl px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
         <div>
           {/* Availability Badge */}
           <div className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1 text-xs text-muted-foreground border border-primary/20">
-            <span className="h-2 w-2 rounded-full bg-primary animate-pulse-glow" aria-hidden="true" />
+            <span
+              className="h-2 w-2 rounded-full bg-primary animate-pulse-glow"
+              aria-hidden="true"
+            />
             <span>{PERSONAL_INFO.status}</span>
           </div>
 
@@ -60,7 +67,8 @@ export function HeroSection() {
               href="#roi-calculator"
               className="inline-flex items-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             >
-              Estimate Time Saved <ChevronRight className="h-4 w-4 text-primary" aria-hidden="true" />
+              Estimate Time Saved{" "}
+              <ChevronRight className="h-4 w-4 text-primary" aria-hidden="true" />
             </a>
           </div>
 
@@ -68,7 +76,9 @@ export function HeroSection() {
           <div className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border/40 pt-6">
             {HERO_STATS.map((stat) => (
               <div key={stat.label}>
-                <div className="text-xl sm:text-2xl font-display font-bold text-gradient-gold">{stat.value}</div>
+                <div className="text-xl sm:text-2xl font-display font-bold text-gradient-gold">
+                  {stat.value}
+                </div>
                 <div className="text-xs text-muted-foreground mt-1 font-sans">{stat.label}</div>
               </div>
             ))}
@@ -83,19 +93,32 @@ export function HeroSection() {
             {/* Decorative animated accent layer — slow mesh-gradient drift + a
                 gold "signal line" sweep. Purely visual, so it's aria-hidden and
                 fully disabled under prefers-reduced-motion (see styles.css). */}
-            <div className="absolute -inset-12 -z-10 overflow-hidden rounded-[2.5rem] pointer-events-none" aria-hidden="true">
+            <div
+              className="absolute -inset-12 -z-10 overflow-hidden rounded-[2.5rem] pointer-events-none"
+              aria-hidden="true"
+            >
               <div
                 className="absolute -top-10 -left-10 h-64 w-64 rounded-full blur-3xl opacity-50 animate-mesh-drift"
-                style={{ background: "radial-gradient(circle, oklch(0.82 0.15 85 / 0.35), transparent 70%)" }}
+                style={{
+                  background:
+                    "radial-gradient(circle, oklch(0.82 0.15 85 / 0.35), transparent 70%)",
+                }}
               />
               <div
                 className="absolute -bottom-14 -right-8 h-72 w-72 rounded-full blur-3xl opacity-40 animate-mesh-drift"
-                style={{ background: "radial-gradient(circle, oklch(0.50 0.15 260 / 0.4), transparent 70%)", animationDelay: "-8s" }}
+                style={{
+                  background:
+                    "radial-gradient(circle, oklch(0.50 0.15 260 / 0.4), transparent 70%)",
+                  animationDelay: "-8s",
+                }}
               />
               <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden">
                 <div
                   className="h-px w-1/2 animate-signal-sweep"
-                  style={{ background: "linear-gradient(90deg, transparent, oklch(0.82 0.15 85 / 0.9), transparent)" }}
+                  style={{
+                    background:
+                      "linear-gradient(90deg, transparent, oklch(0.82 0.15 85 / 0.9), transparent)",
+                  }}
                 />
               </div>
             </div>
@@ -116,8 +139,12 @@ export function HeroSection() {
               <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
                 <div className="glass-gold rounded-xl px-4 py-2.5 flex items-center justify-between">
                   <div>
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Focus</div>
-                    <div className="text-sm font-medium">Business Automation · Conversion Websites</div>
+                    <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
+                      Focus
+                    </div>
+                    <div className="text-sm font-medium">
+                      Business Automation · Conversion Websites
+                    </div>
                   </div>
                   <CheckCircle2 className="h-5 w-5 text-primary" aria-hidden="true" />
                 </div>

@@ -8,28 +8,31 @@ export function AboutSection() {
       eyebrow="About & Operating Approach"
       title={
         <>
-          Operating at the intersection of <span className="text-gradient-gold">automation, web design & connected tools</span>.
+          Operating at the intersection of{" "}
+          <span className="text-gradient-gold">automation, web design & connected tools</span>.
         </>
       }
     >
       <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10">
         <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
           <p>
-            Phenyo is a business automation and web development specialist focused on helping small businesses
-            and online operators eliminate repetitive manual work, connect their software tools, and present
-            their offerings clearly.
+            Phenyo is a business automation and web development specialist focused on helping small
+            businesses and online operators eliminate repetitive manual work, connect their software
+            tools, and present their offerings clearly.
           </p>
           <p>
-            As a systems builder, he designs automated n8n workflows, API integrations, client portals, and
-            conversion-focused web applications — engineering practical leverage where traditional teams spend hours
-            of manual effort.
+            As a systems builder, he designs automated n8n workflows, API integrations, client
+            portals, and conversion-focused web applications — engineering practical leverage where
+            traditional teams spend hours of manual effort.
           </p>
 
           <div className="grid sm:grid-cols-3 gap-4 pt-4">
             {ABOUT_PILLARS.map((pillar) => (
               <div key={pillar.title} className="glass rounded-xl p-4 border border-border/60">
                 <div className="text-sm font-display font-bold text-primary">{pillar.title}</div>
-                <div className="text-xs text-muted-foreground mt-2 leading-relaxed">{pillar.desc}</div>
+                <div className="text-xs text-muted-foreground mt-2 leading-relaxed">
+                  {pillar.desc}
+                </div>
               </div>
             ))}
           </div>

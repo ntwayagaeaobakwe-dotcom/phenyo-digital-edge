@@ -26,7 +26,11 @@ export function BusinessSystemsDemo() {
       </div>
 
       {/* Interactive Tabs */}
-      <div className="grid grid-cols-3 gap-1.5 p-1 bg-black/40 rounded-xl mb-4 text-xs font-sans" role="tablist" aria-label="Business Solution Previews">
+      <div
+        className="grid grid-cols-3 gap-1.5 p-1 bg-black/40 rounded-xl mb-4 text-xs font-sans"
+        role="tablist"
+        aria-label="Business Solution Previews"
+      >
         {DEMO_TERMINAL_TABS.map((tab) => (
           <button
             key={tab.id}
@@ -54,8 +58,13 @@ export function BusinessSystemsDemo() {
         className="space-y-3 text-xs animate-in fade-in duration-200"
       >
         {activeTabData.items.map((item) => (
-          <div key={item.label} className="glass rounded-xl p-3 border border-border/50 flex flex-col gap-1">
-            <div className="text-[10px] text-muted-foreground uppercase tracking-wider font-mono">{item.label}</div>
+          <div
+            key={item.label}
+            className="glass rounded-xl p-3 border border-border/50 flex flex-col gap-1"
+          >
+            <div className="text-[10px] text-muted-foreground uppercase tracking-wider font-mono">
+              {item.label}
+            </div>
             <div className="text-foreground font-medium text-sm flex items-center justify-between">
               <span>{item.value}</span>
               {activeTab === "tasks" && item.label === "Automated solution" && (

@@ -8,29 +8,39 @@ export function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll, { passive: true });
   }, []);
 
   return (
-    <header className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${scrolled ? "py-3" : "py-5"}`}>
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 py-3.5">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div
           className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ${
-            scrolled ? "glass shadow-[var(--shadow-elegant)] border border-primary/20" : "bg-black/20 backdrop-blur-md border border-white/5"
+            scrolled
+              ? "glass shadow-[var(--shadow-elegant)] border border-primary/20"
+              : "bg-black/20 backdrop-blur-md border border-white/5"
           }`}
         >
-          <a href="#top" className="flex items-center gap-2.5 font-display font-bold text-lg group" aria-label="Phenyo Home">
+          <a
+            href="#top"
+            className="flex items-center gap-2.5 font-display font-bold text-lg group"
+            aria-label="Phenyo Home"
+          >
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground font-bold group-hover:scale-105 transition-transform">
               {PERSONAL_INFO.name.charAt(0)}
             </span>
             <span className="tracking-tight">
-              {PERSONAL_INFO.name}<span className="text-primary">.</span>
+              {PERSONAL_INFO.name}
+              <span className="text-primary">.</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground" aria-label="Main navigation">
+          <nav
+            className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground"
+            aria-label="Main navigation"
+          >
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -66,7 +76,10 @@ export function Navbar() {
         {/* Mobile Dropdown Menu */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-2 glass rounded-2xl p-5 border border-primary/30 shadow-2xl animate-in fade-in slide-in-from-top-3">
-            <nav className="flex flex-col gap-3.5 text-base font-medium" aria-label="Mobile navigation">
+            <nav
+              className="flex flex-col gap-3.5 text-base font-medium"
+              aria-label="Mobile navigation"
+            >
               {NAV_LINKS.map((link) => (
                 <a
                   key={link.href}

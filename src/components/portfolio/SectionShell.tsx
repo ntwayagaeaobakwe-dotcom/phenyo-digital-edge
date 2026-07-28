@@ -23,7 +23,6 @@ export function SectionShell({
   const sectionRef = useRef<HTMLElement>(null);
   // Default to visible so SSR output and no-JS clients always show full content.
   const [revealState, setRevealState] = useState<"visible" | "hidden">("visible");
-  const [allowTransform, setAllowTransform] = useState(true);
 
   // Before first paint: if the section starts off-screen, hide it so the reveal
   // animation can play when it scrolls into view. Runs pre-paint to avoid a
@@ -31,9 +30,6 @@ export function SectionShell({
   useIsomorphicLayoutEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    setAllowTransform(!prefersReducedMotion);
 
     const rect = el.getBoundingClientRect();
     const alreadyInView = rect.top < window.innerHeight && rect.bottom > 0;
@@ -59,18 +55,13 @@ export function SectionShell({
     return () => observer.disconnect();
   }, [revealState]);
 
-  const revealClasses =
-    revealState === "visible"
-      ? "opacity-100 translate-y-0"
-      : allowTransform
-        ? "opacity-0 translate-y-3"
-        : "opacity-0";
+  const revealClasses = revealState === "visible" ? "opacity-100" : "opacity-0";
 
   return (
     <section
       ref={sectionRef}
       id={id}
-      className={`relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-[opacity,transform] duration-[400ms] ease-out ${revealClasses}`}
+      className={`relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-opacity duration-[400ms] ease-out ${revealClasses}`}
     >
       {/* Subtle radial glow in background */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">

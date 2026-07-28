@@ -1,4 +1,13 @@
-import { Workflow, LineChart, Rocket, Target, Sparkles, Layers, ArrowUpRight, ArrowRight } from "lucide-react";
+import {
+  Workflow,
+  LineChart,
+  Rocket,
+  Target,
+  Sparkles,
+  Layers,
+  ArrowUpRight,
+  ArrowRight,
+} from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { SERVICES } from "@/data/portfolio-data";
 
@@ -36,8 +45,12 @@ export function ServicesSection() {
                     <IconComponent className="h-6 w-6" aria-hidden="true" />
                   </div>
                   <div>
-                    <div className="text-xs text-primary font-mono font-semibold">{service.tag}</div>
-                    <h3 className="font-display text-2xl font-bold text-foreground">{service.title}</h3>
+                    <div className="text-xs text-primary font-mono font-semibold">
+                      {service.tag}
+                    </div>
+                    <h3 className="font-display text-2xl font-bold text-foreground">
+                      {service.title}
+                    </h3>
                   </div>
                 </div>
                 <a
@@ -93,7 +106,10 @@ export function ServicesSection() {
                           {step}
                         </span>
                         {idx < service.processSteps.length - 1 && (
-                          <ArrowRight className="h-3.5 w-3.5 text-primary shrink-0" aria-hidden="true" />
+                          <ArrowRight
+                            className="h-3.5 w-3.5 text-primary shrink-0"
+                            aria-hidden="true"
+                          />
                         )}
                       </div>
                     ))}
@@ -103,7 +119,9 @@ export function ServicesSection() {
 
               {/* Supporting Technical Implementation Note */}
               <div className="mt-4 pt-3 border-t border-border/40 text-xs text-muted-foreground flex items-center justify-between">
-                <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">Supporting Technology</span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                  Supporting Technology
+                </span>
                 <span className="text-foreground font-medium">{service.supportingTools}</span>
               </div>
             </div>

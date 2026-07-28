@@ -38,7 +38,10 @@ export function ExpertiseSection() {
               <ul className="mt-5 space-y-2.5 text-sm text-muted-foreground">
                 {skill.items.map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0" aria-hidden="true" />
+                    <span
+                      className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary shrink-0"
+                      aria-hidden="true"
+                    />
                     <span>{item}</span>
                   </li>
                 ))}

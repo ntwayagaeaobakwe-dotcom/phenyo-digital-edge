@@ -14,19 +14,8 @@
  */
 import { useState, useRef, useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
-import {
-  RotateCcw,
-  CheckCircle2,
-  Circle,
-  MessageSquare,
-  ArrowRight,
-  X,
-} from "lucide-react";
-import {
-  INDUSTRY_DEMOS,
-  type DemoMessage,
-  type IndustryDemoIndustry,
-} from "@/data/portfolio-data";
+import { RotateCcw, CheckCircle2, Circle, MessageSquare, ArrowRight, X } from "lucide-react";
+import { INDUSTRY_DEMOS, type DemoMessage, type IndustryDemoIndustry } from "@/data/portfolio-data";
 
 // ─── Scroll to contact + set sessionStorage context ──────────────────────────
 
@@ -38,7 +27,7 @@ function scrollToContactWith(industryContext: string): void {
     // sessionStorage may be restricted in some browser contexts
   }
   const el = document.getElementById("contact");
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  if (el) el.scrollIntoView();
 }
 
 // ─── Pure animation runner (defined outside component to avoid stale closures) ─
@@ -54,8 +43,7 @@ interface AnimSetters {
 
 function getMaxStep(messages: DemoMessage[]): number {
   return messages.reduce(
-    (max, m) =>
-      m.activatesStep !== undefined && m.activatesStep > max ? m.activatesStep : max,
+    (max, m) => (m.activatesStep !== undefined && m.activatesStep > max ? m.activatesStep : max),
     -1,
   );
 }
@@ -133,11 +121,16 @@ interface ChatPanelProps {
 }
 
 function ChatPanel({ messages, visibleCount, showTyping }: ChatPanelProps) {
-  const bottomRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll when new content appears
+  // Auto-scroll internal chat container only when new content appears AND user is near bottom
   useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    const el = containerRef.current;
+    if (!el) return;
+    const isNearBottom = el.scrollHeight - el.scrollTop - el.clientHeight < 60;
+    if (isNearBottom || visibleCount <= 1) {
+      el.scrollTop = el.scrollHeight;
+    }
   }, [visibleCount, showTyping]);
 
   return (
@@ -161,6 +154,7 @@ function ChatPanel({ messages, visibleCount, showTyping }: ChatPanelProps) {
 
       {/* Message area */}
       <div
+        ref={containerRef}
         className="flex flex-col gap-3 p-4 min-h-[300px] max-h-[380px] overflow-y-auto"
         role="presentation"
       >
@@ -207,8 +201,6 @@ function ChatPanel({ messages, visibleCount, showTyping }: ChatPanelProps) {
             </div>
           </div>
         )}
-
-        <div ref={bottomRef} />
       </div>
     </div>
   );
@@ -318,10 +310,7 @@ function ComparisonSection() {
           <ul className="space-y-2.5" role="list">
             {WITHOUT_ITEMS.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm text-muted-foreground">
-                <X
-                  className="mt-0.5 h-3.5 w-3.5 text-red-400/70 shrink-0"
-                  aria-hidden="true"
-                />
+                <X className="mt-0.5 h-3.5 w-3.5 text-red-400/70 shrink-0" aria-hidden="true" />
                 {item}
               </li>
             ))}
@@ -336,10 +325,7 @@ function ComparisonSection() {
           <ul className="space-y-2.5" role="list">
             {WITH_ITEMS.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm text-foreground">
-                <CheckCircle2
-                  className="mt-0.5 h-4 w-4 text-primary shrink-0"
-                  aria-hidden="true"
-                />
+                <CheckCircle2 className="mt-0.5 h-4 w-4 text-primary shrink-0" aria-hidden="true" />
                 {item}
               </li>
             ))}
@@ -466,7 +452,6 @@ export function IndustryAutomationDemo() {
       mq.removeEventListener("change", mqHandler);
       observer.disconnect();
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Cleanup all timers on unmount
@@ -499,8 +484,8 @@ export function IndustryAutomationDemo() {
       <div className="sr-only">
         <h2>Interactive example: {activeIndustry.label} inquiry workflow</h2>
         <p>
-          This is a simulated example of how an automated inquiry response system could work.
-          It is not a live customer conversation.
+          This is a simulated example of how an automated inquiry response system could work. It is
+          not a live customer conversation.
         </p>
         <dl>
           {activeIndustry.messages.map((msg, i) => (
@@ -510,9 +495,7 @@ export function IndustryAutomationDemo() {
             </div>
           ))}
         </dl>
-        <p>
-          Workflow steps: {activeIndustry.workflowSteps.map((s) => s.label).join(", ")}.
-        </p>
+        <p>Workflow steps: {activeIndustry.workflowSteps.map((s) => s.label).join(", ")}.</p>
         <p>Benefit: {activeIndustry.benefitStatement}</p>
       </div>
 
@@ -524,8 +507,7 @@ export function IndustryAutomationDemo() {
             See the System in Action
           </div>
           <h2 className="mt-4 font-display text-4xl sm:text-5xl font-bold leading-[1.05] tracking-tight">
-            From New Inquiry to the{" "}
-            <span className="text-gradient-gold">Next Action</span>
+            From New Inquiry to the <span className="text-gradient-gold">Next Action</span>
           </h2>
           <p className="mt-4 max-w-2xl text-lg text-muted-foreground leading-relaxed">
             Choose an industry to see how a routine customer inquiry could be acknowledged,
@@ -558,11 +540,7 @@ export function IndustryAutomationDemo() {
           </Tabs.List>
 
           {INDUSTRY_DEMOS.map((industry) => (
-            <Tabs.Content
-              key={industry.id}
-              value={industry.id}
-              className="outline-none"
-            >
+            <Tabs.Content key={industry.id} value={industry.id} className="outline-none">
               <div className="grid lg:grid-cols-[1fr_310px] gap-6 items-start">
                 {/* Left: animated chat (decorative — hidden from screen readers) */}
                 <div>
@@ -595,10 +573,7 @@ export function IndustryAutomationDemo() {
 
                 {/* Right: workflow steps + benefit + CTA */}
                 <div className="flex flex-col gap-4">
-                  <WorkflowSteps
-                    steps={industry.workflowSteps}
-                    activeStep={activeStep}
-                  />
+                  <WorkflowSteps steps={industry.workflowSteps} activeStep={activeStep} />
 
                   {/* Benefit statement */}
                   <div className="glass-gold rounded-2xl p-4 border border-primary/25">

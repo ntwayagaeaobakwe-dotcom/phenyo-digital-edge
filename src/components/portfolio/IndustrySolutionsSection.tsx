@@ -23,7 +23,7 @@ function scrollToContactWith(industryContext: string): void {
     // sessionStorage may be restricted in some browser contexts
   }
   const el = document.getElementById("contact");
-  if (el) el.scrollIntoView({ behavior: "smooth" });
+  if (el) el.scrollIntoView();
 }
 
 // ─── Web + Automation flow stages ────────────────────────────────────────────
@@ -76,10 +76,7 @@ export function IndustrySolutionsSection() {
                 </div>
                 <ul className="space-y-2" role="list">
                   {industry.problems.map((p) => (
-                    <li
-                      key={p}
-                      className="flex items-start gap-2 text-sm text-muted-foreground"
-                    >
+                    <li key={p} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <X
                         className="mt-0.5 h-3.5 w-3.5 text-red-400/60 shrink-0"
                         aria-hidden="true"
@@ -97,10 +94,7 @@ export function IndustrySolutionsSection() {
                 </div>
                 <ul className="space-y-2" role="list">
                   {industry.capabilities.map((c) => (
-                    <li
-                      key={c}
-                      className="flex items-start gap-2 text-sm text-muted-foreground"
-                    >
+                    <li key={c} className="flex items-start gap-2 text-sm text-muted-foreground">
                       <CheckCircle2
                         className="mt-0.5 h-3.5 w-3.5 text-primary shrink-0"
                         aria-hidden="true"
@@ -145,8 +139,7 @@ export function IndustrySolutionsSection() {
         eyebrow="The Process"
         title={
           <>
-            From Inquiry to Next Action{" "}
-            <span className="text-gradient-gold">in Four Steps</span>
+            From Inquiry to Next Action <span className="text-gradient-gold">in Four Steps</span>
           </>
         }
       >
@@ -228,7 +221,7 @@ export function IndustrySolutionsSection() {
                   onClick={(e) => {
                     e.preventDefault();
                     const el = document.getElementById("contact");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
+                    if (el) el.scrollIntoView();
                   }}
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-gold-hover)] font-display"
                 >

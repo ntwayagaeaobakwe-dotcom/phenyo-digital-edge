@@ -3,7 +3,6 @@ import { ArrowRight, ChevronRight, Info } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { PROJECTS, ProjectItem } from "@/data/portfolio-data";
 import { ProjectModal } from "./ProjectModal";
-import { ProjectImageFrame } from "./ProjectImageFrame";
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
@@ -48,11 +47,6 @@ export function ProjectsSection() {
               className={`absolute inset-0 -z-10 bg-gradient-to-br ${project.accent} opacity-60`}
             />
             <div className="space-y-6">
-              {/* Screenshot / workflow-diagram preview */}
-              {project.imageUrls && project.imageUrls.length > 0 && (
-                <ProjectImageFrame images={[project.imageUrls[0]]} title={project.title} />
-              )}
-
               {/* Header with Title and Status */}
               <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4">
                 <div className="flex items-center gap-3">
@@ -63,7 +57,7 @@ export function ProjectsSection() {
                 </div>
                 <span
                   className={`text-xs font-mono px-3 py-1 rounded-full border ${getStatusBadgeStyle(
-                    project.status
+                    project.status,
                   )} font-semibold`}
                 >
                   {project.status}
@@ -91,7 +85,9 @@ export function ProjectsSection() {
                   <div className="text-xs font-mono uppercase tracking-wider text-primary font-semibold mb-1.5">
                     What Was Built
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{project.solution}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed">
+                    {project.solution}
+                  </p>
                 </div>
               </div>
 
@@ -103,7 +99,10 @@ export function ProjectsSection() {
                   </div>
                   <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-2.5 text-xs">
                     {project.howItWorks.map((step, idx) => (
-                      <div key={idx} className="flex items-center gap-2 glass p-2.5 rounded-lg border border-border/40">
+                      <div
+                        key={idx}
+                        className="flex items-center gap-2 glass p-2.5 rounded-lg border border-border/40"
+                      >
                         <span className="h-5 w-5 rounded-full bg-primary/20 text-primary font-mono text-[10px] font-bold grid place-items-center shrink-0">
                           {idx + 1}
                         </span>
@@ -120,7 +119,9 @@ export function ProjectsSection() {
                   <span className="text-[11px] font-mono uppercase tracking-wider text-muted-foreground block">
                     Estimated Potential Benefit
                   </span>
-                  <span className="text-sm font-medium text-foreground">{project.potentialValue}</span>
+                  <span className="text-sm font-medium text-foreground">
+                    {project.potentialValue}
+                  </span>
                 </div>
 
                 <button
@@ -134,7 +135,9 @@ export function ProjectsSection() {
 
               {/* Tools Used Footer */}
               <div className="flex flex-wrap gap-2 pt-2 border-t border-border/40">
-                <span className="text-xs font-mono text-muted-foreground self-center mr-2">Tools used:</span>
+                <span className="text-xs font-mono text-muted-foreground self-center mr-2">
+                  Tools used:
+                </span>
                 {project.toolsUsed.map((tool) => (
                   <span
                     key={tool}
@@ -150,11 +153,7 @@ export function ProjectsSection() {
       </div>
 
       {/* Project Case Study Deep-Dive Modal */}
-      <ProjectModal
-        project={selectedProject}
-        open={modalOpen}
-        onOpenChange={setModalOpen}
-      />
+      <ProjectModal project={selectedProject} open={modalOpen} onOpenChange={setModalOpen} />
     </SectionShell>
   );
 }

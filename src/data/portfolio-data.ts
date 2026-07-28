@@ -20,7 +20,12 @@ export interface ProjectItem {
   id: string;
   title: string;
   tag: string;
-  status: "Completed Build" | "Personal Project" | "Capability Demonstration" | "Concept Project" | "Work in Progress";
+  status:
+    | "Completed Build"
+    | "Personal Project"
+    | "Capability Demonstration"
+    | "Concept Project"
+    | "Work in Progress";
   desc: string;
   problem: string;
   solution: string;
@@ -62,10 +67,18 @@ export const PERSONAL_INFO = {
   phone: "+971555170113",
   socials: [
     { label: "X / Twitter", href: "https://x.com/phenyont", iconName: "Twitter" },
-    { label: "Instagram", href: "https://www.instagram.com/phenyontwayagae", iconName: "Instagram" },
+    {
+      label: "Instagram",
+      href: "https://www.instagram.com/phenyontwayagae",
+      iconName: "Instagram",
+    },
     // TODO: add real GitHub profile URL
     { label: "GitHub", href: "https://github.com", iconName: "Github" },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/", iconName: "Linkedin" },
+    {
+      label: "LinkedIn",
+      href: "https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/",
+      iconName: "Linkedin",
+    },
   ],
 };
 
@@ -199,8 +212,7 @@ export const SERVICES: ServiceItem[] = [
     iconName: "Workflow",
     problem:
       "Your team spends too much time copying information, updating spreadsheets, sending routine messages, and moving data between different tools.",
-    solution:
-      "I build automated workflows that handle these repetitive steps in the background.",
+    solution: "I build automated workflows that handle these repetitive steps in the background.",
     potentialBenefit:
       "Reduce manual work, avoid preventable mistakes, and give your team more time for customers and important decisions.",
     supportingTools:
@@ -335,8 +347,7 @@ export const PROJECTS: ProjectItem[] = [
       "Team receives instant notification via email or chat",
       "Confirmation message sent & task assigned",
     ],
-    potentialValue:
-      "Intended to make inquiry handling faster, clearer, and more consistent.",
+    potentialValue: "Intended to make inquiry handling faster, clearer, and more consistent.",
     toolsUsed: ["Webhooks", "n8n", "CRM Integration", "Instant Messaging APIs"],
     imageUrls: ["/src/assets/placeholder-project-inquiry-workflow.jpg"],
     accent: "from-primary/25 to-transparent",
@@ -351,8 +362,7 @@ export const PROJECTS: ProjectItem[] = [
       "Team receives instant notification via email or chat",
       "Confirmation message sent & task assigned",
     ],
-    valueCreated:
-      "Intended to make inquiry handling faster, clearer, and more consistent.",
+    valueCreated: "Intended to make inquiry handling faster, clearer, and more consistent.",
   },
   {
     id: "business-operations-automation",
@@ -407,14 +417,28 @@ export const PROJECTS: ProjectItem[] = [
     ],
     potentialValue:
       "Designed to help a service provider communicate more clearly, build credibility, and make it easier for prospective customers to take the next step.",
-    toolsUsed: ["React", "TypeScript", "Vite", "Tailwind CSS", "TanStack Router", "Responsive UI Design"],
+    toolsUsed: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "TanStack Router",
+      "Responsive UI Design",
+    ],
     imageUrls: ["/src/assets/placeholder-project-conversion-website.jpg"],
     accent: "from-amber-500/15 to-transparent",
     challenge:
       "Many service businesses have websites that look acceptable but fail to explain their offer clearly or guide visitors toward making an inquiry.",
     objective:
       "A premium responsive service website with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
-    techStack: ["React", "TypeScript", "Vite", "Tailwind CSS", "TanStack Router", "Responsive UI Design"],
+    techStack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "TanStack Router",
+      "Responsive UI Design",
+    ],
     features: [
       "Visitor arrives on clear hero explaining core value",
       "Explores plain-language services & proof examples",

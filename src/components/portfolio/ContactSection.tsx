@@ -3,7 +3,20 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { Mail, MapPin, Phone, Twitter, Instagram, Github, Linkedin, ArrowUpRight, Send, CheckCircle, MessageSquare, X } from "lucide-react";
+import {
+  Mail,
+  MapPin,
+  Phone,
+  Twitter,
+  Instagram,
+  Github,
+  Linkedin,
+  ArrowUpRight,
+  Send,
+  CheckCircle,
+  MessageSquare,
+  X,
+} from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS, FORM_BUDGET_OPTIONS } from "@/data/portfolio-data";
 
 const contactSchema = z.object({
@@ -11,7 +24,9 @@ const contactSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   service: z.string().min(1, "Please select a service option"),
   budget: z.string().optional(),
-  message: z.string().min(5, "Please describe what is slowing you down or holding your business back"),
+  message: z
+    .string()
+    .min(5, "Please describe what is slowing you down or holding your business back"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -59,7 +74,10 @@ export function ContactSection() {
         setIndustryContext(pending);
         // Only pre-select service if user has not changed it from the default
         const currentService = getValues("service");
-        if (currentService === FORM_SERVICE_OPTIONS[4] || currentService === FORM_SERVICE_OPTIONS[0]) {
+        if (
+          currentService === FORM_SERVICE_OPTIONS[4] ||
+          currentService === FORM_SERVICE_OPTIONS[0]
+        ) {
           setValue("service", "Business Automation", { shouldDirty: false });
         }
       } catch {
@@ -112,7 +130,9 @@ export function ContactSection() {
     } catch (error) {
       console.error("Contact webhook submission failed, falling back to email:", error);
       toast.error("Couldn't send automatically — opening your email client instead.");
-      setSubmitError("Your inquiry couldn't be delivered automatically, so we opened your email client instead. Please send that email to make sure I receive it.");
+      setSubmitError(
+        "Your inquiry couldn't be delivered automatically, so we opened your email client instead. Please send that email to make sure I receive it.",
+      );
       setUsedFallback(true);
       setSubmitted(true);
       openMailtoFallback(data);
@@ -135,7 +155,8 @@ export function ContactSection() {
                 Tell Me What Is <span className="text-gradient-gold">Slowing You Down</span>.
               </h2>
               <p className="mt-5 text-lg text-muted-foreground max-w-lg leading-relaxed">
-                Describe the manual tasks, disconnected tools, or website challenges holding your business back — I'll recommend a practical solution.
+                Describe the manual tasks, disconnected tools, or website challenges holding your
+                business back — I'll recommend a practical solution.
               </p>
 
               {/* Verified Contact Details */}
@@ -145,8 +166,13 @@ export function ContactSection() {
                     <Mail className="h-4 w-4" />
                   </div>
                   <div>
-                    <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">EMAIL</div>
-                    <a href={`mailto:${PERSONAL_INFO.email}`} className="text-foreground hover:text-primary transition-colors font-medium">
+                    <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                      EMAIL
+                    </div>
+                    <a
+                      href={`mailto:${PERSONAL_INFO.email}`}
+                      className="text-foreground hover:text-primary transition-colors font-medium"
+                    >
                       {PERSONAL_INFO.email}
                     </a>
                   </div>
@@ -157,7 +183,9 @@ export function ContactSection() {
                     <Phone className="h-4 w-4" />
                   </div>
                   <div>
-                    <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">PHONE / WHATSAPP</div>
+                    <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                      PHONE / WHATSAPP
+                    </div>
                     <a
                       href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`}
                       target="_blank"
@@ -174,7 +202,9 @@ export function ContactSection() {
                     <MapPin className="h-4 w-4" />
                   </div>
                   <div>
-                    <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">LOCATION</div>
+                    <div className="text-xs font-mono uppercase tracking-widest text-muted-foreground">
+                      LOCATION
+                    </div>
                     <div className="text-foreground font-medium">{PERSONAL_INFO.location}</div>
                   </div>
                 </div>
@@ -263,7 +293,10 @@ export function ContactSection() {
 
                   {/* Full Name */}
                   <div>
-                    <label htmlFor="form-name" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                    <label
+                      htmlFor="form-name"
+                      className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1"
+                    >
                       Full Name *
                     </label>
                     <input
@@ -280,7 +313,10 @@ export function ContactSection() {
 
                   {/* Email Address */}
                   <div>
-                    <label htmlFor="form-email" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                    <label
+                      htmlFor="form-email"
+                      className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1"
+                    >
                       Email Address *
                     </label>
                     <input
@@ -297,7 +333,10 @@ export function ContactSection() {
 
                   {/* Service Selection */}
                   <div>
-                    <label htmlFor="form-service" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                    <label
+                      htmlFor="form-service"
+                      className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1"
+                    >
                       Service Needed *
                     </label>
                     <select
@@ -312,13 +351,18 @@ export function ContactSection() {
                       ))}
                     </select>
                     {errors.service && (
-                      <p className="text-xs text-red-400 mt-1 font-mono">{errors.service.message}</p>
+                      <p className="text-xs text-red-400 mt-1 font-mono">
+                        {errors.service.message}
+                      </p>
                     )}
                   </div>
 
                   {/* Budget Selection with helper text */}
                   <div>
-                    <label htmlFor="form-budget" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
+                    <label
+                      htmlFor="form-budget"
+                      className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1"
+                    >
                       Budget Range (Optional)
                     </label>
                     <select
@@ -333,14 +377,19 @@ export function ContactSection() {
                       ))}
                     </select>
                     <p className="text-[11px] text-muted-foreground mt-1">
-                      This helps me recommend an approach that fits your likely scope. It does not commit you to a project.
+                      This helps me recommend an approach that fits your likely scope. It does not
+                      commit you to a project.
                     </p>
                   </div>
 
                   {/* Message Field with custom label & helper text */}
                   <div>
-                    <label htmlFor="form-message" className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1">
-                      What is taking too much time, not working properly, or holding your business back? *
+                    <label
+                      htmlFor="form-message"
+                      className="block text-xs font-mono uppercase tracking-widest text-muted-foreground mb-1"
+                    >
+                      What is taking too much time, not working properly, or holding your business
+                      back? *
                     </label>
                     <textarea
                       id="form-message"
@@ -350,10 +399,13 @@ export function ContactSection() {
                       className="w-full rounded-xl bg-black/40 border border-border px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
                     />
                     <p className="text-[11px] text-muted-foreground mt-1">
-                      You do not need to know which technology you need. Describe the problem and the result you want.
+                      You do not need to know which technology you need. Describe the problem and
+                      the result you want.
                     </p>
                     {errors.message && (
-                      <p className="text-xs text-red-400 mt-1 font-mono">{errors.message.message}</p>
+                      <p className="text-xs text-red-400 mt-1 font-mono">
+                        {errors.message.message}
+                      </p>
                     )}
                   </div>
 

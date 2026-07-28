@@ -1,7 +1,12 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 import { ProjectItem } from "@/data/portfolio-data";
 import { ArrowUpRight, CheckCircle2, Cpu, Target, Zap, Info } from "lucide-react";
-import { ProjectImageFrame } from "./ProjectImageFrame";
 
 interface ProjectModalProps {
   project: ProjectItem | null;
@@ -17,7 +22,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
     setTimeout(() => {
       const contactElem = document.getElementById("contact");
       if (contactElem) {
-        contactElem.scrollIntoView({ behavior: "smooth" });
+        contactElem.scrollIntoView();
       }
     }, 100);
   };
@@ -43,17 +48,14 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
         </DialogHeader>
 
         <div className="space-y-6 pt-3 text-sm">
-          {/* Screenshot(s) / workflow-diagram export(s) */}
-          {project.imageUrls && project.imageUrls.length > 0 && (
-            <ProjectImageFrame images={project.imageUrls} title={project.title} />
-          )}
-
           {/* Disclaimer if present */}
           {project.disclaimer && (
             <div className="glass p-4 rounded-xl border border-amber-500/40 bg-amber-500/10 text-xs text-amber-200 flex items-start gap-3">
               <Info className="h-5 w-5 text-amber-400 shrink-0 mt-0.5" />
               <div>
-                <div className="font-semibold uppercase tracking-wider mb-1 text-amber-400">Concept Disclaimer</div>
+                <div className="font-semibold uppercase tracking-wider mb-1 text-amber-400">
+                  Concept Disclaimer
+                </div>
                 <div className="leading-relaxed">{project.disclaimer}</div>
               </div>
             </div>
@@ -65,14 +67,18 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
               <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground font-semibold uppercase tracking-wider mb-2">
                 <Target className="h-4 w-4 text-red-400" /> The Problem
               </div>
-              <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm">{project.problem}</p>
+              <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm">
+                {project.problem}
+              </p>
             </div>
 
             <div className="glass p-4 rounded-xl border border-border/70">
               <div className="flex items-center gap-2 text-xs font-mono text-primary font-semibold uppercase tracking-wider mb-2">
                 <Zap className="h-4 w-4 text-primary" /> What Was Built
               </div>
-              <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm">{project.solution}</p>
+              <p className="text-muted-foreground leading-relaxed text-xs sm:text-sm">
+                {project.solution}
+              </p>
             </div>
           </div>
 
@@ -84,7 +90,10 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
               </div>
               <ul className="grid sm:grid-cols-2 gap-2.5 text-xs text-muted-foreground">
                 {project.howItWorks.map((step, idx) => (
-                  <li key={idx} className="flex items-start gap-2.5 glass p-3 rounded-lg border border-border/50">
+                  <li
+                    key={idx}
+                    className="flex items-start gap-2.5 glass p-3 rounded-lg border border-border/50"
+                  >
                     <span className="h-5 w-5 rounded-full bg-primary/20 text-primary font-mono text-[11px] font-bold grid place-items-center shrink-0 mt-0.5">
                       {idx + 1}
                     </span>
@@ -117,7 +126,9 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
             <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold mb-1">
               Estimated Potential Benefit
             </div>
-            <div className="text-sm font-medium text-foreground leading-relaxed">{project.potentialValue}</div>
+            <div className="text-sm font-medium text-foreground leading-relaxed">
+              {project.potentialValue}
+            </div>
           </div>
 
           {/* Modal Action CTA */}
