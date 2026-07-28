@@ -94,6 +94,10 @@
   html {
     scroll-behavior: smooth;
   }
+  section[id],
+  .scroll-target {
+    scroll-margin-top: 6rem;
+  }
   body {
     background: var(--background);
     color: var(--foreground);
@@ -279,6 +283,12 @@
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  section,
+  .scroll-target {
+    opacity: 1 !important;
+    transition: none !important;
   }
 
   .animate-float,

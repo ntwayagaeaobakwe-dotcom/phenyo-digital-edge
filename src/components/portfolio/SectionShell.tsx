@@ -31,6 +31,13 @@ export function SectionShell({
     const el = sectionRef.current;
     if (!el) return;
 
+    // Reduced motion safeguard: keep visible if user prefers reduced motion
+    const prefersReducedMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (prefersReducedMotion) return;
+
     const rect = el.getBoundingClientRect();
     const alreadyInView = rect.top < window.innerHeight && rect.bottom > 0;
     if (!alreadyInView) setRevealState("hidden");
@@ -61,7 +68,7 @@ export function SectionShell({
     <section
       ref={sectionRef}
       id={id}
-      className={`relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-opacity duration-[400ms] ease-out ${revealClasses}`}
+      className={`scroll-target relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-opacity duration-[400ms] ease-out ${revealClasses}`}
     >
       {/* Subtle radial glow in background */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
@@ -74,7 +81,10 @@ export function SectionShell({
             <span className="h-px w-8 bg-gradient-to-r from-primary to-transparent" />
             <span>{eyebrow}</span>
           </div>
-          <h2 className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight">
+          <h2
+            tabIndex={-1}
+            className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight outline-none"
+          >
             {title}
           </h2>
         </div>

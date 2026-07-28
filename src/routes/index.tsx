@@ -15,6 +15,7 @@ import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { FooterSection } from "@/components/portfolio/FooterSection";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
+import { getSiteUrl } from "@/lib/seo";
 
 const IndustryAutomationDemo = lazy(() =>
   import("@/components/portfolio/IndustryAutomationDemo").then((m) => ({
@@ -22,7 +23,7 @@ const IndustryAutomationDemo = lazy(() =>
   })),
 );
 
-const SITE_URL = typeof window !== "undefined" ? window.location.origin : "/";
+const SITE_URL = getSiteUrl();
 const PAGE_TITLE = "Phenyo | Business Automation & Conversion-Focused Websites";
 const PAGE_DESC =
   "Phenyo helps businesses reduce repetitive work, organize leads, connect their tools, and build professional websites that turn visitors into inquiries.";
@@ -138,29 +139,37 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
-      <Navbar />
-      <HeroSection />
-      <TickerBar />
-      <TrustBar />
-      {/* Industry automation demo — placed early so visitors see it before core content */}
-      <Suspense
-        fallback={
-          <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-            <DemoSkeleton className="h-[420px]" />
-          </div>
-        }
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:shadow-lg focus:outline-none font-medium text-sm"
       >
-        <IndustryAutomationDemo />
-      </Suspense>
-      <AboutSection />
-      <ExpertiseSection />
-      <RoiCalculator />
-      <ServicesSection />
-      {/* Industry-specific cards + 4-step process + web+automation connection */}
-      <IndustrySolutionsSection />
-      <ProjectsSection />
-      <ExperienceSection />
-      <ContactSection />
+        Skip to content
+      </a>
+      <Navbar />
+      <main id="main-content" tabIndex={-1} className="outline-none">
+        <HeroSection />
+        <TickerBar />
+        <TrustBar />
+        {/* Industry automation demo — placed early so visitors see it before core content */}
+        <Suspense
+          fallback={
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
+              <DemoSkeleton className="h-[420px]" />
+            </div>
+          }
+        >
+          <IndustryAutomationDemo />
+        </Suspense>
+        <AboutSection />
+        <ExpertiseSection />
+        <RoiCalculator />
+        <ServicesSection />
+        {/* Industry-specific cards + 4-step process + web+automation connection */}
+        <IndustrySolutionsSection />
+        <ProjectsSection />
+        <ExperienceSection />
+        <ContactSection />
+      </main>
       <FooterSection />
     </div>
   );

@@ -16,18 +16,12 @@ import { useState, useRef, useEffect } from "react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { RotateCcw, CheckCircle2, Circle, MessageSquare, ArrowRight, X } from "lucide-react";
 import { INDUSTRY_DEMOS, type DemoMessage, type IndustryDemoIndustry } from "@/data/portfolio-data";
+import { navigateToSection } from "@/lib/navigation";
 
 // ─── Scroll to contact + set sessionStorage context ──────────────────────────
 
 function scrollToContactWith(industryContext: string): void {
-  try {
-    sessionStorage.setItem("pendingIndustryContext", industryContext);
-    window.dispatchEvent(new CustomEvent("industryContextSet"));
-  } catch {
-    // sessionStorage may be restricted in some browser contexts
-  }
-  const el = document.getElementById("contact");
-  if (el) el.scrollIntoView();
+  navigateToSection("contact", { context: industryContext });
 }
 
 // ─── Pure animation runner (defined outside component to avoid stale closures) ─

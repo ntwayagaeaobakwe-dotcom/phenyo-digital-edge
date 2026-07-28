@@ -12,6 +12,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { getSiteUrl } from "@/lib/seo";
 
 function NotFoundComponent() {
   return (
@@ -61,7 +62,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
-const ROOT_SITE_URL = typeof window !== "undefined" ? window.location.origin : "";
+const ROOT_SITE_URL = getSiteUrl();
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({

@@ -12,18 +12,12 @@
 import { CheckCircle2, ArrowRight, Layers, Globe, X } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { INDUSTRY_DEMOS, PROCESS_STEPS } from "@/data/portfolio-data";
+import { navigateToSection } from "@/lib/navigation";
 
 // ─── Industry service card ────────────────────────────────────────────────────
 
 function scrollToContactWith(industryContext: string): void {
-  try {
-    sessionStorage.setItem("pendingIndustryContext", industryContext);
-    window.dispatchEvent(new CustomEvent("industryContextSet"));
-  } catch {
-    // sessionStorage may be restricted in some browser contexts
-  }
-  const el = document.getElementById("contact");
-  if (el) el.scrollIntoView();
+  navigateToSection("contact", { context: industryContext });
 }
 
 // ─── Web + Automation flow stages ────────────────────────────────────────────
@@ -220,8 +214,7 @@ export function IndustrySolutionsSection() {
                   href="#contact"
                   onClick={(e) => {
                     e.preventDefault();
-                    const el = document.getElementById("contact");
-                    if (el) el.scrollIntoView();
+                    navigateToSection("contact");
                   }}
                   className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-gold-hover)] font-display"
                 >

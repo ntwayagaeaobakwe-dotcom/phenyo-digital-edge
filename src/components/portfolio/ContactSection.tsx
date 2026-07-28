@@ -108,10 +108,14 @@ export function ContactSection() {
       return;
     }
 
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 10000);
+
     try {
       const response = await fetch(CONTACT_WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: controller.signal,
         body: JSON.stringify({
           name: data.name,
           email: data.email,
@@ -123,15 +127,25 @@ export function ContactSection() {
         }),
       });
 
+      clearTimeout(timeoutId);
+
       if (!response.ok) throw new Error(`Webhook responded with ${response.status}`);
 
       toast.success("Inquiry sent! I'll be in touch within 24 hours.");
       setSubmitted(true);
     } catch (error) {
+      clearTimeout(timeoutId);
+      const isTimeout = (error as Error)?.name === "AbortError";
       console.error("Contact webhook submission failed, falling back to email:", error);
-      toast.error("Couldn't send automatically — opening your email client instead.");
+      toast.error(
+        isTimeout
+          ? "Request timed out — opening your email client instead."
+          : "Couldn't send automatically — opening your email client instead.",
+      );
       setSubmitError(
-        "Your inquiry couldn't be delivered automatically, so we opened your email client instead. Please send that email to make sure I receive it.",
+        isTimeout
+          ? "The automated service took longer than 10 seconds to respond, so we opened your email client with your formatted inquiry. Please send that email to make sure I receive it!"
+          : "Your inquiry couldn't be delivered automatically, so we opened your email client instead. Please send that email to make sure I receive it.",
       );
       setUsedFallback(true);
       setSubmitted(true);
@@ -139,8 +153,21 @@ export function ContactSection() {
     }
   };
 
+  const onValidationError = (
+    validationErrors: Partial<Record<keyof ContactFormValues, unknown>>,
+  ) => {
+    const firstKey = Object.keys(validationErrors)[0] as keyof ContactFormValues | undefined;
+    if (firstKey) {
+      const el = document.getElementById(`form-${firstKey}`);
+      el?.focus();
+    }
+  };
+
   return (
-    <section id="contact" className="relative py-24 sm:py-32 border-t border-border/40">
+    <section
+      id="contact"
+      className="scroll-target relative py-24 sm:py-32 border-t border-border/40"
+    >
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="glass-gold rounded-3xl p-8 sm:p-14 relative overflow-hidden border border-primary/30 shadow-[var(--shadow-elegant)]">
@@ -269,7 +296,7 @@ export function ContactSection() {
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <form onSubmit={handleSubmit(onSubmit, onValidationError)} className="space-y-4">
                   <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold pb-1 border-b border-border/50 flex justify-between items-center">
                     <span>Project Inquiry Form</span>
                     <span className="text-[10px] text-muted-foreground">Response &lt; 24h</span>
@@ -303,11 +330,19 @@ export function ContactSection() {
                       id="form-name"
                       type="text"
                       placeholder="e.g. Alex Morgan"
+                      aria-invalid={Boolean(errors.name)}
+                      aria-describedby={errors.name ? "name-error" : undefined}
                       {...register("name")}
                       className="w-full rounded-xl bg-black/40 border border-border px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                     />
                     {errors.name && (
-                      <p className="text-xs text-red-400 mt-1 font-mono">{errors.name.message}</p>
+                      <p
+                        id="name-error"
+                        role="alert"
+                        className="text-xs text-red-400 mt-1 font-mono"
+                      >
+                        {errors.name.message}
+                      </p>
                     )}
                   </div>
 
@@ -323,11 +358,19 @@ export function ContactSection() {
                       id="form-email"
                       type="email"
                       placeholder="alex@company.com"
+                      aria-invalid={Boolean(errors.email)}
+                      aria-describedby={errors.email ? "email-error" : undefined}
                       {...register("email")}
                       className="w-full rounded-xl bg-black/40 border border-border px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                     />
                     {errors.email && (
-                      <p className="text-xs text-red-400 mt-1 font-mono">{errors.email.message}</p>
+                      <p
+                        id="email-error"
+                        role="alert"
+                        className="text-xs text-red-400 mt-1 font-mono"
+                      >
+                        {errors.email.message}
+                      </p>
                     )}
                   </div>
 
@@ -341,6 +384,8 @@ export function ContactSection() {
                     </label>
                     <select
                       id="form-service"
+                      aria-invalid={Boolean(errors.service)}
+                      aria-describedby={errors.service ? "service-error" : undefined}
                       {...register("service")}
                       className="w-full rounded-xl bg-black/40 border border-border px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                     >
@@ -351,7 +396,11 @@ export function ContactSection() {
                       ))}
                     </select>
                     {errors.service && (
-                      <p className="text-xs text-red-400 mt-1 font-mono">
+                      <p
+                        id="service-error"
+                        role="alert"
+                        className="text-xs text-red-400 mt-1 font-mono"
+                      >
                         {errors.service.message}
                       </p>
                     )}
@@ -395,6 +444,8 @@ export function ContactSection() {
                       id="form-message"
                       rows={3}
                       placeholder="Describe the problem you want to solve..."
+                      aria-invalid={Boolean(errors.message)}
+                      aria-describedby={errors.message ? "message-error" : undefined}
                       {...register("message")}
                       className="w-full rounded-xl bg-black/40 border border-border px-4 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none"
                     />
@@ -403,7 +454,11 @@ export function ContactSection() {
                       the result you want.
                     </p>
                     {errors.message && (
-                      <p className="text-xs text-red-400 mt-1 font-mono">
+                      <p
+                        id="message-error"
+                        role="alert"
+                        className="text-xs text-red-400 mt-1 font-mono"
+                      >
                         {errors.message.message}
                       </p>
                     )}

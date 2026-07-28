@@ -13,7 +13,10 @@ const BusinessSystemsDemo = lazy(() =>
 
 export function HeroSection() {
   return (
-    <section className="relative pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden" id="top">
+    <section
+      className="scroll-target relative pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden"
+      id="top"
+    >
       {/* Background Gradients */}
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
       <div className="absolute inset-0 -z-10 grid-bg opacity-40" />
@@ -38,7 +41,10 @@ export function HeroSection() {
           </div>
 
           {/* Customer-Focused Headline */}
-          <h1 className="mt-6 font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-foreground">
+          <h1
+            tabIndex={-1}
+            className="mt-6 font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-foreground outline-none"
+          >
             Automations That Save You Time.
             <br />
             <span className="text-gradient-gold">Websites That Help You Grow.</span>
