@@ -4,10 +4,10 @@ import bgGridWebp from "@/assets/bg-grid.webp";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
 
 const routingSteps = [
-  ["Inquiry", "Captured from the website"],
-  ["Organize", "Need and urgency structured"],
-  ["Route", "Correct owner notified"],
-  ["Follow up", "Next action prepared"],
+  ["Visitor", "Finds a clear service offer"],
+  ["Inquiry", "Shares the problem and desired result"],
+  ["Route", "Details reach the right place"],
+  ["Follow up", "Next action is prepared"],
 ] as const;
 
 export function HeroSection() {
@@ -44,51 +44,52 @@ export function HeroSection() {
         <div>
           <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.06] px-3.5 py-1.5 text-xs text-muted-foreground">
             <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
-            {PERSONAL_INFO.status}
+            NYG Digital - {PERSONAL_INFO.status}
           </div>
           <h1
             tabIndex={-1}
             className="fluid-display mt-7 max-w-4xl font-display font-bold leading-[1.02] tracking-[-0.045em] outline-none"
           >
-            Websites and automated systems that{" "}
-            <span className="text-gradient-gold">remove manual work.</span>
+            Websites and automations that turn interest into{" "}
+            <span className="text-gradient-gold">organized next steps.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            NYG Digital builds business automation, connected tools, client portals, and
-            conversion-focused websites—so your team spends less time moving information and more
-            time moving the business forward.
+            NYG Digital helps service businesses explain their offer clearly, capture better
+            inquiries, and connect the follow-up work behind the scenes.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#contact"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-gold)]"
             >
-              Tell me what is slowing you down <ArrowUpRight className="h-4 w-4" />
+              Request a free process review <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
-              href="#system-studio"
+              href="#services"
               className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-black/20 px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40"
             >
-              Explore the system studio <ArrowRight className="h-4 w-4 text-primary" />
+              See what I build <ArrowRight className="h-4 w-4 text-primary" />
             </a>
           </div>
           <div className="mt-12 grid max-w-2xl gap-3 border-t border-border/50 pt-6 sm:grid-cols-3">
-            {["Direct 1-on-1 access", "Custom workflow design", "Clear, practical delivery"].map(
-              (item) => (
-                <div key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Check className="h-4 w-4 shrink-0 text-primary" />
-                  {item}
-                </div>
-              ),
-            )}
+            {[
+              "600+ leads organized in one build",
+              "Direct 1-on-1 delivery",
+              "Website plus workflow thinking",
+            ].map((item) => (
+              <div key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <Check className="h-4 w-4 shrink-0 text-primary" />
+                {item}
+              </div>
+            ))}
           </div>
         </div>
 
         <div className="studio-surface relative overflow-hidden p-5 sm:p-7">
           <div className="flex items-center justify-between border-b border-border/60 pb-4">
             <div>
-              <p className="font-mono text-[11px] text-primary">SYSTEM PREVIEW</p>
-              <p className="mt-1 text-sm font-semibold">New inquiry routing</p>
+              <p className="font-mono text-[11px] text-primary">CONVERSION FLOW</p>
+              <p className="mt-1 text-sm font-semibold">From visitor to follow-up</p>
             </div>
             <button
               type="button"
@@ -127,8 +128,8 @@ export function HeroSection() {
             ))}
           </div>
           <p className="sr-only">
-            A four-step example captures an inquiry, organizes its details, routes it to the correct
-            owner, and prepares a follow-up action.
+            A four-step example explains the offer, captures an inquiry, routes the details, and
+            prepares a follow-up action.
           </p>
         </div>
       </div>

@@ -3,6 +3,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { HeroSection } from "@/components/portfolio/HeroSection";
 import { DemoSkeleton } from "@/components/portfolio/DemoSkeleton";
+import { TrustBar } from "@/components/portfolio/TrustBar";
+import { ServicesSection } from "@/components/portfolio/ServicesSection";
 import { AboutSection } from "@/components/portfolio/AboutSection";
 import { RoiCalculator } from "@/components/portfolio/RoiCalculator";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
@@ -27,7 +29,7 @@ const BottleneckConfigurator = lazy(() =>
 const SITE_URL = getSiteUrl();
 const PAGE_TITLE = "NYG Digital | Business Automation & Conversion-Focused Websites";
 const PAGE_DESC =
-  "NYG Digital helps businesses reduce repetitive work, organize leads, connect operational tools, and build professional websites that turn visitors into inquiries.";
+  "NYG Digital helps service businesses explain their offer clearly, capture better inquiries, and connect follow-up work with websites and automation.";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -126,7 +128,8 @@ function Home() {
       <Navbar />
       <main id="main-content" tabIndex={-1} className="outline-none">
         <HeroSection />
-        {/* Industry automation demo — placed early so visitors see it before core content */}
+        <TrustBar />
+        <ServicesSection />
         <Suspense
           fallback={
             <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
@@ -136,7 +139,6 @@ function Home() {
         >
           <SystemStudio />
         </Suspense>
-        <AboutSection />
         <Suspense
           fallback={
             <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
@@ -148,6 +150,7 @@ function Home() {
         </Suspense>
         <ProjectsSection />
         <RoiCalculator />
+        <AboutSection />
         <ExperienceSection />
         <ContactSection />
       </main>

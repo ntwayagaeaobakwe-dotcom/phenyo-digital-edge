@@ -183,8 +183,20 @@ export function ContactSection() {
               </h2>
               <p className="mt-5 text-lg text-muted-foreground max-w-lg leading-relaxed">
                 Describe the manual tasks, disconnected tools, or website challenges holding your
-                business back — I'll recommend a practical solution.
+                business back. I will recommend the simplest practical next step.
               </p>
+              <div className="mt-6 grid gap-2 text-sm text-muted-foreground">
+                {[
+                  "I review the problem and likely impact.",
+                  "You get a clear recommendation, not a sales script.",
+                  "If there is a fit, we define a small first scope.",
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2.5">
+                    <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
 
               {/* Verified Contact Details */}
               <div className="mt-8 space-y-4 text-sm">
@@ -470,7 +482,7 @@ export function ContactSection() {
                     disabled={isSubmitting}
                     className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display cursor-pointer"
                   >
-                    Tell Me What You Need <Send className="h-4 w-4" />
+                    Request My Process Review <Send className="h-4 w-4" />
                   </button>
 
                   {/* Social Links */}

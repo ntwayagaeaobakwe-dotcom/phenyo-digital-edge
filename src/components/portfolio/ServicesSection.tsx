@@ -24,10 +24,10 @@ export function ServicesSection() {
   return (
     <SectionShell
       id="services"
-      eyebrow="Services Explained as Customer Outcomes"
+      eyebrow="Clear service paths"
       title={
         <>
-          What I <span className="text-gradient-gold">build for your business</span>.
+          Choose the outcome <span className="text-gradient-gold">your business needs first</span>.
         </>
       }
     >
@@ -118,11 +118,13 @@ export function ServicesSection() {
               )}
 
               {/* Supporting Technical Implementation Note */}
-              <div className="mt-4 pt-3 border-t border-border/40 text-xs text-muted-foreground flex items-center justify-between">
+              <div className="mt-4 flex flex-col gap-2 border-t border-border/40 pt-3 text-xs text-muted-foreground sm:flex-row sm:items-start sm:justify-between">
                 <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                   Supporting Technology
                 </span>
-                <span className="text-foreground font-medium">{service.supportingTools}</span>
+                <span className="max-w-2xl text-foreground font-medium sm:text-right">
+                  {service.supportingTools}
+                </span>
               </div>
             </div>
           );

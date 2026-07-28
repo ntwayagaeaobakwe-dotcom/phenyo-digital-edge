@@ -62,7 +62,7 @@ export const PERSONAL_INFO = {
   subheadline:
     "I help businesses reduce repetitive work, connect their tools, organize leads, and build professional websites that turn more visitors into inquiries.",
   status: "Available for select projects",
-  location: "Digital Nomad · International (UTC+4 / GMT)",
+  location: "International - UTC+4",
   email: "ntwayagaeaobakwe@gmail.com",
   phone: "+971555170113",
   socials: [
@@ -72,8 +72,11 @@ export const PERSONAL_INFO = {
       href: "https://www.instagram.com/phenyontwayagae",
       iconName: "Instagram",
     },
-    // TODO: add real GitHub profile URL
-    { label: "GitHub", href: "https://github.com", iconName: "Github" },
+    {
+      label: "GitHub",
+      href: "https://github.com/ntwayagaeaobakwe-dotcom",
+      iconName: "Github",
+    },
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/",
@@ -83,10 +86,10 @@ export const PERSONAL_INFO = {
 };
 
 export const NAV_LINKS = [
+  { label: "Services", href: "#services" },
   { label: "System Studio", href: "#system-studio" },
-  { label: "Approach", href: "#about" },
-  { label: "Solutions", href: "#services" },
   { label: "Work", href: "#projects" },
+  { label: "Calculator", href: "#roi-calculator" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -112,10 +115,10 @@ export const TICKER_ITEMS = [
 ];
 
 export const TRUST_SIGNALS = [
-  { label: "< 24h Response Time", iconName: "Clock" },
-  { label: "Fixed-Scope Quoting", iconName: "FileCheck" },
-  { label: "Direct WhatsApp Access", iconName: "MessageSquare" },
-  { label: "n8n + AI Automation Stack", iconName: "Workflow" },
+  { label: "Response target under 24h", iconName: "Clock" },
+  { label: "Clear fixed-scope proposals", iconName: "FileCheck" },
+  { label: "Direct WhatsApp access", iconName: "MessageSquare" },
+  { label: "Website plus automation build", iconName: "Workflow" },
 ];
 
 export const ABOUT_PILLARS = [

@@ -54,7 +54,7 @@ export function BottleneckConfigurator() {
 
   return (
     <SectionShell
-      id="services"
+      id="diagnostic"
       eyebrow="Start with the bottleneck"
       title={
         <>
