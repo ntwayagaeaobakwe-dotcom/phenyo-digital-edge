@@ -10,8 +10,8 @@ export function FooterSection() {
             className="flex items-center gap-2 font-display font-bold text-foreground text-base group"
             aria-label="Back to top"
           >
-            <span className="grid h-7 w-7 place-items-center rounded-md bg-primary text-primary-foreground text-xs group-hover:scale-105 transition-transform">
-              {PERSONAL_INFO.name.charAt(0)}
+            <span className="grid h-7 min-w-7 px-1.5 place-items-center rounded-md bg-primary text-primary-foreground text-[10px] font-bold tracking-wider group-hover:scale-105 transition-transform">
+              NYG
             </span>
             {PERSONAL_INFO.name}
             <span className="text-primary">.</span>

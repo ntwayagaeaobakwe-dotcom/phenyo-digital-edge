@@ -16,7 +16,7 @@ export function AboutSection() {
       <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr]">
         <div className="space-y-6 text-lg leading-relaxed text-muted-foreground">
           <p>
-            Phenyo is a focused automation and digital-systems studio for businesses that need
+            NYG Digital is a focused automation and digital-systems studio for businesses that need
             practical improvements without agency layers or unnecessary complexity.
           </p>
           <p>

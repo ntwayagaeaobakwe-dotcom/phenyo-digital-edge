@@ -6,7 +6,7 @@
  * SSR-safe and guards browser environment from unsafe `process` references.
  */
 
-const DEFAULT_PROD_SITE_URL = "https://phenyodigitaledge.com";
+const DEFAULT_PROD_SITE_URL = "https://ntwayagae.com";
 const DEFAULT_DEV_SITE_URL = "http://localhost:3000";
 
 export function getSiteUrl(): string {

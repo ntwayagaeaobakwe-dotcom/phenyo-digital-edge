@@ -57,6 +57,6 @@ diff first, then deploy from whichever target you choose.
 
 ## Current Vercel status
 
-Checked via the Vercel connector: the "Phenyo" Vercel team has **no existing
+Checked via the Vercel connector: the Vercel workspace has **no existing
 project** for this repo yet — nothing is connected or deployed there today.
-Cloudflare remains the only target this build has actually run against so far.
+Cloudflare remains the target environment so far.

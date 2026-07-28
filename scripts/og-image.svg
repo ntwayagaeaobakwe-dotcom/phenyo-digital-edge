@@ -31,7 +31,7 @@
   <circle cx="120" cy="120" r="5" fill="#e8c874"/>
   <text x="140" y="128" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="20" letter-spacing="4" fill="#8f97ad">AVAILABLE FOR SELECT PROJECTS</text>
 
-  <text x="120" y="290" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="88" font-weight="700" fill="#f5f6fa">Phenyo</text>
+  <text x="120" y="290" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="88" font-weight="700" fill="#f5f6fa">NYG Digital</text>
   <text x="120" y="345" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="30" font-weight="600" fill="#8f97ad">Business Automation &amp; Web Development</text>
 
   <text x="120" y="420" font-family="'Space Grotesk', 'Arial', sans-serif" font-size="40" font-weight="700" fill="url(#goldText)">Automations That Save You Time.</text>

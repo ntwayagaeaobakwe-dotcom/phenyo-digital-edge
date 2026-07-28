@@ -55,13 +55,13 @@ export interface FocusArea {
 }
 
 export const PERSONAL_INFO = {
-  name: "Phenyo",
+  name: "NYG Digital",
   title: "Business Automation & Web Development Specialist",
   tagline: "Automations That Save You Time. Websites That Help You Grow.",
   headline: "Automations That Save You Time. Websites That Help You Grow.",
   subheadline:
     "I help businesses reduce repetitive work, connect their tools, organize leads, and build professional websites that turn more visitors into inquiries.",
-  status: "Available for select projects · Q1 2026",
+  status: "Available for select projects",
   location: "Digital Nomad · International (UTC+4 / GMT)",
   email: "ntwayagaeaobakwe@gmail.com",
   phone: "+971555170113",
@@ -174,7 +174,7 @@ export const EXPERTISE_SKILLS: SkillCategory[] = [
     title: "Client Portals & Dashboards",
     iconName: "Layers",
     items: [
-      "Secure client login areas",
+      "Client login areas",
       "Centralized operational dashboards",
       "User role & access management",
       "Supabase database integration",
@@ -255,14 +255,14 @@ export const SERVICES: ServiceItem[] = [
     potentialBenefit:
       "Make everyday operations clearer, reduce confusion, and give staff or customers a simpler experience.",
     supportingTools:
-      "Built with secure login spaces, custom dashboards, and connected database tools.",
+      "Built with dedicated login spaces, custom dashboards, and connected database tools.",
     processSteps: [
       "User logs into portal",
       "Views unified status",
       "Performs required action",
       "Records updated instantly",
     ],
-    desc: "Secure web portals and operational dashboards that centralize client communication, account management, and team workflows.",
+    desc: "Dedicated web portals and operational dashboards that centralize client communication, account management, and team workflows.",
   },
   {
     tag: "04",

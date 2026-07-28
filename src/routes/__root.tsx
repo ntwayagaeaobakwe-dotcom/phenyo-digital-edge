@@ -70,17 +70,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#0a0a0a" },
-      { title: "Phenyo | Business Automation & Conversion-Focused Websites" },
+      { title: "NYG Digital | Business Automation & Conversion-Focused Websites" },
       {
         name: "description",
         content:
-          "Phenyo helps businesses reduce repetitive work, organize leads, connect their tools, and build professional websites that turn visitors into inquiries.",
+          "NYG Digital helps businesses reduce repetitive work, organize leads, connect operational tools, and build professional websites that turn visitors into inquiries.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "Phenyo | Business Automation & Web Development" },
-      // Default OG/Twitter image — overridden per-route where a more specific one is set.
-      // TODO: replace public/og-image.jpg with a real designed export (Figma/Higgsfield) —
-      // currently a code-generated placeholder (see scripts/og-image.svg).
+      { property: "og:site_name", content: "NYG Digital | Business Automation & Web Development" },
+      // Default OG/Twitter image — generated preview banner (public/og-image.jpg).
       { property: "og:image", content: `${ROOT_SITE_URL}/og-image.jpg` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
@@ -90,6 +88,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "manifest", href: "/site.webmanifest" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {

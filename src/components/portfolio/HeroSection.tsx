@@ -54,7 +54,7 @@ export function HeroSection() {
             <span className="text-gradient-gold">remove manual work.</span>
           </h1>
           <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-            Phenyo builds business automation, connected tools, client portals, and
+            NYG Digital builds business automation, connected tools, client portals, and
             conversion-focused websites—so your team spends less time moving information and more
             time moving the business forward.
           </p>

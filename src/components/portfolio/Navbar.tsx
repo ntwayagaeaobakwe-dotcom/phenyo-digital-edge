@@ -100,10 +100,10 @@ export function Navbar() {
           <a
             href="#top"
             className="flex items-center gap-2.5 font-display font-bold text-lg group"
-            aria-label="Phenyo Home"
+            aria-label="NYG Digital Home"
           >
-            <span className="grid h-8 w-8 place-items-center rounded-lg bg-primary text-primary-foreground font-bold group-hover:scale-105 transition-transform">
-              {PERSONAL_INFO.name.charAt(0)}
+            <span className="grid h-8 min-w-8 px-2 place-items-center rounded-lg bg-primary text-primary-foreground font-bold text-xs tracking-wider group-hover:scale-105 transition-transform">
+              NYG
             </span>
             <span className="tracking-tight">
               {PERSONAL_INFO.name}
