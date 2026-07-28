@@ -2,14 +2,9 @@ import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { HeroSection } from "@/components/portfolio/HeroSection";
-import { TickerBar } from "@/components/portfolio/TickerBar";
-import { TrustBar } from "@/components/portfolio/TrustBar";
 import { DemoSkeleton } from "@/components/portfolio/DemoSkeleton";
 import { AboutSection } from "@/components/portfolio/AboutSection";
-import { ExpertiseSection } from "@/components/portfolio/ExpertiseSection";
 import { RoiCalculator } from "@/components/portfolio/RoiCalculator";
-import { ServicesSection } from "@/components/portfolio/ServicesSection";
-import { IndustrySolutionsSection } from "@/components/portfolio/IndustrySolutionsSection";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
@@ -17,9 +12,15 @@ import { FooterSection } from "@/components/portfolio/FooterSection";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
 import { getSiteUrl } from "@/lib/seo";
 
-const IndustryAutomationDemo = lazy(() =>
-  import("@/components/portfolio/IndustryAutomationDemo").then((m) => ({
-    default: m.IndustryAutomationDemo,
+const SystemStudio = lazy(() =>
+  import("@/components/portfolio/SystemStudio").then((m) => ({
+    default: m.SystemStudio,
+  })),
+);
+
+const BottleneckConfigurator = lazy(() =>
+  import("@/components/portfolio/BottleneckConfigurator").then((m) => ({
+    default: m.BottleneckConfigurator,
   })),
 );
 
@@ -148,8 +149,6 @@ function Home() {
       <Navbar />
       <main id="main-content" tabIndex={-1} className="outline-none">
         <HeroSection />
-        <TickerBar />
-        <TrustBar />
         {/* Industry automation demo — placed early so visitors see it before core content */}
         <Suspense
           fallback={
@@ -158,15 +157,20 @@ function Home() {
             </div>
           }
         >
-          <IndustryAutomationDemo />
+          <SystemStudio />
         </Suspense>
         <AboutSection />
-        <ExpertiseSection />
-        <RoiCalculator />
-        <ServicesSection />
-        {/* Industry-specific cards + 4-step process + web+automation connection */}
-        <IndustrySolutionsSection />
+        <Suspense
+          fallback={
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
+              <DemoSkeleton className="h-[460px]" />
+            </div>
+          }
+        >
+          <BottleneckConfigurator />
+        </Suspense>
         <ProjectsSection />
+        <RoiCalculator />
         <ExperienceSection />
         <ContactSection />
       </main>

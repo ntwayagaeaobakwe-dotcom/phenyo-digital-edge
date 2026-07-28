@@ -83,11 +83,10 @@ export const PERSONAL_INFO = {
 };
 
 export const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Expertise", href: "#expertise" },
-  { label: "ROI Calculator", href: "#roi-calculator" },
-  { label: "Services", href: "#services" },
-  { label: "Projects", href: "#projects" },
+  { label: "System Studio", href: "#system-studio" },
+  { label: "Approach", href: "#about" },
+  { label: "Solutions", href: "#services" },
+  { label: "Work", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 

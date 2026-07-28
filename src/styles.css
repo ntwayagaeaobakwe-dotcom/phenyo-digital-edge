@@ -36,7 +36,7 @@
   --color-navy: var(--navy);
   --color-neon: var(--neon);
 
-  --font-display: "Space Grotesk", "Inter Tight", sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
   --font-sans: "Inter", "Manrope", sans-serif;
 }
 
@@ -120,6 +120,18 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+@utility fluid-display {
+  font-size: clamp(2.75rem, 6vw, 5.55rem);
+}
+
+@utility studio-surface {
+  background:
+    linear-gradient(145deg, oklch(1 0 0 / 0.045), transparent 55%), oklch(0.155 0.014 260 / 0.92);
+  border: 1px solid oklch(1 0 0 / 0.11);
+  border-radius: 1.5rem;
+  box-shadow: 0 30px 80px -50px oklch(0 0 0 / 0.95);
 }
 
 @utility glass {

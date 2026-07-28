@@ -5,6 +5,7 @@ import { NAV_LINKS, PERSONAL_INFO } from "@/data/portfolio-data";
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("#top");
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
@@ -13,6 +14,33 @@ export function Navbar() {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    let observer: IntersectionObserver | undefined;
+    const setupTimer = window.setTimeout(() => {
+      const targets = NAV_LINKS.map((link) => document.querySelector(link.href)).filter(
+        (element): element is Element => Boolean(element),
+      );
+      if (targets.length === 0) return;
+
+      observer = new IntersectionObserver(
+        (entries) => {
+          const visible = entries
+            .filter((entry) => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          if (visible?.target.id) setActiveSection(`#${visible.target.id}`);
+        },
+        { rootMargin: "-22% 0px -62% 0px", threshold: [0, 0.15, 0.5] },
+      );
+
+      targets.forEach((target) => observer?.observe(target));
+    }, 400);
+
+    return () => {
+      window.clearTimeout(setupTimer);
+      observer?.disconnect();
+    };
   }, []);
 
   // 2. Mobile menu keyboard accessibility (Escape key, focus trap, return focus)
@@ -92,7 +120,10 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="hover:text-foreground transition-colors font-sans hover:text-primary"
+                aria-current={activeSection === link.href ? "location" : undefined}
+                className={`font-sans transition-colors hover:text-primary ${
+                  activeSection === link.href ? "text-primary" : "text-muted-foreground"
+                }`}
               >
                 {link.label}
               </a>

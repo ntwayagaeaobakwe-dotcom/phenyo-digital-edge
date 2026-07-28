@@ -1,167 +1,135 @@
-import { lazy, Suspense } from "react";
-import { ArrowUpRight, ChevronRight, CheckCircle2 } from "lucide-react";
-import heroImg from "@/assets/phenyo-hero.jpg";
-import bgGrid from "@/assets/bg-grid.jpg";
-import { PERSONAL_INFO, HERO_STATS } from "@/data/portfolio-data";
-import { DemoSkeleton } from "./DemoSkeleton";
-import heroImgWebp from "@/assets/phenyo-hero.webp";
+import { useEffect, useState } from "react";
+import { ArrowRight, ArrowUpRight, Check, Play } from "lucide-react";
 import bgGridWebp from "@/assets/bg-grid.webp";
+import { PERSONAL_INFO } from "@/data/portfolio-data";
 
-const BusinessSystemsDemo = lazy(() =>
-  import("./BusinessSystemsDemo").then((m) => ({ default: m.BusinessSystemsDemo })),
-);
+const routingSteps = [
+  ["Inquiry", "Captured from the website"],
+  ["Organize", "Need and urgency structured"],
+  ["Route", "Correct owner notified"],
+  ["Follow up", "Next action prepared"],
+] as const;
 
 export function HeroSection() {
+  const [activeStep, setActiveStep] = useState(0);
+  const [runId, setRunId] = useState(0);
+
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reducedMotion) {
+      setActiveStep(routingSteps.length - 1);
+      return;
+    }
+
+    setActiveStep(0);
+    const timers = routingSteps
+      .slice(1)
+      .map((_, index) => window.setTimeout(() => setActiveStep(index + 1), (index + 1) * 650));
+    return () => timers.forEach(window.clearTimeout);
+  }, [runId]);
+
   return (
     <section
-      className="scroll-target relative pt-40 pb-24 sm:pt-48 sm:pb-32 overflow-hidden"
+      className="scroll-target relative overflow-hidden pb-24 pt-40 sm:pb-32 sm:pt-48"
       id="top"
     >
-      {/* Background Gradients */}
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
-      <div className="absolute inset-0 -z-10 grid-bg opacity-40" />
+      <div className="absolute inset-0 -z-10 grid-bg opacity-25" />
       <div
-        className="absolute inset-0 -z-10 opacity-20 mix-blend-screen"
-        style={{
-          backgroundImage: `url(${bgGridWebp})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
+        className="absolute inset-0 -z-10 opacity-10 mix-blend-screen"
+        style={{ backgroundImage: `url(${bgGridWebp})`, backgroundSize: "cover" }}
       />
 
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 grid lg:grid-cols-[1.1fr_1fr] gap-12 items-center">
+      <div className="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr]">
         <div>
-          {/* Availability Badge */}
-          <div className="inline-flex items-center gap-2 rounded-full glass px-3.5 py-1 text-xs text-muted-foreground border border-primary/20">
-            <span
-              className="h-2 w-2 rounded-full bg-primary animate-pulse-glow"
-              aria-hidden="true"
-            />
-            <span>{PERSONAL_INFO.status}</span>
+          <div className="inline-flex items-center gap-2 rounded-full border border-primary/25 bg-primary/[0.06] px-3.5 py-1.5 text-xs text-muted-foreground">
+            <span className="h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
+            {PERSONAL_INFO.status}
           </div>
-
-          {/* Customer-Focused Headline */}
           <h1
             tabIndex={-1}
-            className="mt-6 font-display font-bold text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight text-foreground outline-none"
+            className="fluid-display mt-7 max-w-4xl font-display font-bold leading-[1.02] tracking-[-0.045em] outline-none"
           >
-            Automations That Save You Time.
-            <br />
-            <span className="text-gradient-gold">Websites That Help You Grow.</span>
+            Websites and automated systems that{" "}
+            <span className="text-gradient-gold">remove manual work.</span>
           </h1>
-
-          {/* Customer-Focused Subheadline */}
-          <p className="mt-6 max-w-xl text-lg text-muted-foreground leading-relaxed">
-            {PERSONAL_INFO.subheadline}
+          <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            Phenyo builds business automation, connected tools, client portals, and
+            conversion-focused websites—so your team spends less time moving information and more
+            time moving the business forward.
           </p>
-
-          {/* Call-to-action Buttons */}
-          <div className="mt-8 flex flex-wrap gap-3.5">
+          <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] hover:shadow-[var(--shadow-gold-hover)] font-display"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-gold)]"
             >
-              Tell Me What You Need <ArrowUpRight className="h-4 w-4" aria-hidden="true" />
+              Tell me what is slowing you down <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
-              href="#projects"
-              className="inline-flex items-center gap-2 rounded-full glass glass-hover px-6 py-3.5 text-sm font-medium text-foreground transition-all"
+              href="#system-studio"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-black/20 px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40"
             >
-              See What I Can Build
-            </a>
-            <a
-              href="#roi-calculator"
-              className="inline-flex items-center gap-1.5 rounded-full px-5 py-3.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Estimate Time Saved{" "}
-              <ChevronRight className="h-4 w-4 text-primary" aria-hidden="true" />
+              Explore the system studio <ArrowRight className="h-4 w-4 text-primary" />
             </a>
           </div>
-
-          {/* Key Stats Counter */}
-          <div className="mt-12 grid grid-cols-3 gap-6 max-w-md border-t border-border/40 pt-6">
-            {HERO_STATS.map((stat) => (
-              <div key={stat.label}>
-                <div className="text-xl sm:text-2xl font-display font-bold text-gradient-gold">
-                  {stat.value}
+          <div className="mt-12 grid max-w-2xl gap-3 border-t border-border/50 pt-6 sm:grid-cols-3">
+            {["Direct 1-on-1 access", "Custom workflow design", "Clear, practical delivery"].map(
+              (item) => (
+                <div key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                  <Check className="h-4 w-4 shrink-0 text-primary" />
+                  {item}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1 font-sans">{stat.label}</div>
-              </div>
-            ))}
+              ),
+            )}
           </div>
         </div>
 
-        {/* Hero Visual Container + Interactive Demo */}
-        <div className="space-y-6">
-          <div className="relative animate-float">
-            <div className="absolute -inset-8 bg-primary/20 blur-3xl rounded-full" />
-
-            {/* Decorative animated accent layer — slow mesh-gradient drift + a
-                gold "signal line" sweep. Purely visual, so it's aria-hidden and
-                fully disabled under prefers-reduced-motion (see styles.css). */}
-            <div
-              className="absolute -inset-12 -z-10 overflow-hidden rounded-[2.5rem] pointer-events-none"
-              aria-hidden="true"
+        <div className="studio-surface relative overflow-hidden p-5 sm:p-7">
+          <div className="flex items-center justify-between border-b border-border/60 pb-4">
+            <div>
+              <p className="font-mono text-[11px] text-primary">SYSTEM PREVIEW</p>
+              <p className="mt-1 text-sm font-semibold">New inquiry routing</p>
+            </div>
+            <button
+              type="button"
+              onClick={() => setRunId((current) => current + 1)}
+              className="grid h-9 w-9 place-items-center rounded-full border border-border/70 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+              aria-label="Replay inquiry routing preview"
             >
-              <div
-                className="absolute -top-10 -left-10 h-64 w-64 rounded-full blur-3xl opacity-50 animate-mesh-drift"
-                style={{
-                  background:
-                    "radial-gradient(circle, oklch(0.82 0.15 85 / 0.35), transparent 70%)",
-                }}
-              />
-              <div
-                className="absolute -bottom-14 -right-8 h-72 w-72 rounded-full blur-3xl opacity-40 animate-mesh-drift"
-                style={{
-                  background:
-                    "radial-gradient(circle, oklch(0.50 0.15 260 / 0.4), transparent 70%)",
-                  animationDelay: "-8s",
-                }}
-              />
-              <div className="absolute inset-x-0 top-1/2 h-px overflow-hidden">
-                <div
-                  className="h-px w-1/2 animate-signal-sweep"
-                  style={{
-                    background:
-                      "linear-gradient(90deg, transparent, oklch(0.82 0.15 85 / 0.9), transparent)",
-                  }}
-                />
-              </div>
-            </div>
-
-            <div className="relative gold-border rounded-3xl overflow-hidden aspect-[16/10] sm:aspect-[4/3] shadow-[var(--shadow-elegant)]">
-              <picture>
-                <source srcSet={heroImgWebp} type="image/webp" />
-                <img
-                  src={heroImg}
-                  alt="Phenyo — Business Automation & Web Development Specialist"
-                  width={1024}
-                  height={1280}
-                  loading="eager"
-                  fetchPriority="high"
-                  className="h-full w-full object-cover object-top"
-                />
-              </picture>
-              <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/90 via-black/40 to-transparent">
-                <div className="glass-gold rounded-xl px-4 py-2.5 flex items-center justify-between">
-                  <div>
-                    <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">
-                      Focus
-                    </div>
-                    <div className="text-sm font-medium">
-                      Business Automation · Conversion Websites
-                    </div>
-                  </div>
-                  <CheckCircle2 className="h-5 w-5 text-primary" aria-hidden="true" />
-                </div>
-              </div>
-            </div>
+              <Play className="h-4 w-4" />
+            </button>
           </div>
 
-          {/* Interactive Business Systems Demo */}
-          <Suspense fallback={<DemoSkeleton className="h-[280px]" />}>
-            <BusinessSystemsDemo />
-          </Suspense>
+          <div className="mt-6 space-y-3">
+            {routingSteps.map(([title, detail], index) => (
+              <div
+                key={title}
+                className={`flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 ${
+                  index <= activeStep
+                    ? "border-primary/40 bg-primary/[0.08]"
+                    : "border-border/60 bg-black/20"
+                }`}
+              >
+                <span
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-mono text-xs ${
+                    index <= activeStep
+                      ? "border-primary bg-primary text-primary-foreground"
+                      : "border-border text-muted-foreground"
+                  }`}
+                >
+                  {index <= activeStep ? <Check className="h-4 w-4" /> : `0${index + 1}`}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold">{title}</p>
+                  <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <p className="sr-only">
+            A four-step example captures an inquiry, organizes its details, routes it to the correct
+            owner, and prepares a follow-up action.
+          </p>
         </div>
       </div>
     </section>

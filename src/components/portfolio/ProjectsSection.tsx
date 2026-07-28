@@ -30,10 +30,11 @@ export function ProjectsSection() {
   return (
     <SectionShell
       id="projects"
-      eyebrow="Proof-Led Portfolio"
+      eyebrow="Selected system case studies"
       title={
         <>
-          Clear solutions for <span className="text-gradient-gold">real business problems</span>.
+          The problem, the system, and{" "}
+          <span className="text-gradient-gold">how information moves</span>.
         </>
       }
     >
@@ -41,7 +42,7 @@ export function ProjectsSection() {
         {PROJECTS.map((project, index) => (
           <article
             key={project.id}
-            className="glass glass-hover rounded-2xl p-7 lg:p-9 group relative overflow-hidden transition-all border border-border/80"
+            className="studio-surface p-7 lg:p-9 group relative overflow-hidden transition-all"
           >
             <div
               className={`absolute inset-0 -z-10 bg-gradient-to-br ${project.accent} opacity-60`}
@@ -74,14 +75,14 @@ export function ProjectsSection() {
 
               {/* Problem & Solution Grid */}
               <div className="grid md:grid-cols-2 gap-5">
-                <div className="glass p-4 rounded-xl border border-border/60">
+                <div className="border-l border-border/80 pl-4">
                   <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground font-semibold mb-1.5">
                     The Problem
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed">{project.problem}</p>
                 </div>
 
-                <div className="glass p-4 rounded-xl border border-border/60">
+                <div className="border-l border-primary/50 pl-4">
                   <div className="text-xs font-mono uppercase tracking-wider text-primary font-semibold mb-1.5">
                     What Was Built
                   </div>
@@ -93,7 +94,7 @@ export function ProjectsSection() {
 
               {/* Step-by-Step Workflow Preview */}
               {project.howItWorks && project.howItWorks.length > 0 && (
-                <div className="glass p-4 rounded-xl border border-border/60">
+                <div className="rounded-xl border border-border/60 bg-black/20 p-4">
                   <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground mb-3">
                     Process Flow
                   </div>
@@ -101,7 +102,7 @@ export function ProjectsSection() {
                     {project.howItWorks.map((step, idx) => (
                       <div
                         key={idx}
-                        className="flex items-center gap-2 glass p-2.5 rounded-lg border border-border/40"
+                        className="flex items-center gap-2 rounded-lg border border-border/40 bg-black/20 p-2.5"
                       >
                         <span className="h-5 w-5 rounded-full bg-primary/20 text-primary font-mono text-[10px] font-bold grid place-items-center shrink-0">
                           {idx + 1}
