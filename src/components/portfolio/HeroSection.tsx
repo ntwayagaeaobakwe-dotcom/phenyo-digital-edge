@@ -1,157 +1,113 @@
-import { useEffect, useState } from "react";
-import { ArrowRight, ArrowUpRight, Play } from "lucide-react";
-import { DotMatrixCanvas } from "@/components/ui/dot-matrix-canvas";
+import { useState } from "react";
+import { ChevronRight } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
-
-const routingSteps = [
-  ["Visitor", "Finds a clear service offer"],
-  ["Inquiry", "Shares the problem and desired result"],
-  ["Route", "Details reach the right place"],
-  ["Follow up", "Next action is prepared"],
-] as const;
+import { useRevealRef } from "@/hooks/useRevealObserver";
 
 export function HeroSection() {
-  const [activeStep, setActiveStep] = useState(0);
-  const [runId, setRunId] = useState(0);
+  const [portraitError, setPortraitError] = useState(false);
 
-  useEffect(() => {
-    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reducedMotion) {
-      setActiveStep(routingSteps.length - 1);
-      return;
-    }
+  // Top Row reveal refs
+  const service1Ref = useRevealRef<HTMLDivElement>(150);
+  const service2Ref = useRevealRef<HTMLDivElement>(270);
+  const service3Ref = useRevealRef<HTMLDivElement>(390);
+  const introRef = useRevealRef<HTMLParagraphElement>(300);
 
-    setActiveStep(0);
-    const timers = routingSteps
-      .slice(1)
-      .map((_, index) => window.setTimeout(() => setActiveStep(index + 1), (index + 1) * 650));
-    return () => timers.forEach(window.clearTimeout);
-  }, [runId]);
+  // Bottom Row reveal refs
+  const badgeRef = useRevealRef<HTMLDivElement>(150);
+  const h1Ref = useRevealRef<HTMLHeadingElement>(280);
+  const contactCardRef = useRevealRef<HTMLDivElement>(420);
+
+  const whatsappHref = `https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`;
 
   return (
-    <section
-      className="scroll-target relative min-h-[100dvh] flex items-center overflow-hidden pb-24 pt-40 sm:pb-32 sm:pt-48"
-      id="top"
-    >
-      <div className="absolute inset-0 -z-10 opacity-30">
-        <DotMatrixCanvas opacity={0.4} totalSize={24} dotSize={3} />
-      </div>
-
-      <div className="mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.08fr_0.92fr]">
-        <div>
-          {/* Monospace Eyebrow Badge */}
-          <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-text-muted border border-border-default px-4 py-1.5 rounded-full bg-surface-raised/80">
-            <span className="h-1.5 w-1.5 rounded-full bg-action-primary" aria-hidden="true" />
-            <span>[ SYS // 01 ] NYG DIGITAL · {PERSONAL_INFO.status}</span>
+    <section className="min-h-screen supports-[height:100svh]:min-h-[100svh] w-full flex flex-col justify-between pt-24 sm:pt-28 pb-12 md:pb-16 px-5 sm:px-8 md:px-12 relative z-10">
+      {/* TOP ROW */}
+      <div className="flex flex-col gap-8 sm:flex-row sm:items-start justify-between">
+        {/* Left: Service List */}
+        <div className="flex flex-col gap-2 font-mono text-xs uppercase tracking-[0.15em] text-text-muted drop-shadow-md">
+          <div ref={service1Ref} className="reveal-item">
+            / WORKFLOW AUTOMATION
           </div>
-
-          {/* Two-Tone Headline */}
-          <h1
-            tabIndex={-1}
-            className="fluid-display mt-7 max-w-3xl font-sans font-semibold leading-[1.08] tracking-tight text-text-primary outline-none"
-          >
-            Websites and automations{" "}
-            <span className="text-text-muted font-normal">
-              that turn visitor interest into organized next steps.
-            </span>
-          </h1>
-
-          <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-text-secondary">
-            NYG Digital helps service businesses explain their offer clearly, capture better
-            inquiries, and connect the follow-up work behind the scenes.
-          </p>
-
-          {/* Strict Button System: 1 Primary CTA + 1 Ghost Secondary CTA */}
-          <div className="mt-8 flex flex-wrap gap-4 items-center">
-            <a
-              href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-action-primary px-7 py-3.5 min-h-[44px] font-mono text-xs uppercase tracking-widest font-semibold text-action-primary-foreground active:scale-[0.98] transition-all hover:bg-action-primary-hover focus-ring"
-            >
-              <span>Request a free review</span>
-              <ArrowUpRight className="h-4 w-4" />
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center justify-center gap-2 rounded-full border border-border-default bg-surface-raised/40 px-6 py-3.5 min-h-[44px] font-mono text-xs uppercase tracking-widest font-medium text-text-primary active:scale-[0.98] transition-all hover:bg-surface-overlay focus-ring"
-            >
-              <span>See what I build</span>
-              <ArrowRight className="h-4 w-4 text-text-muted" />
-            </a>
+          <div ref={service2Ref} className="reveal-item">
+            / AI SYSTEMS
           </div>
-
-          {/* Monospace Micro Statistics */}
-          <div className="mt-12 grid max-w-xl gap-4 border-t border-border-subtle pt-6 sm:grid-cols-3 font-mono text-xs uppercase tracking-wider text-text-muted">
-            {[
-              "600+ leads routed",
-              "Direct 1-on-1 build",
-              "Full pipeline stack",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <span className="text-status-success font-bold">[✓]</span>
-                <span>{item}</span>
-              </div>
-            ))}
+          <div ref={service3Ref} className="reveal-item">
+            / WEB PLATFORMS
           </div>
         </div>
 
-        {/* Technical Frame & Animated Terminal Panel */}
-        <div className="relative border border-border-default rounded-2xl bg-surface-raised/80 p-6 sm:p-8 backdrop-blur-md">
-          {/* Hairline Corner Bracket Labels */}
-          <div className="flex items-center justify-between border-b border-border-subtle pb-4 mb-6">
-            <div>
-              <p className="font-mono text-[11px] uppercase tracking-widest text-action-primary font-semibold">
-                [ CONVERSION_ROUTER ]
-              </p>
-              <p className="mt-1 text-xs text-text-muted">From visitor click to internal payload</p>
-            </div>
-            <button
-              type="button"
-              onClick={() => setRunId((current) => current + 1)}
-              className="grid h-11 w-11 place-items-center rounded-full border border-border-default text-text-muted hover:border-action-primary hover:text-action-primary active:scale-95 transition-all cursor-pointer focus-ring"
-              aria-label="Replay inquiry routing preview"
-            >
-              <Play className="h-4 w-4" />
-            </button>
+        {/* Right: Intro Paragraph */}
+        <p
+          ref={introRef}
+          className="reveal-item max-w-xs sm:text-right text-lg sm:text-xl leading-relaxed text-text-primary drop-shadow-md"
+        >
+          I build the systems that remove manual work from lead follow-up, scheduling, and reporting
+          — so your team spends its hours where a person is actually required.
+        </p>
+      </div>
+
+      {/* BOTTOM ROW */}
+      <div className="flex flex-col gap-8 md:flex-row md:items-end justify-between mt-12 md:mt-0">
+        {/* Left: Badge + Declarative H1 */}
+        <div className="max-w-2xl">
+          {/* Badge */}
+          <div
+            ref={badgeRef}
+            className="reveal-item inline-flex items-center mb-5 border-l-2 border-accent bg-surface-glass px-3 py-1.5 backdrop-blur-md border border-r-border-glass border-t-border-glass border-b-border-glass font-mono text-[11px] uppercase tracking-[0.15em] text-text-primary drop-shadow-md"
+          >
+            {"{{PROOF_METRIC}}"} // DUBAI OPERATIONAL SYSTEMS
           </div>
 
-          <div className="space-y-3">
-            {routingSteps.map(([title, detail], index) => (
-              <div key={title}>
-                <div
-                  className={`flex items-center gap-4 rounded-xl border p-3.5 transition-all duration-300 ${
-                    index <= activeStep
-                      ? "border-action-primary/50 bg-action-primary/10"
-                      : "border-border-subtle bg-surface-base/40 opacity-60"
-                  }`}
-                >
-                  <span
-                    className={`grid h-7 w-7 shrink-0 place-items-center rounded-md font-mono text-[11px] tabular-nums ${
-                      index <= activeStep
-                        ? "bg-action-primary text-action-primary-foreground font-bold"
-                        : "border border-border-subtle text-text-muted"
-                    }`}
-                  >
-                    {index <= activeStep ? "✓" : `0${index + 1}`}
-                  </span>
-                  <div>
-                    <p className="text-xs font-mono uppercase tracking-wider text-text-primary font-medium">
-                      {title}
-                    </p>
-                    <p className="mt-0.5 text-xs text-text-muted">{detail}</p>
-                  </div>
-                </div>
+          {/* H1 Two-Tone */}
+          <h1
+            ref={h1Ref}
+            className="reveal-item font-display text-5xl sm:text-6xl lg:text-7xl font-normal leading-[1.05] tracking-tight drop-shadow-lg"
+          >
+            <span className="text-text-primary block">Systems that run.</span>
+            <span className="text-text-muted block">Without you.</span>
+          </h1>
+        </div>
 
-                {index < routingSteps.length - 1 && (
-                  <div className="relative ml-[1.125rem] h-2.5 w-px" aria-hidden="true">
-                    <div
-                      className={`h-full w-px transition-colors duration-300 ${
-                        index < activeStep ? "bg-action-primary/50" : "bg-border-subtle"
-                      }`}
-                    />
-                  </div>
-                )}
-              </div>
-            ))}
+        {/* Right: Founder Contact Card */}
+        <div
+          ref={contactCardRef}
+          className="reveal-item flex items-center gap-4 rounded-xl bg-surface-glass p-3 backdrop-blur-md border border-border-glass shrink-0 max-w-sm"
+        >
+          {portraitError ? (
+            <div className="h-24 w-20 rounded-lg bg-surface-glass-strong border border-border-glass flex items-center justify-center font-mono text-xs font-semibold text-text-muted shrink-0">
+              PN
+            </div>
+          ) : (
+            <img
+              src="/phenyo.avif"
+              alt="Phenyo Ntwayagae, founder of NYG Digital"
+              onError={() => setPortraitError(true)}
+              className="h-24 w-20 rounded-lg object-cover shrink-0"
+            />
+          )}
+
+          <div className="flex flex-col gap-1.5 pr-2">
+            <span className="text-sm font-medium text-text-primary">Talk to Phenyo</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-subtle">
+              Founder, NYG Digital
+            </span>
+
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-1 rounded-full bg-text-primary px-4 py-2 text-xs font-medium text-surface-base hover:opacity-85 transition-opacity focus-ring mt-1.5"
+            >
+              <span>Book 15 minutes</span>
+              <ChevronRight className="h-3.5 w-3.5" />
+            </a>
+
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-muted hover:text-text-primary transition-colors focus-ring rounded-xs underline decoration-border-glass underline-offset-2"
+            >
+              WhatsApp me
+            </a>
           </div>
         </div>
       </div>

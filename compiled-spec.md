@@ -1,6 +1,7 @@
 # Compiled Spec — NYG Digital Cinematic Redesign
 
 ## Page: Home
+
 - Page scene thesis: Monolithic Web Engineering & Systems Automation Stage
 - Signature composition: Widescreen 21:9 ratio interactive flow stage with volumetric light sweep
 - Signature composition source id: `comp-widescreen-stage-01`
@@ -13,6 +14,7 @@
 - Atmosphere/background source id(s): `bg-volumetric-void-01`
 
 ## Entrance Map
+
 - Scene 1 (Hero): Monolithic Fade & Scale Up (700ms `cubic-bezier(0.16, 1, 0.3, 1)`)
 - Scene 2 (Trust): Cinema Credits Ticker
 - Scene 3 (Systems Studio): Glass Console Fade & Slide
@@ -39,7 +41,8 @@
 }
 
 .studio-surface {
-  background: linear-gradient(145deg, oklch(1 0 0 / 0.045), transparent 55%), oklch(0.155 0.014 260 / 0.92);
+  background:
+    linear-gradient(145deg, oklch(1 0 0 / 0.045), transparent 55%), oklch(0.155 0.014 260 / 0.92);
   border: 1px solid oklch(1 0 0 / 0.11);
   border-top: 1px solid oklch(1 0 0 / 0.18);
   border-radius: 1.5rem;
@@ -51,7 +54,10 @@
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid oklch(1 0 0 / 0.09);
   border-top: 1px solid oklch(1 0 0 / 0.15);
-  transition: transform 250ms var(--ease-apple), border-color 250ms var(--ease-apple), box-shadow 250ms var(--ease-apple);
+  transition:
+    transform 250ms var(--ease-apple),
+    border-color 250ms var(--ease-apple),
+    box-shadow 250ms var(--ease-apple);
 }
 
 .glass-gold {
@@ -59,13 +65,18 @@
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid oklch(0.82 0.15 85 / 0.25);
   border-top: 1px solid oklch(0.82 0.15 85 / 0.4);
-  transition: transform 250ms var(--ease-apple), border-color 250ms var(--ease-apple), box-shadow 250ms var(--ease-apple);
+  transition:
+    transform 250ms var(--ease-apple),
+    border-color 250ms var(--ease-apple),
+    box-shadow 250ms var(--ease-apple);
 }
 
 .reveal-on-scroll {
   opacity: 0;
   transform: translateY(22px) scale(0.985);
-  transition: opacity 600ms var(--ease-apple), transform 600ms var(--ease-apple);
+  transition:
+    opacity 600ms var(--ease-apple),
+    transform 600ms var(--ease-apple);
   will-change: opacity, transform;
 }
 
@@ -76,6 +87,7 @@
 ```
 
 ## External Library Decision
+
 - Q1: Core motion experience: Apple/Villeneuve fluid spring scroll reveals + kinetic control console transitions.
 - Q2: Native CSS + Tailwind + Lucide React icons accomplish this with zero extra bundle bloat.
 - Q3: Build natively using `IntersectionObserver`, CSS variable tokens, and hardware-accelerated transforms.

@@ -42,7 +42,10 @@ export function RoiCalculator() {
           {/* Slider 1: Manual Hours */}
           <div className="rounded-xl border border-neutral-300 bg-neutral-50/80 p-4 space-y-3">
             <div className="flex justify-between items-center text-xs font-mono">
-              <label htmlFor="roi-hours" className="flex items-center gap-2 text-neutral-950 font-semibold">
+              <label
+                htmlFor="roi-hours"
+                className="flex items-center gap-2 text-neutral-950 font-semibold"
+              >
                 <Clock className="h-3.5 w-3.5 text-brand-600" /> MANUAL HOURS / WEEK
               </label>
               <span className="font-mono text-brand-600 font-bold px-2.5 py-0.5 rounded-full bg-brand-50 border border-brand-200 text-xs">
@@ -69,7 +72,10 @@ export function RoiCalculator() {
           {/* Slider 2: Team Size */}
           <div className="rounded-xl border border-neutral-300 bg-neutral-50/80 p-4 space-y-3">
             <div className="flex justify-between items-center text-xs font-mono">
-              <label htmlFor="roi-team" className="flex items-center gap-2 text-neutral-950 font-semibold">
+              <label
+                htmlFor="roi-team"
+                className="flex items-center gap-2 text-neutral-950 font-semibold"
+              >
                 <Users className="h-3.5 w-3.5 text-brand-600" /> TEAM SIZE
               </label>
               <span className="font-mono text-brand-600 font-bold px-2.5 py-0.5 rounded-full bg-brand-50 border border-brand-200 text-xs">
@@ -96,7 +102,10 @@ export function RoiCalculator() {
           {/* Slider 3: Hourly Rate */}
           <div className="rounded-xl border border-neutral-300 bg-neutral-50/80 p-4 space-y-3">
             <div className="flex justify-between items-center text-xs font-mono">
-              <label htmlFor="roi-rate" className="flex items-center gap-2 text-neutral-950 font-semibold">
+              <label
+                htmlFor="roi-rate"
+                className="flex items-center gap-2 text-neutral-950 font-semibold"
+              >
                 <DollarSign className="h-3.5 w-3.5 text-brand-600" /> HOURLY COST ($ USD)
               </label>
               <span className="font-mono text-brand-600 font-bold px-2.5 py-0.5 rounded-full bg-brand-50 border border-brand-200 text-xs">
@@ -123,7 +132,10 @@ export function RoiCalculator() {
           {/* Slider 4: Automation Potential */}
           <div className="rounded-xl border border-neutral-300 bg-neutral-50/80 p-4 space-y-3">
             <div className="flex justify-between items-center text-xs font-mono">
-              <label htmlFor="roi-pct" className="flex items-center gap-2 text-neutral-950 font-semibold">
+              <label
+                htmlFor="roi-pct"
+                className="flex items-center gap-2 text-neutral-950 font-semibold"
+              >
                 <Zap className="h-3.5 w-3.5 text-brand-600" /> AUTOMATION TARGET (%)
               </label>
               <span className="font-mono text-brand-600 font-bold px-2.5 py-0.5 rounded-full bg-brand-50 border border-brand-200 text-xs">
@@ -179,7 +191,9 @@ export function RoiCalculator() {
               </div>
 
               <div className="rounded-xl border border-action-primary/40 bg-action-primary/10 p-4">
-                <div className="text-xs text-action-primary font-mono font-semibold">ANNUAL VALUE</div>
+                <div className="text-xs text-action-primary font-mono font-semibold">
+                  ANNUAL VALUE
+                </div>
                 <div className="text-2xl font-mono font-bold text-text-primary mt-1 tabular-nums">
                   {formatCurrency(annualSavings)}
                 </div>

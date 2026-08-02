@@ -1,10 +1,18 @@
 import { useEffect, useRef, useState } from "react";
+import { useLocation } from "@tanstack/react-router";
 
 export function AmbientBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const location = useLocation();
+
+  // Hero route manages its own background video/canvas context.
+  // Ambient Three.js shader MUST NOT run simultaneously on the home route.
+  const isHeroRoute = location.pathname === "/";
 
   useEffect(() => {
+    if (isHeroRoute) return;
+
     let cleanupFn: (() => void) | undefined;
     let isCancelled = false;
 
@@ -20,9 +28,8 @@ export function AmbientBackground() {
 
         try {
           // Dynamic ESM import of the WebGL renderer bundle
-          const { initAmbientRenderer, isSupportedHardware } = await import(
-            "@/lib/ambient-renderer"
-          );
+          const { initAmbientRenderer, isSupportedHardware } =
+            await import("@/lib/ambient-renderer");
 
           if (isCancelled || !isSupportedHardware()) return;
 
@@ -32,7 +39,7 @@ export function AmbientBackground() {
             }
           });
         } catch (err) {
-          console.warn("Ambient WebGL background skipped (Layer 1 CSS active):", err);
+          console.warn("Ambient WebGL background skipped:", err);
         }
       });
     };
@@ -45,7 +52,11 @@ export function AmbientBackground() {
         cleanupFn();
       }
     };
-  }, []);
+  }, [isHeroRoute]);
+
+  if (isHeroRoute) {
+    return null;
+  }
 
   return (
     <div

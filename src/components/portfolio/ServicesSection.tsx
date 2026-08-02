@@ -69,18 +69,14 @@ export function ServicesSection() {
                   <span className="font-mono text-[11px] uppercase tracking-widest text-text-muted block mb-2 font-medium">
                     01 // Challenge
                   </span>
-                  <p className="text-sm text-text-muted leading-relaxed">
-                    {service.problem}
-                  </p>
+                  <p className="text-sm text-text-muted leading-relaxed">{service.problem}</p>
                 </div>
 
                 <div>
                   <span className="font-mono text-[11px] uppercase tracking-widest text-action-primary block mb-2 font-medium">
                     02 // Solution
                   </span>
-                  <p className="text-sm text-text-muted leading-relaxed">
-                    {service.solution}
-                  </p>
+                  <p className="text-sm text-text-muted leading-relaxed">{service.solution}</p>
                 </div>
 
                 <div>

@@ -14,13 +14,13 @@ export function AboutSection() {
         {/* Short text block */}
         <div className="space-y-6 text-sm sm:text-base leading-relaxed text-text-secondary">
           <p>
-            NYG Digital is a focused automation and web-systems studio for service businesses that need
-            practical operational improvements without agency layers or overhead.
+            NYG Digital is a focused automation and web-systems studio for service businesses that
+            need practical operational improvements without agency layers or overhead.
           </p>
           <p>
-            You work directly with the engineer mapping your workflow, designing the user interface, and
-            connecting the APIs. Decisions stay transparent, delivery stays accountable, and every system
-            is built around how your business actually operates.
+            You work directly with the engineer mapping your workflow, designing the user interface,
+            and connecting the APIs. Decisions stay transparent, delivery stays accountable, and
+            every system is built around how your business actually operates.
           </p>
 
           <div className="grid gap-6 pt-6 sm:grid-cols-3 border-t border-border-subtle">
@@ -29,9 +29,7 @@ export function AboutSection() {
                 <span className="font-mono text-[11px] uppercase tracking-widest text-action-primary block mb-1 font-semibold">
                   0{idx + 1} // {pillar.title}
                 </span>
-                <p className="text-xs leading-relaxed text-text-muted">
-                  {pillar.desc}
-                </p>
+                <p className="text-xs leading-relaxed text-text-muted">{pillar.desc}</p>
               </div>
             ))}
           </div>

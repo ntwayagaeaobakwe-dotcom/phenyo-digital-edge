@@ -2,8 +2,8 @@
 
 - Entry mode: Surprise me (Director & Film curation)
 - Genre: Sci-Fi / Monolithic Architecture
-- Director: Denis Villeneuve (*Blade Runner 2049*, *Dune*, *Arrival*)
-- Film: *Blade Runner 2049* (Volumetric light, 100vh scale, deep atmospheric void)
+- Director: Denis Villeneuve (_Blade Runner 2049_, _Dune_, _Arrival_)
+- Film: _Blade Runner 2049_ (Volumetric light, 100vh scale, deep atmospheric void)
 - Niche: Business Automation & Conversion Web Engineering
 - Pages: Home (Single-page cinematic experience with modular interactive scenes)
 - Major page roles: Monolithic Stage (Hero), Kinetic Console (System Studio), Service Vault (Capabilities), Project Archives (Case Studies), Metric Simulator (ROI Calculator), Transmission Terminal (Contact)
@@ -24,11 +24,13 @@
 ## Research Notes
 
 ### Research Boundary
+
 - Film research is observational input, not a spec.
 - What is being translated into web language: Massive scale, dramatic volumetric lighting, high-contrast dark space, editorial serif typography (Fraunces), film letterboxing.
 - What must not be flattened into product-template logic: Replacing bespoke section stages with repetitive grid cards.
 
 ### Film Palette
+
 - Primary: `oklch(0.82 0.15 85)` (Amber / Metallic Gold Volumetric Light)
 - Secondary: `oklch(0.18 0.015 260)` (Slate Void Monolith)
 - Accent: `oklch(0.78 0.16 195)` (Cyan Cyber Signal)
@@ -36,6 +38,7 @@
 - Text: `oklch(0.98 0.005 250)` (Razor Platinum White)
 
 ### Director Signatures (Denis Villeneuve)
+
 1. **Monolithic Scale & Viewport Framing**: 100vh stages with full-bleed dramatic scale and letterboxed widescreen media.
 2. **Volumetric Atmospheric Light**: Fog, light rays, and gradient glows piercing deep shadow voids.
 3. **Architectural Restraint**: Minimalist geometric precision, zero clutter, high-impact serif typography (Fraunces).

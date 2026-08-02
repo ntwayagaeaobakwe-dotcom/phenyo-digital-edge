@@ -3,13 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import {
-  Mail,
-  Phone,
-  Send,
-  CheckCircle,
-  Loader2,
-} from "lucide-react";
+import { Mail, Phone, Send, CheckCircle, Loader2 } from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS, FORM_BUDGET_OPTIONS } from "@/data/portfolio-data";
 
 const contactSchema = z.object({
@@ -19,7 +13,10 @@ const contactSchema = z.object({
   budget: z.string().optional(),
   message: z
     .string()
-    .min(5, "Please describe what is taking too much time or holding your business back (at least 5 characters)"),
+    .min(
+      5,
+      "Please describe what is taking too much time or holding your business back (at least 5 characters)",
+    ),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -262,7 +259,10 @@ export function ContactSection() {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit(onSubmit, onValidationError)} className="space-y-4 font-mono text-xs">
+                <form
+                  onSubmit={handleSubmit(onSubmit, onValidationError)}
+                  className="space-y-4 font-mono text-xs"
+                >
                   <div className="uppercase tracking-widest text-action-primary font-semibold pb-2 border-b border-border-subtle flex justify-between items-center">
                     <span>[ INQUIRY_FORM ]</span>
                     <span className="text-text-muted/60 text-[10px]">GUARANTEED SLA &lt; 24H</span>
@@ -283,11 +283,15 @@ export function ContactSection() {
                       aria-invalid={Boolean(errors.name)}
                       {...register("name")}
                       className={`w-full rounded-lg bg-surface-overlay/80 border px-3.5 py-3 text-base sm:text-xs text-text-primary font-sans focus-ring transition-colors ${
-                        errors.name ? "border-status-danger text-status-danger" : "border-border-default"
+                        errors.name
+                          ? "border-status-danger text-status-danger"
+                          : "border-border-default"
                       }`}
                     />
                     {errors.name && (
-                      <p className="text-status-danger mt-1 text-[11px] font-sans">{errors.name.message}</p>
+                      <p className="text-status-danger mt-1 text-[11px] font-sans">
+                        {errors.name.message}
+                      </p>
                     )}
                   </div>
 
@@ -306,11 +310,15 @@ export function ContactSection() {
                       aria-invalid={Boolean(errors.email)}
                       {...register("email")}
                       className={`w-full rounded-lg bg-surface-overlay/80 border px-3.5 py-3 text-base sm:text-xs text-text-primary font-sans focus-ring transition-colors ${
-                        errors.email ? "border-status-danger text-status-danger" : "border-border-default"
+                        errors.email
+                          ? "border-status-danger text-status-danger"
+                          : "border-border-default"
                       }`}
                     />
                     {errors.email && (
-                      <p className="text-status-danger mt-1 text-[11px] font-sans">{errors.email.message}</p>
+                      <p className="text-status-danger mt-1 text-[11px] font-sans">
+                        {errors.email.message}
+                      </p>
                     )}
                   </div>
 
@@ -328,7 +336,11 @@ export function ContactSection() {
                       className="w-full rounded-lg bg-surface-overlay/80 border border-border-default px-3.5 py-3 text-base sm:text-xs text-text-primary font-sans focus-ring"
                     >
                       {FORM_SERVICE_OPTIONS.map((svc) => (
-                        <option key={svc} value={svc} className="bg-surface-raised text-text-primary">
+                        <option
+                          key={svc}
+                          value={svc}
+                          className="bg-surface-raised text-text-primary"
+                        >
                           {svc}
                         </option>
                       ))}
@@ -350,11 +362,15 @@ export function ContactSection() {
                       aria-invalid={Boolean(errors.message)}
                       {...register("message")}
                       className={`w-full rounded-lg bg-surface-overlay/80 border px-3.5 py-3 text-base sm:text-xs text-text-primary font-sans resize-none focus-ring transition-colors ${
-                        errors.message ? "border-status-danger text-status-danger" : "border-border-default"
+                        errors.message
+                          ? "border-status-danger text-status-danger"
+                          : "border-border-default"
                       }`}
                     />
                     {errors.message && (
-                      <p className="text-status-danger mt-1 text-[11px] font-sans">{errors.message.message}</p>
+                      <p className="text-status-danger mt-1 text-[11px] font-sans">
+                        {errors.message.message}
+                      </p>
                     )}
                   </div>
 

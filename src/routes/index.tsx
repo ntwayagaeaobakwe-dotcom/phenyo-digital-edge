@@ -1,7 +1,9 @@
 import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
+import { ScrollVideo } from "@/components/portfolio/ScrollVideo";
 import { Navbar } from "@/components/portfolio/Navbar";
 import { HeroSection } from "@/components/portfolio/HeroSection";
+import { CapabilitySection } from "@/components/portfolio/CapabilitySection";
 import { DemoSkeleton } from "@/components/portfolio/DemoSkeleton";
 import { TrustBar } from "@/components/portfolio/TrustBar";
 import { ServicesSection } from "@/components/portfolio/ServicesSection";
@@ -28,7 +30,7 @@ const BottleneckConfigurator = lazy(() =>
 const SITE_URL = getSiteUrl();
 const PAGE_TITLE = "NYG Digital | Business Automation & Conversion-Focused Websites";
 const PAGE_DESC =
-  "NYG Digital helps service businesses explain their offer clearly, capture better inquiries, and connect follow-up work with websites and automation.";
+  "NYG Digital helps Dubai operators remove manual work from lead follow-up, scheduling, and reporting with custom automation and web systems.";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -118,42 +120,55 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="relative min-h-screen bg-surface-base text-text-primary overflow-x-clip">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-action-primary focus:text-action-primary-foreground focus:rounded-full focus:shadow-2xl focus-ring font-mono text-xs uppercase tracking-widest font-semibold min-h-[44px] inline-flex items-center"
-      >
-        Skip to main content
-      </a>
-      <Navbar />
-      <main id="main-content" tabIndex={-1} className="outline-none">
-        <HeroSection />
-        <TrustBar />
-        <Suspense
-          fallback={
-            <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-              <DemoSkeleton className="h-[420px]" />
-            </div>
-          }
+      {/* Scroll-scrubbed background video layer */}
+      <ScrollVideo />
+
+      <div className="relative z-10">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-text-primary focus:text-surface-base focus:rounded-full focus:shadow-2xl focus-ring font-mono text-xs uppercase tracking-widest font-semibold min-h-[44px] inline-flex items-center"
         >
-          <SystemStudio />
-        </Suspense>
-        <ServicesSection />
-        <Suspense
-          fallback={
-            <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-              <DemoSkeleton className="h-[460px]" />
-            </div>
-          }
-        >
-          <BottleneckConfigurator />
-        </Suspense>
-        <ProjectsSection />
-        <RoiCalculator />
-        <AboutSection />
-        <ExperienceSection />
-        <ContactSection />
-      </main>
-      <FooterSection />
+          Skip to main content
+        </a>
+        <Navbar />
+        <main id="main-content" tabIndex={-1} className="outline-none">
+          {/* Section One: Hero */}
+          <HeroSection />
+
+          {/* REQUIRED MID SPACER for scrub scroll room */}
+          <div className="h-[80vh]" aria-hidden="true" />
+
+          {/* Section Two: Capability */}
+          <CapabilitySection />
+
+          <TrustBar />
+          <Suspense
+            fallback={
+              <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
+                <DemoSkeleton className="h-[420px]" />
+              </div>
+            }
+          >
+            <SystemStudio />
+          </Suspense>
+          <ServicesSection />
+          <Suspense
+            fallback={
+              <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
+                <DemoSkeleton className="h-[460px]" />
+              </div>
+            }
+          >
+            <BottleneckConfigurator />
+          </Suspense>
+          <ProjectsSection />
+          <RoiCalculator />
+          <AboutSection />
+          <ExperienceSection />
+          <ContactSection />
+        </main>
+        <FooterSection />
+      </div>
     </div>
   );
 }

@@ -297,8 +297,7 @@ export default function Component() {
           position: "absolute",
           inset: 0,
           zIndex: 1,
-          background:
-            "radial-gradient(circle at center,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%)",
+          background: "radial-gradient(circle at center,rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%)",
           pointerEvents: "none",
         }}
       />
@@ -380,7 +379,9 @@ export default function Component() {
 
             <button style={socialBtn}>{GoogleIcon}Continue with Google</button>
             <button style={socialBtn}>{GitHubIcon}Continue with GitHub</button>
-            <button style={{ ...socialBtn, marginBottom: 0 }}>{AppleIcon}Continue with Apple</button>
+            <button style={{ ...socialBtn, marginBottom: 0 }}>
+              {AppleIcon}Continue with Apple
+            </button>
 
             <div style={{ marginTop: "1.25rem", fontSize: "0.875rem", color: "#888" }}>
               Don't have an account?{" "}

@@ -76,7 +76,7 @@ function getDesignPalette(): Vector3[] {
 
 export function initAmbientRenderer(
   canvas: HTMLCanvasElement,
-  onInitialized: () => void
+  onInitialized: () => void,
 ): () => void {
   let isDisposed = false;
   let animFrameId: number | null = null;
@@ -98,11 +98,7 @@ export function initAmbientRenderer(
   // 2. Fullscreen Clip-Space Triangle (3 vertices, itemSize 3, no camera math)
   const geometry = new BufferGeometry();
   // Vertices covering clip-space: (-1,-1,0), (3,-1,0), (-1,3,0)
-  const positions = new Float32Array([
-    -1, -1, 0,
-     3, -1, 0,
-    -1,  3, 0,
-  ]);
+  const positions = new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]);
   geometry.setAttribute("position", new BufferAttribute(positions, 3));
 
   // 3. Uniforms & Design Tokens
@@ -145,10 +141,7 @@ export function initAmbientRenderer(
   };
 
   const handleScroll = () => {
-    const maxScroll = Math.max(
-      1,
-      document.documentElement.scrollHeight - window.innerHeight
-    );
+    const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
     targetScroll = Math.min(1, Math.max(0, window.scrollY / maxScroll));
   };
 

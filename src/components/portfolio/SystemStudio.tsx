@@ -77,8 +77,8 @@ export function SystemStudio() {
       <div className="rounded-2xl border border-neutral-300 bg-surface-inverted p-6 sm:p-8 shadow-sm text-text-inverted-primary">
         <div className="flex flex-col gap-5 border-b border-neutral-300/80 pb-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-2xl text-sm leading-relaxed text-text-inverted-muted font-medium">
-            This simplified system map shows the logic behind practical business automation—what happens,
-            where ownership changes, and which next action is created.
+            This simplified system map shows the logic behind practical business automation—what
+            happens, where ownership changes, and which next action is created.
           </p>
           <div
             className="inline-flex w-fit items-center rounded-xl border border-neutral-300 bg-neutral-200/80 p-1 font-mono text-xs"
@@ -132,7 +132,9 @@ export function SystemStudio() {
                     <p className="mt-4 text-xs font-mono uppercase tracking-wider font-bold text-neutral-950">
                       {title}
                     </p>
-                    <p className="mt-1 text-xs text-neutral-700 leading-relaxed font-medium">{detail}</p>
+                    <p className="mt-1 text-xs text-neutral-700 leading-relaxed font-medium">
+                      {detail}
+                    </p>
                   </div>
                   {index < scenarios[scenario].nodes.length - 1 ? (
                     <div
@@ -177,7 +179,9 @@ export function SystemStudio() {
             <span className="font-mono text-[11px] uppercase tracking-widest text-brand-600 font-bold">
               [ OPERATING_MODEL ]
             </span>
-            <h3 className="mt-3 text-xl font-semibold text-neutral-950">Compare the same process.</h3>
+            <h3 className="mt-3 text-xl font-semibold text-neutral-950">
+              Compare the same process.
+            </h3>
             <p className="mt-3 text-xs leading-relaxed text-neutral-700 font-medium">
               Switch between manual and connected execution to see where automation creates
               consistency rather than complexity.
@@ -209,7 +213,9 @@ export function SystemStudio() {
                 key={row.label}
                 className="grid gap-2 py-3.5 sm:grid-cols-[0.85fr_1.15fr] sm:items-center"
               >
-                <span className="font-mono text-xs uppercase tracking-wider text-neutral-700 font-medium">{row.label}</span>
+                <span className="font-mono text-xs uppercase tracking-wider text-neutral-700 font-medium">
+                  {row.label}
+                </span>
                 <span className="flex items-center gap-2 text-xs font-semibold text-neutral-950">
                   {comparison === "automated" ? (
                     <CheckCircle2 className="h-4 w-4 shrink-0 text-success-600" />

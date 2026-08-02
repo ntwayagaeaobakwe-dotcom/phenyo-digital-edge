@@ -71,9 +71,7 @@ export function ProjectsSection() {
                   <span className="font-mono text-[11px] uppercase tracking-widest text-action-primary block mb-2 font-medium">
                     WHAT WAS BUILT
                   </span>
-                  <p className="text-sm text-text-secondary leading-relaxed">
-                    {project.solution}
-                  </p>
+                  <p className="text-sm text-text-secondary leading-relaxed">{project.solution}</p>
                 </div>
               </div>
 
@@ -89,7 +87,9 @@ export function ProjectsSection() {
                         key={idx}
                         className="flex items-center gap-2.5 rounded-lg border border-border-subtle bg-surface-overlay/80 p-3"
                       >
-                        <span className="text-action-primary font-bold text-[11px]">0{idx + 1}.</span>
+                        <span className="text-action-primary font-bold text-[11px]">
+                          0{idx + 1}.
+                        </span>
                         <span className="text-text-muted leading-snug">{step}</span>
                       </div>
                     ))}

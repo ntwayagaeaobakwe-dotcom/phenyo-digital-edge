@@ -14,7 +14,8 @@ export function FooterSection() {
               NYG
             </span>
             <span className="font-mono text-xs uppercase tracking-widest">
-              {PERSONAL_INFO.name}<span className="text-action-primary">.</span>
+              {PERSONAL_INFO.name}
+              <span className="text-action-primary">.</span>
             </span>
           </a>
           <span className="text-border-subtle">|</span>
