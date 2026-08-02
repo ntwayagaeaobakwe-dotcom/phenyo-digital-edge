@@ -38,18 +38,18 @@ export function ProjectsSection() {
         </>
       }
     >
-      <div className="grid gap-6">
+      <div className="grid gap-6 perspective-1000">
         {PROJECTS.map((project, index) => (
           <article
             key={project.id}
-            className="studio-surface p-7 lg:p-9 group relative overflow-hidden transition-all"
+            className="studio-surface card-3d-hover p-7 lg:p-9 group relative overflow-hidden transition-all"
           >
             <div
               className={`absolute inset-0 -z-10 bg-gradient-to-br ${project.accent} opacity-60`}
             />
             <div className="space-y-6">
               {/* Header with Title and Status */}
-              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4">
+              <div className="flex flex-wrap items-center justify-between gap-3 border-b border-border/60 pb-4 translate-z-12">
                 <div className="flex items-center gap-3">
                   <span className="text-xs font-mono text-primary font-bold">0{index + 1}</span>
                   <h3 className="font-display text-2xl lg:text-3xl font-semibold text-foreground">
@@ -59,7 +59,7 @@ export function ProjectsSection() {
                 <span
                   className={`text-xs font-mono px-3 py-1 rounded-full border ${getStatusBadgeStyle(
                     project.status,
-                  )} font-semibold`}
+                  )} font-semibold translate-z-24 shadow-md`}
                 >
                   {project.status}
                 </span>

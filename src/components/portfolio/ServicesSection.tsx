@@ -31,17 +31,17 @@ export function ServicesSection() {
         </>
       }
     >
-      <div className="grid gap-6">
-        {SERVICES.map((service, index) => {
-          const IconComponent = iconMap[service.iconName] || Workflow;
+      <div className="grid gap-8 perspective-1000">
+        {SERVICES.map((service) => {
+          const IconComponent = iconMap[service.iconName] || Code2;
           return (
             <div
-              key={service.title}
-              className="glass glass-hover rounded-2xl p-6 sm:p-8 transition-all border border-border/80 relative overflow-hidden"
+              key={service.id}
+              className="glass card-3d-hover rounded-2xl p-6 sm:p-8 border border-border/80 relative overflow-hidden"
             >
-              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-border/60 pb-5">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-border/60 pb-5 translate-z-12">
                 <div className="flex items-center gap-3.5">
-                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-primary-foreground font-bold shrink-0 shadow-md">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary text-primary-foreground font-bold shrink-0 shadow-md translate-z-12">
                     <IconComponent className="h-6 w-6" aria-hidden="true" />
                   </div>
                   <div>

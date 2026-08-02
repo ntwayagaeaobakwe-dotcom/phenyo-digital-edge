@@ -90,32 +90,33 @@ export function HeroSection() {
           </div>
         </div>
 
-        <div className="studio-surface relative overflow-hidden p-5 sm:p-7">
-          <div className="flex items-center justify-between border-b border-border/60 pb-4">
-            <div>
-              <p className="font-mono text-[11px] text-primary">CONVERSION FLOW</p>
-              <p className="mt-1 text-sm font-semibold">From visitor to follow-up</p>
+        <div className="perspective-1000">
+          <div className="studio-surface card-3d-hover relative overflow-hidden p-5 sm:p-7">
+            <div className="flex items-center justify-between border-b border-border/60 pb-4 translate-z-12">
+              <div>
+                <p className="font-mono text-[11px] text-primary font-bold">CONVERSION FLOW</p>
+                <p className="mt-1 text-sm font-semibold">From visitor to follow-up</p>
+              </div>
+              <button
+                type="button"
+                onClick={() => setRunId((current) => current + 1)}
+                className="grid h-9 w-9 place-items-center rounded-full border border-border/70 text-muted-foreground active:scale-95 transition-all duration-150 hover:border-primary/40 hover:text-primary cursor-pointer"
+                aria-label="Replay inquiry routing preview"
+              >
+                <Play className="h-4 w-4" />
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => setRunId((current) => current + 1)}
-              className="grid h-9 w-9 place-items-center rounded-full border border-border/70 text-muted-foreground active:scale-95 transition-all duration-150 hover:border-primary/40 hover:text-primary cursor-pointer"
-              aria-label="Replay inquiry routing preview"
-            >
-              <Play className="h-4 w-4" />
-            </button>
-          </div>
 
-          <div className="mt-6">
-            {routingSteps.map(([title, detail], index) => (
-              <div key={title}>
-                <div
-                  className={`flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 ${
-                    index <= activeStep
-                      ? "border-primary/40 bg-primary/[0.08]"
-                      : "border-border/60 bg-black/20"
-                  }`}
-                >
+            <div className="mt-6">
+              {routingSteps.map(([title, detail], index) => (
+                <div key={title}>
+                  <div
+                    className={`flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 translate-z-12 ${
+                      index <= activeStep
+                        ? "border-primary/40 bg-primary/[0.08] shadow-md"
+                        : "border-border/60 bg-black/20"
+                    }`}
+                  >
                   <span
                     className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-mono text-xs tabular-nums ${
                       index <= activeStep
@@ -158,6 +159,7 @@ export function HeroSection() {
           </p>
         </div>
       </div>
+    </div>
     </section>
   );
 }
