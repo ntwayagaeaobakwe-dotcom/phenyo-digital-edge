@@ -68,21 +68,20 @@ export function SystemStudio() {
     <SectionShell
       id="system-studio"
       eyebrow="Interactive system studio"
-      title={
-        <>
-          See how work moves from request to{" "}
-          <span className="text-gradient-gold">organized next action.</span>
-        </>
-      }
+      iconGlyph="02"
+      isPale={true}
+      declarativeTitle="See how work moves"
+      qualifierTitle="from initial request to organized next action."
     >
-      <div className="studio-surface overflow-hidden">
-        <div className="flex flex-col gap-5 border-b border-border/60 p-5 sm:flex-row sm:items-center sm:justify-between sm:p-7">
-          <p className="max-w-2xl text-base leading-relaxed text-muted-foreground">
-            This simplified system map shows the logic behind a practical automation—what happens,
+      {/* Pale Inverted High-Contrast Surface */}
+      <div className="rounded-2xl border border-slate-300/80 bg-white p-6 sm:p-8 shadow-sm">
+        <div className="flex flex-col gap-5 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
+          <p className="max-w-2xl text-sm leading-relaxed text-slate-600">
+            This simplified system map shows the logic behind practical business automation—what happens,
             where ownership changes, and which next action is created.
           </p>
           <div
-            className="inline-flex w-fit rounded-xl border border-border/70 bg-black/25 p-1"
+            className="inline-flex w-fit rounded-lg border border-slate-200 bg-slate-100 p-1 font-mono text-xs"
             aria-label="System scenario"
           >
             {(Object.keys(scenarios) as ScenarioKey[]).map((key) => (
@@ -91,10 +90,10 @@ export function SystemStudio() {
                 type="button"
                 aria-pressed={scenario === key}
                 onClick={() => switchScenario(key)}
-                className={`rounded-lg px-3 py-2 text-xs font-semibold transition-colors ${
+                className={`rounded-md px-3.5 py-1.5 font-medium transition-colors uppercase tracking-wider ${
                   scenario === key
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-slate-900 text-white"
+                    : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 {scenarios[key].label}
@@ -103,59 +102,48 @@ export function SystemStudio() {
           </div>
         </div>
 
-        <div className="p-5 sm:p-8">
+        <div className="pt-6">
           <div className="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
             {scenarios[scenario].nodes.map(([title, detail], index) => {
               const complete = index <= activeStep;
               return (
                 <div key={title} className="contents">
                   <div
-                    className={`min-h-32 rounded-2xl border p-4 transition-all duration-300 ${
+                    className={`min-h-28 rounded-xl border p-4 transition-all duration-300 ${
                       complete
-                        ? "border-primary/45 bg-primary/[0.08] shadow-[0_18px_55px_-40px_var(--gold)]"
-                        : "border-border/60 bg-black/20"
+                        ? "border-blue-500/50 bg-blue-50/70"
+                        : "border-slate-200 bg-slate-50/50"
                     }`}
                   >
                     <div className="flex items-start justify-between gap-3">
-                      <span className="font-mono text-[11px] text-muted-foreground">
+                      <span className="font-mono text-[11px] text-slate-400 font-medium">
                         0{index + 1}
                       </span>
                       <span
-                        className={`grid h-6 w-6 place-items-center rounded-full border text-[10px] ${
+                        className={`grid h-5 w-5 place-items-center rounded-full text-[10px] ${
                           complete
-                            ? "border-primary bg-primary text-primary-foreground"
-                            : "border-border text-muted-foreground"
+                            ? "bg-blue-600 text-white font-bold"
+                            : "border border-slate-300 text-slate-400"
                         }`}
                       >
-                        {complete ? <Check className="h-3.5 w-3.5" /> : index + 1}
+                        {complete ? <Check className="h-3 w-3" /> : index + 1}
                       </span>
                     </div>
-                    <p className="mt-5 text-sm font-semibold leading-snug">{title}</p>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{detail}</p>
+                    <p className="mt-4 text-xs font-mono uppercase tracking-wider font-semibold text-slate-900">
+                      {title}
+                    </p>
+                    <p className="mt-1 text-xs text-slate-600 leading-relaxed">{detail}</p>
                   </div>
                   {index < scenarios[scenario].nodes.length - 1 ? (
                     <div
                       className="relative mx-auto flex h-6 w-6 items-center justify-center lg:h-4 lg:w-6"
                       aria-hidden="true"
                     >
-                      <div
-                        className={`absolute inset-0 m-auto h-full w-px transition-colors duration-300 lg:h-px lg:w-full ${
-                          index < activeStep ? "bg-primary/50" : "bg-border"
-                        }`}
-                      />
                       <ArrowRight
                         className={`relative h-4 w-4 rotate-90 transition-colors duration-300 lg:rotate-0 ${
-                          index < activeStep ? "text-primary" : "text-border"
+                          index < activeStep ? "text-blue-600" : "text-slate-300"
                         }`}
                       />
-                      {/* Traveling pulse: fires once as the flow crosses this
-                          connector, then the line above settles solid gold. */}
-                      {index === activeStep - 1 && (
-                        <span
-                          key={`studio-pulse-${scenario}-${runId}-${index}`}
-                          className="absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_2px_oklch(0.82_0.15_85/0.6)] animate-signal-travel-v"
-                        />
-                      )}
                     </div>
                   ) : null}
                 </div>
@@ -163,19 +151,19 @@ export function SystemStudio() {
             })}
           </div>
 
-          <div className="mt-7 flex flex-col gap-4 border-t border-border/50 pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground">
+          <div className="mt-7 flex flex-col gap-4 border-t border-slate-200 pt-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-2xl text-xs text-slate-600">
               {scenarios[scenario].summary}
             </p>
             <button
               type="button"
               onClick={() => setRunId((current) => current + 1)}
-              className="inline-flex w-fit items-center gap-2 rounded-full border border-primary/35 px-4 py-2 text-sm font-semibold text-primary transition-colors hover:bg-primary/10"
+              className="inline-flex w-fit items-center gap-2 rounded-full border border-slate-300 px-4 py-2 font-mono text-xs uppercase tracking-wider font-semibold text-slate-800 transition-colors hover:bg-slate-100"
             >
               {activeStep === scenarios[scenario].nodes.length - 1 ? (
-                <RotateCcw className="h-4 w-4" />
+                <RotateCcw className="h-3.5 w-3.5" />
               ) : (
-                <Play className="h-4 w-4" />
+                <Play className="h-3.5 w-3.5" />
               )}
               Replay flow
             </button>
@@ -184,26 +172,28 @@ export function SystemStudio() {
       </div>
 
       <div className="mt-8 grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
-        <div className="flex flex-col justify-between rounded-3xl border border-border/70 bg-black/20 p-6 sm:p-8">
+        <div className="flex flex-col justify-between rounded-2xl border border-slate-300 bg-white p-6 sm:p-8">
           <div>
-            <span className="font-mono text-xs text-primary">OPERATING MODEL</span>
-            <h3 className="mt-3 text-2xl font-bold">Compare the same process.</h3>
-            <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-blue-600 font-semibold">
+              OPERATING MODEL
+            </span>
+            <h3 className="mt-3 text-xl font-semibold text-slate-900">Compare the same process.</h3>
+            <p className="mt-3 text-xs leading-relaxed text-slate-600">
               Switch between manual and connected execution to see where automation creates
               consistency rather than complexity.
             </p>
           </div>
-          <div className="mt-7 inline-flex w-fit rounded-xl border border-border/70 bg-black/25 p-1">
+          <div className="mt-6 inline-flex w-fit rounded-lg border border-slate-200 bg-slate-100 p-1 font-mono text-xs">
             {(["manual", "automated"] as const).map((option) => (
               <button
                 key={option}
                 type="button"
                 onClick={() => setComparison(option)}
                 aria-pressed={comparison === option}
-                className={`rounded-lg px-4 py-2 text-sm font-semibold capitalize transition-colors ${
+                className={`rounded-md px-3.5 py-1.5 font-medium uppercase tracking-wider transition-colors ${
                   comparison === option
-                    ? "bg-primary text-primary-foreground"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-slate-900 text-white"
+                    : "text-slate-600 hover:text-slate-900"
                 }`}
               >
                 {option}
@@ -212,28 +202,27 @@ export function SystemStudio() {
           </div>
         </div>
 
-        <div className="studio-surface px-5 sm:px-7">
-          <div className="divide-y divide-border/60">
+        <div className="rounded-2xl border border-slate-300 bg-white p-6 sm:p-8">
+          <div className="divide-y divide-slate-100">
             {comparisonRows.map((row) => (
               <div
                 key={row.label}
-                className="grid gap-2 py-4 sm:grid-cols-[0.85fr_1.15fr] sm:items-center"
+                className="grid gap-2 py-3.5 sm:grid-cols-[0.85fr_1.15fr] sm:items-center"
               >
-                <span className="text-sm text-muted-foreground">{row.label}</span>
-                <span className="flex items-center gap-2 text-sm font-semibold">
+                <span className="font-mono text-xs uppercase tracking-wider text-slate-500">{row.label}</span>
+                <span className="flex items-center gap-2 text-xs font-semibold text-slate-900">
                   {comparison === "automated" ? (
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-primary" />
+                    <CheckCircle2 className="h-4 w-4 shrink-0 text-blue-600" />
                   ) : (
-                    <CircleAlert className="h-4 w-4 shrink-0 text-amber-400" />
+                    <CircleAlert className="h-4 w-4 shrink-0 text-amber-500" />
                   )}
                   {comparison === "automated" ? row.automated : row.manual}
                 </span>
               </div>
             ))}
           </div>
-          <p className="border-t border-border/60 py-4 text-xs leading-relaxed text-muted-foreground">
-            Illustrative benchmarks only. Actual results depend on process complexity, connected
-            tools, and team adoption.
+          <p className="border-t border-slate-200 mt-2 pt-3 font-mono text-[11px] text-slate-400">
+            Illustrative benchmarks. Actual results depend on process complexity and adoption.
           </p>
         </div>
       </div>

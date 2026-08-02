@@ -3,35 +3,39 @@ import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 interface SectionShellProps {
   id: string;
   eyebrow: string;
-  title: React.ReactNode;
+  title?: React.ReactNode;
+  declarativeTitle?: string;
+  qualifierTitle?: string;
   children: React.ReactNode;
   className?: string;
   hasDivider?: boolean;
+  isPale?: boolean;
+  iconGlyph?: string;
+  maxWidthClass?: string;
 }
 
-// Avoids a "useLayoutEffect does nothing on the server" warning during SSR.
 const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 export function SectionShell({
   id,
   eyebrow,
   title,
+  declarativeTitle,
+  qualifierTitle,
   children,
   className = "",
   hasDivider = true,
+  isPale = false,
+  iconGlyph = "+",
+  maxWidthClass = "max-w-6xl",
 }: SectionShellProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  // Default to visible so SSR output and no-JS clients always show full content.
   const [revealState, setRevealState] = useState<"visible" | "hidden">("visible");
 
-  // Before first paint: if the section starts off-screen, hide it so the reveal
-  // animation can play when it scrolls into view. Runs pre-paint to avoid a
-  // visible-then-hidden flash on load.
   useIsomorphicLayoutEffect(() => {
     const el = sectionRef.current;
     if (!el) return;
 
-    // Reduced motion safeguard: keep visible if user prefers reduced motion
     const prefersReducedMotion =
       typeof window !== "undefined" &&
       window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -56,7 +60,7 @@ export function SectionShell({
           }
         }
       },
-      { threshold: 0.12 },
+      { threshold: 0.1 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -67,31 +71,55 @@ export function SectionShell({
       ? "opacity-100 translate-y-0 scale-100"
       : "opacity-0 translate-y-6 scale-[0.985]";
 
+  const bgClasses = isPale
+    ? "bg-[#edf2f7] text-slate-900 border-slate-300/60"
+    : "text-foreground border-border/30";
+
   return (
     <section
       ref={sectionRef}
       id={id}
-      className={`scroll-target relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[opacity,transform] ${revealClasses}`}
+      className={`scroll-target relative py-24 sm:py-36 ${
+        hasDivider ? "border-t" : ""
+      } ${bgClasses} ${className} transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[opacity,transform] ${revealClasses}`}
     >
-      {/* Subtle radial glow in background */}
-      <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 h-80 w-[600px] rounded-full bg-primary/5 blur-3xl opacity-60" />
-      </div>
-
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="mb-12 max-w-3xl">
-          <div className="inline-flex items-center gap-2.5 text-xs font-mono uppercase tracking-widest text-primary font-semibold">
-            <span className="h-px w-8 bg-gradient-to-r from-primary to-transparent" />
-            <span>{eyebrow}</span>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        {/* Section Anatomy: Centered narrow heading block (max ~600px) */}
+        <div className="mx-auto max-w-[620px] text-center mb-16 sm:mb-20">
+          {/* (a) Small technical glyph or icon */}
+          <div className="inline-flex items-center justify-center font-mono text-xs text-muted-foreground/50 mb-3 select-none">
+            <span>[ {iconGlyph} ]</span>
           </div>
+
+          {/* Eyebrow Label */}
+          <div className="block font-mono text-[11px] uppercase tracking-widest text-muted-foreground/70 mb-3">
+            {eyebrow}
+          </div>
+
+          {/* Two-tone Heading: declarative clause (full opacity) + qualifying clause (muted gray), same line */}
           <h2
             tabIndex={-1}
-            className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.01em] outline-none"
+            className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.12] outline-none"
           >
-            {title}
+            {declarativeTitle ? (
+              <>
+                <span className={isPale ? "text-slate-950" : "text-foreground"}>
+                  {declarativeTitle}
+                </span>{" "}
+                {qualifierTitle && (
+                  <span className={isPale ? "text-slate-500 font-normal" : "text-muted-foreground/60 font-normal"}>
+                    {qualifierTitle}
+                  </span>
+                )}
+              </>
+            ) : (
+              title
+            )}
           </h2>
         </div>
-        {children}
+
+        {/* (d) Wide or asymmetric visual panel container below */}
+        <div className={`mx-auto ${maxWidthClass}`}>{children}</div>
       </div>
     </section>
   );

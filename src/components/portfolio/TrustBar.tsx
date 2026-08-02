@@ -10,20 +10,18 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 export function TrustBar() {
   return (
-    <div className="border-b border-border/40 py-6">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="border-y border-border/30 py-8 bg-slate-950/20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+        <div className="flex flex-wrap items-center justify-between gap-6 sm:gap-10">
           {TRUST_SIGNALS.map((item) => {
             const Icon = iconMap[item.iconName] ?? Clock;
             return (
               <div
                 key={item.label}
-                className="glass rounded-xl px-4 py-3 flex items-center gap-3 border border-border/60"
+                className="flex items-center gap-3 text-muted-foreground/60 hover:text-muted-foreground transition-colors"
               >
-                <div className="grid h-8 w-8 place-items-center rounded-lg bg-primary/10 text-primary shrink-0 border border-primary/20">
-                  <Icon className="h-4 w-4" aria-hidden="true" />
-                </div>
-                <span className="text-xs sm:text-sm font-medium text-foreground leading-tight">
+                <Icon className="h-4 w-4 shrink-0" aria-hidden="true" />
+                <span className="font-mono text-xs uppercase tracking-wider font-medium">
                   {item.label}
                 </span>
               </div>

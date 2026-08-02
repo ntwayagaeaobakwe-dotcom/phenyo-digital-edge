@@ -138,6 +138,14 @@
   font-size: clamp(2.75rem, 6vw, 5.55rem);
 }
 
+@utility ambient-bg-layer1 {
+  background:
+    radial-gradient(ellipse 80% 60% at 20% -10%, oklch(0.74 0.19 230 / 0.18), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 85% 90%, oklch(0.18 0.04 265 / 0.45), transparent 70%),
+    radial-gradient(ellipse 60% 70% at 50% 50%, oklch(0.88 0.12 225 / 0.06), transparent 50%),
+    linear-gradient(180deg, oklch(0.09 0.012 260) 0%, oklch(0.07 0.01 260) 100%);
+}
+
 @utility studio-surface {
   background:
     linear-gradient(145deg, oklch(1 0 0 / 0.045), transparent 55%), oklch(0.13 0.014 260 / 0.92);

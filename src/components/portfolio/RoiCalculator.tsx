@@ -25,33 +25,27 @@ export function RoiCalculator() {
   return (
     <SectionShell
       id="roi-calculator"
-      eyebrow="Estimate Your Savings"
-      title={
-        <>
-          See How Much Time Automation{" "}
-          <span className="text-gradient-gold">Could Save Your Team</span>
-        </>
-      }
+      eyebrow="ROI Calculator"
+      iconGlyph="06"
+      isPale={true}
+      declarativeTitle="Estimate your operational return"
+      qualifierTitle="by replacing repetitive manual tasks with connected workflows."
     >
-      <div className="text-muted-foreground text-lg max-w-2xl -mt-6 mb-10 leading-relaxed">
-        Estimate how many hours and dollars your business could save by replacing manual tasks with
-        automated workflows.
-      </div>
-
-      <div className="glass rounded-3xl p-6 sm:p-10 border border-primary/20 shadow-[var(--shadow-elegant)] grid lg:grid-cols-2 gap-10">
+      <div className="rounded-2xl border border-slate-300 bg-white p-6 sm:p-10 shadow-sm grid lg:grid-cols-2 gap-10">
         {/* Left Column: Input Sliders */}
         <div className="space-y-6">
-          <div className="flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-primary font-semibold border-b border-border/60 pb-3">
-            <Calculator className="h-4 w-4" /> Operational Parameters
+          <div className="flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-slate-700 font-semibold border-b border-slate-200 pb-3">
+            <Calculator className="h-4 w-4 text-blue-600" />
+            <span>[ OPERATIONAL_INPUTS ]</span>
           </div>
 
           {/* Slider 1: Manual Hours */}
-          <div className="glass p-4 rounded-2xl border border-border/60 space-y-3">
-            <div className="flex justify-between items-center text-sm font-medium">
-              <label htmlFor="roi-hours" className="flex items-center gap-2 text-foreground">
-                <Clock className="h-4 w-4 text-primary" /> Manual Hours / Week (per person)
+          <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-3">
+            <div className="flex justify-between items-center text-xs font-mono">
+              <label htmlFor="roi-hours" className="flex items-center gap-2 text-slate-700 font-semibold">
+                <Clock className="h-3.5 w-3.5 text-blue-600" /> MANUAL HOURS / WEEK
               </label>
-              <span className="font-mono text-primary font-bold px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-xs">
+              <span className="font-mono text-blue-600 font-bold px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-xs">
                 {hoursPerWeek} hrs/wk
               </span>
             </div>
@@ -63,22 +57,22 @@ export function RoiCalculator() {
               step="1"
               value={hoursPerWeek}
               onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-              className="w-full accent-primary bg-white/10 rounded-lg h-2 cursor-pointer"
+              className="w-full accent-blue-600 bg-slate-200 rounded-lg h-2 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] font-mono text-muted-foreground">
-              <span>5 hrs (Light)</span>
-              <span>25 hrs (Medium)</span>
-              <span>50 hrs (Heavy)</span>
+            <div className="flex justify-between text-[10px] font-mono text-slate-400">
+              <span>5 hrs</span>
+              <span>25 hrs</span>
+              <span>50 hrs</span>
             </div>
           </div>
 
           {/* Slider 2: Team Size */}
-          <div className="glass p-4 rounded-2xl border border-border/60 space-y-3">
-            <div className="flex justify-between items-center text-sm font-medium">
-              <label htmlFor="roi-team" className="flex items-center gap-2 text-foreground">
-                <Users className="h-4 w-4 text-primary" /> Team Size Affected
+          <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-3">
+            <div className="flex justify-between items-center text-xs font-mono">
+              <label htmlFor="roi-team" className="flex items-center gap-2 text-slate-700 font-semibold">
+                <Users className="h-3.5 w-3.5 text-blue-600" /> TEAM SIZE
               </label>
-              <span className="font-mono text-primary font-bold px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-xs">
+              <span className="font-mono text-blue-600 font-bold px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-xs">
                 {teamSize} {teamSize === 1 ? "person" : "people"}
               </span>
             </div>
@@ -90,22 +84,22 @@ export function RoiCalculator() {
               step="1"
               value={teamSize}
               onChange={(e) => setTeamSize(Number(e.target.value))}
-              className="w-full accent-primary bg-white/10 rounded-lg h-2 cursor-pointer"
+              className="w-full accent-blue-600 bg-slate-200 rounded-lg h-2 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] font-mono text-muted-foreground">
-              <span>1 person</span>
-              <span>10 people</span>
-              <span>20 people</span>
+            <div className="flex justify-between text-[10px] font-mono text-slate-400">
+              <span>1</span>
+              <span>10</span>
+              <span>20</span>
             </div>
           </div>
 
           {/* Slider 3: Hourly Rate */}
-          <div className="glass p-4 rounded-2xl border border-border/60 space-y-3">
-            <div className="flex justify-between items-center text-sm font-medium">
-              <label htmlFor="roi-rate" className="flex items-center gap-2 text-foreground">
-                <DollarSign className="h-4 w-4 text-primary" /> Average Hourly Rate ($ USD)
+          <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-3">
+            <div className="flex justify-between items-center text-xs font-mono">
+              <label htmlFor="roi-rate" className="flex items-center gap-2 text-slate-700 font-semibold">
+                <DollarSign className="h-3.5 w-3.5 text-blue-600" /> HOURLY COST ($ USD)
               </label>
-              <span className="font-mono text-primary font-bold px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-xs">
+              <span className="font-mono text-blue-600 font-bold px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-xs">
                 ${hourlyCost}/hr
               </span>
             </div>
@@ -117,9 +111,9 @@ export function RoiCalculator() {
               step="5"
               value={hourlyCost}
               onChange={(e) => setHourlyCost(Number(e.target.value))}
-              className="w-full accent-primary bg-white/10 rounded-lg h-2 cursor-pointer"
+              className="w-full accent-blue-600 bg-slate-200 rounded-lg h-2 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] font-mono text-muted-foreground">
+            <div className="flex justify-between text-[10px] font-mono text-slate-400">
               <span>$15/hr</span>
               <span>$100/hr</span>
               <span>$200/hr</span>
@@ -127,12 +121,12 @@ export function RoiCalculator() {
           </div>
 
           {/* Slider 4: Automation Potential */}
-          <div className="glass p-4 rounded-2xl border border-border/60 space-y-3">
-            <div className="flex justify-between items-center text-sm font-medium">
-              <label htmlFor="roi-pct" className="flex items-center gap-2 text-foreground">
-                <Zap className="h-4 w-4 text-primary" /> Automation Potential (%)
+          <div className="rounded-xl border border-slate-200 bg-slate-50/60 p-4 space-y-3">
+            <div className="flex justify-between items-center text-xs font-mono">
+              <label htmlFor="roi-pct" className="flex items-center gap-2 text-slate-700 font-semibold">
+                <Zap className="h-3.5 w-3.5 text-blue-600" /> AUTOMATION TARGET (%)
               </label>
-              <span className="font-mono text-primary font-bold px-2.5 py-0.5 rounded-full bg-primary/10 border border-primary/20 text-xs">
+              <span className="font-mono text-blue-600 font-bold px-2.5 py-0.5 rounded-full bg-blue-50 border border-blue-200 text-xs">
                 {automationPct}%
               </span>
             </div>
@@ -144,75 +138,62 @@ export function RoiCalculator() {
               step="5"
               value={automationPct}
               onChange={(e) => setAutomationPct(Number(e.target.value))}
-              className="w-full accent-primary bg-white/10 rounded-lg h-2 cursor-pointer"
+              className="w-full accent-blue-600 bg-slate-200 rounded-lg h-2 cursor-pointer"
             />
-            <div className="flex justify-between text-[10px] font-mono text-muted-foreground">
-              <span>20% (Partial)</span>
-              <span>60% (Standard)</span>
-              <span>90% (High)</span>
+            <div className="flex justify-between text-[10px] font-mono text-slate-400">
+              <span>20%</span>
+              <span>60%</span>
+              <span>90%</span>
             </div>
           </div>
         </div>
 
-        {/* Right Column: Dynamic Results Panel */}
-        <div className="glass-gold rounded-2xl p-6 sm:p-8 flex flex-col justify-between border border-primary/40 shadow-xl">
+        {/* Right Column: Calculated Results Panel */}
+        <div className="rounded-xl border border-slate-300 bg-slate-900 text-white p-6 sm:p-8 flex flex-col justify-between">
           <div>
-            <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold border-b border-primary/20 pb-3 mb-6 flex items-center justify-between">
-              <span>Estimated Potential Metrics</span>
-              <span className="text-[10px] text-muted-foreground font-normal">Calculated Live</span>
+            <div className="font-mono text-[11px] uppercase tracking-widest text-blue-400 font-semibold border-b border-slate-800 pb-3 mb-6 flex items-center justify-between">
+              <span>[ PROJECTED_SAVINGS_METRICS ]</span>
+              <span className="text-slate-500 font-normal">CALCULATED LIVE</span>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-4">
-              <div className="glass p-4 rounded-xl border border-border/60">
-                <div className="text-xs text-muted-foreground font-mono">Weekly Time Saved</div>
-                <div className="text-2xl font-display font-bold text-gradient-gold mt-1 tabular-nums">
+              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
+                <div className="text-xs text-slate-400 font-mono">WEEKLY TIME RECLAIMED</div>
+                <div className="text-2xl font-mono font-bold text-white mt-1 tabular-nums">
                   {weeklyHoursSaved} hrs
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">
-                  reclaimed across team
-                </div>
               </div>
 
-              <div className="glass p-4 rounded-xl border border-border/60">
-                <div className="text-xs text-muted-foreground font-mono">Monthly Time Saved</div>
-                <div className="text-2xl font-display font-bold text-gradient-gold mt-1 tabular-nums">
+              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
+                <div className="text-xs text-slate-400 font-mono">MONTHLY HOURS SAVED</div>
+                <div className="text-2xl font-mono font-bold text-white mt-1 tabular-nums">
                   {monthlyHoursSaved} hrs
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5 font-sans">
-                  per month saved
-                </div>
               </div>
 
-              <div className="glass p-4 rounded-xl border border-border/60">
-                <div className="text-xs text-muted-foreground font-mono">Monthly Savings</div>
-                <div className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-1 tabular-nums">
+              <div className="rounded-xl border border-slate-800 bg-slate-950/80 p-4">
+                <div className="text-xs text-slate-400 font-mono">MONTHLY VALUE</div>
+                <div className="text-2xl font-mono font-bold text-blue-400 mt-1 tabular-nums">
                   {formatCurrency(monthlySavings)}
                 </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5">
-                  estimated monthly savings
-                </div>
               </div>
 
-              <div className="glass-gold p-4 rounded-xl border border-primary/50 bg-primary/10 shadow-lg">
-                <div className="text-xs text-primary font-mono font-bold">
-                  Estimated Annual Value
-                </div>
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold mt-1 tabular-nums">
+              <div className="rounded-xl border border-blue-500/40 bg-blue-950/40 p-4">
+                <div className="text-xs text-blue-400 font-mono font-semibold">ANNUAL VALUE</div>
+                <div className="text-2xl font-mono font-bold text-blue-300 mt-1 tabular-nums">
                   {formatCurrency(annualSavings)}
-                </div>
-                <div className="text-[11px] text-primary/90 mt-0.5 font-medium">
-                  potential annual savings
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-border/50">
+          <div className="mt-8 pt-6 border-t border-slate-800">
             <a
               href="#contact"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)] font-display"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-blue-600 px-6 py-3.5 font-mono text-xs uppercase tracking-widest font-semibold text-white hover:bg-blue-500 transition-colors"
             >
-              Request a Process Review <ArrowUpRight className="h-4 w-4" />
+              <span>Request Process Review</span>
+              <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>
         </div>

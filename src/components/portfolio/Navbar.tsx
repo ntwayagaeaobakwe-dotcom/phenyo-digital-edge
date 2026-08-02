@@ -9,7 +9,6 @@ export function Navbar() {
   const menuButtonRef = useRef<HTMLButtonElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
-  // 1. Fix TypeScript error in cleanup function
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -43,11 +42,9 @@ export function Navbar() {
     };
   }, []);
 
-  // 2. Mobile menu keyboard accessibility (Escape key, focus trap, return focus)
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
-    // Focus first focusable item inside dropdown on open
     const focusable = mobileMenuRef.current?.querySelectorAll<HTMLElement>("a, button");
     if (focusable && focusable.length > 0) {
       focusable[0].focus();
@@ -88,32 +85,31 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] py-3.5">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 py-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         <div
-          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+          className={`flex items-center justify-between rounded-full px-5 py-2.5 transition-all duration-300 border ${
             scrolled
-              ? "glass shadow-[var(--shadow-elegant)] border border-primary/25 border-t-white/20 bg-black/60 backdrop-blur-2xl"
-              : "bg-black/25 backdrop-blur-xl border border-white/10 border-t-white/20 shadow-lg"
+              ? "border-border/40 bg-slate-950/80 backdrop-blur-xl"
+              : "border-border/30 bg-slate-950/40 backdrop-blur-md"
           }`}
         >
           <a
             href="#top"
-            className="flex items-center gap-2.5 font-display font-bold text-lg group active:scale-95 transition-transform duration-150"
+            className="flex items-center gap-2.5 font-sans font-semibold text-sm group active:scale-95 transition-transform"
             aria-label="NYG Digital Home"
           >
-            <span className="grid h-8 min-w-8 px-2 place-items-center rounded-lg bg-primary text-primary-foreground font-bold text-xs tracking-wider group-hover:scale-105 transition-transform">
+            <span className="grid h-7 min-w-7 px-2 place-items-center rounded-full bg-primary text-primary-foreground font-mono font-bold text-xs">
               NYG
             </span>
-            <span>
-              {PERSONAL_INFO.name}
-              <span className="text-primary">.</span>
+            <span className="font-mono text-xs uppercase tracking-widest text-foreground">
+              {PERSONAL_INFO.name}<span className="text-primary">.</span>
             </span>
           </a>
 
           {/* Desktop Navigation */}
           <nav
-            className="hidden md:flex items-center gap-7 text-sm font-medium text-muted-foreground"
+            className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-widest"
             aria-label="Main navigation"
           >
             {NAV_LINKS.map((link) => (
@@ -121,8 +117,8 @@ export function Navbar() {
                 key={link.href}
                 href={link.href}
                 aria-current={activeSection === link.href ? "location" : undefined}
-                className={`font-sans transition-colors hover:text-primary ${
-                  activeSection === link.href ? "text-primary" : "text-muted-foreground"
+                className={`transition-colors hover:text-foreground ${
+                  activeSection === link.href ? "text-primary font-semibold" : "text-muted-foreground/70"
                 }`}
               >
                 {link.label}
@@ -130,17 +126,18 @@ export function Navbar() {
             ))}
           </nav>
 
-          {/* Desktop CTA */}
+          {/* Desktop CTA Button */}
           <div className="hidden sm:flex items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4.5 py-2 text-sm font-medium text-primary-foreground hover:opacity-95 active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)] font-display"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2 font-mono text-xs uppercase tracking-widest font-semibold text-primary-foreground hover:opacity-90 active:scale-[0.97] transition-all"
             >
-              Free Process Review <ArrowUpRight className="h-4 w-4" />
+              <span>Review Process</span>
+              <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>
 
-          {/* Mobile Menu Toggle Button */}
+          {/* Mobile Menu Toggle */}
           <button
             ref={menuButtonRef}
             onClick={() => {
@@ -150,11 +147,11 @@ export function Navbar() {
                 setMobileMenuOpen(true);
               }
             }}
-            className="md:hidden grid h-9 w-9 place-items-center rounded-xl glass text-foreground border border-border/60 cursor-pointer active:scale-95 transition-transform duration-150"
+            className="md:hidden grid h-8 w-8 place-items-center rounded-full border border-border/50 text-foreground active:scale-95 transition-transform"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
-            {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
 
@@ -162,10 +159,10 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div
             ref={mobileMenuRef}
-            className="md:hidden mt-2 glass rounded-2xl p-5 border border-primary/30 shadow-2xl origin-top-right animate-in fade-in slide-in-from-top-3 duration-200"
+            className="md:hidden mt-2 rounded-2xl border border-border/40 bg-slate-950/95 p-5 shadow-2xl backdrop-blur-xl animate-in fade-in slide-in-from-top-3 duration-200"
           >
             <nav
-              className="flex flex-col gap-3.5 text-base font-medium"
+              className="flex flex-col gap-3 font-mono text-xs uppercase tracking-widest"
               aria-label="Mobile navigation"
             >
               {NAV_LINKS.map((link) => (
@@ -173,18 +170,19 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMobileMenu}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-1 flex items-center justify-between border-b border-border/40 pb-2 active:translate-x-0.5 transition-transform duration-150"
+                  className="text-muted-foreground hover:text-foreground transition-colors py-2 flex items-center justify-between border-b border-border/30"
                 >
                   <span>{link.label}</span>
-                  <ArrowUpRight className="h-4 w-4 text-primary" />
+                  <ArrowUpRight className="h-3.5 w-3.5 text-primary" />
                 </a>
               ))}
               <a
                 href="#contact"
                 onClick={closeMobileMenu}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground font-display shadow-[var(--shadow-gold)] active:scale-[0.97] transition-all duration-150 ease-out"
+                className="mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 font-mono text-xs uppercase tracking-widest font-semibold text-primary-foreground active:scale-[0.97] transition-all"
               >
-                Free Process Review <ArrowUpRight className="h-4 w-4" />
+                <span>Process Review</span>
+                <ArrowUpRight className="h-4 w-4" />
               </a>
             </nav>
           </div>

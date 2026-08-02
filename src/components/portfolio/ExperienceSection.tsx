@@ -15,40 +15,42 @@ export function ExperienceSection() {
   return (
     <SectionShell
       id="experience"
-      eyebrow="Experience & Focus Areas"
-      title={
-        <>
-          A working <span className="text-gradient-gold">operating approach</span>.
-        </>
-      }
+      eyebrow="Operating Standards"
+      iconGlyph="08"
+      declarativeTitle="A practical engineering approach"
+      qualifierTitle="grounded in measurable business outcomes."
     >
-      <div className="grid md:grid-cols-2 gap-5">
-        {FOCUS_AREAS.map((area) => {
+      <div className="grid md:grid-cols-2 gap-4">
+        {FOCUS_AREAS.map((area, index) => {
           const IconComponent = iconMap[area.iconName] || Workflow;
           return (
             <div
               key={area.label}
-              className="glass rounded-2xl p-5 flex items-center gap-4 border border-border/70 hover:border-primary/40 transition-colors"
+              className="rounded-xl border border-border/30 bg-slate-950/40 p-4 flex items-center gap-4 hover:border-primary/40 transition-colors"
             >
-              <div className="grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary shrink-0">
-                <IconComponent className="h-5 w-5" />
+              <div className="grid h-9 w-9 place-items-center rounded-lg bg-primary/10 text-primary shrink-0 font-mono text-xs font-bold border border-primary/20">
+                0{index + 1}
               </div>
-              <div className="font-medium text-sm sm:text-base">{area.label}</div>
+              <div className="font-mono text-xs uppercase tracking-wider text-foreground font-medium">
+                {area.label}
+              </div>
             </div>
           );
         })}
       </div>
 
-      <div className="mt-8 glass rounded-2xl p-6 border border-border/80 text-sm space-y-3">
-        <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold mb-1">
-          Execution Track Record & Capability Summary
+      <div className="mt-8 rounded-2xl border border-border/30 bg-slate-950/60 p-6 font-mono text-xs space-y-4">
+        <div className="uppercase tracking-widest text-primary font-semibold border-b border-border/30 pb-3">
+          [ CAPABILITY_SUMMARY // TRACK_RECORD ]
         </div>
-        {CREDENTIALS_SUMMARY.map((cred, idx) => (
-          <div key={idx} className="flex items-center gap-3 text-muted-foreground">
-            <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-            <span>{cred}</span>
-          </div>
-        ))}
+        <div className="space-y-3">
+          {CREDENTIALS_SUMMARY.map((cred, idx) => (
+            <div key={idx} className="flex items-center gap-3 text-muted-foreground/80">
+              <span className="text-primary font-bold">[✓]</span>
+              <span>{cred}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </SectionShell>
   );
