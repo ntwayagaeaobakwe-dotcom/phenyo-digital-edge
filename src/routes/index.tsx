@@ -129,7 +129,6 @@ function Home() {
       <main id="main-content" tabIndex={-1} className="outline-none">
         <HeroSection />
         <TrustBar />
-        <ServicesSection />
         <Suspense
           fallback={
             <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
@@ -139,6 +138,7 @@ function Home() {
         >
           <SystemStudio />
         </Suspense>
+        <ServicesSection />
         <Suspense
           fallback={
             <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">

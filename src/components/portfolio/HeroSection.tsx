@@ -31,7 +31,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="scroll-target relative overflow-hidden pb-24 pt-40 sm:pb-32 sm:pt-48"
+      className="scroll-target relative min-h-[100dvh] flex items-center overflow-hidden pb-24 pt-40 sm:pb-32 sm:pt-48"
       id="top"
     >
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
