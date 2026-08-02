@@ -48,7 +48,7 @@ export function HeroSection() {
           </div>
           <h1
             tabIndex={-1}
-            className="fluid-display mt-7 max-w-4xl font-display font-bold leading-[1.02] tracking-[-0.045em] outline-none"
+            className="fluid-display mt-7 max-w-4xl font-display font-bold leading-[1.02] tracking-[-0.015em] outline-none"
           >
             Websites and automations that turn interest into{" "}
             <span className="text-gradient-gold">organized next steps.</span>
@@ -101,29 +101,49 @@ export function HeroSection() {
             </button>
           </div>
 
-          <div className="mt-6 space-y-3">
+          <div className="mt-6">
             {routingSteps.map(([title, detail], index) => (
-              <div
-                key={title}
-                className={`flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 ${
-                  index <= activeStep
-                    ? "border-primary/40 bg-primary/[0.08]"
-                    : "border-border/60 bg-black/20"
-                }`}
-              >
-                <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-mono text-xs tabular-nums ${
+              <div key={title}>
+                <div
+                  className={`flex items-center gap-4 rounded-2xl border p-4 transition-all duration-300 ${
                     index <= activeStep
-                      ? "border-primary bg-primary text-primary-foreground"
-                      : "border-border text-muted-foreground"
+                      ? "border-primary/40 bg-primary/[0.08]"
+                      : "border-border/60 bg-black/20"
                   }`}
                 >
-                  {index <= activeStep ? <Check className="h-4 w-4" /> : `0${index + 1}`}
-                </span>
-                <div>
-                  <p className="text-sm font-semibold">{title}</p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p>
+                  <span
+                    className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-mono text-xs tabular-nums ${
+                      index <= activeStep
+                        ? "border-primary bg-primary text-primary-foreground"
+                        : "border-border text-muted-foreground"
+                    }`}
+                  >
+                    {index <= activeStep ? <Check className="h-4 w-4" /> : `0${index + 1}`}
+                  </span>
+                  <div>
+                    <p className="text-sm font-semibold">{title}</p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">{detail}</p>
+                  </div>
                 </div>
+
+                {/* Connector: signals which step the automation just moved
+                    through. A traveling pulse fires once when the flow
+                    reaches this segment, then settles into a solid line. */}
+                {index < routingSteps.length - 1 && (
+                  <div className="relative ml-[1.125rem] h-3 w-px" aria-hidden="true">
+                    <div
+                      className={`h-full w-px transition-colors duration-300 ${
+                        index < activeStep ? "bg-primary/50" : "bg-border/60"
+                      }`}
+                    />
+                    {index === activeStep - 1 && (
+                      <span
+                        key={`hero-pulse-${runId}-${index}`}
+                        className="absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_2px_oklch(0.82_0.15_85/0.6)] animate-signal-travel-v"
+                      />
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>

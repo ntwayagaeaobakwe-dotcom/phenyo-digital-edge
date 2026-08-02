@@ -105,7 +105,7 @@ export function Navbar() {
             <span className="grid h-8 min-w-8 px-2 place-items-center rounded-lg bg-primary text-primary-foreground font-bold text-xs tracking-wider group-hover:scale-105 transition-transform">
               NYG
             </span>
-            <span className="tracking-tight">
+            <span>
               {PERSONAL_INFO.name}
               <span className="text-primary">.</span>
             </span>

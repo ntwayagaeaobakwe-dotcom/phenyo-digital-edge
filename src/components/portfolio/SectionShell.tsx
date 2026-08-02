@@ -83,7 +83,7 @@ export function SectionShell({
           </div>
           <h2
             tabIndex={-1}
-            className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-tight outline-none"
+            className="mt-4 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] tracking-[-0.01em] outline-none"
           >
             {title}
           </h2>

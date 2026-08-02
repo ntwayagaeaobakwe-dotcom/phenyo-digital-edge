@@ -134,12 +134,29 @@ export function SystemStudio() {
                     <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{detail}</p>
                   </div>
                   {index < scenarios[scenario].nodes.length - 1 ? (
-                    <ArrowRight
-                      className={`mx-auto h-4 w-4 rotate-90 transition-colors lg:rotate-0 ${
-                        index < activeStep ? "text-primary" : "text-border"
-                      }`}
+                    <div
+                      className="relative mx-auto flex h-6 w-6 items-center justify-center lg:h-4 lg:w-6"
                       aria-hidden="true"
-                    />
+                    >
+                      <div
+                        className={`absolute inset-0 m-auto h-full w-px transition-colors duration-300 lg:h-px lg:w-full ${
+                          index < activeStep ? "bg-primary/50" : "bg-border"
+                        }`}
+                      />
+                      <ArrowRight
+                        className={`relative h-4 w-4 rotate-90 transition-colors duration-300 lg:rotate-0 ${
+                          index < activeStep ? "text-primary" : "text-border"
+                        }`}
+                      />
+                      {/* Traveling pulse: fires once as the flow crosses this
+                          connector, then the line above settles solid gold. */}
+                      {index === activeStep - 1 && (
+                        <span
+                          key={`studio-pulse-${scenario}-${runId}-${index}`}
+                          className="absolute left-1/2 top-1/2 h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_2px_oklch(0.82_0.15_85/0.6)] animate-signal-travel-v"
+                        />
+                      )}
+                    </div>
                   ) : null}
                 </div>
               );

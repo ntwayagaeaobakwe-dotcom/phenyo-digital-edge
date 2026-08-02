@@ -36,7 +36,7 @@
   --color-navy: var(--navy);
   --color-neon: var(--neon);
 
-  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
   --font-sans: "Inter", "Manrope", sans-serif;
 }
 
@@ -117,7 +117,8 @@
   h4,
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.03em;
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
   }
 }
 
@@ -126,6 +127,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  font-style: italic;
 }
 
 @utility fluid-display {
@@ -262,6 +264,54 @@
   animation: signal-sweep 7s ease-in-out infinite;
 }
 
+/* ─── Signature motion: a signal traveling along a connector as a workflow
+   step activates. Used by the hero routing list and the system studio node
+   graph — one motif, reused deliberately, instead of one-off effects. ─── */
+/* Dots are positioned with left/top: 50% (no static translate utility) —
+   the centering offset is baked into these keyframes because an in-progress
+   CSS animation replaces the whole `transform` value, it doesn't compose
+   with a separately-applied static translate. */
+@keyframes signal-travel-h {
+  0% {
+    transform: translate(calc(-50% - 60%), -50%);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(calc(-50% + 60%), -50%);
+    opacity: 0;
+  }
+}
+@keyframes signal-travel-v {
+  0% {
+    transform: translate(-50%, calc(-50% - 60%));
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, calc(-50% + 60%));
+    opacity: 0;
+  }
+}
+.animate-signal-travel-v {
+  animation: signal-travel-v 550ms var(--ease-out) both;
+}
+@media (min-width: 1024px) {
+  .animate-signal-travel-v {
+    animation-name: signal-travel-h;
+  }
+}
+
 /* ─── Typing indicator (three-dot bounce) ─────────────────────────────── */
 @keyframes typingDot {
   0%,
@@ -315,8 +365,10 @@
   .animate-float,
   .animate-pulse-glow,
   .animate-mesh-drift,
-  .animate-signal-sweep {
+  .animate-signal-sweep,
+  .animate-signal-travel-v {
     animation: none;
+    opacity: 0;
   }
 
   .animate-ticker {

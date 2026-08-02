@@ -178,7 +178,7 @@ export function ContactSection() {
               <div className="text-xs font-mono uppercase tracking-widest text-primary font-semibold">
                 Get In Touch
               </div>
-              <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight">
+              <h2 className="mt-3 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-[-0.01em]">
                 Tell Me What Is <span className="text-gradient-gold">Slowing You Down</span>.
               </h2>
               <p className="mt-5 text-lg text-muted-foreground max-w-lg leading-relaxed">
