@@ -88,18 +88,18 @@ export function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 py-3.5">
+    <header className="fixed top-0 inset-x-0 z-50 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] py-3.5">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div
-          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ${
+          className={`flex items-center justify-between rounded-2xl px-4 sm:px-6 py-3 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
             scrolled
-              ? "glass shadow-[var(--shadow-elegant)] border border-primary/20"
-              : "bg-black/20 backdrop-blur-md border border-white/5"
+              ? "glass shadow-[var(--shadow-elegant)] border border-primary/25 border-t-white/20 bg-black/60 backdrop-blur-2xl"
+              : "bg-black/25 backdrop-blur-xl border border-white/10 border-t-white/20 shadow-lg"
           }`}
         >
           <a
             href="#top"
-            className="flex items-center gap-2.5 font-display font-bold text-lg group"
+            className="flex items-center gap-2.5 font-display font-bold text-lg group active:scale-95 transition-transform duration-150"
             aria-label="NYG Digital Home"
           >
             <span className="grid h-8 min-w-8 px-2 place-items-center rounded-lg bg-primary text-primary-foreground font-bold text-xs tracking-wider group-hover:scale-105 transition-transform">

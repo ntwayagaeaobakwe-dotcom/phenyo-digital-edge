@@ -62,13 +62,16 @@ export function SectionShell({
     return () => observer.disconnect();
   }, [revealState]);
 
-  const revealClasses = revealState === "visible" ? "opacity-100" : "opacity-0";
+  const revealClasses =
+    revealState === "visible"
+      ? "opacity-100 translate-y-0 scale-100"
+      : "opacity-0 translate-y-6 scale-[0.985]";
 
   return (
     <section
       ref={sectionRef}
       id={id}
-      className={`scroll-target relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-opacity duration-[400ms] ease-out ${revealClasses}`}
+      className={`scroll-target relative py-24 sm:py-32 ${hasDivider ? "border-t border-border/40" : ""} ${className} transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[opacity,transform] ${revealClasses}`}
     >
       {/* Subtle radial glow in background */}
       <div className="absolute inset-0 -z-10 pointer-events-none overflow-hidden">

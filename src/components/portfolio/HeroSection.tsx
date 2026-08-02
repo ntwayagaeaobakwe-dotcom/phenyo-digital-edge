@@ -53,7 +53,7 @@ export function HeroSection() {
           </div>
           <h1
             tabIndex={-1}
-            className="fluid-display mt-7 max-w-4xl font-display font-bold leading-[1.02] tracking-[-0.015em] outline-none"
+            className="fluid-display mt-7 max-w-4xl font-display font-bold leading-[1.05] tracking-[-0.025em] outline-none font-optical-auto"
           >
             Websites and automations that turn interest into{" "}
             <span className="text-gradient-gold">organized next steps.</span>
