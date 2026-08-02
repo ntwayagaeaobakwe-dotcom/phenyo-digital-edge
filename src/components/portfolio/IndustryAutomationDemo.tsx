@@ -522,7 +522,7 @@ export function IndustryAutomationDemo() {
               <Tabs.Trigger
                 key={industry.id}
                 value={industry.id}
-                className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 cursor-pointer ${
+                className={`px-5 py-2.5 rounded-lg text-sm font-medium transition-all duration-150 ease-out cursor-pointer active:scale-[0.97] ${
                   activeTabId === industry.id
                     ? "bg-primary text-primary-foreground font-bold shadow-md"
                     : "text-muted-foreground hover:text-foreground hover:bg-white/5"

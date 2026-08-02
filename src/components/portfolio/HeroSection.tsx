@@ -60,13 +60,13 @@ export function HeroSection() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-gold)]"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)]"
             >
               Request a free process review <ArrowUpRight className="h-4 w-4" />
             </a>
             <a
               href="#services"
-              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-black/20 px-6 py-3.5 text-sm font-semibold text-foreground transition-colors hover:border-primary/40"
+              className="inline-flex items-center gap-2 rounded-full border border-border/80 bg-black/20 px-6 py-3.5 text-sm font-semibold text-foreground active:scale-[0.97] transition-all duration-150 ease-out hover:border-primary/40"
             >
               See what I build <ArrowRight className="h-4 w-4 text-primary" />
             </a>
@@ -94,7 +94,7 @@ export function HeroSection() {
             <button
               type="button"
               onClick={() => setRunId((current) => current + 1)}
-              className="grid h-9 w-9 place-items-center rounded-full border border-border/70 text-muted-foreground transition-colors hover:border-primary/40 hover:text-primary"
+              className="grid h-9 w-9 place-items-center rounded-full border border-border/70 text-muted-foreground active:scale-95 transition-all duration-150 hover:border-primary/40 hover:text-primary cursor-pointer"
               aria-label="Replay inquiry routing preview"
             >
               <Play className="h-4 w-4" />
@@ -112,7 +112,7 @@ export function HeroSection() {
                 }`}
               >
                 <span
-                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-mono text-xs ${
+                  className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border font-mono text-xs tabular-nums ${
                     index <= activeStep
                       ? "border-primary bg-primary text-primary-foreground"
                       : "border-border text-muted-foreground"

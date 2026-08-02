@@ -85,6 +85,11 @@
   --shadow-gold: 0 15px 40px -15px oklch(0.82 0.15 85 / 0.35);
   --shadow-gold-hover: 0 20px 50px -10px oklch(0.82 0.15 85 / 0.45);
   --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.85);
+
+  /* Emil Kowalski custom design engineering easing curves */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @layer base {
@@ -102,8 +107,9 @@
     background: var(--background);
     color: var(--foreground);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
+    font-feature-settings: "ss01", "cv11", "tnum";
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   h1,
   h2,
@@ -111,7 +117,7 @@
   h4,
   .font-display {
     font-family: var(--font-display);
-    letter-spacing: -0.025em;
+    letter-spacing: -0.03em;
   }
 }
 
@@ -138,14 +144,14 @@
   background: color-mix(in oklab, var(--card) 65%, transparent);
   backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid oklch(1 0 0 / 0.09);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 
 @utility glass-gold {
   background: linear-gradient(135deg, oklch(1 0 0 / 0.05), oklch(0.82 0.15 85 / 0.08));
   backdrop-filter: blur(20px) saturate(140%);
   border: 1px solid oklch(0.82 0.15 85 / 0.25);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out), background-color 200ms var(--ease-out);
 }
 
 @utility gold-border {
@@ -164,12 +170,15 @@
 }
 
 .glass-hover {
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 200ms var(--ease-out), border-color 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
 }
-.glass-hover:hover {
-  transform: translateY(-2px);
-  border-color: oklch(0.82 0.15 85 / 0.4);
-  box-shadow: 0 16px 36px -12px oklch(0.82 0.15 85 / 0.15);
+
+@media (hover: hover) and (pointer: fine) {
+  .glass-hover:hover {
+    transform: translateY(-2px);
+    border-color: oklch(0.82 0.15 85 / 0.4);
+    box-shadow: 0 16px 36px -12px oklch(0.82 0.15 85 / 0.15);
+  }
 }
 
 @keyframes float-slow {

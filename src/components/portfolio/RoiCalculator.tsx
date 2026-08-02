@@ -165,7 +165,7 @@ export function RoiCalculator() {
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="glass p-4 rounded-xl border border-border/60">
                 <div className="text-xs text-muted-foreground font-mono">Weekly Time Saved</div>
-                <div className="text-2xl font-display font-bold text-gradient-gold mt-1">
+                <div className="text-2xl font-display font-bold text-gradient-gold mt-1 tabular-nums">
                   {weeklyHoursSaved} hrs
                 </div>
                 <div className="text-[11px] text-muted-foreground mt-0.5">
@@ -175,7 +175,7 @@ export function RoiCalculator() {
 
               <div className="glass p-4 rounded-xl border border-border/60">
                 <div className="text-xs text-muted-foreground font-mono">Monthly Time Saved</div>
-                <div className="text-2xl font-display font-bold text-gradient-gold mt-1">
+                <div className="text-2xl font-display font-bold text-gradient-gold mt-1 tabular-nums">
                   {monthlyHoursSaved} hrs
                 </div>
                 <div className="text-[11px] text-muted-foreground mt-0.5 font-sans">
@@ -185,7 +185,7 @@ export function RoiCalculator() {
 
               <div className="glass p-4 rounded-xl border border-border/60">
                 <div className="text-xs text-muted-foreground font-mono">Monthly Savings</div>
-                <div className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-1">
+                <div className="text-2xl sm:text-3xl font-display font-bold text-foreground mt-1 tabular-nums">
                   {formatCurrency(monthlySavings)}
                 </div>
                 <div className="text-[11px] text-muted-foreground mt-0.5">
@@ -197,7 +197,7 @@ export function RoiCalculator() {
                 <div className="text-xs text-primary font-mono font-bold">
                   Estimated Annual Value
                 </div>
-                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold mt-1">
+                <div className="text-2xl sm:text-3xl font-display font-bold text-gradient-gold mt-1 tabular-nums">
                   {formatCurrency(annualSavings)}
                 </div>
                 <div className="text-[11px] text-primary/90 mt-0.5 font-medium">
@@ -210,7 +210,7 @@ export function RoiCalculator() {
           <div className="mt-8 pt-6 border-t border-border/50">
             <a
               href="#contact"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)] font-display"
             >
               Request a Process Review <ArrowUpRight className="h-4 w-4" />
             </a>

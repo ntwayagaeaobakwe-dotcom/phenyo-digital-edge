@@ -134,7 +134,7 @@ export function Navbar() {
           <div className="hidden sm:flex items-center gap-3">
             <a
               href="#contact"
-              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4.5 py-2 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display"
+              className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4.5 py-2 text-sm font-medium text-primary-foreground hover:opacity-95 active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)] font-display"
             >
               Free Process Review <ArrowUpRight className="h-4 w-4" />
             </a>
@@ -150,7 +150,7 @@ export function Navbar() {
                 setMobileMenuOpen(true);
               }
             }}
-            className="md:hidden grid h-9 w-9 place-items-center rounded-xl glass text-foreground border border-border/60 cursor-pointer"
+            className="md:hidden grid h-9 w-9 place-items-center rounded-xl glass text-foreground border border-border/60 cursor-pointer active:scale-95 transition-transform duration-150"
             aria-label="Toggle navigation menu"
             aria-expanded={mobileMenuOpen}
           >
@@ -162,7 +162,7 @@ export function Navbar() {
         {mobileMenuOpen && (
           <div
             ref={mobileMenuRef}
-            className="md:hidden mt-2 glass rounded-2xl p-5 border border-primary/30 shadow-2xl animate-in fade-in slide-in-from-top-3"
+            className="md:hidden mt-2 glass rounded-2xl p-5 border border-primary/30 shadow-2xl origin-top-right animate-in fade-in slide-in-from-top-3 duration-200"
           >
             <nav
               className="flex flex-col gap-3.5 text-base font-medium"
@@ -173,7 +173,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={closeMobileMenu}
-                  className="text-muted-foreground hover:text-foreground transition-colors py-1 flex items-center justify-between border-b border-border/40 pb-2"
+                  className="text-muted-foreground hover:text-foreground transition-colors py-1 flex items-center justify-between border-b border-border/40 pb-2 active:translate-x-0.5 transition-transform duration-150"
                 >
                   <span>{link.label}</span>
                   <ArrowUpRight className="h-4 w-4 text-primary" />
@@ -182,7 +182,7 @@ export function Navbar() {
               <a
                 href="#contact"
                 onClick={closeMobileMenu}
-                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground font-display shadow-[var(--shadow-gold)]"
+                className="mt-2 inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-medium text-primary-foreground font-display shadow-[var(--shadow-gold)] active:scale-[0.97] transition-all duration-150 ease-out"
               >
                 Free Process Review <ArrowUpRight className="h-4 w-4" />
               </a>

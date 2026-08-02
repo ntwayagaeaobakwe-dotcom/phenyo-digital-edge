@@ -71,15 +71,15 @@ export function BottleneckConfigurator() {
               type="button"
               onClick={() => setSelectedId(item.id)}
               aria-pressed={selectedId === item.id}
-              className={`flex w-full items-center justify-between gap-4 rounded-2xl border px-5 py-4 text-left transition-colors ${
+              className={`flex w-full items-center justify-between gap-4 rounded-2xl border px-5 py-4 text-left cursor-pointer transition-all duration-150 ease-out active:scale-[0.98] ${
                 selectedId === item.id
-                  ? "border-primary/50 bg-primary/[0.08] text-foreground"
+                  ? "border-primary/50 bg-primary/[0.08] text-foreground shadow-sm"
                   : "border-border/60 bg-black/15 text-muted-foreground hover:border-border hover:text-foreground"
               }`}
             >
               <span className="font-semibold">{item.label}</span>
               <span
-                className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border ${
+                className={`grid h-6 w-6 shrink-0 place-items-center rounded-full border transition-colors duration-150 ${
                   selectedId === item.id
                     ? "border-primary bg-primary text-primary-foreground"
                     : "border-border"
@@ -91,7 +91,7 @@ export function BottleneckConfigurator() {
           ))}
         </div>
 
-        <div className="studio-surface p-6 sm:p-8" aria-live="polite">
+        <div key={selected.id} className="studio-surface p-6 sm:p-8 animate-in fade-in-50 duration-200" aria-live="polite">
           <div className="flex items-center gap-2 text-xs font-semibold text-primary">
             <PlugZap className="h-4 w-4" />
             Suggested system
@@ -116,7 +116,7 @@ export function BottleneckConfigurator() {
               <ol className="mt-3 space-y-2 text-sm">
                 {selected.steps.map((step, index) => (
                   <li key={step} className="flex gap-2">
-                    <span className="text-primary">0{index + 1}</span>
+                    <span className="text-primary font-mono tabular-nums font-bold">0{index + 1}</span>
                     {step}
                   </li>
                 ))}
@@ -128,7 +128,7 @@ export function BottleneckConfigurator() {
             <a
               href="#contact"
               onClick={carryContext}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)]"
             >
               Solve this bottleneck <ArrowUpRight className="h-4 w-4" />
             </a>

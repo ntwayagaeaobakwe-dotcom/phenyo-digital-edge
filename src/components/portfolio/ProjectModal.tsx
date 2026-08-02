@@ -94,7 +94,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
                     key={idx}
                     className="flex items-start gap-2.5 glass p-3 rounded-lg border border-border/50"
                   >
-                    <span className="h-5 w-5 rounded-full bg-primary/20 text-primary font-mono text-[11px] font-bold grid place-items-center shrink-0 mt-0.5">
+                    <span className="h-5 w-5 rounded-full bg-primary/20 text-primary font-mono text-[11px] font-bold tabular-nums grid place-items-center shrink-0 mt-0.5">
                       {idx + 1}
                     </span>
                     <span className="leading-snug text-foreground">{step}</span>
@@ -135,7 +135,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
           <div className="pt-2">
             <button
               onClick={handleCtaClick}
-              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 transition-all shadow-[var(--shadow-gold)] font-display cursor-pointer"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-sm font-medium text-primary-foreground hover:opacity-95 active:scale-[0.97] transition-all duration-150 ease-out shadow-[var(--shadow-gold)] font-display cursor-pointer"
             >
               Discuss a Similar Build <ArrowUpRight className="h-4 w-4" />
             </button>
