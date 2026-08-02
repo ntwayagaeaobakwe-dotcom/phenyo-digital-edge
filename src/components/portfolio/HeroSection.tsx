@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, ArrowUpRight, Check, Play } from "lucide-react";
 import bgGridWebp from "@/assets/bg-grid.webp";
+import { DotMatrixCanvas } from "@/components/ui/dot-matrix-canvas";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
 
 const routingSteps = [
@@ -34,7 +35,11 @@ export function HeroSection() {
       id="top"
     >
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
-      <div className="absolute inset-0 -z-10 grid-bg opacity-25" />
+      {/* Animated gold dot field — replaces the static CSS line grid that used
+          to sit here. Decorative and self-disabling under reduced motion. */}
+      <div className="absolute inset-0 -z-10">
+        <DotMatrixCanvas opacity={0.5} totalSize={24} dotSize={3} />
+      </div>
       <div
         className="absolute inset-0 -z-10 opacity-10 mix-blend-screen"
         style={{ backgroundImage: `url(${bgGridWebp})`, backgroundSize: "cover" }}

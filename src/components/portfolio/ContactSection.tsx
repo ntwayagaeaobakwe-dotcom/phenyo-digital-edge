@@ -17,6 +17,7 @@ import {
   MessageSquare,
   X,
 } from "lucide-react";
+import { DotMatrixCanvas } from "@/components/ui/dot-matrix-canvas";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS, FORM_BUDGET_OPTIONS } from "@/data/portfolio-data";
 
 const contactSchema = z.object({
@@ -169,6 +170,9 @@ export function ContactSection() {
       className="scroll-target relative py-24 sm:py-32 border-t border-border/40"
     >
       <div className="absolute inset-0 -z-10" style={{ background: "var(--gradient-hero)" }} />
+      <div className="absolute inset-0 -z-10">
+        <DotMatrixCanvas opacity={0.35} totalSize={26} dotSize={3} />
+      </div>
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <div className="glass-gold rounded-3xl p-8 sm:p-14 relative overflow-hidden border border-primary/30 shadow-[var(--shadow-elegant)]">
           <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-primary/20 blur-3xl" />
