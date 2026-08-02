@@ -72,8 +72,8 @@ export function SectionShell({
       : "opacity-0 translate-y-6 scale-[0.985]";
 
   const bgClasses = isPale
-    ? "bg-[#edf2f7] text-slate-900 border-slate-300/60"
-    : "text-foreground border-border/30";
+    ? "bg-surface-inverted text-text-inverted-primary border-border-default"
+    : "text-text-primary border-border-subtle";
 
   return (
     <section
@@ -81,18 +81,26 @@ export function SectionShell({
       id={id}
       className={`scroll-target relative py-24 sm:py-36 ${
         hasDivider ? "border-t" : ""
-      } ${bgClasses} ${className} transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[opacity,transform] ${revealClasses}`}
+      } ${bgClasses} ${className} transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[opacity,transform] ${revealClasses}`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        {/* Section Anatomy: Centered narrow heading block (max ~600px) */}
+        {/* Section Anatomy: Centered narrow heading block (max ~620px) */}
         <div className="mx-auto max-w-[620px] text-center mb-16 sm:mb-20">
-          {/* (a) Small technical glyph or icon */}
-          <div className="inline-flex items-center justify-center font-mono text-xs text-muted-foreground/50 mb-3 select-none">
+          {/* Small technical glyph */}
+          <div
+            className={`inline-flex items-center justify-center font-mono text-xs mb-3 select-none ${
+              isPale ? "text-text-inverted-muted" : "text-text-muted/60"
+            }`}
+          >
             <span>[ {iconGlyph} ]</span>
           </div>
 
           {/* Eyebrow Label */}
-          <div className="block font-mono text-[11px] uppercase tracking-widest text-muted-foreground/70 mb-3">
+          <div
+            className={`block font-mono text-[11px] uppercase tracking-widest mb-3 ${
+              isPale ? "text-text-inverted-muted font-medium" : "text-text-muted font-medium"
+            }`}
+          >
             {eyebrow}
           </div>
 
@@ -103,11 +111,17 @@ export function SectionShell({
           >
             {declarativeTitle ? (
               <>
-                <span className={isPale ? "text-slate-950" : "text-foreground"}>
+                <span className={isPale ? "text-text-inverted-primary" : "text-text-primary"}>
                   {declarativeTitle}
                 </span>{" "}
                 {qualifierTitle && (
-                  <span className={isPale ? "text-slate-500 font-normal" : "text-muted-foreground/60 font-normal"}>
+                  <span
+                    className={
+                      isPale
+                        ? "text-text-inverted-muted font-normal"
+                        : "text-text-muted/80 font-normal"
+                    }
+                  >
                     {qualifierTitle}
                   </span>
                 )}
@@ -118,7 +132,7 @@ export function SectionShell({
           </h2>
         </div>
 
-        {/* (d) Wide or asymmetric visual panel container below */}
+        {/* Wide or asymmetric visual panel container below */}
         <div className={`mx-auto ${maxWidthClass}`}>{children}</div>
       </div>
     </section>

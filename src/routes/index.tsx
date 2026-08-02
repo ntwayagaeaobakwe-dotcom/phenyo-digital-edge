@@ -11,7 +11,6 @@ import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { FooterSection } from "@/components/portfolio/FooterSection";
-import { PERSONAL_INFO } from "@/data/portfolio-data";
 import { getSiteUrl } from "@/lib/seo";
 
 const SystemStudio = lazy(() =>
@@ -118,12 +117,12 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="relative min-h-screen bg-background text-foreground overflow-x-clip">
+    <div className="relative min-h-screen bg-surface-base text-text-primary overflow-x-clip">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-primary focus:text-primary-foreground focus:rounded-lg focus:shadow-lg focus:outline-none font-medium text-sm"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-action-primary focus:text-action-primary-foreground focus:rounded-full focus:shadow-2xl focus-ring font-mono text-xs uppercase tracking-widest font-semibold min-h-[44px] inline-flex items-center"
       >
-        Skip to content
+        Skip to main content
       </a>
       <Navbar />
       <main id="main-content" tabIndex={-1} className="outline-none">
