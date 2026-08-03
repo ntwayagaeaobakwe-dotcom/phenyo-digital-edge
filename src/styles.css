@@ -1,3 +1,9 @@
+/* Self-hosted variable fonts (latin + latin-ext unicode-range subsets) —
+   replaces the render-blocking Google Fonts CDN request. */
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/plus-jakarta-sans";
+@import "@fontsource-variable/jetbrains-mono";
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
@@ -15,17 +21,21 @@
   --color-surface-base: oklch(0.09 0.012 260);
   --color-surface-raised: oklch(0.13 0.015 260);
   --color-surface-sunken: oklch(0.07 0.01 260);
+  /* One luminance step below base — the /card metric chips */
+  --color-surface-chip: oklch(0.07 0.01 260);
   --color-surface-nav: oklch(0.98 0.005 260 / 0.06);
-  --color-surface-glass: oklch(0.98 0.005 260 / 0.10);
+  --color-surface-glass: oklch(0.98 0.005 260 / 0.1);
   --color-surface-glass-strong: oklch(0.98 0.005 260 / 0.18);
 
   --color-text-primary: oklch(0.96 0.005 260);
-  --color-text-muted: oklch(0.96 0.005 260 / 0.60);
-  --color-text-subtle: oklch(0.96 0.005 260 / 0.40);
+  --color-text-muted: oklch(0.96 0.005 260 / 0.6);
+  --color-text-subtle: oklch(0.96 0.005 260 / 0.4);
+  /* 50% alpha = 4.82:1 on surface-base — clears WCAG AA for normal text */
+  --color-text-faint: oklch(0.96 0.005 260 / 0.5);
 
   --color-border-subtle: oklch(0.98 0 0 / 0.12);
-  --color-border-default: oklch(0.98 0 0 / 0.20);
-  --color-border-strong: oklch(0.98 0 0 / 0.40);
+  --color-border-default: oklch(0.98 0 0 / 0.2);
+  --color-border-strong: oklch(0.98 0 0 / 0.4);
 
   --color-accent: oklch(0.74 0.19 230);
   --color-accent-hover: oklch(0.66 0.19 230);
@@ -188,7 +198,8 @@
 
 .dark-tech-placeholder-2 {
   background: radial-gradient(circle at 70% 40%, oklch(0.16 0.03 230), oklch(0.09 0.012 260));
-  background-image: linear-gradient(to right, oklch(0.98 0 0 / 0.05) 1px, transparent 1px),
-                    linear-gradient(to bottom, oklch(0.98 0 0 / 0.05) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, oklch(0.98 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.98 0 0 / 0.05) 1px, transparent 1px);
   background-size: 24px 24px;
 }

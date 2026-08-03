@@ -4,8 +4,13 @@ import { useLocation } from "@tanstack/react-router";
 export function AmbientBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const { pathname } = useLocation();
+  // /card is a locked-viewport page with its own (video) backdrop covering the
+  // whole viewport — this layer would be invisible there yet still burn GPU.
+  const suppressed = pathname === "/card";
 
   useEffect(() => {
+    if (suppressed) return;
     let cleanupFn: (() => void) | undefined;
     let isCancelled = false;
 
@@ -43,7 +48,9 @@ export function AmbientBackground() {
         cleanupFn();
       }
     };
-  }, []);
+  }, [suppressed]);
+
+  if (suppressed) return null;
 
   return (
     <div
