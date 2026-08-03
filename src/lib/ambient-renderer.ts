@@ -8,6 +8,9 @@ import {
   Vector2,
   Vector3,
   Camera,
+  TextureLoader,
+  RepeatWrapping,
+  LinearFilter,
 } from "three";
 import { VERTEX_SHADER, FRAGMENT_SHADER } from "./shaders/ambient.glsl";
 
@@ -60,17 +63,11 @@ function parseCssColorToVec3(colorStr: string, fallback: Vector3): Vector3 {
 }
 
 function getDesignPalette(): Vector3[] {
-  const styles = getComputedStyle(document.documentElement);
-  const bgStr = styles.getPropertyValue("--background").trim() || "oklch(0.09 0.012 260)";
-  const navyStr = styles.getPropertyValue("--navy").trim() || "oklch(0.18 0.04 265)";
-  const primaryStr = styles.getPropertyValue("--primary").trim() || "oklch(0.74 0.19 230)";
-  const goldSoftStr = styles.getPropertyValue("--gold-soft").trim() || "oklch(0.88 0.12 225)";
-
   return [
-    parseCssColorToVec3(bgStr, new Vector3(0.09, 0.09, 0.11)),
-    parseCssColorToVec3(navyStr, new Vector3(0.1, 0.12, 0.2)),
-    parseCssColorToVec3(primaryStr, new Vector3(0.2, 0.6, 0.9)),
-    parseCssColorToVec3(goldSoftStr, new Vector3(0.8, 0.7, 0.4)),
+    new Vector3(0.035, 0.043, 0.063), // surface-base (deep blue-slate near black)
+    new Vector3(0.051, 0.059, 0.082), // surface-raised (navy fog)
+    new Vector3(0.24, 0.58, 0.94),   // accent (brand blue core glow)
+    new Vector3(0.12, 0.32, 0.55),   // subtle blue refraction banding
   ];
 }
 
@@ -103,12 +100,21 @@ export function initAmbientRenderer(
 
   // 3. Uniforms & Design Tokens
   const palette = getDesignPalette();
+  const textureLoader = new TextureLoader();
+  const flowTexture = textureLoader.load("/textures/flow-noise.avif", (tex) => {
+    tex.wrapS = RepeatWrapping;
+    tex.wrapT = RepeatWrapping;
+    tex.minFilter = LinearFilter;
+    tex.magFilter = LinearFilter;
+  });
+
   const uniforms = {
     uResolution: { value: new Vector2(window.innerWidth * dpr, window.innerHeight * dpr) },
     uTime: { value: 0 },
     uPointer: { value: new Vector2(0.5, 0.5) },
     uScroll: { value: 0 },
     uPalette: { value: palette },
+    uFlowTexture: { value: flowTexture },
   };
 
   const material = new RawShaderMaterial({
@@ -238,6 +244,7 @@ export function initAmbientRenderer(
 
     geometry.dispose();
     material.dispose();
+    flowTexture.dispose();
     renderer.dispose();
 
     try {

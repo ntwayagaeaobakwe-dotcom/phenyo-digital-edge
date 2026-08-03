@@ -70,15 +70,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#0a0a0a" },
-      { title: "NYG Digital | Business Automation & Conversion-Focused Websites" },
+      { name: "theme-color", content: "#090b10" },
+      { title: "NYG Digital | Business Automation & Web Systems" },
       {
         name: "description",
         content:
-          "NYG Digital helps businesses reduce repetitive work, organize leads, connect operational tools, and build professional websites that turn visitors into inquiries.",
+          "NYG Digital builds the systems that remove manual work from lead follow-up, scheduling, and reporting for real estate agencies and facility services in Dubai.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "NYG Digital | Business Automation & Web Development" },
+      { property: "og:site_name", content: "NYG Digital | Business Automation & Web Systems" },
       // Default OG/Twitter image — generated preview banner (public/og-image.jpg).
       { property: "og:image", content: `${ROOT_SITE_URL}/og-image.jpg` },
       { property: "og:image:width", content: "1200" },
@@ -94,7 +94,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap",
       },
     ],
   }),

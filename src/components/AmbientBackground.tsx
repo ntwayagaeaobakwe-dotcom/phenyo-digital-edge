@@ -4,20 +4,12 @@ import { useLocation } from "@tanstack/react-router";
 export function AmbientBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
-  const location = useLocation();
-
-  // Hero route manages its own background video/canvas context.
-  // Ambient Three.js shader MUST NOT run simultaneously on the home route.
-  const isHeroRoute = location.pathname === "/";
 
   useEffect(() => {
-    if (isHeroRoute) return;
-
     let cleanupFn: (() => void) | undefined;
     let isCancelled = false;
 
     const scheduleInit = () => {
-      // Defer Three.js dynamic import until after hydration when browser is idle
       const requestIdle =
         typeof window !== "undefined" && "requestIdleCallback" in window
           ? window.requestIdleCallback
@@ -27,7 +19,6 @@ export function AmbientBackground() {
         if (isCancelled || !canvasRef.current) return;
 
         try {
-          // Dynamic ESM import of the WebGL renderer bundle
           const { initAmbientRenderer, isSupportedHardware } =
             await import("@/lib/ambient-renderer");
 
@@ -52,11 +43,7 @@ export function AmbientBackground() {
         cleanupFn();
       }
     };
-  }, [isHeroRoute]);
-
-  if (isHeroRoute) {
-    return null;
-  }
+  }, []);
 
   return (
     <div

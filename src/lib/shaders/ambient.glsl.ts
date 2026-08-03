@@ -23,6 +23,7 @@ uniform float uTime;
 uniform vec2 uPointer;
 uniform float uScroll;
 uniform vec3 uPalette[4];
+uniform sampler2D uFlowTexture;
 
 varying vec2 vUv;
 
@@ -95,34 +96,39 @@ void main() {
 
   float fbmVal = fbm(st + 2.5 * r);
 
-  // ─── SECTION D: DESIGN PALETTE BLENDING ──────────────────────────────────
-  // uPalette[0]: Base background slate
-  // uPalette[1]: Muted navy depth
-  // uPalette[2]: Electric primary accent light
-  // uPalette[3]: Gold soft accent halo
+  // Sample organic flow-noise texture sampler uniform
+  vec2 textureUv = vUv * 1.5 + vec2(slowTime * 0.1, slowTime * 0.05);
+  float textureVal = texture2D(uFlowTexture, textureUv).r;
+  fbmVal = mix(fbmVal, textureVal, 0.25);
 
-  vec3 color = mix(uPalette[0], uPalette[1], clamp(fbmVal * 1.2, 0.0, 1.0));
-  color = mix(color, uPalette[2], clamp(length(q) * 0.4, 0.0, 0.45));
-  color = mix(color, uPalette[3], clamp(r.g * r.g * 0.3, 0.0, 0.25));
+  // ─── SECTION D: DESIGN PALETTE BLENDING ──────────────────────────────────
+  // uPalette[0]: Base background deep blue-slate
+  // uPalette[1]: Muted navy fog depth
+  // uPalette[2]: Brand blue core glow
+  // uPalette[3]: Subtle blue refraction banding
+
+  vec3 color = mix(uPalette[0], uPalette[1], clamp(fbmVal * 1.1, 0.0, 1.0));
+  color = mix(color, uPalette[2], clamp(length(q) * 0.35, 0.0, 0.35));
+  color = mix(color, uPalette[3], clamp(r.g * r.g * 0.25, 0.0, 0.2));
 
   // ─── SECTION E: INTERACTION & SPOTLIGHT ──────────────────────────────────
   // Smooth mouse pointer influence
   vec2 pointerAspect = (uPointer - 0.5) * vec2(uResolution.x / uResolution.y, 1.0);
   float pointerDist = length(aspectUv - pointerAspect);
   float pointerGlow = smoothstep(0.85, 0.0, pointerDist);
-  color += uPalette[2] * pointerGlow * 0.08;
+  color += uPalette[2] * pointerGlow * 0.06;
 
   // Scroll depth shift
   float scrollFade = smoothstep(0.0, 1.0, uScroll);
-  color = mix(color, color * 0.9 + uPalette[1] * 0.1, scrollFade * 0.2);
+  color = mix(color, color * 0.95 + uPalette[1] * 0.05, scrollFade * 0.15);
 
   // ─── SECTION F: MICRO-GRAIN DITHERING & VIGNETTE ─────────────────────────
-  // High-frequency dither noise to prevent color banding
-  float grain = (fract(sin(dot(vUv * (uTime + 1.0), vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.02;
+  // High-frequency dither noise (~0.05 strength per specification)
+  float grain = (fract(sin(dot(vUv * (uTime * 0.1 + 1.0), vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * 0.05;
   color += grain;
 
   // Soft corner vignette for depth
-  float vignette = smoothstep(1.3, 0.3, length(vUv - 0.5) * 1.3);
+  float vignette = smoothstep(1.4, 0.3, length(vUv - 0.5) * 1.25);
   color *= vignette;
 
   gl_FragColor = vec4(color, 1.0);

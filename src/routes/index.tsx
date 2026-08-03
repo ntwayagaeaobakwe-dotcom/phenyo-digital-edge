@@ -1,36 +1,14 @@
-import { lazy, Suspense } from "react";
 import { createFileRoute } from "@tanstack/react-router";
-import { ScrollVideo } from "@/components/portfolio/ScrollVideo";
-import { Navbar } from "@/components/portfolio/Navbar";
-import { HeroSection } from "@/components/portfolio/HeroSection";
-import { CapabilitySection } from "@/components/portfolio/CapabilitySection";
-import { DemoSkeleton } from "@/components/portfolio/DemoSkeleton";
-import { TrustBar } from "@/components/portfolio/TrustBar";
-import { ServicesSection } from "@/components/portfolio/ServicesSection";
-import { AboutSection } from "@/components/portfolio/AboutSection";
-import { RoiCalculator } from "@/components/portfolio/RoiCalculator";
-import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
-import { ExperienceSection } from "@/components/portfolio/ExperienceSection";
-import { ContactSection } from "@/components/portfolio/ContactSection";
-import { FooterSection } from "@/components/portfolio/FooterSection";
+import { HeroSection } from "@/components/nyg/HeroSection";
+import { ApproachSection } from "@/components/nyg/ApproachSection";
+import { WorkSection } from "@/components/nyg/WorkSection";
+import { FooterSection } from "@/components/nyg/FooterSection";
 import { getSiteUrl } from "@/lib/seo";
 
-const SystemStudio = lazy(() =>
-  import("@/components/portfolio/SystemStudio").then((m) => ({
-    default: m.SystemStudio,
-  })),
-);
-
-const BottleneckConfigurator = lazy(() =>
-  import("@/components/portfolio/BottleneckConfigurator").then((m) => ({
-    default: m.BottleneckConfigurator,
-  })),
-);
-
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "NYG Digital | Business Automation & Conversion-Focused Websites";
+const PAGE_TITLE = "NYG Digital | Business Automation & Web Systems";
 const PAGE_DESC =
-  "NYG Digital helps Dubai operators remove manual work from lead follow-up, scheduling, and reporting with custom automation and web systems.";
+  "NYG Digital builds the systems that remove manual work from lead follow-up, scheduling, and reporting for real estate agencies and facility services in Dubai.";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -41,7 +19,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "NYG Digital, Ntwayagae, business automation, n8n workflow automation, web development, conversion-focused websites, lead research automation, client portals, API integrations, process optimization",
+          "NYG Digital, business automation, n8n workflow automation, web development, Dubai systems, real estate automation, facility management automation, API integrations",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: PAGE_TITLE },
@@ -69,38 +47,10 @@ export const Route = createFileRoute("/")({
               name: "NYG Digital",
               url: SITE_URL,
               description: PAGE_DESC,
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "Business Automation & Web Services",
-                itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Business Automation",
-                      description:
-                        "Custom n8n pipelines, API integrations, and lead research tools.",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Websites That Generate Inquiries",
-                      description:
-                        "Professional, mobile-friendly websites designed to convert visitors into inquiries.",
-                    },
-                  },
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Client Portals and Business Dashboards",
-                      description:
-                        "Dedicated online spaces that centralize operational data and client account management.",
-                    },
-                  },
-                ],
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Dubai",
+                addressCountry: "AE",
               },
             },
             {
@@ -120,55 +70,25 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <div className="relative min-h-screen bg-surface-base text-text-primary overflow-x-clip">
-      {/* Scroll-scrubbed background video layer */}
-      <ScrollVideo />
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-[--color-accent] focus:text-surface-base focus:rounded-full focus-ring font-mono text-xs uppercase tracking-widest font-semibold inline-flex items-center min-h-[44px]"
+      >
+        Skip to main content
+      </a>
 
-      <div className="relative z-10">
-        <a
-          href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-text-primary focus:text-surface-base focus:rounded-full focus:shadow-2xl focus-ring font-mono text-xs uppercase tracking-widest font-semibold min-h-[44px] inline-flex items-center"
-        >
-          Skip to main content
-        </a>
-        <Navbar />
-        <main id="main-content" tabIndex={-1} className="outline-none">
-          {/* Section One: Hero */}
-          <HeroSection />
+      <main id="main-content" tabIndex={-1} className="outline-none">
+        {/* SECTION 1: HERO */}
+        <HeroSection />
 
-          {/* REQUIRED MID SPACER for scrub scroll room */}
-          <div className="h-[80vh]" aria-hidden="true" />
+        {/* SECTION 2: APPROACH */}
+        <ApproachSection />
 
-          {/* Section Two: Capability */}
-          <CapabilitySection />
+        {/* SECTION 3: SELECTED WORK */}
+        <WorkSection />
+      </main>
 
-          <TrustBar />
-          <Suspense
-            fallback={
-              <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-                <DemoSkeleton className="h-[420px]" />
-              </div>
-            }
-          >
-            <SystemStudio />
-          </Suspense>
-          <ServicesSection />
-          <Suspense
-            fallback={
-              <div className="mx-auto max-w-6xl px-4 sm:px-6 py-20">
-                <DemoSkeleton className="h-[460px]" />
-              </div>
-            }
-          >
-            <BottleneckConfigurator />
-          </Suspense>
-          <ProjectsSection />
-          <RoiCalculator />
-          <AboutSection />
-          <ExperienceSection />
-          <ContactSection />
-        </main>
-        <FooterSection />
-      </div>
+      <FooterSection />
     </div>
   );
 }
