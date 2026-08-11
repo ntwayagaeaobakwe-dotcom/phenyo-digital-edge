@@ -18,32 +18,32 @@
   --radius-2xl: calc(var(--radius) + 8px);
 
   /* NYG Digital - Dark Inversion Surface & Text Tokens (OKLCH) */
-  --color-surface-base: oklch(0.09 0.012 260);
-  --color-surface-raised: oklch(0.13 0.015 260);
-  --color-surface-sunken: oklch(0.07 0.01 260);
+  --color-surface-base: oklch(0.02 0 0); /* Obsidian Black */
+  --color-surface-raised: oklch(0.08 0 0);
+  --color-surface-sunken: oklch(0.01 0 0);
   /* One luminance step below base — the /card metric chips */
-  --color-surface-chip: oklch(0.07 0.01 260);
-  --color-surface-nav: oklch(0.98 0.005 260 / 0.06);
-  --color-surface-glass: oklch(0.98 0.005 260 / 0.1);
-  --color-surface-glass-strong: oklch(0.98 0.005 260 / 0.18);
+  --color-surface-chip: oklch(0.05 0 0);
+  --color-surface-nav: oklch(0.98 0 0 / 0.03);
+  --color-surface-glass: oklch(0.98 0 0 / 0.05);
+  --color-surface-glass-strong: oklch(0.98 0 0 / 0.1);
 
-  --color-text-primary: oklch(0.96 0.005 260);
-  --color-text-muted: oklch(0.96 0.005 260 / 0.6);
-  --color-text-subtle: oklch(0.96 0.005 260 / 0.4);
+  --color-text-primary: oklch(0.98 0 0);
+  --color-text-muted: oklch(0.98 0 0 / 0.6);
+  --color-text-subtle: oklch(0.98 0 0 / 0.4);
   /* 50% alpha = 4.82:1 on surface-base — clears WCAG AA for normal text */
-  --color-text-faint: oklch(0.96 0.005 260 / 0.5);
+  --color-text-faint: oklch(0.98 0 0 / 0.5);
 
-  --color-border-subtle: oklch(0.98 0 0 / 0.12);
-  --color-border-default: oklch(0.98 0 0 / 0.2);
-  --color-border-strong: oklch(0.98 0 0 / 0.4);
+  --color-border-subtle: oklch(0.98 0 0 / 0.08);
+  --color-border-default: oklch(0.98 0 0 / 0.15);
+  --color-border-strong: oklch(0.98 0 0 / 0.3);
 
-  --color-accent: oklch(0.74 0.19 230);
-  --color-accent-hover: oklch(0.66 0.19 230);
-  --color-focus-ring: oklch(0.82 0.16 228);
+  --color-accent: oklch(0.85 0.15 190); /* Cinematic Cyan/Neon */
+  --color-accent-hover: oklch(0.75 0.15 190);
+  --color-focus-ring: oklch(0.85 0.15 190 / 0.5);
 
   --color-action-primary: var(--color-accent);
   --color-action-primary-hover: var(--color-accent-hover);
-  --color-action-primary-foreground: oklch(0.09 0.012 260);
+  --color-action-primary-foreground: oklch(0.02 0 0);
 
   /* Legacy & Compatibility Aliases */
   --color-background: var(--color-surface-base);
@@ -72,46 +72,46 @@
 :root {
   --radius: 0.75rem;
 
-  --background: oklch(0.09 0.012 260);
-  --foreground: oklch(0.98 0.005 260);
+  --background: oklch(0.02 0 0);
+  --foreground: oklch(0.98 0 0);
 
-  --card: oklch(0.13 0.015 260);
-  --card-foreground: oklch(0.98 0.005 260);
+  --card: oklch(0.08 0 0);
+  --card-foreground: oklch(0.98 0 0);
 
-  --popover: oklch(0.13 0.015 260);
-  --popover-foreground: oklch(0.98 0.005 260);
+  --popover: oklch(0.08 0 0);
+  --popover-foreground: oklch(0.98 0 0);
 
-  --primary: oklch(0.74 0.19 230);
-  --primary-foreground: oklch(0.09 0.012 260);
+  --primary: oklch(0.85 0.15 190);
+  --primary-foreground: oklch(0.02 0 0);
 
-  --secondary: oklch(0.2 0.02 260);
-  --secondary-foreground: oklch(0.98 0.005 260);
+  --secondary: oklch(0.12 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
 
-  --muted: oklch(0.2 0.02 260);
-  --muted-foreground: oklch(0.72 0.02 260); /* 6.8:1 contrast against background */
+  --muted: oklch(0.12 0 0);
+  --muted-foreground: oklch(0.72 0 0); /* 6.8:1 contrast against background */
 
-  --accent: oklch(0.74 0.19 230);
-  --accent-foreground: oklch(0.09 0.012 260);
+  --accent: oklch(0.85 0.15 190);
+  --accent-foreground: oklch(0.02 0 0);
 
   --destructive: oklch(0.64 0.22 25);
   --destructive-foreground: oklch(0.98 0 0);
 
-  --border: oklch(0.98 0 0 / 0.2);
-  --input: oklch(0.98 0 0 / 0.2);
-  --ring: oklch(0.82 0.16 228);
+  --border: oklch(0.98 0 0 / 0.15);
+  --input: oklch(0.98 0 0 / 0.15);
+  --ring: oklch(0.85 0.15 190 / 0.5);
 
   --gold: oklch(0.74 0.19 230);
   --gold-soft: oklch(0.82 0.16 228);
   --navy: oklch(0.13 0.015 260);
-  --neon: oklch(0.74 0.17 165);
+  --neon: oklch(0.85 0.15 190);
 
   --gradient-gold: linear-gradient(135deg, oklch(0.82 0.16 230), oklch(0.72 0.19 195));
   --gradient-hero:
-    radial-gradient(ellipse at 30% 15%, oklch(0.74 0.19 230 / 0.22), transparent 55%),
-    radial-gradient(ellipse at 85% 65%, oklch(0.74 0.17 165 / 0.15), transparent 60%),
-    linear-gradient(180deg, oklch(0.09 0.012 260), oklch(0.13 0.015 260));
-  --shadow-gold: 0 15px 40px -15px oklch(0.74 0.19 230 / 0.38);
-  --shadow-gold-hover: 0 20px 50px -10px oklch(0.74 0.19 230 / 0.48);
+    radial-gradient(ellipse at 30% 15%, oklch(0.85 0.15 190 / 0.15), transparent 55%),
+    radial-gradient(ellipse at 85% 65%, oklch(0.85 0.15 190 / 0.10), transparent 60%),
+    linear-gradient(180deg, oklch(0.02 0 0), oklch(0.05 0 0));
+  --shadow-gold: 0 15px 40px -15px oklch(0.85 0.15 190 / 0.2);
+  --shadow-gold-hover: 0 20px 50px -10px oklch(0.85 0.15 190 / 0.3);
   --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.9);
 
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);

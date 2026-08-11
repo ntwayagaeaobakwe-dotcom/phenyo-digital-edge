@@ -1,6 +1,8 @@
 import { useSyncExternalStore } from "react";
 import { ArrowRight, ShieldCheck } from "lucide-react";
 import { HeaderNav } from "./HeaderNav";
+import { MagneticButton } from "@/components/ui/MagneticButton";
+import { Hero3DScene } from "@/components/canvas/Hero3DScene";
 
 // Content Tokens awaiting actual client/credential inputs
 export const PROOF_BADGE_LABEL = "{{PROOF_BADGE_LABEL}}";
@@ -31,6 +33,9 @@ export function HeroSection() {
       {/* NAVIGATION HEADER (z-20) */}
       <HeaderNav />
 
+      {/* 3D BACKGROUND */}
+      <Hero3DScene />
+
       {/* FLEX-1 SPACER (Pushes hero content to bottom anchor) */}
       <div className="flex-1 min-h-[40px] sm:min-h-[80px]" aria-hidden="true" />
 
@@ -55,10 +60,11 @@ export function HeroSection() {
         {/* CTA ROW */}
         <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-5">
           {/* Primary CTA with Text Roll */}
-          <a
-            href="#work"
-            className="group inline-flex items-center gap-3 bg-[--color-accent] hover:bg-[--color-accent-hover] text-surface-base text-[13px] sm:text-[14px] font-medium rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-colors duration-300 focus-ring"
-          >
+          <MagneticButton asChild>
+            <a
+              href="#work"
+              className="group inline-flex items-center gap-3 bg-[--color-accent] hover:bg-[--color-accent-hover] text-[--color-action-primary-foreground] text-[13px] sm:text-[14px] font-medium rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-colors duration-300 focus-ring"
+            >
             <div className="overflow-hidden h-[20px] relative">
               <div
                 className={`flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
@@ -73,15 +79,16 @@ export function HeroSection() {
                 </span>
               </div>
             </div>
-            <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-glass flex items-center justify-center shrink-0">
-              <ArrowRight
-                className={`w-4 h-4 text-surface-base transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-                  prefersReducedMotion ? "" : "group-hover:-rotate-45"
-                }`}
-                aria-hidden="true"
-              />
-            </span>
-          </a>
+              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-glass flex items-center justify-center shrink-0">
+                <ArrowRight
+                  className={`w-4 h-4 text-surface-base transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
+                    prefersReducedMotion ? "" : "group-hover:-rotate-45"
+                  }`}
+                  aria-hidden="true"
+                />
+              </span>
+            </a>
+          </MagneticButton>
 
           {/* Proof Badge: Glass pill, raises one luminance step on hover (NO shadow) */}
           <div className="inline-flex items-center gap-2.5 px-3 sm:px-4 py-2 bg-surface-glass hover:bg-surface-glass-strong backdrop-blur-md border border-[--color-border-subtle] rounded-[4px] transition-colors duration-300">
