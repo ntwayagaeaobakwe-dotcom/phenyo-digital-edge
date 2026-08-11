@@ -1,264 +1,100 @@
-import { useSyncExternalStore, useEffect, useRef } from "react";
-import { ArrowRight } from "lucide-react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MagneticButton } from "@/components/ui/MagneticButton";
-
-gsap.registerPlugin(ScrollTrigger);
-
-function usePrefersReducedMotion(): boolean {
-  return useSyncExternalStore(
-    (onChange) => {
-      if (typeof window === "undefined") return () => {};
-      const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-      mq.addEventListener("change", onChange);
-      return () => mq.removeEventListener("change", onChange);
-    },
-    () => (typeof window !== "undefined" ? window.matchMedia("(prefers-reduced-motion: reduce)").matches : false),
-    () => false
-  );
-}
+import { useRef } from "react";
+import { CheckCircle2 } from "lucide-react";
 
 export function ApproachSection() {
-  const prefersReducedMotion = usePrefersReducedMotion();
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const desktopRowRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (prefersReducedMotion || !sectionRef.current) return;
-
-    const ctx = gsap.context(() => {
-      // Heading reveal
-      gsap.from(headingRef.current, {
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 80%",
-        },
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out",
-      });
-
-      // Desktop row children stagger
-      if (desktopRowRef.current) {
-        gsap.from(desktopRowRef.current.children, {
-          scrollTrigger: {
-            trigger: desktopRowRef.current,
-            start: "top 75%",
-          },
-          y: 40,
-          opacity: 0,
-          stagger: 0.2,
-          duration: 1,
-          ease: "power3.out",
-        });
-      }
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, [prefersReducedMotion]);
-
-  // Dark technical abstract node graph / terminal placeholder fallback
-  const techImg1 = "/about-1.avif";
-  const techImg2 = "/about-2.avif";
+  const checkItems = [
+    "Top business applications",
+    "Top business applications",
+    "Innovative working strategy",
+    "Innovative working strategy",
+    "Solutions for cheap overviews",
+    "Solutions for cheap overviews",
+  ];
 
   return (
     <section
       ref={sectionRef}
       id="about"
-      className="bg-surface-raised pt-16 sm:pt-20 lg:pt-32 pb-12 sm:pb-16 lg:pb-24 overflow-hidden border-t border-[--color-border-subtle]"
+      className="bg-surface-raised pt-24 sm:pt-32 pb-16 sm:pb-24 overflow-hidden border-t border-border/10"
     >
-      <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-        {/* Badge Row */}
-        <div className="flex items-center gap-3 mb-6 sm:mb-8">
-          <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[--color-accent] text-surface-base text-[11px] sm:text-[12px] font-semibold flex items-center justify-center shrink-0">
-            1
-          </span>
-          <span className="text-[12px] sm:text-[13px] font-medium border border-[--color-border-subtle] rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-text-muted">
-            How it works
-          </span>
-        </div>
-
-        {/* Heading H2: Two-Tone */}
-        <h2 ref={headingRef} className="font-display font-medium leading-[1.12] tracking-[-0.02em] text-[clamp(1.5rem,4vw,3.2rem)] mb-12 sm:mb-16 lg:mb-28 max-w-4xl">
-          <span className="text-text-primary block">
-            Every engagement starts with a working demo
-          </span>
-          <span className="text-text-muted block">
-            built on your actual process.
-          </span>
-        </h2>
-
-        {/* MOBILE / TABLET LAYOUT (lg:hidden) */}
-        <div className="lg:hidden flex flex-col gap-8">
-          <p className="text-[15px] sm:text-[17px] leading-[1.6] font-medium text-text-primary">
-            I map where your hours actually go, rebuild the worst three steps as automations, and hand you a system your team can run without me.
-          </p>
-
-          <div>
-            <MagneticButton asChild>
-              <a
-                href="#contact"
-                className="group inline-flex items-center gap-3 bg-[--color-accent] hover:bg-[--color-accent-hover] text-[--color-action-primary-foreground] text-[13px] sm:text-[14px] font-medium rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-colors duration-300 focus-ring"
-              >
-                <div className="overflow-hidden h-[20px] relative">
-                  <div
-                    className={`flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-                      prefersReducedMotion ? "" : "group-hover:-translate-y-1/2"
-                    }`}
-                  >
-                    <span className="h-[20px] flex items-center font-semibold text-surface-base">
-                      How I work
-                    </span>
-                    <span className="h-[20px] flex items-center font-semibold text-surface-base" aria-hidden="true">
-                      How I work
-                    </span>
-                  </div>
-                </div>
-                <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-glass flex items-center justify-center shrink-0">
-                  <ArrowRight
-                    className={`w-4 h-4 text-surface-base transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-                      prefersReducedMotion ? "" : "group-hover:-rotate-45"
-                    }`}
-                    aria-hidden="true"
-                  />
-                </span>
-              </a>
-            </MagneticButton>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 pt-4">
-            <div className="sm:w-[45%] aspect-[438/346] rounded-xl sm:rounded-2xl overflow-hidden bg-surface-base border border-[--color-border-subtle] relative group">
+      <div className="max-w-[1200px] mx-auto px-5 sm:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          {/* Left side: Images & Stats */}
+          <div className="relative">
+            <div className="rounded-[--radius] overflow-hidden border border-border/20 shadow-xl">
               <img
-                src={techImg1}
-                alt="Technical workflow node graph diagram"
-                width={438}
-                height={346}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  // Fallback dark technical canvas placeholder if avif file missing
-                  (e.target as HTMLElement).style.display = "none";
-                  (e.currentTarget.parentElement as HTMLElement).classList.add("dark-tech-placeholder-1");
-                }}
+                src="/it_expert_about.png"
+                alt="IT Expert working"
+                className="w-full h-auto object-cover aspect-square sm:aspect-[4/5] lg:aspect-square"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface-base/90 via-transparent to-transparent pointer-events-none p-4 flex flex-col justify-end">
-                <span className="font-mono text-[10px] text-text-subtle uppercase tracking-widest">
-                  System Architecture // 01
-                </span>
-              </div>
             </div>
-
-            <div className="sm:w-[55%] aspect-[900/600] rounded-xl sm:rounded-2xl overflow-hidden bg-surface-base border border-[--color-border-subtle] relative group">
-              <img
-                src={techImg2}
-                alt="Automated operational dispatch telemetry pane"
-                width={900}
-                height={600}
-                loading="lazy"
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  (e.target as HTMLElement).style.display = "none";
-                  (e.currentTarget.parentElement as HTMLElement).classList.add("dark-tech-placeholder-2");
-                }}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-surface-base/90 via-transparent to-transparent pointer-events-none p-4 flex flex-col justify-end">
-                <span className="font-mono text-[10px] text-text-subtle uppercase tracking-widest">
-                  Execution Pipeline // 02
-                </span>
+            
+            {/* Floating Stat Badge */}
+            <div className="absolute -bottom-8 -left-8 sm:-bottom-12 sm:-left-12 bg-surface-base p-6 sm:p-8 rounded-[--radius] border border-border/20 shadow-2xl flex items-center gap-6">
+              <div className="w-12 h-12 rounded-full border-2 border-[--color-accent] flex items-center justify-center">
+                 <div className="w-8 h-8 rounded-full border border-[--color-accent] flex items-center justify-center">
+                    <span className="w-4 h-4 bg-[--color-accent] rounded-full"></span>
+                 </div>
+              </div>
+              <div>
+                <div className="text-3xl font-bold font-display text-white">87450</div>
+                <div className="text-text-muted text-sm mt-1">Project completed</div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* DESKTOP LAYOUT (hidden lg:grid) */}
-        <div ref={desktopRowRef} className="hidden lg:grid grid-cols-[26%_1fr_48%] items-end gap-6 xl:gap-8">
-          {/* Left Image: Small aspect-[438/346] */}
-          <div className="self-end aspect-[438/346] rounded-2xl overflow-hidden bg-surface-base border border-[--color-border-subtle] relative group">
-            <img
-              src={techImg1}
-              alt="Technical workflow node graph diagram"
-              width={438}
-              height={346}
-              loading="lazy"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLElement).style.display = "none";
-                (e.currentTarget.parentElement as HTMLElement).classList.add("dark-tech-placeholder-1");
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-base/90 via-transparent to-transparent pointer-events-none p-4 flex flex-col justify-end">
-              <span className="font-mono text-[10px] text-text-subtle uppercase tracking-widest">
-                System Architecture // 01
+          {/* Right side: Content */}
+          <div className="flex flex-col pt-12 lg:pt-0">
+            {/* Eyebrow */}
+            <div className="flex items-center gap-3 mb-6">
+              <span className="text-[12px] uppercase tracking-widest text-[--color-accent] font-bold">
+                ABOUT OUR COMPANY
               </span>
             </div>
-          </div>
 
-          {/* Center Column: Text & CTA (Self-Start, Flex End) */}
-          <div className="self-start flex flex-col justify-end gap-8 pr-2">
-            <p className="text-[16px] xl:text-[18px] leading-[1.65] font-medium text-text-primary max-w-sm">
-              I map where your hours actually go,
-              <br />
-              rebuild the worst three steps as automations,
-              <br />
-              and hand you a system your team can run without me.
+            {/* Headline */}
+            <h2 className="font-display font-bold leading-[1.15] text-[clamp(2rem,4vw,3.5rem)] mb-6 text-white">
+              Professional IT Experts<br/>for Tech Solutions
+            </h2>
+
+            {/* Paragraph */}
+            <p className="text-[15px] leading-relaxed text-text-muted mb-8">
+              Web designing in a powerful way of just not an only professions, however, in a passion for our Company. We have to a tendency to believe the idea that smart looking of any website is the first impression on visitors.
             </p>
 
-            <div>
-              <MagneticButton asChild>
-                <a
-                  href="#contact"
-                  className="group inline-flex items-center gap-3 bg-[--color-accent] hover:bg-[--color-accent-hover] text-[--color-action-primary-foreground] text-[13px] sm:text-[14px] font-medium rounded-full pl-5 sm:pl-6 pr-2 py-2 transition-colors duration-300 focus-ring"
-                >
-                  <div className="overflow-hidden h-[20px] relative">
-                    <div
-                      className={`flex flex-col transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-                        prefersReducedMotion ? "" : "group-hover:-translate-y-1/2"
-                      }`}
-                    >
-                      <span className="h-[20px] flex items-center font-semibold text-surface-base">
-                        How I work
-                      </span>
-                      <span className="h-[20px] flex items-center font-semibold text-surface-base" aria-hidden="true">
-                        How I work
-                      </span>
-                    </div>
-                  </div>
-                  <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-surface-glass flex items-center justify-center shrink-0">
-                    <ArrowRight
-                      className={`w-4 h-4 text-surface-base transition-transform duration-500 ease-[cubic-bezier(0.25,0.1,0.25,1)] ${
-                        prefersReducedMotion ? "" : "group-hover:-rotate-45"
-                      }`}
-                      aria-hidden="true"
-                    />
-                  </span>
-                </a>
-              </MagneticButton>
+            {/* Checkmark List */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10">
+              {checkItems.map((item, idx) => (
+                <div key={idx} className="flex items-center gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[--color-accent] shrink-0" />
+                  <span className="text-[14px] font-medium text-text-primary">{item}</span>
+                </div>
+              ))}
             </div>
-          </div>
 
-          {/* Right Image: Large aspect-[3/2] */}
-          <div className="self-end aspect-[3/2] rounded-2xl overflow-hidden bg-surface-base border border-[--color-border-subtle] relative group">
-            <img
-              src={techImg2}
-              alt="Automated operational dispatch telemetry pane"
-              width={900}
-              height={600}
-              loading="lazy"
-              className="w-full h-full object-cover"
-              onError={(e) => {
-                (e.target as HTMLElement).style.display = "none";
-                (e.currentTarget.parentElement as HTMLElement).classList.add("dark-tech-placeholder-2");
-              }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-base/90 via-transparent to-transparent pointer-events-none p-5 flex flex-col justify-end">
-              <span className="font-mono text-[10px] text-text-subtle uppercase tracking-widest">
-                Execution Pipeline // 02
-              </span>
+            {/* CTA & Author */}
+            <div className="flex flex-wrap items-center gap-8">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center bg-[--color-accent] hover:bg-[--color-accent-hover] text-[--color-action-primary-foreground] text-[14px] font-bold px-8 py-3.5 rounded-[--radius] uppercase tracking-wide transition-colors duration-300"
+              >
+                Discover More
+              </a>
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 rounded-full overflow-hidden border border-[--color-accent]">
+                  <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Kevin Martin" className="w-full h-full object-cover" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white font-bold text-[15px]">Kevin Martin</span>
+                  <span className="text-text-muted text-[13px]">Co Founder</span>
+                </div>
+              </div>
             </div>
           </div>
+          
         </div>
       </div>
     </section>

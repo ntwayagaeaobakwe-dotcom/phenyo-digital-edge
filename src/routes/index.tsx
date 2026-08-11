@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/nyg/HeroSection";
 import { ApproachSection } from "@/components/nyg/ApproachSection";
 import { WorkSection } from "@/components/nyg/WorkSection";
+import { StatsSection } from "@/components/nyg/StatsSection";
 import { FooterSection } from "@/components/nyg/FooterSection";
 import { getSiteUrl } from "@/lib/seo";
 
@@ -86,6 +87,9 @@ function Home() {
 
         {/* SECTION 3: SELECTED WORK */}
         <WorkSection />
+
+        {/* SECTION 4: STATS */}
+        <StatsSection />
       </main>
 
       <FooterSection />
