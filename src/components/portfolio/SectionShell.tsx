@@ -9,7 +9,7 @@ interface SectionShellProps {
   children: React.ReactNode;
   className?: string;
   hasDivider?: boolean;
-  isPale?: boolean;
+  themeVariant?: "dark" | "light" | "midnight" | "iris";
   iconGlyph?: string;
   maxWidthClass?: string;
 }
@@ -25,8 +25,8 @@ export function SectionShell({
   children,
   className = "",
   hasDivider = true,
-  isPale = false,
-  iconGlyph = "+",
+  themeVariant = "dark",
+  iconGlyph = "01",
   maxWidthClass = "max-w-6xl",
 }: SectionShellProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -60,7 +60,7 @@ export function SectionShell({
           }
         }
       },
-      { threshold: 0.1 },
+      { threshold: 0.08 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -68,59 +68,69 @@ export function SectionShell({
 
   const revealClasses =
     revealState === "visible"
-      ? "opacity-100 translate-y-0 scale-100"
-      : "opacity-0 translate-y-6 scale-[0.985]";
+      ? "opacity-100 translate-y-0"
+      : "opacity-0 translate-y-8";
 
-  const bgClasses = isPale
-    ? "bg-surface-inverted text-text-inverted-primary border-border-default"
-    : "text-text-primary border-border-subtle";
+  // Dynamic Theme Variant Styles with translucent backdrops to allow liquid digital wall to breathe through
+  let themeClasses = "bg-[#05060A]/80 backdrop-blur-md text-[#F5F6FA] border-[rgba(196,190,255,0.12)]";
+  if (themeVariant === "light") {
+    themeClasses = "bg-[#F5F6FA] text-[#100C1D] border-[rgba(16,12,29,0.1)] section-light-field";
+  } else if (themeVariant === "midnight") {
+    themeClasses = "bg-[#100C1D]/85 backdrop-blur-md text-[#F5F6FA] border-[rgba(196,190,255,0.14)]";
+  } else if (themeVariant === "iris") {
+    themeClasses = "bg-[#0E0A1E]/85 backdrop-blur-md text-[#F5F6FA] border-[rgba(118,87,255,0.25)]";
+  }
+
+  const isLight = themeVariant === "light";
 
   return (
     <section
       ref={sectionRef}
       id={id}
-      className={`scroll-target relative py-24 sm:py-36 ${
+      className={`scroll-target relative py-20 sm:py-28 lg:py-32 ${
         hasDivider ? "border-t" : ""
-      } ${bgClasses} ${className} transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] will-change-[opacity,transform] ${revealClasses}`}
+      } ${themeClasses} ${className} transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-[opacity,transform] ${revealClasses}`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
-        {/* Section Anatomy: Centered narrow heading block (max ~620px) */}
-        <div className="mx-auto max-w-[620px] text-center mb-16 sm:mb-20">
-          {/* Small technical glyph */}
-          <div
-            className={`inline-flex items-center justify-center font-mono text-xs mb-3 select-none ${
-              isPale ? "text-text-inverted-muted" : "text-text-muted/60"
-            }`}
-          >
-            <span>[ {iconGlyph} ]</span>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Section Header */}
+        <div className="mx-auto max-w-[680px] text-center mb-12 sm:mb-16">
+          {/* Section Number Glyph */}
+          <div className="inline-flex items-center justify-center font-display font-bold text-xs mb-3 tracking-widest select-none">
+            <span
+              className={`px-2.5 py-1 rounded-full ${
+                isLight
+                  ? "bg-[#100C1D]/5 text-[#7657FF] border border-[rgba(16,12,29,0.1)]"
+                  : "bg-white/5 text-[#78E7FF] border border-[rgba(196,190,255,0.15)]"
+              }`}
+            >
+              [ {iconGlyph} ]
+            </span>
           </div>
 
-          {/* Eyebrow Label */}
+          {/* Eyebrow */}
           <div
-            className={`block font-mono text-[11px] uppercase tracking-widest mb-3 ${
-              isPale ? "text-text-inverted-muted font-medium" : "text-text-muted font-medium"
+            className={`block font-mono text-[11px] uppercase tracking-widest mb-3.5 font-semibold ${
+              isLight ? "text-[#7657FF]" : "text-[#9D9AAF]"
             }`}
           >
             {eyebrow}
           </div>
 
-          {/* Two-tone Heading: declarative clause (full opacity) + qualifying clause (muted gray), same line */}
+          {/* Headline */}
           <h2
             tabIndex={-1}
-            className="font-sans text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.12] outline-none"
+            className={`font-sans text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.12] outline-none ${
+              isLight ? "text-[#05060A]" : "text-[#F5F6FA]"
+            }`}
           >
             {declarativeTitle ? (
               <>
-                <span className={isPale ? "text-text-inverted-primary" : "text-text-primary"}>
-                  {declarativeTitle}
-                </span>{" "}
+                <span>{declarativeTitle}</span>{" "}
                 {qualifierTitle && (
                   <span
-                    className={
-                      isPale
-                        ? "text-text-inverted-muted font-normal"
-                        : "text-text-muted/80 font-normal"
-                    }
+                    className={`block sm:inline font-normal ${
+                      isLight ? "text-[#4A465B]" : "text-[#9D9AAF]"
+                    }`}
                   >
                     {qualifierTitle}
                   </span>
@@ -132,7 +142,7 @@ export function SectionShell({
           </h2>
         </div>
 
-        {/* Wide or asymmetric visual panel container below */}
+        {/* Content Body */}
         <div className={`mx-auto ${maxWidthClass}`}>{children}</div>
       </div>
     </section>

@@ -9,8 +9,7 @@ import {
 } from "@tanstack/react-router";
 import { useEffect, type ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
-import { AmbientBackground } from "@/components/AmbientBackground";
-import { CustomCursor } from "@/components/ui/CustomCursor";
+
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
@@ -80,12 +79,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "NYG Digital | Business Automation & Web Systems" },
-      // Default OG/Twitter image — generated preview banner (public/og-image.jpg).
-      { property: "og:image", content: `${ROOT_SITE_URL}/og-image.jpg` },
+      // Default OG/Twitter image — generated preview banner (public/og-image.png).
+      { property: "og:image", content: `${ROOT_SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: `${ROOT_SITE_URL}/og-image.jpg` },
+      { name: "twitter:image", content: `${ROOT_SITE_URL}/og-image.png` },
     ],
     links: [
       // Fonts are self-hosted via @fontsource-variable imports in styles.css —
@@ -119,8 +118,6 @@ function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   return (
     <QueryClientProvider client={queryClient}>
-      <CustomCursor />
-      <AmbientBackground />
       <Outlet />
       <Toaster position="top-right" />
     </QueryClientProvider>

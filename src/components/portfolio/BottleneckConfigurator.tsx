@@ -1,39 +1,39 @@
 import { useState } from "react";
-import { ArrowUpRight, PlugZap } from "lucide-react";
+import { ArrowUpRight, PlugZap, Check } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 
 const bottlenecks = [
   {
     id: "follow-up",
-    label: "Leads are not followed up",
-    system: "Lead capture & follow-up pipeline",
-    tools: ["Website Form", "n8n Engine", "CRM Sync", "Email / WhatsApp"],
-    steps: ["Capture each inquiry", "Assign an owner", "Prepare the next follow-up"],
-    outcome: "A consistent path from first contact to a visible next action.",
+    label: "Leads are not followed up immediately",
+    system: "Zero-Leak Lead Routing Pipeline",
+    tools: ["Website / Portals", "n8n Automation Engine", "CRM Sync", "Instant WhatsApp / Email"],
+    steps: ["Capture & parse each inquiry", "Classify intent & assign owner", "Trigger immediate WhatsApp & schedule follow-up"],
+    outcome: "Eliminate dead leads with sub-minute response SLA and automatic CRM ownership.",
   },
   {
     id: "scattered",
-    label: "Customer information is scattered",
-    system: "Connected customer operations hub",
-    tools: ["Forms", "Normalized DB", "CRM", "Live Dashboard"],
-    steps: ["Collect details once", "Normalize each record", "Maintain one source of truth"],
-    outcome: "Less searching and fewer conflicting customer records.",
+    label: "Customer & project data is scattered",
+    system: "Unified Operations Hub & Portal",
+    tools: ["Smart Intake Forms", "Normalized PostgreSQL", "HubSpot / Zoho", "Realtime Dashboard"],
+    steps: ["Collect details once via structured intake", "Normalize and sync across tools", "Maintain single source of truth for team"],
+    outcome: "No more searching through WhatsApp chats, lost emails, and conflicting spreadsheets.",
   },
   {
     id: "admin",
-    label: "Staff repeat the same admin work",
-    system: "Rules-based workflow automation",
-    tools: ["n8n Pipeline", "REST APIs", "Docs", "Notifications"],
-    steps: ["Identify the trigger", "Automate repeatable steps", "Escalate exceptions"],
-    outcome: "More team time reserved for judgment and customer work.",
+    label: "Staff repeat manual admin & reporting",
+    system: "Rules-Based Workflow Automation",
+    tools: ["n8n Pipeline", "REST APIs", "Automated PDF Gen", "Slack / WhatsApp Alerts"],
+    steps: ["Listen for operational triggers", "Auto-generate contracts & dispatch tasks", "Escalate only exceptions to human review"],
+    outcome: "Recover 15–30 hours per team member weekly for high-value client work.",
   },
   {
     id: "conversion",
-    label: "The website is not generating inquiries",
-    system: "Conversion-focused website & lead route",
-    tools: ["React 19", "Analytics", "Forms", "CRM Route"],
-    steps: ["Clarify the offer", "Reduce decision friction", "Route qualified inquiries"],
-    outcome: "A website that actively supports the sales process.",
+    label: "Website doesn't generate qualified inquiries",
+    system: "Conversion Web System & Qualification Route",
+    tools: ["TanStack / React 19", "Interactive Estimators", "Direct Booking", "CRM Ingestion"],
+    steps: ["Clarify the offer & eliminate friction", "Pre-qualify lead budget & timeline", "Route qualified buyers straight to calendar"],
+    outcome: "A digital presence that actively acts as your top-performing qualification rep.",
   },
 ] as const;
 
@@ -56,100 +56,119 @@ export function BottleneckConfigurator() {
     <SectionShell
       id="diagnostic"
       eyebrow="Bottleneck Diagnostic"
-      iconGlyph="04"
+      iconGlyph="03"
+      themeVariant="light"
       declarativeTitle="You describe the operational friction."
       qualifierTitle="I design the connected system."
     >
-      <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
-        {/* Left Column: Asymmetric bottleneck selector */}
-        <div className="space-y-3" aria-label="Choose a business bottleneck">
-          {bottlenecks.map((item, index) => (
-            <button
-              key={item.id}
-              type="button"
-              onClick={() => setSelectedId(item.id)}
-              aria-pressed={selectedId === item.id}
-              className={`flex w-full items-center justify-between gap-4 rounded-xl border px-5 py-4 min-h-[44px] text-left cursor-pointer transition-all duration-150 active:scale-[0.98] focus-ring ${
-                selectedId === item.id
-                  ? "border-action-primary/60 bg-action-primary/10 text-text-primary"
-                  : "border-border-subtle bg-surface-raised/40 text-text-muted hover:border-border-default hover:text-text-primary"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <span className="font-mono text-xs text-text-muted/60">0{index + 1}</span>
-                <span className="text-sm font-medium">{item.label}</span>
-              </div>
-              <span
-                className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-xs transition-colors ${
-                  selectedId === item.id
-                    ? "bg-action-primary text-action-primary-foreground font-bold"
-                    : "border border-border-default text-transparent"
-                }`}
-              >
-                ✓
-              </span>
-            </button>
-          ))}
+      <div className="grid gap-8 lg:grid-cols-12 items-stretch">
+        {/* Left Column: 5-Col Asymmetric Bottleneck Selector */}
+        <div className="lg:col-span-5 flex flex-col justify-between space-y-3" aria-label="Choose a business bottleneck">
+          <div className="space-y-3">
+            {bottlenecks.map((item, index) => {
+              const isSelected = selectedId === item.id;
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setSelectedId(item.id)}
+                  aria-pressed={isSelected}
+                  className={`flex w-full items-center justify-between gap-4 rounded-xl border p-4.5 min-h-[56px] text-left cursor-pointer transition-all duration-150 active:scale-[0.98] focus-ring ${
+                    isSelected
+                      ? "border-[#7657FF] bg-[#FFFFFF] shadow-[0_8px_24px_rgba(118,87,255,0.12)] text-[#05060A]"
+                      : "border-[rgba(16,12,29,0.12)] bg-[#FFFFFF]/70 text-[#4A465B] hover:border-[rgba(16,12,29,0.25)] hover:bg-[#FFFFFF]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className={`font-mono text-xs font-bold ${isSelected ? "text-[#7657FF]" : "text-[#726E84]"}`}>
+                      0{index + 1}
+                    </span>
+                    <span className={`text-sm ${isSelected ? "font-bold text-[#05060A]" : "font-medium"}`}>
+                      {item.label}
+                    </span>
+                  </div>
+                  <span
+                    className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs transition-colors ${
+                      isSelected
+                        ? "bg-[#7657FF] text-white font-bold shadow-xs"
+                        : "border border-[rgba(16,12,29,0.15)] text-transparent"
+                    }`}
+                  >
+                    <Check className="h-3.5 w-3.5" />
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+
+          <div className="p-4 rounded-xl bg-[#FFFFFF] border border-[rgba(16,12,29,0.1)] text-xs text-[#4A465B] flex items-center justify-between font-mono">
+            <span>[ DIAGNOSTIC MATRIX ]</span>
+            <span className="text-[#7657FF] font-semibold">CUSTOM ARCHITECTURE</span>
+          </div>
         </div>
 
-        {/* Right Column: Dark Terminal Panel */}
+        {/* Right Column: 7-Col High-Contrast Dark Architectural Solution Panel */}
         <div
           key={selected.id}
-          className="rounded-2xl border border-border-default bg-surface-raised/80 p-6 sm:p-8 backdrop-blur-md animate-in fade-in-50 duration-200"
+          className="lg:col-span-7 rounded-2xl border border-[rgba(196,190,255,0.2)] bg-[#100C1D] text-[#F5F6FA] p-6 sm:p-8 shadow-2xl flex flex-col justify-between"
           aria-live="polite"
         >
-          <div className="flex items-center justify-between border-b border-border-subtle pb-4 mb-6">
-            <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-action-primary font-semibold">
-              <PlugZap className="h-3.5 w-3.5" />
-              <span>[ SUGGESTED_ARCHITECTURE ]</span>
+          <div>
+            <div className="flex items-center justify-between border-b border-[rgba(196,190,255,0.12)] pb-4 mb-6">
+              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#78E7FF] font-semibold">
+                <PlugZap className="h-4 w-4" />
+                <span>[ RECOMMENDED_SYSTEM_ARCHITECTURE ]</span>
+              </div>
+              <span className="font-mono text-[11px] text-[#9D9AAF]">[ SLA: &lt; 2 WEEKS ]</span>
             </div>
-            <span className="font-mono text-[11px] text-text-muted/60">[ STATUS: SPEC ]</span>
-          </div>
 
-          <h3 className="text-xl sm:text-2xl font-sans font-semibold text-text-primary">
-            {selected.system}
-          </h3>
+            <h3 className="text-2xl sm:text-3xl font-sans font-bold text-[#F5F6FA] tracking-tight">
+              {selected.system}
+            </h3>
 
-          <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-widest text-text-muted block mb-3 font-medium">
-                CONNECTED TOOLS
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {selected.tools.map((tool) => (
-                  <span
-                    key={tool}
-                    className="font-mono text-xs rounded-md border border-border-subtle bg-surface-overlay/80 px-3 py-1.5 text-text-muted"
-                  >
-                    {tool}
-                  </span>
-                ))}
+            <div className="mt-6 grid gap-6 sm:grid-cols-2">
+              <div>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-[#9D9AAF] block mb-3 font-semibold">
+                  INTEGRATED TOOLS & APIS
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {selected.tools.map((tool) => (
+                    <span
+                      key={tool}
+                      className="font-mono text-xs rounded-lg border border-[rgba(196,190,255,0.15)] bg-[#05060A]/80 px-3 py-1.5 text-[#F5F6FA]"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-[#9D9AAF] block mb-3 font-semibold">
+                  AUTOMATED SEQUENCE
+                </span>
+                <ol className="space-y-2.5 font-mono text-xs">
+                  {selected.steps.map((step, index) => (
+                    <li key={step} className="flex items-start gap-2 text-[#9D9AAF]">
+                      <span className="text-[#78E7FF] font-bold">0{index + 1}.</span>
+                      <span className="text-[#F5F6FA] leading-snug">{step}</span>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </div>
-
-            <div>
-              <span className="font-mono text-[11px] uppercase tracking-widest text-text-muted block mb-3 font-medium">
-                AUTOMATED SEQUENCE
-              </span>
-              <ol className="space-y-2 font-mono text-xs">
-                {selected.steps.map((step, index) => (
-                  <li key={step} className="flex items-center gap-2 text-text-muted">
-                    <span className="text-action-primary font-bold">0{index + 1}.</span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
           </div>
 
-          <div className="mt-8 border-t border-border-subtle pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-xs text-text-muted max-w-md">{selected.outcome}</p>
+          <div className="mt-8 border-t border-[rgba(196,190,255,0.12)] pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-xs text-[#9D9AAF] max-w-md font-medium leading-relaxed">
+              {selected.outcome}
+            </p>
             <a
               href="#contact"
               onClick={carryContext}
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-action-primary px-6 py-3 min-h-[44px] font-mono text-xs uppercase tracking-widest font-semibold text-action-primary-foreground active:scale-[0.98] transition-all hover:bg-action-primary-hover focus-ring w-fit"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7657FF] hover:bg-[#8A6EFF] px-6 py-3.5 min-h-[44px] font-mono text-xs uppercase tracking-widest font-bold text-white shadow-lg active:scale-[0.98] transition-all focus-ring w-full sm:w-fit"
             >
-              <span>Solve bottleneck</span>
+              <span>Solve this bottleneck</span>
               <ArrowUpRight className="h-4 w-4" />
             </a>
           </div>

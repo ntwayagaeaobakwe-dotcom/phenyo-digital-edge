@@ -1,139 +1,127 @@
-/* Self-hosted variable fonts (latin + latin-ext unicode-range subsets) —
-   replaces the render-blocking Google Fonts CDN request. */
-@import "@fontsource-variable/inter";
-@import "@fontsource-variable/plus-jakarta-sans";
+/* Self-hosted variable fonts */
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/unbounded";
 @import "@fontsource-variable/jetbrains-mono";
 
 @import "tailwindcss" source(none);
 @source "../src";
-@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
+  /* Corner Radius Scale (3 tiers as specified: Small 10px, Medium 18px, Large 28px) */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+  --radius-xl: 28px;
+  --radius-2xl: 32px;
 
-  /* NYG Digital - Dark Inversion Surface & Text Tokens (OKLCH) */
-  --color-surface-base: oklch(0.12 0 0); /* Dark Grey/Black */
-  --color-surface-raised: oklch(0.18 0 0);
-  --color-surface-sunken: oklch(0.09 0 0);
-  /* One luminance step below base — the /card metric chips */
-  --color-surface-chip: oklch(0.15 0 0);
-  --color-surface-nav: oklch(0.98 0 0 / 0.03);
-  --color-surface-glass: oklch(0.98 0 0 / 0.05);
-  --color-surface-glass-strong: oklch(0.98 0 0 / 0.1);
+  /* NYG Signal Sculpture Palette */
+  --color-void: #05060A;
+  --color-violet-black: #100C1D;
+  --color-electric-iris: #7657FF;
+  --color-signal-coral: #FF5577;
+  --color-frozen-cyan: #78E7FF;
+  --color-soft-white: #F5F6FA;
+  --color-lavender-grey: #9D9AAF;
+  --color-border-structural: rgba(196, 190, 255, 0.14);
 
-  --color-text-primary: oklch(0.98 0 0);
-  --color-text-muted: oklch(0.98 0 0 / 0.6);
-  --color-text-subtle: oklch(0.98 0 0 / 0.4);
-  /* 50% alpha = 4.82:1 on surface-base — clears WCAG AA for normal text */
-  --color-text-faint: oklch(0.98 0 0 / 0.5);
+  /* Semantic Dark Environment Surfaces */
+  --color-surface-base: #05060A;
+  --color-surface-raised: #100C1D;
+  --color-surface-sunken: #080611;
+  --color-surface-overlay: rgba(22, 17, 40, 0.7);
+  --color-surface-nav: rgba(16, 12, 29, 0.85);
+  --color-surface-glass: rgba(118, 87, 255, 0.06);
+  --color-surface-glass-strong: rgba(16, 12, 29, 0.9);
 
-  --color-border-subtle: oklch(0.98 0 0 / 0.08);
-  --color-border-default: oklch(0.98 0 0 / 0.15);
-  --color-border-strong: oklch(0.98 0 0 / 0.3);
+  /* Semantic Typography Tokens */
+  --color-text-primary: #F5F6FA;
+  --color-text-muted: #9D9AAF;
+  --color-text-subtle: rgba(157, 154, 175, 0.6);
+  --color-text-faint: rgba(157, 154, 175, 0.35);
 
-  --color-accent: oklch(0.65 0.22 35); /* Vibrant Orange */
-  --color-accent-hover: oklch(0.55 0.22 35);
-  --color-focus-ring: oklch(0.65 0.22 35 / 0.5);
+  /* Semantic Borders */
+  --color-border-subtle: rgba(196, 190, 255, 0.12);
+  --color-border-default: rgba(196, 190, 255, 0.18);
+  --color-border-strong: rgba(196, 190, 255, 0.35);
 
-  --color-action-primary: var(--color-accent);
-  --color-action-primary-hover: var(--color-accent-hover);
-  --color-action-primary-foreground: oklch(0.98 0 0);
+  /* Accents & Action Triggers */
+  --color-accent: #7657FF;
+  --color-accent-hover: #8A6EFF;
+  --color-accent-coral: #FF5577;
+  --color-accent-cyan: #78E7FF;
+  --color-focus-ring: rgba(118, 87, 255, 0.65);
 
-  /* Legacy & Compatibility Aliases */
+  --color-action-primary: #7657FF;
+  --color-action-primary-hover: #8A6EFF;
+  --color-action-primary-foreground: #FFFFFF;
+
+  /* Aliases for generic component frameworks */
   --color-background: var(--color-surface-base);
   --color-foreground: var(--color-text-primary);
   --color-card: var(--color-surface-raised);
   --color-card-foreground: var(--color-text-primary);
   --color-popover: var(--color-surface-raised);
   --color-popover-foreground: var(--color-text-primary);
-  --color-primary: var(--color-accent);
-  --color-primary-foreground: var(--color-action-primary-foreground);
+  --color-primary: #7657FF;
+  --color-primary-foreground: #FFFFFF;
   --color-secondary: var(--color-surface-raised);
   --color-secondary-foreground: var(--color-text-primary);
   --color-muted: var(--color-surface-raised);
   --color-muted-foreground: var(--color-text-muted);
-  --color-destructive: oklch(0.64 0.22 25);
-  --color-destructive-foreground: oklch(0.98 0 0);
+  --color-destructive: #FF5577;
+  --color-destructive-foreground: #FFFFFF;
   --color-border: var(--color-border-subtle);
   --color-input: var(--color-border-subtle);
   --color-ring: var(--color-focus-ring);
 
-  --font-display: "Plus Jakarta Sans", "Inter", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+  /* Typography Stacks */
+  --font-sans: "Manrope Variable", "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Unbounded Variable", "Unbounded", sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
 }
 
 :root {
-  --radius: 0.25rem;
+  --radius: 18px;
+  --background: #05060A;
+  --foreground: #F5F6FA;
 
-  --background: oklch(0.12 0 0);
-  --foreground: oklch(0.98 0 0);
+  --color-void: #05060A;
+  --color-violet-black: #100C1D;
+  --color-electric-iris: #7657FF;
+  --color-signal-coral: #FF5577;
+  --color-frozen-cyan: #78E7FF;
+  --color-soft-white: #F5F6FA;
+  --color-lavender-grey: #9D9AAF;
+  --color-border-structural: rgba(196, 190, 255, 0.14);
 
-  --card: oklch(0.18 0 0);
-  --card-foreground: oklch(0.98 0 0);
-
-  --popover: oklch(0.18 0 0);
-  --popover-foreground: oklch(0.98 0 0);
-
-  --primary: oklch(0.65 0.22 35);
-  --primary-foreground: oklch(0.98 0 0);
-
-  --secondary: oklch(0.16 0 0);
-  --secondary-foreground: oklch(0.98 0 0);
-
-  --muted: oklch(0.16 0 0);
-  --muted-foreground: oklch(0.72 0 0); /* 6.8:1 contrast against background */
-
-  --accent: oklch(0.65 0.22 35);
-  --accent-foreground: oklch(0.98 0 0);
-
-  --destructive: oklch(0.64 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-
-  --border: oklch(0.98 0 0 / 0.15);
-  --input: oklch(0.98 0 0 / 0.15);
-  --ring: oklch(0.65 0.22 35 / 0.5);
-
-  --gold: oklch(0.74 0.19 230);
-  --gold-soft: oklch(0.82 0.16 228);
-  --navy: oklch(0.13 0.015 260);
-  --neon: oklch(0.65 0.22 35);
-
-  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.16 230), oklch(0.72 0.19 195));
-  --gradient-hero:
-    radial-gradient(ellipse at 30% 15%, oklch(0.65 0.22 35 / 0.15), transparent 55%),
-    radial-gradient(ellipse at 85% 65%, oklch(0.65 0.22 35 / 0.10), transparent 60%),
-    linear-gradient(180deg, oklch(0.12 0 0), oklch(0.15 0 0));
-  --shadow-gold: 0 15px 40px -15px oklch(0.65 0.22 35 / 0.2);
-  --shadow-gold-hover: 0 20px 50px -10px oklch(0.65 0.22 35 / 0.3);
-  --shadow-elegant: 0 30px 80px -30px oklch(0 0 0 / 0.9);
-
+  /* Ease Curves as requested */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
-  --ease-apple: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-apple-spring: cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: var(--color-border-subtle);
   }
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
+    background-color: #05060A;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/30 selection:text-primary;
+    background-color: var(--color-surface-base);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    selection-background-color: rgba(118, 87, 255, 0.3);
+    selection-color: #78E7FF;
   }
 
-  /* Consistent High-Contrast Focus Visible Ring */
+  /* High-Contrast Accessible Focus Visible Ring */
   :focus-visible {
     outline: 2px solid var(--color-focus-ring) !important;
     outline-offset: 2px !important;
@@ -142,7 +130,7 @@
 
 /* Accessibility & State Utility Classes */
 .focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-surface-base;
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7657FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#05060A];
 }
 
 .touch-target {
@@ -153,10 +141,8 @@
 /* Scroll-triggered reveal animation classes */
 .reveal-item {
   opacity: 0;
-  transform: translateY(2rem);
-  transition:
-    opacity 700ms cubic-bezier(0.23, 1, 0.32, 1),
-    transform 700ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateY(1.5rem);
+  transition: opacity 600ms cubic-bezier(0.23, 1, 0.32, 1), transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform, opacity;
 }
 
@@ -166,18 +152,54 @@
 }
 
 @utility glass {
-  background-color: var(--color-surface-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-border-subtle);
-  box-shadow: inset 0 1px 0 0 oklch(0.98 0 0 / 0.08);
+  background-color: rgba(16, 12, 29, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(196, 190, 255, 0.14);
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 }
 
 @utility glass-strong {
-  background-color: var(--color-surface-glass-strong);
-  backdrop-filter: blur(50px);
-  -webkit-backdrop-filter: blur(50px);
-  border: 1px solid var(--color-border-subtle);
+  background-color: rgba(16, 12, 29, 0.92);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid rgba(196, 190, 255, 0.18);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+}
+
+@utility glass-iris {
+  background: linear-gradient(135deg, rgba(118, 87, 255, 0.12) 0%, rgba(16, 12, 29, 0.8) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(118, 87, 255, 0.3);
+  box-shadow: 0 12px 36px -10px rgba(118, 87, 255, 0.25);
+}
+
+/* Light Field Section Utility (for Bottleneck Configurator & Capability Section) */
+.section-light-field {
+  background-color: #F5F6FA;
+  color: #100C1D;
+}
+.section-light-field .text-text-primary {
+  color: #05060A !important;
+}
+.section-light-field .text-text-muted {
+  color: #4A465B !important;
+}
+.section-light-field .text-text-subtle {
+  color: #726E84 !important;
+}
+.section-light-field .border-border-subtle {
+  border-color: rgba(16, 12, 29, 0.12) !important;
+}
+.section-light-field .border-border-default {
+  border-color: rgba(16, 12, 29, 0.2) !important;
+}
+.section-light-field .bg-surface-raised {
+  background-color: #FFFFFF !important;
+}
+.section-light-field .bg-surface-base {
+  background-color: #ECEEF5 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -187,19 +209,4 @@
     transition: none !important;
     will-change: auto !important;
   }
-}
-
-/* Section 2 Dark Technical Image Fallbacks */
-.dark-tech-placeholder-1 {
-  background: radial-gradient(circle at 30% 30%, oklch(0.18 0.04 230), oklch(0.09 0.012 260));
-  background-image: radial-gradient(oklch(0.74 0.19 230 / 0.15) 1px, transparent 0);
-  background-size: 16px 16px;
-}
-
-.dark-tech-placeholder-2 {
-  background: radial-gradient(circle at 70% 40%, oklch(0.16 0.03 230), oklch(0.09 0.012 260));
-  background-image:
-    linear-gradient(to right, oklch(0.98 0 0 / 0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, oklch(0.98 0 0 / 0.05) 1px, transparent 1px);
-  background-size: 24px 24px;
 }
