@@ -35,7 +35,6 @@ export function ContactSection() {
     handleSubmit,
     reset,
     setValue,
-    getValues,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     mode: "onBlur",
@@ -125,67 +124,64 @@ export function ContactSection() {
       id="contact"
       eyebrow="Direct Architecture Review"
       iconGlyph="07"
-      themeVariant="dark"
+      themeVariant="ink"
       declarativeTitle="Tell me what is slowing you down"
       qualifierTitle="and I will map the simplest next step."
     >
-      <div className="rounded-3xl border border-[rgba(196,190,255,0.18)] bg-[#100C1D]/90 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
-        {/* Background glow points */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-[#7657FF]/10 rounded-full blur-[140px] pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#78E7FF]/10 rounded-full blur-[140px] pointer-events-none" />
-
+      <div className="rounded-3xl border border-[rgba(184,181,172,0.18)] bg-[#082D2D]/85 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
         <div className="grid lg:grid-cols-12 gap-12 items-start relative z-10">
           {/* Left 5 Columns: Engagement Commitment & Direct Contacts */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#78E7FF] font-semibold">
+            <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD] animate-pulse" />
               <span>[ 24H_DIRECT_SLA ]</span>
             </div>
 
-            <h3 className="text-3xl font-sans font-bold text-[#F5F6FA] tracking-tight">
+            <h3 className="text-3xl font-serif font-normal text-[#F3F0E8] tracking-tight leading-tight">
               Direct review with the builder.
             </h3>
 
-            <p className="text-sm text-[#9D9AAF] leading-relaxed">
+            <p className="text-sm text-[#B8B5AC] leading-relaxed font-sans font-normal">
               Describe the manual tasks, broken handoffs, or website challenges holding your business back. You will receive a clear technical recommendation, not a sales script.
             </p>
 
-            <div className="space-y-3 font-mono text-xs text-[#9D9AAF] pt-2">
+            <div className="space-y-3 font-mono text-xs text-[#B8B5AC] pt-2">
               {[
                 "Direct review of your actual workflow bottlenecks.",
                 "Clear architectural recommendation & software stack.",
                 "If aligned, we build a working prototype first.",
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5">
-                  <span className="text-[#78E7FF] font-bold">[✓]</span>
-                  <span className="text-[#F5F6FA]">{item}</span>
+                  <span className="text-[#5FD8CD] font-bold">[✓]</span>
+                  <span className="text-[#F3F0E8] font-sans text-xs">{item}</span>
                 </div>
               ))}
             </div>
 
             {/* Direct Contact Cards */}
-            <div className="space-y-3 pt-4 border-t border-[rgba(196,190,255,0.12)]">
-              <div className="flex items-center gap-4 rounded-xl border border-[rgba(196,190,255,0.12)] bg-[#05060A]/70 p-4">
-                <Mail className="h-4 w-4 text-[#7657FF] shrink-0" />
+            <div className="space-y-3 pt-4 border-t border-[rgba(184,181,172,0.14)]">
+              <div className="flex items-center gap-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60 p-4">
+                <Mail className="h-4 w-4 text-[#5FD8CD] shrink-0" />
                 <div className="flex flex-col text-xs font-mono">
-                  <span className="text-[10px] text-[#9D9AAF]">DIRECT EMAIL</span>
+                  <span className="text-[10px] text-[#B8B5AC]">DIRECT EMAIL</span>
                   <a
                     href={`mailto:${PERSONAL_INFO.email}`}
-                    className="text-[#F5F6FA] hover:text-[#78E7FF] transition-colors font-medium"
+                    className="text-[#F3F0E8] hover:text-[#5FD8CD] transition-colors font-medium font-sans"
                   >
                     {PERSONAL_INFO.email}
                   </a>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4 rounded-xl border border-[rgba(196,190,255,0.12)] bg-[#05060A]/70 p-4">
-                <Phone className="h-4 w-4 text-[#78E7FF] shrink-0" />
+              <div className="flex items-center gap-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60 p-4">
+                <Phone className="h-4 w-4 text-[#5FD8CD] shrink-0" />
                 <div className="flex flex-col text-xs font-mono">
-                  <span className="text-[10px] text-[#9D9AAF]">DIRECT WHATSAPP (DUBAI)</span>
+                  <span className="text-[10px] text-[#B8B5AC]">DIRECT WHATSAPP (DUBAI)</span>
                   <a
                     href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#F5F6FA] hover:text-[#78E7FF] transition-colors font-medium"
+                    className="text-[#F3F0E8] hover:text-[#5FD8CD] transition-colors font-medium font-sans"
                   >
                     {PERSONAL_INFO.phone}
                   </a>
@@ -194,17 +190,17 @@ export function ContactSection() {
             </div>
           </div>
 
-          {/* Right 7 Columns: Precision Submission Form */}
-          <div className="lg:col-span-7 rounded-2xl border border-[rgba(196,190,255,0.16)] bg-[#05060A]/85 p-6 sm:p-8">
+          {/* Right 7 Columns: Precision Paper Form Plane */}
+          <div className="lg:col-span-7 rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8 shadow-xl text-[#080A09]">
             {submitted ? (
               <div className="py-8 text-center space-y-4 font-mono text-xs">
-                <div className="inline-grid h-12 w-12 place-items-center rounded-full bg-[#78E7FF]/20 text-[#78E7FF] mx-auto">
+                <div className="inline-grid h-12 w-12 place-items-center rounded-full bg-[#082D2D]/10 text-[#082D2D] mx-auto">
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
-                <h4 className="text-xl font-bold text-[#F5F6FA] font-sans">
+                <h4 className="text-2xl font-serif font-normal text-[#080A09]">
                   {usedFallback ? "Inquiry Formatted!" : "Inquiry Delivered!"}
                 </h4>
-                <p className="text-[#9D9AAF] max-w-sm mx-auto leading-relaxed">
+                <p className="text-[#282B29] max-w-sm mx-auto leading-relaxed font-sans">
                   {usedFallback
                     ? "Your inquiry has been formatted into your default email client. Please click send to finalize."
                     : "Thank you — your inquiry has been routed to my queue. I will review your operational requirements and respond within 24 hours (GST)."}
@@ -217,21 +213,21 @@ export function ContactSection() {
                     setUsedFallback(false);
                     reset();
                   }}
-                  className="text-[#7657FF] underline hover:text-[#78E7FF] pt-2 cursor-pointer uppercase tracking-wider"
+                  className="text-[#082D2D] underline hover:text-black pt-2 cursor-pointer uppercase tracking-wider font-mono text-xs"
                 >
                   Submit another inquiry
                 </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-mono text-xs">
-                <div className="flex items-center justify-between pb-3 border-b border-[rgba(196,190,255,0.1)]">
-                  <span className="text-[#7657FF] font-bold uppercase tracking-widest">[ INQUIRY_PAYLOAD ]</span>
-                  <span className="text-[#9D9AAF] text-[10px]">RESPONSE GUARANTEE &lt; 24H</span>
+                <div className="flex items-center justify-between pb-3 border-b border-[rgba(8,45,45,0.1)]">
+                  <span className="text-[#082D2D] font-bold uppercase tracking-widest">[ INQUIRY_PAYLOAD ]</span>
+                  <span className="text-[#5C5953] text-[10px]">RESPONSE GUARANTEE &lt; 24H</span>
                 </div>
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block uppercase tracking-widest text-[#9D9AAF] mb-1.5 text-[11px] font-semibold">
+                  <label htmlFor="name" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
                     YOUR NAME *
                   </label>
                   <input
@@ -239,16 +235,16 @@ export function ContactSection() {
                     type="text"
                     placeholder="e.g. Tariq Al-Mansoor"
                     {...register("name")}
-                    className={`w-full rounded-xl bg-[#100C1D] border px-4 py-3 text-sm text-[#F5F6FA] font-sans focus-ring transition-colors ${
-                      errors.name ? "border-[#FF5577]" : "border-[rgba(196,190,255,0.18)]"
+                    className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans focus-ring transition-colors ${
+                      errors.name ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
                     }`}
                   />
-                  {errors.name && <p className="text-[#FF5577] text-xs font-sans mt-1">{errors.name.message}</p>}
+                  {errors.name && <p className="text-red-600 text-xs font-sans mt-1">{errors.name.message}</p>}
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block uppercase tracking-widest text-[#9D9AAF] mb-1.5 text-[11px] font-semibold">
+                  <label htmlFor="email" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
                     BUSINESS EMAIL *
                   </label>
                   <input
@@ -256,25 +252,25 @@ export function ContactSection() {
                     type="email"
                     placeholder="tariq@company.com"
                     {...register("email")}
-                    className={`w-full rounded-xl bg-[#100C1D] border px-4 py-3 text-sm text-[#F5F6FA] font-sans focus-ring transition-colors ${
-                      errors.email ? "border-[#FF5577]" : "border-[rgba(196,190,255,0.18)]"
+                    className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans focus-ring transition-colors ${
+                      errors.email ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
                     }`}
                   />
-                  {errors.email && <p className="text-[#FF5577] text-xs font-sans mt-1">{errors.email.message}</p>}
+                  {errors.email && <p className="text-red-600 text-xs font-sans mt-1">{errors.email.message}</p>}
                 </div>
 
                 {/* Service Requirement */}
                 <div>
-                  <label htmlFor="service" className="block uppercase tracking-widest text-[#9D9AAF] mb-1.5 text-[11px] font-semibold">
+                  <label htmlFor="service" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
                     PRIMARY SERVICE REQUIREMENT *
                   </label>
                   <select
                     id="service"
                     {...register("service")}
-                    className="w-full rounded-xl bg-[#100C1D] border border-[rgba(196,190,255,0.18)] px-4 py-3 text-sm text-[#F5F6FA] font-sans focus-ring"
+                    className="w-full rounded-2xl bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)] px-4 py-3 text-sm text-[#080A09] font-sans focus-ring"
                   >
                     {FORM_SERVICE_OPTIONS.map((svc) => (
-                      <option key={svc} value={svc} className="bg-[#100C1D] text-white">
+                      <option key={svc} value={svc} className="bg-[#FAF8F2] text-[#080A09]">
                         {svc}
                       </option>
                     ))}
@@ -283,7 +279,7 @@ export function ContactSection() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block uppercase tracking-widest text-[#9D9AAF] mb-1.5 text-[11px] font-semibold">
+                  <label htmlFor="message" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
                     PROBLEM DESCRIPTION / GOALS *
                   </label>
                   <textarea
@@ -291,18 +287,18 @@ export function ContactSection() {
                     rows={3}
                     placeholder="Describe what is taking too much time, disconnected tools, or project goals..."
                     {...register("message")}
-                    className={`w-full rounded-xl bg-[#100C1D] border px-4 py-3 text-sm text-[#F5F6FA] font-sans resize-none focus-ring transition-colors ${
-                      errors.message ? "border-[#FF5577]" : "border-[rgba(196,190,255,0.18)]"
+                    className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans resize-none focus-ring transition-colors ${
+                      errors.message ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
                     }`}
                   />
-                  {errors.message && <p className="text-[#FF5577] text-xs font-sans mt-1">{errors.message.message}</p>}
+                  {errors.message && <p className="text-red-600 text-xs font-sans mt-1">{errors.message.message}</p>}
                 </div>
 
                 {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#7657FF] hover:bg-[#8A6EFF] px-6 py-4 font-mono text-xs uppercase tracking-widest font-bold text-white shadow-lg active:scale-[0.98] transition-all cursor-pointer focus-ring disabled:opacity-50"
+                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#080A09] hover:bg-[#123E3D] px-6 py-4 font-mono text-xs uppercase tracking-wider font-bold text-[#F3F0E8] shadow-md active:scale-[0.98] transition-all cursor-pointer focus-ring disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <>
@@ -324,3 +320,4 @@ export function ContactSection() {
     </SectionShell>
   );
 }
+

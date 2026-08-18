@@ -57,7 +57,7 @@ export function BottleneckConfigurator() {
       id="diagnostic"
       eyebrow="Bottleneck Diagnostic"
       iconGlyph="03"
-      themeVariant="light"
+      themeVariant="mineral"
       declarativeTitle="You describe the operational friction."
       qualifierTitle="I design the connected system."
     >
@@ -73,69 +73,69 @@ export function BottleneckConfigurator() {
                   type="button"
                   onClick={() => setSelectedId(item.id)}
                   aria-pressed={isSelected}
-                  className={`flex w-full items-center justify-between gap-4 rounded-xl border p-4.5 min-h-[56px] text-left cursor-pointer transition-all duration-150 active:scale-[0.98] focus-ring ${
+                  className={`flex w-full items-center justify-between gap-4 rounded-2xl border p-4.5 min-h-[56px] text-left cursor-pointer transition-all duration-150 active:scale-[0.98] focus-ring ${
                     isSelected
-                      ? "border-[#7657FF] bg-[#FFFFFF] shadow-[0_8px_24px_rgba(118,87,255,0.12)] text-[#05060A]"
-                      : "border-[rgba(16,12,29,0.12)] bg-[#FFFFFF]/70 text-[#4A465B] hover:border-[rgba(16,12,29,0.25)] hover:bg-[#FFFFFF]"
+                      ? "border-[#082D2D] bg-[#FAF8F2] shadow-xs text-[#080A09]"
+                      : "border-[rgba(8,45,45,0.12)] bg-[#FAF8F2]/75 text-[#282B29] hover:border-[rgba(8,45,45,0.25)] hover:bg-[#FAF8F2]"
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className={`font-mono text-xs font-bold ${isSelected ? "text-[#7657FF]" : "text-[#726E84]"}`}>
+                    <span className={`font-mono text-xs font-bold ${isSelected ? "text-[#082D2D]" : "text-[#5C5953]"}`}>
                       0{index + 1}
                     </span>
-                    <span className={`text-sm ${isSelected ? "font-bold text-[#05060A]" : "font-medium"}`}>
+                    <span className={`text-sm font-sans ${isSelected ? "font-bold text-[#080A09]" : "font-medium"}`}>
                       {item.label}
                     </span>
                   </div>
                   <span
-                    className={`grid h-6 w-6 shrink-0 place-items-center rounded-full text-xs transition-colors ${
+                    className={`grid h-5 w-5 shrink-0 place-items-center rounded-full text-xs transition-colors ${
                       isSelected
-                        ? "bg-[#7657FF] text-white font-bold shadow-xs"
-                        : "border border-[rgba(16,12,29,0.15)] text-transparent"
+                        ? "bg-[#082D2D] text-[#5FD8CD] font-bold shadow-xs"
+                        : "border border-[rgba(8,45,45,0.2)] text-transparent"
                     }`}
                   >
-                    <Check className="h-3.5 w-3.5" />
+                    <Check className="h-3 w-3" />
                   </span>
                 </button>
               );
             })}
           </div>
 
-          <div className="p-4 rounded-xl bg-[#FFFFFF] border border-[rgba(16,12,29,0.1)] text-xs text-[#4A465B] flex items-center justify-between font-mono">
+          <div className="p-4 rounded-2xl bg-[#FAF8F2] border border-[rgba(8,45,45,0.12)] text-xs text-[#282B29] flex items-center justify-between font-mono">
             <span>[ DIAGNOSTIC MATRIX ]</span>
-            <span className="text-[#7657FF] font-semibold">CUSTOM ARCHITECTURE</span>
+            <span className="text-[#082D2D] font-semibold">CUSTOM ARCHITECTURE</span>
           </div>
         </div>
 
-        {/* Right Column: 7-Col High-Contrast Dark Architectural Solution Panel */}
+        {/* Right Column: 7-Col High-Contrast Deep Teal Architectural Solution Panel */}
         <div
           key={selected.id}
-          className="lg:col-span-7 rounded-2xl border border-[rgba(196,190,255,0.2)] bg-[#100C1D] text-[#F5F6FA] p-6 sm:p-8 shadow-2xl flex flex-col justify-between"
+          className="lg:col-span-7 rounded-3xl border border-[rgba(184,181,172,0.22)] bg-[#082D2D] text-[#F3F0E8] p-6 sm:p-8 shadow-xl flex flex-col justify-between"
           aria-live="polite"
         >
           <div>
-            <div className="flex items-center justify-between border-b border-[rgba(196,190,255,0.12)] pb-4 mb-6">
-              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#78E7FF] font-semibold">
-                <PlugZap className="h-4 w-4" />
+            <div className="flex items-center justify-between border-b border-[rgba(184,181,172,0.14)] pb-4 mb-6">
+              <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
+                <PlugZap className="h-3.5 w-3.5" />
                 <span>[ RECOMMENDED_SYSTEM_ARCHITECTURE ]</span>
               </div>
-              <span className="font-mono text-[11px] text-[#9D9AAF]">[ SLA: &lt; 2 WEEKS ]</span>
+              <span className="font-mono text-[11px] text-[#B8B5AC]">[ SLA: &lt; 2 WEEKS ]</span>
             </div>
 
-            <h3 className="text-2xl sm:text-3xl font-sans font-bold text-[#F5F6FA] tracking-tight">
+            <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#F3F0E8] tracking-tight">
               {selected.system}
             </h3>
 
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-[#9D9AAF] block mb-3 font-semibold">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC] block mb-3 font-semibold">
                   INTEGRATED TOOLS & APIS
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {selected.tools.map((tool) => (
                     <span
                       key={tool}
-                      className="font-mono text-xs rounded-lg border border-[rgba(196,190,255,0.15)] bg-[#05060A]/80 px-3 py-1.5 text-[#F5F6FA]"
+                      className="font-mono text-xs rounded-lg border border-[rgba(184,181,172,0.2)] bg-[#123E3D] px-3 py-1.5 text-[#F3F0E8]"
                     >
                       {tool}
                     </span>
@@ -144,14 +144,14 @@ export function BottleneckConfigurator() {
               </div>
 
               <div>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-[#9D9AAF] block mb-3 font-semibold">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC] block mb-3 font-semibold">
                   AUTOMATED SEQUENCE
                 </span>
                 <ol className="space-y-2.5 font-mono text-xs">
                   {selected.steps.map((step, index) => (
-                    <li key={step} className="flex items-start gap-2 text-[#9D9AAF]">
-                      <span className="text-[#78E7FF] font-bold">0{index + 1}.</span>
-                      <span className="text-[#F5F6FA] leading-snug">{step}</span>
+                    <li key={step} className="flex items-start gap-2 text-[#B8B5AC]">
+                      <span className="text-[#5FD8CD] font-bold">0{index + 1}.</span>
+                      <span className="text-[#F3F0E8] leading-snug font-sans">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -159,17 +159,17 @@ export function BottleneckConfigurator() {
             </div>
           </div>
 
-          <div className="mt-8 border-t border-[rgba(196,190,255,0.12)] pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-xs text-[#9D9AAF] max-w-md font-medium leading-relaxed">
+          <div className="mt-8 border-t border-[rgba(184,181,172,0.14)] pt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-xs text-[#B8B5AC] max-w-md font-sans font-medium leading-relaxed">
               {selected.outcome}
             </p>
             <a
               href="#contact"
               onClick={carryContext}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7657FF] hover:bg-[#8A6EFF] px-6 py-3.5 min-h-[44px] font-mono text-xs uppercase tracking-widest font-bold text-white shadow-lg active:scale-[0.98] transition-all focus-ring w-full sm:w-fit"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F3F0E8] hover:bg-white px-6 py-3.5 min-h-[44px] font-mono text-xs uppercase tracking-wider font-bold text-[#080A09] shadow-md active:scale-[0.98] transition-all focus-ring w-full sm:w-fit cursor-pointer"
             >
               <span>Solve this bottleneck</span>
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
@@ -177,3 +177,4 @@ export function BottleneckConfigurator() {
     </SectionShell>
   );
 }
+

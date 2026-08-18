@@ -408,17 +408,22 @@ export function LiquidScrollBackground() {
       const program = programRef.current;
       const canvas = canvasRef.current;
 
-      // A. Smooth video currentTime interpolation (spring seeking)
+      // A. Smooth video currentTime interpolation (spring seeking) - only when background is becoming or is active
       const targetTime = targetTimeRef.current;
       const curTime = currentTimeRef.current;
       const timeDiff = targetTime - curTime;
 
-      if (Math.abs(timeDiff) > 0.005) {
+      const isEffectActive = currentOpacityRef.current > 0.01 || targetOpacityRef.current > 0.01;
+
+      if (isEffectActive && Math.abs(timeDiff) > 0.005) {
         currentTimeRef.current += timeDiff * 0.12; // Responsive smooth lerp
         if (video && video.readyState >= 2) {
           video.currentTime = currentTimeRef.current;
         }
         isNeedsRenderRef.current = true;
+      } else if (!isEffectActive) {
+        // Keep target time stored so it jumps smoothly to the right frame upon entering
+        currentTimeRef.current = targetTime;
       }
 
       // B. Smooth opacity crossfade
@@ -428,8 +433,8 @@ export function LiquidScrollBackground() {
         isNeedsRenderRef.current = true;
       }
 
-      // C. Pointer inertial tracking & decay
-      if (!isMobile && !prefersReducedMotion) {
+      // C. Pointer inertial tracking & decay (only when visible)
+      if (isEffectActive && !isMobile && !prefersReducedMotion) {
         const mxDiff = mousePosRef.current.x - smoothedMousePosRef.current.x;
         const myDiff = mousePosRef.current.y - smoothedMousePosRef.current.y;
         
@@ -494,8 +499,8 @@ export function LiquidScrollBackground() {
         gl.uniform1f(uniformsRef.current.u_rippleRadius, rippleRef.current.radius * dpr);
         gl.uniform1f(uniformsRef.current.u_rippleStrength, rippleRef.current.strength);
         
-        // Target visual intensity: ~0.25 to 0.35
-        const displayOpacity = currentOpacityRef.current * 0.32;
+        // Target visual intensity: ~0.25 to 0.32
+        const displayOpacity = currentOpacityRef.current * 0.3;
         gl.uniform1f(uniformsRef.current.u_opacity, displayOpacity);
 
         gl.drawArrays(gl.TRIANGLES, 0, 6);
@@ -571,9 +576,9 @@ export function LiquidScrollBackground() {
         />
       )}
 
-      {/* Section-wide atmospheric teal/obsidian grading tint */}
-      <div className="absolute inset-0 bg-[#05060A]/40 mix-blend-multiply pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-b from-[#05060A] via-transparent to-[#05060A] pointer-events-none opacity-80" />
+      {/* Section-wide atmospheric teal/ink grading tint */}
+      <div className="absolute inset-0 bg-[#080A09]/45 mix-blend-multiply pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080A09] via-transparent to-[#080A09] pointer-events-none opacity-80" />
     </div>
   );
 }

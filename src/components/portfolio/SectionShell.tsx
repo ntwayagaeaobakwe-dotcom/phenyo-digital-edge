@@ -9,7 +9,7 @@ interface SectionShellProps {
   children: React.ReactNode;
   className?: string;
   hasDivider?: boolean;
-  themeVariant?: "dark" | "light" | "midnight" | "iris";
+  themeVariant?: "paper" | "mineral" | "sand" | "teal" | "ink" | "dark" | "light" | "midnight" | "iris";
   iconGlyph?: string;
   maxWidthClass?: string;
 }
@@ -25,7 +25,7 @@ export function SectionShell({
   children,
   className = "",
   hasDivider = true,
-  themeVariant = "dark",
+  themeVariant = "paper",
   iconGlyph = "01",
   maxWidthClass = "max-w-6xl",
 }: SectionShellProps) {
@@ -60,7 +60,7 @@ export function SectionShell({
           }
         }
       },
-      { threshold: 0.08 },
+      { threshold: 0.06 },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -69,19 +69,28 @@ export function SectionShell({
   const revealClasses =
     revealState === "visible"
       ? "opacity-100 translate-y-0"
-      : "opacity-0 translate-y-8";
+      : "opacity-0 translate-y-6";
 
-  // Dynamic Theme Variant Styles with translucent backdrops to allow liquid digital wall to breathe through
-  let themeClasses = "bg-[#05060A]/80 backdrop-blur-md text-[#F5F6FA] border-[rgba(196,190,255,0.12)]";
-  if (themeVariant === "light") {
-    themeClasses = "bg-[#F5F6FA] text-[#100C1D] border-[rgba(16,12,29,0.1)] section-light-field";
-  } else if (themeVariant === "midnight") {
-    themeClasses = "bg-[#100C1D]/85 backdrop-blur-md text-[#F5F6FA] border-[rgba(196,190,255,0.14)]";
-  } else if (themeVariant === "iris") {
-    themeClasses = "bg-[#0E0A1E]/85 backdrop-blur-md text-[#F5F6FA] border-[rgba(118,87,255,0.25)]";
+  // Dynamic Theme Variant Styles
+  let themeClasses = "bg-[#F3F0E8] text-[#080A09] border-[rgba(8,45,45,0.12)] editorial-paper";
+  let isDarkTheme = false;
+
+  if (themeVariant === "teal" || themeVariant === "midnight") {
+    themeClasses = "bg-[#082D2D] text-[#F3F0E8] border-[rgba(184,181,172,0.18)] editorial-teal";
+    isDarkTheme = true;
+  } else if (themeVariant === "ink" || themeVariant === "dark") {
+    themeClasses = "bg-[#080A09] text-[#F3F0E8] border-[rgba(184,181,172,0.16)] editorial-ink";
+    isDarkTheme = true;
+  } else if (themeVariant === "mineral") {
+    themeClasses = "bg-[#CEDDD9] text-[#080A09] border-[rgba(8,45,45,0.16)] editorial-mineral";
+    isDarkTheme = false;
+  } else if (themeVariant === "sand" || themeVariant === "iris") {
+    themeClasses = "bg-[#E5D6C2] text-[#080A09] border-[rgba(8,45,45,0.16)] editorial-sand";
+    isDarkTheme = false;
+  } else if (themeVariant === "light" || themeVariant === "paper") {
+    themeClasses = "bg-[#F3F0E8] text-[#080A09] border-[rgba(8,45,45,0.12)] editorial-paper";
+    isDarkTheme = false;
   }
-
-  const isLight = themeVariant === "light";
 
   return (
     <section
@@ -91,16 +100,16 @@ export function SectionShell({
         hasDivider ? "border-t" : ""
       } ${themeClasses} ${className} transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-[opacity,transform] ${revealClasses}`}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
-        <div className="mx-auto max-w-[680px] text-center mb-12 sm:mb-16">
+        <div className="mx-auto max-w-[760px] text-center mb-12 sm:mb-16">
           {/* Section Number Glyph */}
-          <div className="inline-flex items-center justify-center font-display font-bold text-xs mb-3 tracking-widest select-none">
+          <div className="inline-flex items-center justify-center font-mono text-xs mb-3 tracking-widest select-none">
             <span
-              className={`px-2.5 py-1 rounded-full ${
-                isLight
-                  ? "bg-[#100C1D]/5 text-[#7657FF] border border-[rgba(16,12,29,0.1)]"
-                  : "bg-white/5 text-[#78E7FF] border border-[rgba(196,190,255,0.15)]"
+              className={`px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-wider ${
+                isDarkTheme
+                  ? "bg-white/5 text-[#5FD8CD] border border-[rgba(184,181,172,0.2)]"
+                  : "bg-black/5 text-[#082D2D] border border-[rgba(8,45,45,0.16)]"
               }`}
             >
               [ {iconGlyph} ]
@@ -109,27 +118,29 @@ export function SectionShell({
 
           {/* Eyebrow */}
           <div
-            className={`block font-mono text-[11px] uppercase tracking-widest mb-3.5 font-semibold ${
-              isLight ? "text-[#7657FF]" : "text-[#9D9AAF]"
+            className={`block font-mono text-[11px] uppercase tracking-widest mb-3 font-semibold ${
+              isDarkTheme ? "text-[#B8B5AC]" : "text-[#5C5953]"
             }`}
           >
             {eyebrow}
           </div>
 
-          {/* Headline */}
+          {/* Headline: Monumental Serif Statement + Manrope Qualifier */}
           <h2
             tabIndex={-1}
-            className={`font-sans text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight leading-[1.12] outline-none ${
-              isLight ? "text-[#05060A]" : "text-[#F5F6FA]"
+            className={`outline-none leading-[1.08] tracking-tight ${
+              isDarkTheme ? "text-[#F3F0E8]" : "text-[#080A09]"
             }`}
           >
             {declarativeTitle ? (
               <>
-                <span>{declarativeTitle}</span>{" "}
+                <span className="font-serif font-normal text-3xl sm:text-4xl lg:text-[46px] block mb-1">
+                  {declarativeTitle}
+                </span>
                 {qualifierTitle && (
                   <span
-                    className={`block sm:inline font-normal ${
-                      isLight ? "text-[#4A465B]" : "text-[#9D9AAF]"
+                    className={`font-sans font-normal text-base sm:text-lg lg:text-xl block ${
+                      isDarkTheme ? "text-[#B8B5AC]" : "text-[#282B29]"
                     }`}
                   >
                     {qualifierTitle}
@@ -148,3 +159,4 @@ export function SectionShell({
     </section>
   );
 }
+

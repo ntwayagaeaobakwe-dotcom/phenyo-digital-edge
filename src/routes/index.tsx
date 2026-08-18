@@ -74,10 +74,10 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="relative min-h-screen bg-surface-base text-text-primary">
+    <div className="relative min-h-screen bg-[#080A09] text-[#080A09] selection:bg-[#082D2D] selection:text-[#5FD8CD]">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-5 focus:py-3 focus:bg-[#7657FF] focus:text-white focus:rounded-xl focus-ring font-mono text-xs uppercase tracking-widest font-semibold inline-flex items-center min-h-[44px]"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3.5 focus:bg-[#F3F0E8] focus:text-[#080A09] focus:rounded-full focus-ring font-mono text-xs uppercase tracking-wider font-semibold inline-flex items-center min-h-[44px] shadow-lg border border-[rgba(8,45,45,0.2)]"
       >
         Skip to main content
       </a>
@@ -114,3 +114,4 @@ function Home() {
 }
 
 export default Home;
+

@@ -1,4 +1,6 @@
 /* Self-hosted variable fonts */
+@import "@fontsource-variable/newsreader/index.css";
+@import "@fontsource-variable/newsreader/wght-italic.css";
 @import "@fontsource-variable/manrope";
 @import "@fontsource-variable/unbounded";
 @import "@fontsource-variable/jetbrains-mono";
@@ -9,53 +11,64 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* Corner Radius Scale (3 tiers as specified: Small 10px, Medium 18px, Large 28px) */
-  --radius-sm: 10px;
-  --radius-md: 18px;
-  --radius-lg: 28px;
-  --radius-xl: 28px;
+  /* Editorial Corner Radius Scale */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
   --radius-2xl: 32px;
+  --radius-pill: 9999px;
 
-  /* NYG Signal Sculpture Palette */
-  --color-void: #05060A;
-  --color-violet-black: #100C1D;
-  --color-electric-iris: #7657FF;
-  --color-signal-coral: #FF5577;
-  --color-frozen-cyan: #78E7FF;
-  --color-soft-white: #F5F6FA;
-  --color-lavender-grey: #9D9AAF;
-  --color-border-structural: rgba(196, 190, 255, 0.14);
+  /* NYG Editorial Systems Core Palette */
+  --color-ink: #080A09;
+  --color-deep-teal: #082D2D;
+  --color-petroleum: #123E3D;
+  --color-paper: #F3F0E8;
+  --color-bone: #FAF8F2;
+  --color-graphite: #282B29;
+  --color-stone: #B8B5AC;
+
+  /* Signal Color (Constrained Architectural Accents) */
+  --color-aqua: #5FD8CD;
+
+  /* Muted Editorial Mineral Accents */
+  --color-mineral-mist: #CEDDD9;
+  --color-desert-sand: #E5D6C2;
+  --color-fog-blue: #C9D6DF;
+  --color-soft-clay: #D9BEB0;
 
   /* Semantic Dark Environment Surfaces */
-  --color-surface-base: #05060A;
-  --color-surface-raised: #100C1D;
-  --color-surface-sunken: #080611;
-  --color-surface-overlay: rgba(22, 17, 40, 0.7);
-  --color-surface-nav: rgba(16, 12, 29, 0.85);
-  --color-surface-glass: rgba(118, 87, 255, 0.06);
-  --color-surface-glass-strong: rgba(16, 12, 29, 0.9);
+  --color-surface-base: #080A09;
+  --color-surface-raised: #123E3D;
+  --color-surface-sunken: #05060A;
+  --color-surface-overlay: rgba(8, 45, 45, 0.85);
+  --color-surface-nav: rgba(8, 10, 9, 0.9);
+  --color-surface-paper: #F3F0E8;
+  --color-surface-bone: #FAF8F2;
 
   /* Semantic Typography Tokens */
-  --color-text-primary: #F5F6FA;
-  --color-text-muted: #9D9AAF;
-  --color-text-subtle: rgba(157, 154, 175, 0.6);
-  --color-text-faint: rgba(157, 154, 175, 0.35);
+  --color-text-primary: #F3F0E8;
+  --color-text-muted: #B8B5AC;
+  --color-text-subtle: rgba(184, 181, 172, 0.6);
+  --color-text-faint: rgba(184, 181, 172, 0.35);
+  --color-text-dark: #080A09;
+  --color-text-graphite: #282B29;
 
-  /* Semantic Borders */
-  --color-border-subtle: rgba(196, 190, 255, 0.12);
-  --color-border-default: rgba(196, 190, 255, 0.18);
-  --color-border-strong: rgba(196, 190, 255, 0.35);
+  /* Semantic Hairline Borders */
+  --color-border-subtle: rgba(184, 181, 172, 0.16);
+  --color-border-default: rgba(184, 181, 172, 0.28);
+  --color-border-strong: rgba(184, 181, 172, 0.5);
+  --color-border-paper: rgba(8, 45, 45, 0.14);
 
-  /* Accents & Action Triggers */
-  --color-accent: #7657FF;
-  --color-accent-hover: #8A6EFF;
-  --color-accent-coral: #FF5577;
-  --color-accent-cyan: #78E7FF;
-  --color-focus-ring: rgba(118, 87, 255, 0.65);
+  /* Accents & Focus Rings */
+  --color-accent: #5FD8CD;
+  --color-accent-hover: #48C7BC;
+  --color-focus-ring: #5FD8CD;
 
-  --color-action-primary: #7657FF;
-  --color-action-primary-hover: #8A6EFF;
-  --color-action-primary-foreground: #FFFFFF;
+  /* Primary Action Tokens */
+  --color-action-primary: #F3F0E8;
+  --color-action-primary-hover: #FFFFFF;
+  --color-action-primary-foreground: #080A09;
 
   /* Aliases for generic component frameworks */
   --color-background: var(--color-surface-base);
@@ -64,42 +77,42 @@
   --color-card-foreground: var(--color-text-primary);
   --color-popover: var(--color-surface-raised);
   --color-popover-foreground: var(--color-text-primary);
-  --color-primary: #7657FF;
-  --color-primary-foreground: #FFFFFF;
+  --color-primary: #5FD8CD;
+  --color-primary-foreground: #080A09;
   --color-secondary: var(--color-surface-raised);
   --color-secondary-foreground: var(--color-text-primary);
   --color-muted: var(--color-surface-raised);
   --color-muted-foreground: var(--color-text-muted);
-  --color-destructive: #FF5577;
-  --color-destructive-foreground: #FFFFFF;
+  --color-destructive: #D9BEB0;
+  --color-destructive-foreground: #080A09;
   --color-border: var(--color-border-subtle);
   --color-input: var(--color-border-subtle);
   --color-ring: var(--color-focus-ring);
 
   /* Typography Stacks */
+  --font-serif: "Newsreader Variable", "Newsreader", "Instrument Serif", Georgia, serif;
+  --font-display: "Newsreader Variable", "Newsreader", "Instrument Serif", Georgia, serif;
   --font-sans: "Manrope Variable", "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: "Unbounded Variable", "Unbounded", sans-serif;
   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
 }
 
 :root {
-  --radius: 18px;
-  --background: #05060A;
-  --foreground: #F5F6FA;
+  --radius: 16px;
+  --background: #080A09;
+  --foreground: #F3F0E8;
 
-  --color-void: #05060A;
-  --color-violet-black: #100C1D;
-  --color-electric-iris: #7657FF;
-  --color-signal-coral: #FF5577;
-  --color-frozen-cyan: #78E7FF;
-  --color-soft-white: #F5F6FA;
-  --color-lavender-grey: #9D9AAF;
-  --color-border-structural: rgba(196, 190, 255, 0.14);
+  --color-ink: #080A09;
+  --color-deep-teal: #082D2D;
+  --color-petroleum: #123E3D;
+  --color-paper: #F3F0E8;
+  --color-bone: #FAF8F2;
+  --color-graphite: #282B29;
+  --color-stone: #B8B5AC;
+  --color-aqua: #5FD8CD;
 
-  /* Ease Curves as requested */
+  /* Ease Curves */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
-  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 @layer base {
@@ -109,7 +122,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
-    background-color: #05060A;
+    background-color: #080A09;
   }
   body {
     background-color: var(--color-surface-base);
@@ -117,11 +130,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    selection-background-color: rgba(118, 87, 255, 0.3);
-    selection-color: #78E7FF;
+    selection-background-color: rgba(95, 216, 205, 0.25);
+    selection-color: #F3F0E8;
   }
 
-  /* High-Contrast Accessible Focus Visible Ring */
+  /* High-Contrast Accessible Focus Visible Ring in NYG Aqua */
   :focus-visible {
     outline: 2px solid var(--color-focus-ring) !important;
     outline-offset: 2px !important;
@@ -130,7 +143,7 @@
 
 /* Accessibility & State Utility Classes */
 .focus-ring {
-  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#7657FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#05060A];
+  @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#5FD8CD] focus-visible:ring-offset-2 focus-visible:ring-offset-[#080A09];
 }
 
 .touch-target {
@@ -138,68 +151,70 @@
   min-width: 44px;
 }
 
+/* Hairline border utility */
+.hairline-border {
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(184, 181, 172, 0.2);
+}
+
+/* Editorial Section Themes */
+.editorial-paper {
+  background-color: #F3F0E8 !important;
+  color: #080A09 !important;
+}
+.editorial-paper .text-text-primary {
+  color: #080A09 !important;
+}
+.editorial-paper .text-text-muted {
+  color: #282B29 !important;
+}
+.editorial-paper .text-text-subtle {
+  color: #5C5953 !important;
+}
+.editorial-paper .border-border-subtle {
+  border-color: rgba(8, 45, 45, 0.12) !important;
+}
+.editorial-paper .border-border-default {
+  border-color: rgba(8, 45, 45, 0.2) !important;
+}
+
+.editorial-bone {
+  background-color: #FAF8F2 !important;
+  color: #080A09 !important;
+}
+
+.editorial-mineral {
+  background-color: #CEDDD9 !important;
+  color: #080A09 !important;
+}
+
+.editorial-sand {
+  background-color: #E5D6C2 !important;
+  color: #080A09 !important;
+}
+
+.editorial-teal {
+  background-color: #082D2D !important;
+  color: #F3F0E8 !important;
+}
+
+.editorial-ink {
+  background-color: #080A09 !important;
+  color: #F3F0E8 !important;
+}
+
 /* Scroll-triggered reveal animation classes */
 .reveal-item {
   opacity: 0;
-  transform: translateY(1.5rem);
-  transition: opacity 600ms cubic-bezier(0.23, 1, 0.32, 1), transform 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  transform: translateY(1.25rem);
+  transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1), transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform, opacity;
 }
 
 .reveal-item.is-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-@utility glass {
-  background-color: rgba(16, 12, 29, 0.65);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(196, 190, 255, 0.14);
-  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
-}
-
-@utility glass-strong {
-  background-color: rgba(16, 12, 29, 0.92);
-  backdrop-filter: blur(28px);
-  -webkit-backdrop-filter: blur(28px);
-  border: 1px solid rgba(196, 190, 255, 0.18);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
-}
-
-@utility glass-iris {
-  background: linear-gradient(135deg, rgba(118, 87, 255, 0.12) 0%, rgba(16, 12, 29, 0.8) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(118, 87, 255, 0.3);
-  box-shadow: 0 12px 36px -10px rgba(118, 87, 255, 0.25);
-}
-
-/* Light Field Section Utility (for Bottleneck Configurator & Capability Section) */
-.section-light-field {
-  background-color: #F5F6FA;
-  color: #100C1D;
-}
-.section-light-field .text-text-primary {
-  color: #05060A !important;
-}
-.section-light-field .text-text-muted {
-  color: #4A465B !important;
-}
-.section-light-field .text-text-subtle {
-  color: #726E84 !important;
-}
-.section-light-field .border-border-subtle {
-  border-color: rgba(16, 12, 29, 0.12) !important;
-}
-.section-light-field .border-border-default {
-  border-color: rgba(16, 12, 29, 0.2) !important;
-}
-.section-light-field .bg-surface-raised {
-  background-color: #FFFFFF !important;
-}
-.section-light-field .bg-surface-base {
-  background-color: #ECEEF5 !important;
 }
 
 @media (prefers-reduced-motion: reduce) {

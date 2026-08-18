@@ -1,4 +1,4 @@
-import { ChevronRight, ArrowUpRight, ShieldCheck, Zap, Layers, RefreshCw } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Zap, Layers, RefreshCw } from "lucide-react";
 import { PERSONAL_INFO } from "@/data/portfolio-data";
 import { SectionShell } from "./SectionShell";
 
@@ -31,40 +31,40 @@ export function CapabilitySection() {
       id="studio"
       eyebrow="Studio Credibility & Delivery"
       iconGlyph="05"
-      themeVariant="light"
+      themeVariant="paper"
       declarativeTitle="See the system."
       qualifierTitle="Before you buy it."
     >
       <div className="grid gap-10 lg:grid-cols-12 items-center">
         {/* Left Column: Direct Delivery Commitment */}
         <div className="lg:col-span-6 space-y-6">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#100C1D]/5 border border-[rgba(16,12,29,0.1)] text-xs font-mono text-[#7657FF] font-semibold">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#082D2D]/5 border border-[rgba(8,45,45,0.14)] text-xs font-mono text-[#082D2D] font-semibold">
             <ShieldCheck className="w-3.5 h-3.5" />
             <span>BUILT FOR DUBAI OPERATORS</span>
           </div>
 
-          <h3 className="font-sans text-3xl sm:text-4xl font-extrabold text-[#05060A] tracking-tight leading-tight">
+          <h3 className="font-serif text-3xl sm:text-4xl font-normal text-[#080A09] tracking-tight leading-[1.12]">
             Every engagement starts with a working demo built on your actual process.
           </h3>
 
-          <p className="text-base text-[#4A465B] leading-relaxed">
+          <p className="text-base text-[#282B29] leading-relaxed font-sans font-normal">
             No 40-page generic slide decks. We map your actual workflow, build a functioning proof-of-concept, and quantify the exact hours recovered before any long-term agreement.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3.5">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#7657FF] hover:bg-[#8A6EFF] px-6 py-3.5 text-sm font-semibold text-white transition-all shadow-md active:scale-[0.98] focus-ring"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-[#080A09] hover:bg-[#123E3D] px-6 py-3.5 text-xs font-mono uppercase tracking-wider font-bold text-[#F3F0E8] transition-all shadow-md active:scale-[0.98] focus-ring cursor-pointer"
             >
               <span>Request Working Demo</span>
-              <ArrowUpRight className="h-4 w-4" />
+              <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
 
             <a
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center rounded-xl bg-[#FFFFFF] border border-[rgba(16,12,29,0.15)] hover:border-[#7657FF] px-5 py-3.5 text-sm font-semibold text-[#05060A] transition-colors focus-ring"
+              className="inline-flex items-center justify-center rounded-full bg-[#FAF8F2] border border-[rgba(8,45,45,0.18)] hover:border-[#082D2D] px-5 py-3.5 text-xs font-mono uppercase tracking-wider font-semibold text-[#080A09] transition-colors focus-ring cursor-pointer"
             >
               WhatsApp Founder
             </a>
@@ -74,22 +74,21 @@ export function CapabilitySection() {
         {/* Right Column: 3 Structured Delivery Capabilities */}
         <div className="lg:col-span-6 space-y-4">
           {capabilities.map((item) => {
-            const Icon = item.icon;
             return (
               <div
                 key={item.index}
-                className="rounded-2xl border border-[rgba(16,12,29,0.1)] bg-[#FFFFFF] p-6 shadow-sm hover:shadow-md hover:border-[#7657FF]/40 transition-all duration-200"
+                className="rounded-3xl border border-[rgba(8,45,45,0.12)] bg-[#FAF8F2] p-6 shadow-xs hover:border-[#082D2D]/40 transition-all duration-200"
               >
                 <div className="flex items-start gap-4">
-                  <div className="h-10 w-10 rounded-xl bg-[#7657FF]/10 border border-[#7657FF]/20 flex items-center justify-center text-[#7657FF] shrink-0 font-bold font-mono">
+                  <div className="h-10 w-10 rounded-2xl bg-[#082D2D]/5 border border-[rgba(8,45,45,0.14)] flex items-center justify-center text-[#082D2D] shrink-0 font-bold font-mono text-xs">
                     {item.index}
                   </div>
 
                   <div className="space-y-1.5 flex-1">
-                    <h4 className="text-lg font-bold text-[#05060A] font-sans">
+                    <h4 className="text-lg font-serif font-normal text-[#080A09]">
                       {item.title}
                     </h4>
-                    <p className="text-sm text-[#4A465B] leading-relaxed">
+                    <p className="text-sm text-[#282B29] leading-relaxed font-sans">
                       {item.body}
                     </p>
                   </div>
@@ -102,3 +101,4 @@ export function CapabilitySection() {
     </SectionShell>
   );
 }
+

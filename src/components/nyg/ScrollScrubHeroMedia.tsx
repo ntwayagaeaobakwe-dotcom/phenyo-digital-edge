@@ -355,8 +355,8 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
       )}
 
       {/* 3. Restrained cinematic dark gradient overlay for text readability on left side */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#05060A]/95 via-[#05060A]/70 to-transparent pointer-events-none" />
-      <div className="absolute inset-0 bg-gradient-to-t from-[#05060A] via-transparent to-[#05060A]/60 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080A09]/95 via-[#080A09]/70 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#080A09] via-transparent to-[#080A09]/60 pointer-events-none" />
     </div>
   );
 }

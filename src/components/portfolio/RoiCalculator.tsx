@@ -13,10 +13,9 @@ export function RoiCalculator() {
   const costInputId = useId();
   const autoInputId = useId();
 
-  // Computations
+  // Computations (strictly preserving USD)
   const totalWeeklyHours = hoursPerWeek * teamSize;
   const weeklyHoursSaved = (totalWeeklyHours * (automationPct / 100)).toFixed(0);
-  const monthlyHoursSaved = (Number(weeklyHoursSaved) * 4.33).toFixed(0);
   const annualHoursSaved = (Number(weeklyHoursSaved) * 52).toFixed(0);
 
   const weeklyDollarSavings = (Number(weeklyHoursSaved) * hourlyCost).toFixed(0);
@@ -27,28 +26,28 @@ export function RoiCalculator() {
       id="roi"
       eyebrow="Financial Impact Estimator"
       iconGlyph="06"
-      themeVariant="iris"
+      themeVariant="sand"
       declarativeTitle="Estimate your operational recovery"
       qualifierTitle="in reclaimed hours and annual capital."
     >
       <div className="grid gap-8 lg:grid-cols-12 items-center">
-        {/* Left 7 Columns: Interactive Precision Sliders */}
-        <div className="lg:col-span-7 rounded-2xl border border-[rgba(118,87,255,0.25)] bg-[#100C1D]/90 p-6 sm:p-8 backdrop-blur-xl space-y-6">
-          <div className="border-b border-[rgba(196,190,255,0.12)] pb-4 flex items-center justify-between">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#78E7FF] font-semibold">
+        {/* Left 7 Columns: Interactive Precision Sliders on Bone Plate */}
+        <div className="lg:col-span-7 rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8 space-y-6 shadow-xs">
+          <div className="border-b border-[rgba(8,45,45,0.1)] pb-4 flex items-center justify-between">
+            <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-semibold">
               [ PARAMETER_CONFIGURATION ]
             </span>
-            <span className="font-mono text-[11px] text-[#9D9AAF]">LIVE CALCULATION</span>
+            <span className="font-mono text-[11px] text-[#5C5953]">LIVE CALCULATION</span>
           </div>
 
           <div className="space-y-5">
             {/* Slider 1: Hours Per Week */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={hoursInputId} className="flex items-center gap-1.5 text-[#9D9AAF]">
-                  <Clock className="h-3.5 w-3.5 text-[#78E7FF]" /> MANUAL HOURS / PERSON / WEEK
+                <label htmlFor={hoursInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                  <Clock className="h-3.5 w-3.5 text-[#082D2D]" /> MANUAL HOURS / PERSON / WEEK
                 </label>
-                <span className="font-bold text-[#F5F6FA] px-2.5 py-0.5 rounded-full bg-[#7657FF]/20 border border-[#7657FF]/40">
+                <span className="font-bold text-[#080A09] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
                   {hoursPerWeek} hrs/wk
                 </span>
               </div>
@@ -60,9 +59,9 @@ export function RoiCalculator() {
                 step="1"
                 value={hoursPerWeek}
                 onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                className="w-full accent-[#7657FF] bg-[#05060A] rounded-lg h-2.5 cursor-pointer touch-target focus-ring"
+                className="w-full accent-[#082D2D] bg-[#E5D6C2] rounded-full h-2 cursor-pointer touch-target focus-ring"
               />
-              <div className="flex justify-between text-[10px] font-mono text-[#9D9AAF]">
+              <div className="flex justify-between text-[10px] font-mono text-[#5C5953]">
                 <span>5 hrs</span>
                 <span>20 hrs</span>
                 <span>40 hrs</span>
@@ -72,10 +71,10 @@ export function RoiCalculator() {
             {/* Slider 2: Team Size */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={teamInputId} className="flex items-center gap-1.5 text-[#9D9AAF]">
-                  <Users className="h-3.5 w-3.5 text-[#78E7FF]" /> OPERATIONAL TEAM SIZE
+                <label htmlFor={teamInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                  <Users className="h-3.5 w-3.5 text-[#082D2D]" /> OPERATIONAL TEAM SIZE
                 </label>
-                <span className="font-bold text-[#F5F6FA] px-2.5 py-0.5 rounded-full bg-[#7657FF]/20 border border-[#7657FF]/40">
+                <span className="font-bold text-[#080A09] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
                   {teamSize} {teamSize === 1 ? "person" : "people"}
                 </span>
               </div>
@@ -87,9 +86,9 @@ export function RoiCalculator() {
                 step="1"
                 value={teamSize}
                 onChange={(e) => setTeamSize(Number(e.target.value))}
-                className="w-full accent-[#7657FF] bg-[#05060A] rounded-lg h-2.5 cursor-pointer touch-target focus-ring"
+                className="w-full accent-[#082D2D] bg-[#E5D6C2] rounded-full h-2 cursor-pointer touch-target focus-ring"
               />
-              <div className="flex justify-between text-[10px] font-mono text-[#9D9AAF]">
+              <div className="flex justify-between text-[10px] font-mono text-[#5C5953]">
                 <span>1</span>
                 <span>12</span>
                 <span>25+</span>
@@ -99,10 +98,10 @@ export function RoiCalculator() {
             {/* Slider 3: Hourly Cost */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={costInputId} className="flex items-center gap-1.5 text-[#9D9AAF]">
-                  <DollarSign className="h-3.5 w-3.5 text-[#78E7FF]" /> AVERAGE HOURLY COST ($ USD)
+                <label htmlFor={costInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                  <DollarSign className="h-3.5 w-3.5 text-[#082D2D]" /> AVERAGE HOURLY COST ($ USD)
                 </label>
-                <span className="font-bold text-[#F5F6FA] px-2.5 py-0.5 rounded-full bg-[#7657FF]/20 border border-[#7657FF]/40">
+                <span className="font-bold text-[#080A09] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
                   ${hourlyCost}/hr
                 </span>
               </div>
@@ -114,9 +113,9 @@ export function RoiCalculator() {
                 step="5"
                 value={hourlyCost}
                 onChange={(e) => setHourlyCost(Number(e.target.value))}
-                className="w-full accent-[#7657FF] bg-[#05060A] rounded-lg h-2.5 cursor-pointer touch-target focus-ring"
+                className="w-full accent-[#082D2D] bg-[#E5D6C2] rounded-full h-2 cursor-pointer touch-target focus-ring"
               />
-              <div className="flex justify-between text-[10px] font-mono text-[#9D9AAF]">
+              <div className="flex justify-between text-[10px] font-mono text-[#5C5953]">
                 <span>$15/hr</span>
                 <span>$75/hr</span>
                 <span>$150/hr</span>
@@ -126,10 +125,10 @@ export function RoiCalculator() {
             {/* Slider 4: Target Automation Percentage */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={autoInputId} className="flex items-center gap-1.5 text-[#9D9AAF]">
-                  <Zap className="h-3.5 w-3.5 text-[#FF5577]" /> TARGET AUTOMATION RATIO (%)
+                <label htmlFor={autoInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                  <Zap className="h-3.5 w-3.5 text-[#082D2D]" /> TARGET AUTOMATION RATIO (%)
                 </label>
-                <span className="font-bold text-[#FF5577] px-2.5 py-0.5 rounded-full bg-[#FF5577]/20 border border-[#FF5577]/40">
+                <span className="font-bold text-[#082D2D] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
                   {automationPct}%
                 </span>
               </div>
@@ -141,9 +140,9 @@ export function RoiCalculator() {
                 step="5"
                 value={automationPct}
                 onChange={(e) => setAutomationPct(Number(e.target.value))}
-                className="w-full accent-[#FF5577] bg-[#05060A] rounded-lg h-2.5 cursor-pointer touch-target focus-ring"
+                className="w-full accent-[#082D2D] bg-[#E5D6C2] rounded-full h-2 cursor-pointer touch-target focus-ring"
               />
-              <div className="flex justify-between text-[10px] font-mono text-[#9D9AAF]">
+              <div className="flex justify-between text-[10px] font-mono text-[#5C5953]">
                 <span>20%</span>
                 <span>55%</span>
                 <span>90%</span>
@@ -152,53 +151,53 @@ export function RoiCalculator() {
           </div>
         </div>
 
-        {/* Right 5 Columns: Visual Output Telemetry Card */}
-        <div className="lg:col-span-5 rounded-2xl border border-[#7657FF]/40 bg-gradient-to-br from-[#100C1D] to-[#160F30] p-7 sm:p-9 shadow-[0_20px_50px_rgba(118,87,255,0.2)] flex flex-col justify-between space-y-6">
+        {/* Right 5 Columns: Visual Output Telemetry Card in Deep Teal */}
+        <div className="lg:col-span-5 rounded-3xl border border-[rgba(184,181,172,0.22)] bg-[#082D2D] p-7 sm:p-9 shadow-xl flex flex-col justify-between space-y-6 text-[#F3F0E8]">
           <div>
-            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#78E7FF] font-bold mb-4">
+            <div className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-widest text-[#5FD8CD] font-bold mb-4">
               <TrendingUp className="w-4 h-4" />
               <span>PROJECTED ANNUAL IMPACT</span>
             </div>
 
             <div className="space-y-1">
-              <div className="font-sans font-extrabold text-4xl sm:text-5xl text-[#F5F6FA] tracking-tight">
+              <div className="font-serif font-normal text-4xl sm:text-5xl lg:text-[54px] text-[#F3F0E8] tracking-tight leading-none">
                 ${annualDollarSavings}
               </div>
-              <p className="text-xs font-mono text-[#9D9AAF]">
-                ESTIMATED ANNUAL CAPITAL RECOVERED
+              <p className="text-xs font-mono text-[#B8B5AC] pt-1">
+                ESTIMATED ANNUAL CAPITAL RECOVERED (USD)
               </p>
             </div>
 
-            <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-[rgba(196,190,255,0.12)]">
+            <div className="grid grid-cols-2 gap-4 mt-6 pt-6 border-t border-[rgba(184,181,172,0.14)]">
               <div>
-                <span className="font-sans font-bold text-2xl text-[#78E7FF] block">
+                <span className="font-serif font-normal text-2xl sm:text-3xl text-[#5FD8CD] block">
                   {weeklyHoursSaved}h
                 </span>
-                <span className="font-mono text-[11px] text-[#9D9AAF]">
+                <span className="font-mono text-[11px] text-[#B8B5AC]">
                   RECOVERED / WEEK
                 </span>
               </div>
 
               <div>
-                <span className="font-sans font-bold text-2xl text-[#FF5577] block">
+                <span className="font-serif font-normal text-2xl sm:text-3xl text-[#5FD8CD] block">
                   {annualHoursSaved}h
                 </span>
-                <span className="font-mono text-[11px] text-[#9D9AAF]">
+                <span className="font-mono text-[11px] text-[#B8B5AC]">
                   RECOVERED / YEAR
                 </span>
               </div>
             </div>
           </div>
 
-          <div className="pt-4 border-t border-[rgba(196,190,255,0.12)] space-y-3">
+          <div className="pt-4 border-t border-[rgba(184,181,172,0.14)] space-y-3">
             <a
               href="#contact"
-              className="w-full inline-flex items-center justify-center gap-2 bg-[#7657FF] hover:bg-[#8A6EFF] text-white font-semibold py-4 rounded-xl shadow-lg transition-all active:scale-[0.98] focus-ring text-sm"
+              className="w-full inline-flex items-center justify-center gap-2 bg-[#F3F0E8] hover:bg-white text-[#080A09] font-mono text-xs uppercase tracking-wider font-bold py-4 rounded-full shadow-md transition-all active:scale-[0.98] focus-ring cursor-pointer"
             >
               <span>Capture this ROI in your operations</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
-            <p className="text-[11px] font-mono text-center text-[#9D9AAF]/70">
+            <p className="text-[11px] font-mono text-center text-[#B8B5AC]">
               Zero upfront commitment. Guaranteed custom architecture.
             </p>
           </div>
@@ -207,3 +206,4 @@ export function RoiCalculator() {
     </SectionShell>
   );
 }
+
