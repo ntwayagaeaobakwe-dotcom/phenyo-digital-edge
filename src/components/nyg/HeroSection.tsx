@@ -91,7 +91,8 @@ export function HeroSection() {
 
             {/* Supporting Copy in Manrope */}
             <p className="text-base sm:text-lg text-[#F3F0E8]/90 leading-relaxed max-w-xl font-sans font-normal">
-              NYG Digital designs business automation, workflow tools, and conversion-focused websites that turn scattered work into connected systems.
+              NYG Digital designs business automation, workflow tools, and conversion-focused
+              websites that turn scattered work into connected systems.
             </p>
 
             {/* Primary & Secondary CTAs */}
@@ -133,7 +134,9 @@ export function HeroSection() {
                     Phenyo Ntwayagae
                     <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD]" />
                   </span>
-                  <span className="text-[#B8B5AC] font-mono text-[11px]">Direct Architecture & Build</span>
+                  <span className="text-[#B8B5AC] font-mono text-[11px]">
+                    Direct Architecture & Build
+                  </span>
                 </div>
               </div>
 
@@ -174,4 +177,3 @@ export function HeroSection() {
     </div>
   );
 }
-

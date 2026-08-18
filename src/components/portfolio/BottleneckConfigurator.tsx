@@ -8,7 +8,11 @@ const bottlenecks = [
     label: "Leads are not followed up immediately",
     system: "Zero-Leak Lead Routing Pipeline",
     tools: ["Website / Portals", "n8n Automation Engine", "CRM Sync", "Instant WhatsApp / Email"],
-    steps: ["Capture & parse each inquiry", "Classify intent & assign owner", "Trigger immediate WhatsApp & schedule follow-up"],
+    steps: [
+      "Capture & parse each inquiry",
+      "Classify intent & assign owner",
+      "Trigger immediate WhatsApp & schedule follow-up",
+    ],
     outcome: "Eliminate dead leads with sub-minute response SLA and automatic CRM ownership.",
   },
   {
@@ -16,7 +20,11 @@ const bottlenecks = [
     label: "Customer & project data is scattered",
     system: "Unified Operations Hub & Portal",
     tools: ["Smart Intake Forms", "Normalized PostgreSQL", "HubSpot / Zoho", "Realtime Dashboard"],
-    steps: ["Collect details once via structured intake", "Normalize and sync across tools", "Maintain single source of truth for team"],
+    steps: [
+      "Collect details once via structured intake",
+      "Normalize and sync across tools",
+      "Maintain single source of truth for team",
+    ],
     outcome: "No more searching through WhatsApp chats, lost emails, and conflicting spreadsheets.",
   },
   {
@@ -24,7 +32,11 @@ const bottlenecks = [
     label: "Staff repeat manual admin & reporting",
     system: "Rules-Based Workflow Automation",
     tools: ["n8n Pipeline", "REST APIs", "Automated PDF Gen", "Slack / WhatsApp Alerts"],
-    steps: ["Listen for operational triggers", "Auto-generate contracts & dispatch tasks", "Escalate only exceptions to human review"],
+    steps: [
+      "Listen for operational triggers",
+      "Auto-generate contracts & dispatch tasks",
+      "Escalate only exceptions to human review",
+    ],
     outcome: "Recover 15–30 hours per team member weekly for high-value client work.",
   },
   {
@@ -32,7 +44,11 @@ const bottlenecks = [
     label: "Website doesn't generate qualified inquiries",
     system: "Conversion Web System & Qualification Route",
     tools: ["TanStack / React 19", "Interactive Estimators", "Direct Booking", "CRM Ingestion"],
-    steps: ["Clarify the offer & eliminate friction", "Pre-qualify lead budget & timeline", "Route qualified buyers straight to calendar"],
+    steps: [
+      "Clarify the offer & eliminate friction",
+      "Pre-qualify lead budget & timeline",
+      "Route qualified buyers straight to calendar",
+    ],
     outcome: "A digital presence that actively acts as your top-performing qualification rep.",
   },
 ] as const;
@@ -63,7 +79,10 @@ export function BottleneckConfigurator() {
     >
       <div className="grid gap-8 lg:grid-cols-12 items-stretch">
         {/* Left Column: 5-Col Asymmetric Bottleneck Selector */}
-        <div className="lg:col-span-5 flex flex-col justify-between space-y-3" aria-label="Choose a business bottleneck">
+        <div
+          className="lg:col-span-5 flex flex-col justify-between space-y-3"
+          aria-label="Choose a business bottleneck"
+        >
           <div className="space-y-3">
             {bottlenecks.map((item, index) => {
               const isSelected = selectedId === item.id;
@@ -80,10 +99,14 @@ export function BottleneckConfigurator() {
                   }`}
                 >
                   <div className="flex items-center gap-3">
-                    <span className={`font-mono text-xs font-bold ${isSelected ? "text-[#082D2D]" : "text-[#5C5953]"}`}>
+                    <span
+                      className={`font-mono text-xs font-bold ${isSelected ? "text-[#082D2D]" : "text-[#5C5953]"}`}
+                    >
                       0{index + 1}
                     </span>
-                    <span className={`text-sm font-sans ${isSelected ? "font-bold text-[#080A09]" : "font-medium"}`}>
+                    <span
+                      className={`text-sm font-sans ${isSelected ? "font-bold text-[#080A09]" : "font-medium"}`}
+                    >
                       {item.label}
                     </span>
                   </div>
@@ -177,4 +200,3 @@ export function BottleneckConfigurator() {
     </SectionShell>
   );
 }
-

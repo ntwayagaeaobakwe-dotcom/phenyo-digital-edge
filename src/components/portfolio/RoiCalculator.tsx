@@ -44,7 +44,10 @@ export function RoiCalculator() {
             {/* Slider 1: Hours Per Week */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={hoursInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                <label
+                  htmlFor={hoursInputId}
+                  className="flex items-center gap-1.5 text-[#5C5953] font-medium"
+                >
                   <Clock className="h-3.5 w-3.5 text-[#082D2D]" /> MANUAL HOURS / PERSON / WEEK
                 </label>
                 <span className="font-bold text-[#080A09] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
@@ -71,7 +74,10 @@ export function RoiCalculator() {
             {/* Slider 2: Team Size */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={teamInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                <label
+                  htmlFor={teamInputId}
+                  className="flex items-center gap-1.5 text-[#5C5953] font-medium"
+                >
                   <Users className="h-3.5 w-3.5 text-[#082D2D]" /> OPERATIONAL TEAM SIZE
                 </label>
                 <span className="font-bold text-[#080A09] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
@@ -98,7 +104,10 @@ export function RoiCalculator() {
             {/* Slider 3: Hourly Cost */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={costInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                <label
+                  htmlFor={costInputId}
+                  className="flex items-center gap-1.5 text-[#5C5953] font-medium"
+                >
                   <DollarSign className="h-3.5 w-3.5 text-[#082D2D]" /> AVERAGE HOURLY COST ($ USD)
                 </label>
                 <span className="font-bold text-[#080A09] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
@@ -125,7 +134,10 @@ export function RoiCalculator() {
             {/* Slider 4: Target Automation Percentage */}
             <div className="space-y-2">
               <div className="flex justify-between items-center text-xs font-mono">
-                <label htmlFor={autoInputId} className="flex items-center gap-1.5 text-[#5C5953] font-medium">
+                <label
+                  htmlFor={autoInputId}
+                  className="flex items-center gap-1.5 text-[#5C5953] font-medium"
+                >
                   <Zap className="h-3.5 w-3.5 text-[#082D2D]" /> TARGET AUTOMATION RATIO (%)
                 </label>
                 <span className="font-bold text-[#082D2D] px-2.5 py-0.5 rounded-full bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)]">
@@ -173,18 +185,14 @@ export function RoiCalculator() {
                 <span className="font-serif font-normal text-2xl sm:text-3xl text-[#5FD8CD] block">
                   {weeklyHoursSaved}h
                 </span>
-                <span className="font-mono text-[11px] text-[#B8B5AC]">
-                  RECOVERED / WEEK
-                </span>
+                <span className="font-mono text-[11px] text-[#B8B5AC]">RECOVERED / WEEK</span>
               </div>
 
               <div>
                 <span className="font-serif font-normal text-2xl sm:text-3xl text-[#5FD8CD] block">
                   {annualHoursSaved}h
                 </span>
-                <span className="font-mono text-[11px] text-[#B8B5AC]">
-                  RECOVERED / YEAR
-                </span>
+                <span className="font-mono text-[11px] text-[#B8B5AC]">RECOVERED / YEAR</span>
               </div>
             </div>
           </div>
@@ -206,4 +214,3 @@ export function RoiCalculator() {
     </SectionShell>
   );
 }
-

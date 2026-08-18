@@ -14,10 +14,7 @@ const contactSchema = z.object({
   budget: z.string().optional(),
   message: z
     .string()
-    .min(
-      5,
-      "Please describe the manual bottlenecks or system goals (at least 5 characters)",
-    ),
+    .min(5, "Please describe the manual bottlenecks or system goals (at least 5 characters)"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -142,7 +139,8 @@ export function ContactSection() {
             </h3>
 
             <p className="text-sm text-[#B8B5AC] leading-relaxed font-sans font-normal">
-              Describe the manual tasks, broken handoffs, or website challenges holding your business back. You will receive a clear technical recommendation, not a sales script.
+              Describe the manual tasks, broken handoffs, or website challenges holding your
+              business back. You will receive a clear technical recommendation, not a sales script.
             </p>
 
             <div className="space-y-3 font-mono text-xs text-[#B8B5AC] pt-2">
@@ -221,13 +219,18 @@ export function ContactSection() {
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-mono text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-[rgba(8,45,45,0.1)]">
-                  <span className="text-[#082D2D] font-bold uppercase tracking-widest">[ INQUIRY_PAYLOAD ]</span>
+                  <span className="text-[#082D2D] font-bold uppercase tracking-widest">
+                    [ INQUIRY_PAYLOAD ]
+                  </span>
                   <span className="text-[#5C5953] text-[10px]">RESPONSE GUARANTEE &lt; 24H</span>
                 </div>
 
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
+                  <label
+                    htmlFor="name"
+                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
+                  >
                     YOUR NAME *
                   </label>
                   <input
@@ -239,12 +242,17 @@ export function ContactSection() {
                       errors.name ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
                     }`}
                   />
-                  {errors.name && <p className="text-red-600 text-xs font-sans mt-1">{errors.name.message}</p>}
+                  {errors.name && (
+                    <p className="text-red-600 text-xs font-sans mt-1">{errors.name.message}</p>
+                  )}
                 </div>
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
+                  <label
+                    htmlFor="email"
+                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
+                  >
                     BUSINESS EMAIL *
                   </label>
                   <input
@@ -256,12 +264,17 @@ export function ContactSection() {
                       errors.email ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
                     }`}
                   />
-                  {errors.email && <p className="text-red-600 text-xs font-sans mt-1">{errors.email.message}</p>}
+                  {errors.email && (
+                    <p className="text-red-600 text-xs font-sans mt-1">{errors.email.message}</p>
+                  )}
                 </div>
 
                 {/* Service Requirement */}
                 <div>
-                  <label htmlFor="service" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
+                  <label
+                    htmlFor="service"
+                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
+                  >
                     PRIMARY SERVICE REQUIREMENT *
                   </label>
                   <select
@@ -279,7 +292,10 @@ export function ContactSection() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold">
+                  <label
+                    htmlFor="message"
+                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
+                  >
                     PROBLEM DESCRIPTION / GOALS *
                   </label>
                   <textarea
@@ -291,7 +307,9 @@ export function ContactSection() {
                       errors.message ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
                     }`}
                   />
-                  {errors.message && <p className="text-red-600 text-xs font-sans mt-1">{errors.message.message}</p>}
+                  {errors.message && (
+                    <p className="text-red-600 text-xs font-sans mt-1">{errors.message.message}</p>
+                  )}
                 </div>
 
                 {/* Submit Button */}
@@ -320,4 +338,3 @@ export function ContactSection() {
     </SectionShell>
   );
 }
-

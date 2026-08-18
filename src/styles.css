@@ -20,39 +20,39 @@
   --radius-pill: 9999px;
 
   /* NYG Editorial Systems Core Palette */
-  --color-ink: #080A09;
-  --color-deep-teal: #082D2D;
-  --color-petroleum: #123E3D;
-  --color-paper: #F3F0E8;
-  --color-bone: #FAF8F2;
-  --color-graphite: #282B29;
-  --color-stone: #B8B5AC;
+  --color-ink: #080a09;
+  --color-deep-teal: #082d2d;
+  --color-petroleum: #123e3d;
+  --color-paper: #f3f0e8;
+  --color-bone: #faf8f2;
+  --color-graphite: #282b29;
+  --color-stone: #b8b5ac;
 
   /* Signal Color (Constrained Architectural Accents) */
-  --color-aqua: #5FD8CD;
+  --color-aqua: #5fd8cd;
 
   /* Muted Editorial Mineral Accents */
-  --color-mineral-mist: #CEDDD9;
-  --color-desert-sand: #E5D6C2;
-  --color-fog-blue: #C9D6DF;
-  --color-soft-clay: #D9BEB0;
+  --color-mineral-mist: #ceddd9;
+  --color-desert-sand: #e5d6c2;
+  --color-fog-blue: #c9d6df;
+  --color-soft-clay: #d9beb0;
 
   /* Semantic Dark Environment Surfaces */
-  --color-surface-base: #080A09;
-  --color-surface-raised: #123E3D;
-  --color-surface-sunken: #05060A;
+  --color-surface-base: #080a09;
+  --color-surface-raised: #123e3d;
+  --color-surface-sunken: #05060a;
   --color-surface-overlay: rgba(8, 45, 45, 0.85);
   --color-surface-nav: rgba(8, 10, 9, 0.9);
-  --color-surface-paper: #F3F0E8;
-  --color-surface-bone: #FAF8F2;
+  --color-surface-paper: #f3f0e8;
+  --color-surface-bone: #faf8f2;
 
   /* Semantic Typography Tokens */
-  --color-text-primary: #F3F0E8;
-  --color-text-muted: #B8B5AC;
+  --color-text-primary: #f3f0e8;
+  --color-text-muted: #b8b5ac;
   --color-text-subtle: rgba(184, 181, 172, 0.6);
   --color-text-faint: rgba(184, 181, 172, 0.35);
-  --color-text-dark: #080A09;
-  --color-text-graphite: #282B29;
+  --color-text-dark: #080a09;
+  --color-text-graphite: #282b29;
 
   /* Semantic Hairline Borders */
   --color-border-subtle: rgba(184, 181, 172, 0.16);
@@ -61,14 +61,14 @@
   --color-border-paper: rgba(8, 45, 45, 0.14);
 
   /* Accents & Focus Rings */
-  --color-accent: #5FD8CD;
-  --color-accent-hover: #48C7BC;
-  --color-focus-ring: #5FD8CD;
+  --color-accent: #5fd8cd;
+  --color-accent-hover: #48c7bc;
+  --color-focus-ring: #5fd8cd;
 
   /* Primary Action Tokens */
-  --color-action-primary: #F3F0E8;
-  --color-action-primary-hover: #FFFFFF;
-  --color-action-primary-foreground: #080A09;
+  --color-action-primary: #f3f0e8;
+  --color-action-primary-hover: #ffffff;
+  --color-action-primary-foreground: #080a09;
 
   /* Aliases for generic component frameworks */
   --color-background: var(--color-surface-base);
@@ -77,14 +77,14 @@
   --color-card-foreground: var(--color-text-primary);
   --color-popover: var(--color-surface-raised);
   --color-popover-foreground: var(--color-text-primary);
-  --color-primary: #5FD8CD;
-  --color-primary-foreground: #080A09;
+  --color-primary: #5fd8cd;
+  --color-primary-foreground: #080a09;
   --color-secondary: var(--color-surface-raised);
   --color-secondary-foreground: var(--color-text-primary);
   --color-muted: var(--color-surface-raised);
   --color-muted-foreground: var(--color-text-muted);
-  --color-destructive: #D9BEB0;
-  --color-destructive-foreground: #080A09;
+  --color-destructive: #d9beb0;
+  --color-destructive-foreground: #080a09;
   --color-border: var(--color-border-subtle);
   --color-input: var(--color-border-subtle);
   --color-ring: var(--color-focus-ring);
@@ -98,17 +98,17 @@
 
 :root {
   --radius: 16px;
-  --background: #080A09;
-  --foreground: #F3F0E8;
+  --background: #080a09;
+  --foreground: #f3f0e8;
 
-  --color-ink: #080A09;
-  --color-deep-teal: #082D2D;
-  --color-petroleum: #123E3D;
-  --color-paper: #F3F0E8;
-  --color-bone: #FAF8F2;
-  --color-graphite: #282B29;
-  --color-stone: #B8B5AC;
-  --color-aqua: #5FD8CD;
+  --color-ink: #080a09;
+  --color-deep-teal: #082d2d;
+  --color-petroleum: #123e3d;
+  --color-paper: #f3f0e8;
+  --color-bone: #faf8f2;
+  --color-graphite: #282b29;
+  --color-stone: #b8b5ac;
+  --color-aqua: #5fd8cd;
 
   /* Ease Curves */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -122,7 +122,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
-    background-color: #080A09;
+    background-color: #080a09;
   }
   body {
     background-color: var(--color-surface-base);
@@ -131,7 +131,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     selection-background-color: rgba(95, 216, 205, 0.25);
-    selection-color: #F3F0E8;
+    selection-color: #f3f0e8;
   }
 
   /* High-Contrast Accessible Focus Visible Ring in NYG Aqua */
@@ -160,17 +160,17 @@
 
 /* Editorial Section Themes */
 .editorial-paper {
-  background-color: #F3F0E8 !important;
-  color: #080A09 !important;
+  background-color: #f3f0e8 !important;
+  color: #080a09 !important;
 }
 .editorial-paper .text-text-primary {
-  color: #080A09 !important;
+  color: #080a09 !important;
 }
 .editorial-paper .text-text-muted {
-  color: #282B29 !important;
+  color: #282b29 !important;
 }
 .editorial-paper .text-text-subtle {
-  color: #5C5953 !important;
+  color: #5c5953 !important;
 }
 .editorial-paper .border-border-subtle {
   border-color: rgba(8, 45, 45, 0.12) !important;
@@ -180,35 +180,37 @@
 }
 
 .editorial-bone {
-  background-color: #FAF8F2 !important;
-  color: #080A09 !important;
+  background-color: #faf8f2 !important;
+  color: #080a09 !important;
 }
 
 .editorial-mineral {
-  background-color: #CEDDD9 !important;
-  color: #080A09 !important;
+  background-color: #ceddd9 !important;
+  color: #080a09 !important;
 }
 
 .editorial-sand {
-  background-color: #E5D6C2 !important;
-  color: #080A09 !important;
+  background-color: #e5d6c2 !important;
+  color: #080a09 !important;
 }
 
 .editorial-teal {
-  background-color: #082D2D !important;
-  color: #F3F0E8 !important;
+  background-color: #082d2d !important;
+  color: #f3f0e8 !important;
 }
 
 .editorial-ink {
-  background-color: #080A09 !important;
-  color: #F3F0E8 !important;
+  background-color: #080a09 !important;
+  color: #f3f0e8 !important;
 }
 
 /* Scroll-triggered reveal animation classes */
 .reveal-item {
   opacity: 0;
   transform: translateY(1.25rem);
-  transition: opacity 500ms cubic-bezier(0.23, 1, 0.32, 1), transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition:
+    opacity 500ms cubic-bezier(0.23, 1, 0.32, 1),
+    transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
   will-change: transform, opacity;
 }
 

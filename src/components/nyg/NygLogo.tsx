@@ -62,11 +62,11 @@ export function NygLogo({ className, showWordmark = false, ...props }: NygLogoPr
       {showWordmark && (
         <span className="flex flex-col text-left leading-none">
           <span className="font-sans font-bold text-sm tracking-tight text-[#F3F0E8]">
-            NYG<span className="text-[#5FD8CD] font-light ml-1 text-xs tracking-wider">DIGITAL</span>
+            NYG
+            <span className="text-[#5FD8CD] font-light ml-1 text-xs tracking-wider">DIGITAL</span>
           </span>
         </span>
       )}
     </div>
   );
 }
-

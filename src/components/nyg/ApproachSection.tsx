@@ -21,7 +21,6 @@ export function ApproachSection() {
     >
       <div className="max-w-[1200px] mx-auto px-5 sm:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          
           {/* Left side: Images & Stats */}
           <div className="relative">
             <div className="rounded-[--radius] overflow-hidden border border-border/20 shadow-xl">
@@ -31,13 +30,13 @@ export function ApproachSection() {
                 className="w-full h-auto object-cover aspect-square sm:aspect-[4/5] lg:aspect-square"
               />
             </div>
-            
+
             {/* Floating Stat Badge */}
             <div className="absolute -bottom-8 -left-8 sm:-bottom-12 sm:-left-12 bg-surface-base p-6 sm:p-8 rounded-[--radius] border border-border/20 shadow-2xl flex items-center gap-6">
               <div className="w-12 h-12 rounded-full border-2 border-[--color-accent] flex items-center justify-center">
-                 <div className="w-8 h-8 rounded-full border border-[--color-accent] flex items-center justify-center">
-                    <span className="w-4 h-4 bg-[--color-accent] rounded-full"></span>
-                 </div>
+                <div className="w-8 h-8 rounded-full border border-[--color-accent] flex items-center justify-center">
+                  <span className="w-4 h-4 bg-[--color-accent] rounded-full"></span>
+                </div>
               </div>
               <div>
                 <div className="text-3xl font-bold font-display text-white">87450</div>
@@ -57,12 +56,16 @@ export function ApproachSection() {
 
             {/* Headline */}
             <h2 className="font-display font-bold leading-[1.15] text-[clamp(2rem,4vw,3.5rem)] mb-6 text-white">
-              Professional IT Experts<br/>for Tech Solutions
+              Professional IT Experts
+              <br />
+              for Tech Solutions
             </h2>
 
             {/* Paragraph */}
             <p className="text-[15px] leading-relaxed text-text-muted mb-8">
-              Web designing in a powerful way of just not an only professions, however, in a passion for our Company. We have to a tendency to believe the idea that smart looking of any website is the first impression on visitors.
+              Web designing in a powerful way of just not an only professions, however, in a passion
+              for our Company. We have to a tendency to believe the idea that smart looking of any
+              website is the first impression on visitors.
             </p>
 
             {/* Checkmark List */}
@@ -85,7 +88,11 @@ export function ApproachSection() {
               </a>
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full overflow-hidden border border-[--color-accent]">
-                  <img src="https://i.pravatar.cc/150?u=a042581f4e29026024d" alt="Kevin Martin" className="w-full h-full object-cover" />
+                  <img
+                    src="https://i.pravatar.cc/150?u=a042581f4e29026024d"
+                    alt="Kevin Martin"
+                    className="w-full h-full object-cover"
+                  />
                 </div>
                 <div className="flex flex-col">
                   <span className="text-white font-bold text-[15px]">Kevin Martin</span>
@@ -94,7 +101,6 @@ export function ApproachSection() {
               </div>
             </div>
           </div>
-          
         </div>
       </div>
     </section>

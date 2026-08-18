@@ -15,18 +15,21 @@ function getFrameUrl(isMobile: boolean, index: number): string {
   return `/hero-sequence/${dir}/frame-${numStr}.webp`;
 }
 
-export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollScrubHeroMediaProps) {
+export function ScrollScrubHeroMedia({
+  scrollProgress,
+  className = "",
+}: ScrollScrubHeroMediaProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  
+
   // Storage for loaded HTMLImageElements (keyed by frame index)
   const imagesRef = useRef<Map<number, HTMLImageElement>>(new Map());
   const loadingSetRef = useRef<Set<number>>(new Set());
-  
+
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [canvasReady, setCanvasReady] = useState<boolean>(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
-  
+
   const lastDrawnFrameRef = useRef<number>(-1);
   const isVisibleRef = useRef<boolean>(true);
   const isTabActiveRef = useRef<boolean>(true);
@@ -105,7 +108,7 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
         };
       });
     },
-    [isMobile]
+    [isMobile],
   );
 
   // 4. Draw frame onto canvas with cover-fit
@@ -136,11 +139,13 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
 
       if (!img || !img.complete || img.naturalWidth === 0) {
         // Still loading nearest, request frame load
-        loadFrame(targetIndex, "high").then(() => {
-          if (isVisibleRef.current && isTabActiveRef.current) {
-            drawFrame(targetIndex);
-          }
-        }).catch(() => {});
+        loadFrame(targetIndex, "high")
+          .then(() => {
+            if (isVisibleRef.current && isTabActiveRef.current) {
+              drawFrame(targetIndex);
+            }
+          })
+          .catch(() => {});
         return;
       }
 
@@ -178,7 +183,7 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
         setCanvasReady(true);
       }
     },
-    [isMobile, loadFrame, canvasReady]
+    [isMobile, loadFrame, canvasReady],
   );
 
   // 5. Intelligent Frame Loading Engine (Immediate priority + Progressive idle loading)
@@ -190,11 +195,13 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
     // Step A: Load initial keyframes immediately (first frame, middle, last)
     const criticalFrames = [0, 1, 2, Math.floor(totalFrames / 2), totalFrames - 1];
     criticalFrames.forEach((idx) => {
-      loadFrame(idx, "high").then(() => {
-        if (!cancelled && lastDrawnFrameRef.current === -1) {
-          drawFrame(0);
-        }
-      }).catch(() => {});
+      loadFrame(idx, "high")
+        .then(() => {
+          if (!cancelled && lastDrawnFrameRef.current === -1) {
+            drawFrame(0);
+          }
+        })
+        .catch(() => {});
     });
 
     // Step B: Progressively preload remaining frames in idle time
@@ -205,7 +212,7 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
       // Prioritize window around current scroll position
       const currentTargetFrame = Math.min(
         Math.max(0, Math.round(scrollProgress * (totalFrames - 1))),
-        totalFrames - 1
+        totalFrames - 1,
       );
 
       // Radial window outwards from current frame
@@ -259,7 +266,7 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
 
         const targetFrame = Math.min(
           Math.max(0, Math.round(scrollProgress * (totalFrames - 1))),
-          totalFrames - 1
+          totalFrames - 1,
         );
         drawFrame(targetFrame);
       }
@@ -280,7 +287,7 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
     rafIdRef.current = requestAnimationFrame(() => {
       const targetFrame = Math.min(
         Math.max(0, Math.round(scrollProgress * (totalFrames - 1))),
-        totalFrames - 1
+        totalFrames - 1,
       );
 
       if (targetFrame !== lastDrawnFrameRef.current) {
@@ -309,12 +316,12 @@ export function ScrollScrubHeroMedia({ scrollProgress, className = "" }: ScrollS
         if (entry.isIntersecting) {
           const targetFrame = Math.min(
             Math.max(0, Math.round(scrollProgress * (totalFrames - 1))),
-            totalFrames - 1
+            totalFrames - 1,
           );
           drawFrame(targetFrame);
         }
       },
-      { threshold: 0.05 }
+      { threshold: 0.05 },
     );
     observer.observe(container);
 

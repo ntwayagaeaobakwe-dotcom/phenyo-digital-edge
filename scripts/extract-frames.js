@@ -34,18 +34,14 @@ function runFfmpeg(args) {
 
 async function main() {
   console.log("Extracting raw frames from video...");
-  
+
   // Extract all frames from video to temp directory as PNG
   const tempPattern = path.join(tempDir, "frame_%04d.png");
-  await runFfmpeg([
-    "-y",
-    "-i", inputVideo,
-    "-vsync", "0",
-    tempPattern
-  ]);
+  await runFfmpeg(["-y", "-i", inputVideo, "-vsync", "0", tempPattern]);
 
-  const rawFrames = fs.readdirSync(tempDir)
-    .filter(f => f.endsWith(".png"))
+  const rawFrames = fs
+    .readdirSync(tempDir)
+    .filter((f) => f.endsWith(".png"))
     .sort();
 
   const totalRaw = rawFrames.length;
@@ -61,10 +57,7 @@ async function main() {
   let desktopBytes = 0;
 
   for (let i = 0; i < DESKTOP_COUNT; i++) {
-    const rawIndex = Math.min(
-      Math.floor((i / (DESKTOP_COUNT - 1)) * (totalRaw - 1)),
-      totalRaw - 1
-    );
+    const rawIndex = Math.min(Math.floor((i / (DESKTOP_COUNT - 1)) * (totalRaw - 1)), totalRaw - 1);
     const sourceFramePath = path.join(tempDir, rawFrames[rawIndex]);
     const frameNumStr = String(i + 1).padStart(4, "0");
     const targetPath = path.join(desktopDir, `frame-${frameNumStr}.webp`);
@@ -85,7 +78,9 @@ async function main() {
     }
   }
 
-  console.log(`Desktop sequence complete: ${(desktopBytes / (1024 * 1024)).toFixed(2)} MB total (avg ${(desktopBytes / DESKTOP_COUNT / 1024).toFixed(1)} KB/frame).`);
+  console.log(
+    `Desktop sequence complete: ${(desktopBytes / (1024 * 1024)).toFixed(2)} MB total (avg ${(desktopBytes / DESKTOP_COUNT / 1024).toFixed(1)} KB/frame).`,
+  );
 
   // --- Process Mobile: Exactly 48 frames evenly sampled ---
   const MOBILE_COUNT = 48;
@@ -93,10 +88,7 @@ async function main() {
   let mobileBytes = 0;
 
   for (let i = 0; i < MOBILE_COUNT; i++) {
-    const rawIndex = Math.min(
-      Math.floor((i / (MOBILE_COUNT - 1)) * (totalRaw - 1)),
-      totalRaw - 1
-    );
+    const rawIndex = Math.min(Math.floor((i / (MOBILE_COUNT - 1)) * (totalRaw - 1)), totalRaw - 1);
     const sourceFramePath = path.join(tempDir, rawFrames[rawIndex]);
     const frameNumStr = String(i + 1).padStart(4, "0");
     const targetPath = path.join(mobileDir, `frame-${frameNumStr}.webp`);
@@ -112,11 +104,15 @@ async function main() {
     if (i === 0) {
       const mobilePosterPath = path.join(outputBase, "poster-mobile.webp");
       fs.writeFileSync(mobilePosterPath, buffer);
-      console.log(`Saved mobile poster (${(buffer.length / 1024).toFixed(1)} KB) -> ${mobilePosterPath}`);
+      console.log(
+        `Saved mobile poster (${(buffer.length / 1024).toFixed(1)} KB) -> ${mobilePosterPath}`,
+      );
     }
   }
 
-  console.log(`Mobile sequence complete: ${(mobileBytes / (1024 * 1024)).toFixed(2)} MB total (avg ${(mobileBytes / MOBILE_COUNT / 1024).toFixed(1)} KB/frame).`);
+  console.log(
+    `Mobile sequence complete: ${(mobileBytes / (1024 * 1024)).toFixed(2)} MB total (avg ${(mobileBytes / MOBILE_COUNT / 1024).toFixed(1)} KB/frame).`,
+  );
 
   // Clean up temp frames
   for (const f of rawFrames) {
@@ -125,10 +121,12 @@ async function main() {
   fs.rmdirSync(tempDir);
 
   const totalPayloadMb = (desktopBytes + mobileBytes) / (1024 * 1024);
-  console.log(`\nAll media processed successfully! Total combined payload: ${totalPayloadMb.toFixed(2)} MB.`);
+  console.log(
+    `\nAll media processed successfully! Total combined payload: ${totalPayloadMb.toFixed(2)} MB.`,
+  );
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error("Frame extraction error:", err);
   process.exit(1);
 });

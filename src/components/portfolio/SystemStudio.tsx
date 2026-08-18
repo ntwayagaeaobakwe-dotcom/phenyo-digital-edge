@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { ArrowRight, Check, CheckCircle2, CircleAlert, Play, RotateCcw } from "lucide-react";
 import { SectionShell } from "./SectionShell";
+import { ScrollScrubWorkflowFilm } from "./ScrollScrubWorkflowFilm";
 
 const scenarios = {
   leads: {
@@ -31,10 +32,26 @@ const scenarios = {
 
 const comparisonRows = [
   { label: "Handoffs", manual: "4–6 manual handoffs", automated: "One review point" },
-  { label: "First response", manual: "Hours or next day", automated: "Immediate acknowledgement (< 60s)" },
-  { label: "Repeated admin", manual: "Copy, paste, re-entry", automated: "Captured once, synced everywhere" },
-  { label: "Follow-up risk", manual: "Depends on memory", automated: "Next action scheduled & tracked" },
-  { label: "Customer record", manual: "Chats and spreadsheets", automated: "One connected single source of truth" },
+  {
+    label: "First response",
+    manual: "Hours or next day",
+    automated: "Immediate acknowledgement (< 60s)",
+  },
+  {
+    label: "Repeated admin",
+    manual: "Copy, paste, re-entry",
+    automated: "Captured once, synced everywhere",
+  },
+  {
+    label: "Follow-up risk",
+    manual: "Depends on memory",
+    automated: "Next action scheduled & tracked",
+  },
+  {
+    label: "Customer record",
+    manual: "Chats and spreadsheets",
+    automated: "One connected single source of truth",
+  },
 ] as const;
 
 type ScenarioKey = keyof typeof scenarios;
@@ -43,25 +60,30 @@ export function SystemStudio() {
   const [scenario, setScenario] = useState<ScenarioKey>("leads");
   const [activeStep, setActiveStep] = useState(0);
   const [comparison, setComparison] = useState<"manual" | "automated">("automated");
-  const [runId, setRunId] = useState(0);
+  const [onboardingRunId, setOnboardingRunId] = useState(0);
 
+  // Animate DOM workflow when Client Onboarding is active
   useEffect(() => {
+    if (scenario !== "onboarding") return;
+
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
-      setActiveStep(scenarios[scenario].nodes.length - 1);
+      setActiveStep(scenarios.onboarding.nodes.length - 1);
       return;
     }
 
     setActiveStep(0);
-    const timers = scenarios[scenario].nodes
+    const timers = scenarios.onboarding.nodes
       .slice(1)
       .map((_, index) => window.setTimeout(() => setActiveStep(index + 1), (index + 1) * 650));
     return () => timers.forEach(window.clearTimeout);
-  }, [scenario, runId]);
+  }, [scenario, onboardingRunId]);
 
   const switchScenario = (value: ScenarioKey) => {
     setScenario(value);
-    setRunId((current) => current + 1);
+    if (value === "onboarding") {
+      setOnboardingRunId((current) => current + 1);
+    }
   };
 
   return (
@@ -73,103 +95,124 @@ export function SystemStudio() {
       declarativeTitle="See how work moves"
       qualifierTitle="from initial request to organized next action."
     >
-      {/* Interactive System Flow Blueprint on Bone Plate */}
-      <div className="rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8 shadow-xs">
-        <div className="flex flex-col gap-5 border-b border-[rgba(8,45,45,0.1)] pb-6 sm:flex-row sm:items-center sm:justify-between">
-          <p className="max-w-2xl text-sm leading-relaxed text-[#282B29]">
-            This interactive map shows the logic behind practical business automation—what happens, where ownership changes, and which next action is created.
-          </p>
-          <div
-            className="inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs"
-            aria-label="System scenario"
-          >
-            {(Object.keys(scenarios) as ScenarioKey[]).map((key) => (
-              <button
-                key={key}
-                type="button"
-                aria-pressed={scenario === key}
-                onClick={() => switchScenario(key)}
-                className={`rounded-full px-4 py-2 min-h-[40px] font-medium transition-all uppercase tracking-wider cursor-pointer focus-ring text-xs ${
-                  scenario === key
-                    ? "bg-[#080A09] text-[#F3F0E8] font-semibold shadow-xs"
-                    : "text-[#282B29] hover:text-[#080A09]"
-                }`}
-              >
-                {scenarios[key].label}
-              </button>
-            ))}
-          </div>
+      {/* Studio Header & Scenario Selector */}
+      <div className="flex flex-col gap-5 border-b border-[rgba(8,45,45,0.1)] pb-6 sm:flex-row sm:items-center sm:justify-between">
+        <p className="max-w-2xl text-sm leading-relaxed text-[#282B29]">
+          This interactive blueprint shows the logic behind practical business automation—what
+          happens, where ownership changes, and which next action is created.
+        </p>
+        <div
+          className="inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs shrink-0"
+          aria-label="System scenario"
+        >
+          {(Object.keys(scenarios) as ScenarioKey[]).map((key) => (
+            <button
+              key={key}
+              type="button"
+              aria-pressed={scenario === key}
+              onClick={() => switchScenario(key)}
+              className={`rounded-full px-4 py-2 min-h-[40px] font-medium transition-all uppercase tracking-wider cursor-pointer focus-ring text-xs ${
+                scenario === key
+                  ? "bg-[#080A09] text-[#F3F0E8] font-semibold shadow-xs"
+                  : "text-[#282B29] hover:text-[#080A09]"
+              }`}
+            >
+              {scenarios[key].label}
+            </button>
+          ))}
         </div>
+      </div>
 
-        <div className="pt-6">
-          <div className="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
-            {scenarios[scenario].nodes.map(([title, detail], index) => {
-              const complete = index <= activeStep;
-              return (
-                <div key={title} className="contents">
-                  <div
-                    className={`min-h-28 rounded-2xl border p-4 transition-all duration-300 ${
-                      complete
-                        ? "border-[#082D2D] bg-[#F3F0E8] shadow-xs"
-                        : "border-[rgba(8,45,45,0.1)] bg-[#FAF8F2]"
-                    }`}
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <span className="font-mono text-[11px] text-[#5C5953] font-semibold">
-                        0{index + 1}
-                      </span>
-                      <span
-                        className={`grid h-5 w-5 place-items-center rounded-full text-[10px] ${
+      {/* Scenario Stage Presentation */}
+      <div className="mt-6">
+        {scenario === "leads" ? (
+          /* Cinematic Scroll-Scrubbed Workflow Film for Lead Routing */
+          <ScrollScrubWorkflowFilm />
+        ) : (
+          /* Accessible Editorial DOM Workflow for Client Onboarding */
+          <div className="rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8 shadow-xs">
+            <div className="flex flex-col gap-4 border-b border-[rgba(8,45,45,0.1)] pb-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-bold">
+                  [ BLUEPRINT // CLIENT_ONBOARDING ]
+                </span>
+                <p className="mt-1 text-xs text-[#282B29] font-sans">
+                  Automated onboarding checklist and client handoff sequence.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-6">
+              <div className="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
+                {scenarios.onboarding.nodes.map(([title, detail], index) => {
+                  const complete = index <= activeStep;
+                  return (
+                    <div key={title} className="contents">
+                      <div
+                        className={`min-h-28 rounded-2xl border p-4 transition-all duration-300 ${
                           complete
-                            ? "bg-[#082D2D] text-[#F3F0E8] font-bold"
-                            : "border border-[rgba(8,45,45,0.2)] text-[#5C5953]"
+                            ? "border-[#082D2D] bg-[#F3F0E8] shadow-xs ring-1 ring-[#082D2D]/15"
+                            : "border-[rgba(8,45,45,0.1)] bg-[#FAF8F2]"
                         }`}
                       >
-                        {complete ? <Check className="h-3 w-3" /> : index + 1}
-                      </span>
+                        <div className="flex items-start justify-between gap-3">
+                          <span className="font-mono text-[11px] text-[#5C5953] font-semibold">
+                            0{index + 1}
+                          </span>
+                          <span
+                            className={`grid h-5 w-5 place-items-center rounded-full text-[10px] ${
+                              complete
+                                ? "bg-[#082D2D] text-[#5FD8CD] font-bold"
+                                : "border border-[rgba(8,45,45,0.2)] text-[#5C5953]"
+                            }`}
+                          >
+                            {complete ? <Check className="h-3 w-3" /> : index + 1}
+                          </span>
+                        </div>
+                        <p className="mt-3 text-xs font-mono uppercase tracking-wider font-bold text-[#080A09]">
+                          {title}
+                        </p>
+                        <p className="mt-1 text-xs text-[#282B29] leading-relaxed font-sans">
+                          {detail}
+                        </p>
+                      </div>
+                      {index < scenarios.onboarding.nodes.length - 1 ? (
+                        <div
+                          className="relative mx-auto flex h-6 w-6 items-center justify-center lg:h-4 lg:w-6"
+                          aria-hidden="true"
+                        >
+                          <ArrowRight
+                            className={`relative h-4 w-4 rotate-90 transition-colors duration-300 lg:rotate-0 ${
+                              index < activeStep ? "text-[#082D2D]" : "text-[#B8B5AC]"
+                            }`}
+                          />
+                        </div>
+                      ) : null}
                     </div>
-                    <p className="mt-3 text-xs font-mono uppercase tracking-wider font-bold text-[#080A09]">
-                      {title}
-                    </p>
-                    <p className="mt-1 text-xs text-[#282B29] leading-relaxed font-sans">
-                      {detail}
-                    </p>
-                  </div>
-                  {index < scenarios[scenario].nodes.length - 1 ? (
-                    <div
-                      className="relative mx-auto flex h-6 w-6 items-center justify-center lg:h-4 lg:w-6"
-                      aria-hidden="true"
-                    >
-                      <ArrowRight
-                        className={`relative h-4 w-4 rotate-90 transition-colors duration-300 lg:rotate-0 ${
-                          index < activeStep ? "text-[#082D2D]" : "text-[#B8B5AC]"
-                        }`}
-                      />
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
-          </div>
+                  );
+                })}
+              </div>
 
-          <div className="mt-7 flex flex-col gap-4 border-t border-[rgba(8,45,45,0.1)] pt-5 sm:flex-row sm:items-center sm:justify-between">
-            <p className="max-w-2xl text-xs text-[#282B29] font-medium font-sans">
-              {scenarios[scenario].summary}
-            </p>
-            <button
-              type="button"
-              onClick={() => setRunId((current) => current + 1)}
-              className="inline-flex w-fit items-center justify-center gap-2 rounded-full border border-[rgba(8,45,45,0.2)] bg-[#082D2D] px-5 py-2.5 min-h-[40px] font-mono text-xs uppercase tracking-wider font-semibold text-[#F3F0E8] hover:bg-[#123E3D] transition-all focus-ring cursor-pointer"
-            >
-              {activeStep === scenarios[scenario].nodes.length - 1 ? (
-                <RotateCcw className="h-3.5 w-3.5 text-[#5FD8CD]" />
-              ) : (
-                <Play className="h-3.5 w-3.5 text-[#5FD8CD]" />
-              )}
-              Replay flow
-            </button>
+              <div className="mt-7 flex flex-col gap-4 border-t border-[rgba(8,45,45,0.1)] pt-5 sm:flex-row sm:items-center sm:justify-between">
+                <p className="max-w-2xl text-xs text-[#282B29] font-medium font-sans">
+                  {scenarios.onboarding.summary}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setOnboardingRunId((current) => current + 1)}
+                  className="inline-flex w-fit items-center justify-center gap-2 rounded-full border border-[rgba(8,45,45,0.2)] bg-[#082D2D] px-5 py-2.5 min-h-[40px] font-mono text-xs uppercase tracking-wider font-semibold text-[#F3F0E8] hover:bg-[#123E3D] transition-all focus-ring cursor-pointer"
+                >
+                  {activeStep === scenarios.onboarding.nodes.length - 1 ? (
+                    <RotateCcw className="h-3.5 w-3.5 text-[#5FD8CD]" />
+                  ) : (
+                    <Play className="h-3.5 w-3.5 text-[#5FD8CD]" />
+                  )}
+                  Replay flow
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
+        )}
       </div>
 
       {/* Operating Model Comparison Panel */}
@@ -183,7 +226,8 @@ export function SystemStudio() {
               Compare the same process.
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#282B29] font-sans">
-              Switch between manual and connected execution to see where automation creates consistency rather than complexity.
+              Switch between manual and connected execution to see where automation creates
+              consistency rather than complexity.
             </p>
           </div>
           <div className="mt-6 inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs">
@@ -227,11 +271,11 @@ export function SystemStudio() {
             ))}
           </div>
           <p className="border-t border-[rgba(8,45,45,0.08)] mt-3 pt-3 font-mono text-[11px] text-[#5C5953]">
-            Illustrative operational benchmarks. Actual time savings depend on volume and existing tool stack.
+            Illustrative operational benchmarks. Actual time savings depend on volume and existing
+            tool stack.
           </p>
         </div>
       </div>
     </SectionShell>
   );
 }
-

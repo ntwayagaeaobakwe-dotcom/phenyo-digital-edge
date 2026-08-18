@@ -48,7 +48,8 @@ export function CapabilitySection() {
           </h3>
 
           <p className="text-base text-[#282B29] leading-relaxed font-sans font-normal">
-            No 40-page generic slide decks. We map your actual workflow, build a functioning proof-of-concept, and quantify the exact hours recovered before any long-term agreement.
+            No 40-page generic slide decks. We map your actual workflow, build a functioning
+            proof-of-concept, and quantify the exact hours recovered before any long-term agreement.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3.5">
@@ -85,12 +86,8 @@ export function CapabilitySection() {
                   </div>
 
                   <div className="space-y-1.5 flex-1">
-                    <h4 className="text-lg font-serif font-normal text-[#080A09]">
-                      {item.title}
-                    </h4>
-                    <p className="text-sm text-[#282B29] leading-relaxed font-sans">
-                      {item.body}
-                    </p>
+                    <h4 className="text-lg font-serif font-normal text-[#080A09]">{item.title}</h4>
+                    <p className="text-sm text-[#282B29] leading-relaxed font-sans">{item.body}</p>
                   </div>
                 </div>
               </div>
@@ -101,4 +98,3 @@ export function CapabilitySection() {
     </SectionShell>
   );
 }
-

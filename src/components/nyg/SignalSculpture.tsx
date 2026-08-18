@@ -74,7 +74,10 @@ export function SignalSculpture() {
   }, []);
 
   return (
-    <div className="relative w-full max-w-[560px] mx-auto select-none" aria-label="NYG Signal Sculpture Visual">
+    <div
+      className="relative w-full max-w-[560px] mx-auto select-none"
+      aria-label="NYG Signal Sculpture Visual"
+    >
       {/* Outer Atmospheric Aura */}
       <div
         className="absolute -inset-4 rounded-3xl opacity-60 blur-3xl pointer-events-none transition-all duration-1000"
@@ -101,7 +104,8 @@ export function SignalSculpture() {
               />
             </span>
             <span className="font-mono text-[11px] uppercase tracking-widest text-text-muted">
-              SIGNAL SCULPTURE // <span className="text-[#F5F6FA] font-medium">{activeStage.label.toUpperCase()}</span>
+              SIGNAL SCULPTURE //{" "}
+              <span className="text-[#F5F6FA] font-medium">{activeStage.label.toUpperCase()}</span>
             </span>
           </div>
 
@@ -222,7 +226,11 @@ export function SignalSculpture() {
 
             {/* Stage Nodes on the Sculpture */}
             {/* 1. Ingestion Node */}
-            <g transform="translate(60, 150)" className="cursor-pointer" onClick={() => setCurrentStageIndex(0)}>
+            <g
+              transform="translate(60, 150)"
+              className="cursor-pointer"
+              onClick={() => setCurrentStageIndex(0)}
+            >
               <circle
                 r="16"
                 fill="#100C1D"
@@ -230,13 +238,23 @@ export function SignalSculpture() {
                 strokeWidth="2"
               />
               <circle r="6" fill={currentStageIndex >= 0 ? "#78E7FF" : "rgba(196,190,255,0.4)"} />
-              <text y="32" textAnchor="middle" fill="#9D9AAF" fontSize="10" fontFamily="JetBrains Mono, monospace">
+              <text
+                y="32"
+                textAnchor="middle"
+                fill="#9D9AAF"
+                fontSize="10"
+                fontFamily="JetBrains Mono, monospace"
+              >
                 01.RECV
               </text>
             </g>
 
             {/* 2. Organization Junction */}
-            <g transform="translate(180, 110)" className="cursor-pointer" onClick={() => setCurrentStageIndex(1)}>
+            <g
+              transform="translate(180, 110)"
+              className="cursor-pointer"
+              onClick={() => setCurrentStageIndex(1)}
+            >
               <circle
                 r="14"
                 fill="#100C1D"
@@ -244,13 +262,23 @@ export function SignalSculpture() {
                 strokeWidth="2"
               />
               <circle r="5" fill={currentStageIndex >= 1 ? "#7657FF" : "rgba(196,190,255,0.4)"} />
-              <text y="-22" textAnchor="middle" fill="#9D9AAF" fontSize="10" fontFamily="JetBrains Mono, monospace">
+              <text
+                y="-22"
+                textAnchor="middle"
+                fill="#9D9AAF"
+                fontSize="10"
+                fontFamily="JetBrains Mono, monospace"
+              >
                 02.ORGN
               </text>
             </g>
 
             {/* 3. Routing Nexus */}
-            <g transform="translate(320, 190)" className="cursor-pointer" onClick={() => setCurrentStageIndex(2)}>
+            <g
+              transform="translate(320, 190)"
+              className="cursor-pointer"
+              onClick={() => setCurrentStageIndex(2)}
+            >
               <circle
                 r="14"
                 fill="#100C1D"
@@ -258,13 +286,23 @@ export function SignalSculpture() {
                 strokeWidth="2"
               />
               <circle r="5" fill={currentStageIndex >= 2 ? "#FF5577" : "rgba(196,190,255,0.4)"} />
-              <text y="28" textAnchor="middle" fill="#9D9AAF" fontSize="10" fontFamily="JetBrains Mono, monospace">
+              <text
+                y="28"
+                textAnchor="middle"
+                fill="#9D9AAF"
+                fontSize="10"
+                fontFamily="JetBrains Mono, monospace"
+              >
                 03.ROUT
               </text>
             </g>
 
             {/* 4. Resolved Output Station */}
-            <g transform="translate(440, 150)" className="cursor-pointer" onClick={() => setCurrentStageIndex(3)}>
+            <g
+              transform="translate(440, 150)"
+              className="cursor-pointer"
+              onClick={() => setCurrentStageIndex(3)}
+            >
               <circle
                 r="18"
                 fill="#100C1D"
@@ -273,7 +311,14 @@ export function SignalSculpture() {
                 filter="url(#signalGlow)"
               />
               <circle r="8" fill={currentStageIndex >= 3 ? "#78E7FF" : "rgba(196,190,255,0.4)"} />
-              <text y="34" textAnchor="middle" fill="#78E7FF" fontSize="10" fontWeight="bold" fontFamily="JetBrains Mono, monospace">
+              <text
+                y="34"
+                textAnchor="middle"
+                fill="#78E7FF"
+                fontSize="10"
+                fontWeight="bold"
+                fontFamily="JetBrains Mono, monospace"
+              >
                 04.EXEC
               </text>
             </g>
@@ -308,15 +353,22 @@ export function SignalSculpture() {
                   isActive
                     ? "bg-[#7657FF]/15 border border-[#7657FF]/40"
                     : isPassed
-                    ? "bg-[#05060A]/40 border border-transparent hover:border-[rgba(196,190,255,0.15)]"
-                    : "opacity-40 border border-transparent"
+                      ? "bg-[#05060A]/40 border border-transparent hover:border-[rgba(196,190,255,0.15)]"
+                      : "opacity-40 border border-transparent"
                 }`}
               >
                 <div className="flex items-center justify-between mb-1">
                   <span className="font-mono text-[10px] text-text-muted">{s.step}</span>
-                  {isPassed && <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: s.color }} />}
+                  {isPassed && (
+                    <span
+                      className="h-1.5 w-1.5 rounded-full"
+                      style={{ backgroundColor: s.color }}
+                    />
+                  )}
                 </div>
-                <div className={`text-xs font-semibold ${isActive ? "text-[#F5F6FA]" : "text-text-muted"}`}>
+                <div
+                  className={`text-xs font-semibold ${isActive ? "text-[#F5F6FA]" : "text-text-muted"}`}
+                >
                   {s.label}
                 </div>
               </button>

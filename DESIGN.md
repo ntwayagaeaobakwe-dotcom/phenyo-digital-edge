@@ -5,12 +5,14 @@
 **Thesis:** A bespoke Dubai-based business automation and technology atelier presented through the visual lens of a luxury architectural journal and cinematic technology publication.
 
 The atmosphere is:
+
 - **Editorial over SaaS:** Composed like a physical broadsheet or architectural folio with monumental serif display type, compact editorial spreads, and disciplined negative space.
 - **Precise over Decorative:** Free from gratuitous neon glows, floating card clusters, rainbow gradients, and generic AI templates.
 - **Cinematic & Atmospheric:** Alternating between full-bleed cinematic dark teal bands and crisp warm paper spreads.
 - **Human-Centric & Controlled:** Highlighting how technology serves human intention rather than replacing human agency.
 
 ### Narrative Architecture: "Portal → Signal → System"
+
 1. **The Portal (Act I):** The rotating cyan-ring hero media acts as the technological gateway into NYG Digital.
 2. **The Signal (Act II):** The portal's cyan light transitions into an architectural signal line that guides the eye through the operational workflow.
 3. **The System (Act III & IV):** Editorial paper and bone spreads represent organized operational clarity, while the liquid-wall depth reveals itself selectively between chapters.
@@ -21,6 +23,7 @@ The atmosphere is:
 ## 2. Color Palette & Roles
 
 ### Core Palette
+
 - **NYG Ink** (`#080A09`): Primary text on light paper, dark button fills, and near-black baseline surfaces.
 - **NYG Deep Teal** (`#082D2D`): Major dark narrative sections, case-study bands, and media overlays.
 - **NYG Petroleum** (`#123E3D`): Raised dark surfaces, secondary teal bands, and navigation background.
@@ -30,21 +33,24 @@ The atmosphere is:
 - **NYG Stone** (`#B8B5AC`): Hairline dividers (`1px`), muted labels, and technical brackets.
 
 ### Signal Color (Strictly Constrained)
+
 - **NYG Aqua** (`#5FD8CD`): Sparingly used signal accent for active operational paths, focus rings, and live status dots. Treated like an illuminated signal on an architectural blueprint—never a neon background fill.
 
 ### Muted Mineral Accents (Section Fields & Badges)
+
 - **Mineral Mist** (`#CEDDD9`): Diagnostic and assessment field background.
 - **Desert Sand** (`#E5D6C2`): ROI Estimator feature canvas.
 - **Fog Blue** (`#C9D6DF`): Accent borders and tags.
 - **Soft Clay** (`#D9BEB0`): Muted callout surfaces.
 
-*Rule: Never display more than two mineral accents in the same viewport.*
+_Rule: Never display more than two mineral accents in the same viewport._
 
 ---
 
 ## 3. Typography Architecture
 
 ### Font Families
+
 - **Display Serif:** `Newsreader Variable` (`"Newsreader Variable", "Newsreader", "Instrument Serif", Georgia, serif`)
   - Used for: Hero headline, major section statements, monumental ROI numbers, and case-study titles.
   - Weight: 400–500.
@@ -60,6 +66,7 @@ The atmosphere is:
   - Strictly reserved for: System steps (`01/`, `02/`), timestamps, Dubai clock (`DXB`), diagnostic outputs, and data telemetry.
 
 ### Typographic Scale
+
 - **Hero Display:** `clamp(2.75rem, 6vw, 5.25rem)` (mobile: `2.5rem`)
 - **Major Display:** `clamp(2.25rem, 4.5vw, 3.75rem)`
 - **Section Heading:** `clamp(1.75rem, 3.5vw, 2.75rem)`

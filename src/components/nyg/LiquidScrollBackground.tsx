@@ -10,26 +10,26 @@ const VIDEO_DURATION = 8.0; // 8 seconds
 export function LiquidScrollBackground() {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  
+
   const [isMobile, setIsMobile] = useState<boolean>(false);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState<boolean>(false);
   const [isVideoLoaded, setIsVideoLoaded] = useState<boolean>(false);
-  
+
   // Mutable animation state in refs
   const scrollProgressRef = useRef<number>(0);
   const targetTimeRef = useRef<number>(0);
   const currentTimeRef = useRef<number>(0);
-  
+
   // Opacity & range state
   const targetOpacityRef = useRef<number>(0);
   const currentOpacityRef = useRef<number>(0);
-  
+
   // Pointer state for liquid refraction
   const mousePosRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 });
   const smoothedMousePosRef = useRef<{ x: number; y: number }>({ x: -1000, y: -1000 });
   const mouseVelocityRef = useRef<number>(0);
   const lastMouseTimeRef = useRef<number>(0);
-  
+
   // Click ripple state
   const rippleRef = useRef<{
     active: boolean;
@@ -52,7 +52,7 @@ export function LiquidScrollBackground() {
   const programRef = useRef<WebGLProgram | null>(null);
   const textureRef = useRef<WebGLTexture | null>(null);
   const uniformsRef = useRef<{ [key: string]: WebGLUniformLocation | null }>({});
-  
+
   const isVisibleRef = useRef<boolean>(true);
   const isTabActiveRef = useRef<boolean>(true);
   const rafIdRef = useRef<number | null>(null);
@@ -225,7 +225,7 @@ export function LiquidScrollBackground() {
     gl.bufferData(
       gl.ARRAY_BUFFER,
       new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]),
-      gl.STATIC_DRAW
+      gl.STATIC_DRAW,
     );
 
     const posLoc = gl.getAttribLocation(program, "a_position");
@@ -254,55 +254,76 @@ export function LiquidScrollBackground() {
     textureRef.current = texture;
   }, []);
 
-  // 3. Scroll tracking mapped across Stage 2 (#systems) through Stage 7 (#contact)
+  // 3. Scroll tracking mapped from diagnostic (#diagnostic) through contact (#contact)
   useEffect(() => {
     const handleScroll = () => {
-      const heroEl = document.getElementById("hero-stage") || document.getElementById("hero");
       const systemsEl = document.getElementById("systems");
+      const diagnosticEl = document.getElementById("diagnostic");
       const contactEl = document.getElementById("contact");
 
-      if (!systemsEl) return;
-
       const scrollY = window.scrollY;
-      const heroHeight = heroEl ? heroEl.offsetHeight : window.innerHeight;
-      
-      // Calculate start and end markers for background activation
-      // Crossfade in as the hero approaches its final 15%
-      const startFade = heroHeight * 0.85;
-      const fullIn = heroHeight * 1.05;
-      
-      // End marker: bottom of contact section
-      const contactRect = contactEl ? contactEl.getBoundingClientRect() : null;
-      const contactBottomAbsolute = contactEl ? (scrollY + contactRect!.bottom) : document.body.scrollHeight;
-      const endFade = contactBottomAbsolute - window.innerHeight * 0.5;
-      const fadeOutComplete = contactBottomAbsolute;
 
-      // Opacity envelope
-      if (scrollY < startFade) {
-        targetOpacityRef.current = 0;
-      } else if (scrollY >= startFade && scrollY <= fullIn) {
-        targetOpacityRef.current = (scrollY - startFade) / (fullIn - startFade);
-      } else if (scrollY > fullIn && scrollY < endFade) {
-        targetOpacityRef.current = 1.0;
-      } else if (scrollY >= endFade && scrollY <= fadeOutComplete) {
-        targetOpacityRef.current = Math.max(0, 1 - (scrollY - endFade) / (fadeOutComplete - endFade));
-      } else {
-        targetOpacityRef.current = 0;
+      // When the opaque #systems (System Studio) section is covering the screen,
+      // completely suspend liquid background rendering to save GPU/CPU.
+      if (diagnosticEl) {
+        const diagRect = diagnosticEl.getBoundingClientRect();
+        const winH = window.innerHeight;
+
+        // Diagnostic section entrance: start fading in as diagnostic approaches viewport
+        if (diagRect.top > winH) {
+          // Inside #hero-stage or #systems (opaque paper section) -> 0% opacity
+          targetOpacityRef.current = 0;
+        } else if (diagRect.top > 0) {
+          // Transitioning from #systems into #diagnostic
+          const fadeProgress = (winH - diagRect.top) / winH;
+          targetOpacityRef.current = Math.min(1, Math.max(0, fadeProgress));
+        } else {
+          // Fully past systems, inside mineral/teal/dark sections
+          const contactRect = contactEl ? contactEl.getBoundingClientRect() : null;
+          const contactBottomAbsolute = contactEl
+            ? scrollY + contactRect!.bottom
+            : document.body.scrollHeight;
+          const endFade = contactBottomAbsolute - winH * 0.6;
+          const fadeOutComplete = contactBottomAbsolute;
+
+          if (scrollY >= endFade && scrollY <= fadeOutComplete) {
+            targetOpacityRef.current = Math.max(
+              0,
+              1 - (scrollY - endFade) / (fadeOutComplete - endFade),
+            );
+          } else if (scrollY > fadeOutComplete) {
+            targetOpacityRef.current = 0;
+          } else {
+            targetOpacityRef.current = 1.0;
+          }
+        }
+      } else if (systemsEl) {
+        const sysRect = systemsEl.getBoundingClientRect();
+        if (sysRect.bottom > 0) {
+          targetOpacityRef.current = 0;
+        }
       }
 
-      // Content scroll progress (from Stage 2 entrance to Contact section end)
-      const contentScrollStart = heroHeight;
-      const contentScrollEnd = contactBottomAbsolute - window.innerHeight;
-      const totalContentDistance = Math.max(1, contentScrollEnd - contentScrollStart);
-      
-      const rawProgress = Math.min(
-        Math.max(0, (scrollY - contentScrollStart) / totalContentDistance),
-        1
-      );
+      // Content scroll progress (from diagnostic entrance to Contact section end)
+      if (diagnosticEl) {
+        const diagTopAbsolute = scrollY + diagnosticEl.getBoundingClientRect().top;
+        const contactRect = contactEl ? contactEl.getBoundingClientRect() : null;
+        const contactBottomAbsolute = contactEl
+          ? scrollY + contactRect!.bottom
+          : document.body.scrollHeight;
+        const totalContentDistance = Math.max(
+          1,
+          contactBottomAbsolute - diagTopAbsolute - window.innerHeight,
+        );
 
-      scrollProgressRef.current = rawProgress;
-      // Forward playback mapping: 0s -> 8s moves hand upward
-      targetTimeRef.current = rawProgress * VIDEO_DURATION;
+        const rawProgress = Math.min(
+          Math.max(0, (scrollY - diagTopAbsolute) / totalContentDistance),
+          1,
+        );
+
+        scrollProgressRef.current = rawProgress;
+        targetTimeRef.current = rawProgress * VIDEO_DURATION;
+      }
 
       isNeedsRenderRef.current = true;
     };
@@ -437,7 +458,7 @@ export function LiquidScrollBackground() {
       if (isEffectActive && !isMobile && !prefersReducedMotion) {
         const mxDiff = mousePosRef.current.x - smoothedMousePosRef.current.x;
         const myDiff = mousePosRef.current.y - smoothedMousePosRef.current.y;
-        
+
         smoothedMousePosRef.current.x += mxDiff * 0.15;
         smoothedMousePosRef.current.y += myDiff * 0.15;
 
@@ -486,19 +507,19 @@ export function LiquidScrollBackground() {
         gl.uniform2f(
           uniformsRef.current.u_videoResolution,
           video.videoWidth || 1600,
-          video.videoHeight || 900
+          video.videoHeight || 900,
         );
 
         // Pointer coords in canvas buffer pixels
         gl.uniform2f(
           uniformsRef.current.u_pointer,
           smoothedMousePosRef.current.x * dpr,
-          smoothedMousePosRef.current.y * dpr
+          smoothedMousePosRef.current.y * dpr,
         );
         gl.uniform1f(uniformsRef.current.u_velocity, mouseVelocityRef.current);
         gl.uniform1f(uniformsRef.current.u_rippleRadius, rippleRef.current.radius * dpr);
         gl.uniform1f(uniformsRef.current.u_rippleStrength, rippleRef.current.strength);
-        
+
         // Target visual intensity: ~0.25 to 0.32
         const displayOpacity = currentOpacityRef.current * 0.3;
         gl.uniform1f(uniformsRef.current.u_opacity, displayOpacity);
@@ -547,14 +568,7 @@ export function LiquidScrollBackground() {
       aria-hidden="true"
     >
       {/* Hidden Paused Video Element Source for Texture Sampling */}
-      <video
-        ref={videoRef}
-        muted
-        playsInline
-        preload="auto"
-        className="hidden"
-        aria-hidden="true"
-      >
+      <video ref={videoRef} muted playsInline preload="auto" className="hidden" aria-hidden="true">
         <source src={isMobile ? VIDEO_MOBILE_MP4 : VIDEO_DESKTOP_WEBM} type="video/webm" />
         <source src={isMobile ? VIDEO_MOBILE_MP4 : VIDEO_DESKTOP_MP4} type="video/mp4" />
       </video>
@@ -570,10 +584,7 @@ export function LiquidScrollBackground() {
 
       {/* Active WebGL2 Liquid Refraction Canvas */}
       {!prefersReducedMotion && (
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full block"
-        />
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full block" />
       )}
 
       {/* Section-wide atmospheric teal/ink grading tint */}

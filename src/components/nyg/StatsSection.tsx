@@ -16,22 +16,18 @@ export function StatsSection() {
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border border-border/20 flex flex-col items-center justify-center mb-6 relative group">
                 {/* Outer dashed/glow ring effect on hover */}
                 <div className="absolute inset-[-4px] rounded-full border border-[--color-accent] opacity-0 group-hover:opacity-100 transition-opacity duration-300 scale-95 group-hover:scale-100" />
-                
+
                 <h4 className="text-[--color-accent] font-display text-4xl md:text-5xl font-bold">
                   {stat.number}
                 </h4>
               </div>
-              <p className="text-text-primary text-sm font-medium tracking-wide">
-                {stat.label}
-              </p>
+              <p className="text-text-primary text-sm font-medium tracking-wide">{stat.label}</p>
             </div>
           ))}
         </div>
 
         <div className="mt-20 text-center">
-          <p className="text-white text-lg md:text-xl font-medium">
-            www.phenyo-digital-edge.com
-          </p>
+          <p className="text-white text-lg md:text-xl font-medium">www.phenyo-digital-edge.com</p>
         </div>
       </div>
     </section>

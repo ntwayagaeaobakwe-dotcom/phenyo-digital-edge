@@ -4,7 +4,8 @@ import { execFile } from "node:child_process";
 import ffmpegPath from "ffmpeg-static";
 import sharp from "sharp";
 
-const inputVideo = "C:\\Users\\CJ\\Downloads\\Create_website_background_animation_1080p_202608171801.mp4";
+const inputVideo =
+  "C:\\Users\\CJ\\Downloads\\Create_website_background_animation_1080p_202608171801.mp4";
 const inspectDir = path.resolve(process.cwd(), "scripts", "inspect_bg");
 
 fs.mkdirSync(inspectDir, { recursive: true });
@@ -30,11 +31,15 @@ async function main() {
     const outPng = path.join(inspectDir, `sample_${i}_${t}s.png`);
     await runFfmpeg([
       "-y",
-      "-ss", String(t),
-      "-i", inputVideo,
-      "-vframes", "1",
-      "-q:v", "2",
-      outPng
+      "-ss",
+      String(t),
+      "-i",
+      inputVideo,
+      "-vframes",
+      "1",
+      "-q:v",
+      "2",
+      outPng,
     ]);
     console.log(`Extracted sample frame at ${t}s -> ${outPng}`);
   }

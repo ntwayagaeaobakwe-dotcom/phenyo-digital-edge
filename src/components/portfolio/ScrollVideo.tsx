@@ -114,11 +114,12 @@ export function ScrollVideo() {
 
         await new Promise<void>((resolve) => {
           if (!offscreenVideo) return resolve();
+          const currentOffscreen = offscreenVideo;
           const onSeeked = () => {
-            offscreenVideo.removeEventListener("seeked", onSeeked);
+            currentOffscreen.removeEventListener("seeked", onSeeked);
             resolve();
           };
-          offscreenVideo.addEventListener("seeked", onSeeked);
+          currentOffscreen.addEventListener("seeked", onSeeked);
         });
 
         if (isUnmounted) break;
@@ -232,8 +233,7 @@ export function ScrollVideo() {
     return () => {
       isUnmounted = true;
       if (typeof idleHandle === "number" && "cancelIdleCallback" in window) {
-        // @ts-expect-error cancelIdleCallback exists in standard browser window
-        window.cancelIdleCallback(idleHandle);
+        (window as Window & { cancelIdleCallback?: (handle: number) => void }).cancelIdleCallback?.(idleHandle);
       }
       if (idleTimer) clearTimeout(idleTimer);
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);

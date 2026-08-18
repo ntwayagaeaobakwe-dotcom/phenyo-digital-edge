@@ -15,26 +15,48 @@ export function FooterSection() {
               Systems that run. Without you.
             </p>
             <p className="text-xs text-[#B8B5AC] max-w-md leading-relaxed font-sans font-normal">
-              NYG Digital designs business automation, workflow tools, and conversion-focused websites that turn scattered work into connected systems.
+              NYG Digital designs business automation, workflow tools, and conversion-focused
+              websites that turn scattered work into connected systems.
             </p>
           </div>
 
           {/* Quick Links */}
           <div className="md:col-span-3 space-y-3 font-mono text-xs">
-            <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">[ SYSTEMS ]</span>
+            <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">
+              [ SYSTEMS ]
+            </span>
             <ul className="space-y-2 text-[#B8B5AC]">
-              <li><a href="#systems" className="hover:text-[#5FD8CD] transition-colors">Interactive Studio</a></li>
-              <li><a href="#diagnostic" className="hover:text-[#5FD8CD] transition-colors">Bottleneck Diagnostic</a></li>
-              <li><a href="#projects" className="hover:text-[#5FD8CD] transition-colors">Case Studies</a></li>
-              <li><a href="#roi" className="hover:text-[#5FD8CD] transition-colors">ROI Estimator</a></li>
+              <li>
+                <a href="#systems" className="hover:text-[#5FD8CD] transition-colors">
+                  Interactive Studio
+                </a>
+              </li>
+              <li>
+                <a href="#diagnostic" className="hover:text-[#5FD8CD] transition-colors">
+                  Bottleneck Diagnostic
+                </a>
+              </li>
+              <li>
+                <a href="#projects" className="hover:text-[#5FD8CD] transition-colors">
+                  Case Studies
+                </a>
+              </li>
+              <li>
+                <a href="#roi" className="hover:text-[#5FD8CD] transition-colors">
+                  ROI Estimator
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Location & Contact */}
           <div className="md:col-span-3 space-y-3 font-mono text-xs">
-            <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">[ HEADQUARTERS ]</span>
+            <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">
+              [ HEADQUARTERS ]
+            </span>
             <p className="text-[#B8B5AC]">
-              Dubai, United Arab Emirates<br />
+              Dubai, United Arab Emirates
+              <br />
               Asia/Dubai (GST UTC+4)
             </p>
             <a
@@ -49,11 +71,12 @@ export function FooterSection() {
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#B8B5AC]">
           <p>© {currentYear} NYG Digital. Precision systems & engineering.</p>
           <div className="flex items-center gap-6">
-            <a href="#hero-stage" className="hover:text-[#F3F0E8] transition-colors">Back to top ↑</a>
+            <a href="#hero-stage" className="hover:text-[#F3F0E8] transition-colors">
+              Back to top ↑
+            </a>
           </div>
         </div>
       </div>
     </footer>
   );
 }
-

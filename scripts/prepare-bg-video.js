@@ -4,7 +4,8 @@ import { execFile } from "node:child_process";
 import ffmpegPath from "ffmpeg-static";
 import sharp from "sharp";
 
-const inputVideo = "C:\\Users\\CJ\\Downloads\\Create_website_background_animation_1080p_202608171801.mp4";
+const inputVideo =
+  "C:\\Users\\CJ\\Downloads\\Create_website_background_animation_1080p_202608171801.mp4";
 const outDir = path.resolve(process.cwd(), "public", "bg-video");
 
 fs.mkdirSync(outDir, { recursive: true });
@@ -29,20 +30,32 @@ async function main() {
   console.log("Generating desktop MP4 (frequent keyframes for instantaneous scroll scrubbing)...");
   await runFfmpeg([
     "-y",
-    "-i", inputVideo,
-    "-vf", "scale=1600:900",
-    "-c:v", "libx264",
-    "-profile:v", "main",
-    "-level", "4.0",
-    "-pix_fmt", "yuv420p",
-    "-g", "6",
-    "-keyint_min", "6",
-    "-sc_threshold", "0",
-    "-crf", "23",
-    "-preset", "slow",
-    "-movflags", "+faststart",
+    "-i",
+    inputVideo,
+    "-vf",
+    "scale=1600:900",
+    "-c:v",
+    "libx264",
+    "-profile:v",
+    "main",
+    "-level",
+    "4.0",
+    "-pix_fmt",
+    "yuv420p",
+    "-g",
+    "6",
+    "-keyint_min",
+    "6",
+    "-sc_threshold",
+    "0",
+    "-crf",
+    "23",
+    "-preset",
+    "slow",
+    "-movflags",
+    "+faststart",
     "-an",
-    desktopMp4
+    desktopMp4,
   ]);
   const desktopMp4Stat = fs.statSync(desktopMp4);
   console.log(`Desktop MP4 generated: ${(desktopMp4Stat.size / (1024 * 1024)).toFixed(2)} MB`);
@@ -52,17 +65,26 @@ async function main() {
   console.log("Generating desktop WebM...");
   await runFfmpeg([
     "-y",
-    "-i", inputVideo,
-    "-vf", "scale=1600:900",
-    "-c:v", "libvpx-vp9",
-    "-g", "6",
-    "-keyint_min", "6",
-    "-b:v", "0",
-    "-crf", "30",
-    "-deadline", "good",
-    "-cpu-used", "2",
+    "-i",
+    inputVideo,
+    "-vf",
+    "scale=1600:900",
+    "-c:v",
+    "libvpx-vp9",
+    "-g",
+    "6",
+    "-keyint_min",
+    "6",
+    "-b:v",
+    "0",
+    "-crf",
+    "30",
+    "-deadline",
+    "good",
+    "-cpu-used",
+    "2",
     "-an",
-    desktopWebm
+    desktopWebm,
   ]);
   const desktopWebmStat = fs.statSync(desktopWebm);
   console.log(`Desktop WebM generated: ${(desktopWebmStat.size / (1024 * 1024)).toFixed(2)} MB`);
@@ -72,20 +94,32 @@ async function main() {
   console.log("Generating mobile MP4...");
   await runFfmpeg([
     "-y",
-    "-i", inputVideo,
-    "-vf", "scale=960:540",
-    "-c:v", "libx264",
-    "-profile:v", "baseline",
-    "-level", "3.0",
-    "-pix_fmt", "yuv420p",
-    "-g", "6",
-    "-keyint_min", "6",
-    "-sc_threshold", "0",
-    "-crf", "25",
-    "-preset", "slow",
-    "-movflags", "+faststart",
+    "-i",
+    inputVideo,
+    "-vf",
+    "scale=960:540",
+    "-c:v",
+    "libx264",
+    "-profile:v",
+    "baseline",
+    "-level",
+    "3.0",
+    "-pix_fmt",
+    "yuv420p",
+    "-g",
+    "6",
+    "-keyint_min",
+    "6",
+    "-sc_threshold",
+    "0",
+    "-crf",
+    "25",
+    "-preset",
+    "slow",
+    "-movflags",
+    "+faststart",
     "-an",
-    mobileMp4
+    mobileMp4,
   ]);
   const mobileMp4Stat = fs.statSync(mobileMp4);
   console.log(`Mobile MP4 generated: ${(mobileMp4Stat.size / (1024 * 1024)).toFixed(2)} MB`);
@@ -96,11 +130,15 @@ async function main() {
   const tempPosterPng = path.join(outDir, "temp_poster.png");
   await runFfmpeg([
     "-y",
-    "-ss", "2.5",
-    "-i", inputVideo,
-    "-vframes", "1",
-    "-q:v", "2",
-    tempPosterPng
+    "-ss",
+    "2.5",
+    "-i",
+    inputVideo,
+    "-vframes",
+    "1",
+    "-q:v",
+    "2",
+    tempPosterPng,
   ]);
   await sharp(tempPosterPng)
     .resize(1600, 900, { fit: "cover" })
@@ -114,7 +152,7 @@ async function main() {
   console.log("\nAll background video derivatives successfully created!");
 }
 
-main().catch(err => {
+main().catch((err) => {
   console.error("Video preparation error:", err);
   process.exit(1);
 });

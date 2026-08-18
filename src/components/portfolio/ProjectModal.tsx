@@ -146,4 +146,3 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
     </Dialog>
   );
 }
-

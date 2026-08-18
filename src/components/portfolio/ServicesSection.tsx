@@ -35,7 +35,7 @@ export function ServicesSection() {
           const IconComponent = iconMap[service.iconName] || Code2;
           return (
             <div
-              key={service.id}
+              key={service.title}
               className={`pt-12 ${index > 0 ? "border-t border-border-subtle" : ""}`}
             >
               {/* Service Header Row */}

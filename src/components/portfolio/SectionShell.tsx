@@ -9,7 +9,8 @@ interface SectionShellProps {
   children: React.ReactNode;
   className?: string;
   hasDivider?: boolean;
-  themeVariant?: "paper" | "mineral" | "sand" | "teal" | "ink" | "dark" | "light" | "midnight" | "iris";
+  themeVariant?:
+    "paper" | "mineral" | "sand" | "teal" | "ink" | "dark" | "light" | "midnight" | "iris";
   iconGlyph?: string;
   maxWidthClass?: string;
 }
@@ -68,8 +69,8 @@ export function SectionShell({
 
   const revealClasses =
     revealState === "visible"
-      ? "opacity-100 translate-y-0"
-      : "opacity-0 translate-y-6";
+      ? "opacity-100"
+      : "opacity-0 translate-y-6 will-change-[opacity,transform]";
 
   // Dynamic Theme Variant Styles
   let themeClasses = "bg-[#F3F0E8] text-[#080A09] border-[rgba(8,45,45,0.12)] editorial-paper";
@@ -98,7 +99,7 @@ export function SectionShell({
       id={id}
       className={`scroll-target relative py-20 sm:py-28 lg:py-32 ${
         hasDivider ? "border-t" : ""
-      } ${themeClasses} ${className} transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] will-change-[opacity,transform] ${revealClasses}`}
+      } ${themeClasses} ${className} transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] ${revealClasses}`}
     >
       <div className="mx-auto max-w-[1320px] px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
@@ -159,4 +160,3 @@ export function SectionShell({
     </section>
   );
 }
-
