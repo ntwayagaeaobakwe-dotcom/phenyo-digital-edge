@@ -174,7 +174,7 @@ export function ContactSection() {
               <div className="flex items-center gap-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60 p-4">
                 <Phone className="h-4 w-4 text-[#5FD8CD] shrink-0" />
                 <div className="flex flex-col text-xs font-mono">
-                  <span className="text-[10px] text-[#B8B5AC]">DIRECT WHATSAPP (DUBAI)</span>
+                  <span className="text-[10px] text-[#B8B5AC]">DIRECT WHATSAPP (UAE)</span>
                   <a
                     href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`}
                     target="_blank"

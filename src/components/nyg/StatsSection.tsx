@@ -27,7 +27,7 @@ export function StatsSection() {
         </div>
 
         <div className="mt-20 text-center">
-          <p className="text-white text-lg md:text-xl font-medium">www.phenyo-digital-edge.com</p>
+          <p className="text-white text-lg md:text-xl font-medium">ntwayagae.com</p>
         </div>
       </div>
     </section>

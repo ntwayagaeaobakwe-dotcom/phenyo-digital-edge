@@ -40,7 +40,7 @@ export function CapabilitySection() {
         <div className="lg:col-span-6 space-y-6">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#082D2D]/5 border border-[rgba(8,45,45,0.14)] text-xs font-mono text-[#082D2D] font-semibold">
             <ShieldCheck className="w-3.5 h-3.5" />
-            <span>BUILT FOR DUBAI OPERATORS</span>
+            <span>BUILT FOR UAE SERVICE BUSINESSES</span>
           </div>
 
           <h3 className="font-serif text-3xl sm:text-4xl font-normal text-[#080A09] tracking-tight leading-[1.12]">
@@ -49,7 +49,7 @@ export function CapabilitySection() {
 
           <p className="text-base text-[#282B29] leading-relaxed font-sans font-normal">
             No 40-page generic slide decks. We map your actual workflow, build a functioning
-            proof-of-concept, and quantify the exact hours recovered before any long-term agreement.
+            proof-of-concept, and demonstrate workflow improvements before any long-term agreement.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-3.5">

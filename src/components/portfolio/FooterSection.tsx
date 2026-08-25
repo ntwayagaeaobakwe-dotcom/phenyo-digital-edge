@@ -1,4 +1,4 @@
-import { PERSONAL_INFO, NAV_LINKS } from "@/data/portfolio-data";
+import { PERSONAL_INFO, COMPANY_INFO, NAV_LINKS } from "@/data/portfolio-data";
 
 export function FooterSection() {
   return (
@@ -14,13 +14,13 @@ export function FooterSection() {
               NYG
             </span>
             <span className="font-mono text-xs uppercase tracking-widest">
-              {PERSONAL_INFO.name}
+              {COMPANY_INFO.brandName}
               <span className="text-action-primary">.</span>
             </span>
           </a>
           <span className="text-border-subtle">|</span>
           <span className="uppercase tracking-widest text-[11px] text-text-muted">
-            {PERSONAL_INFO.title}
+            {COMPANY_INFO.legalName}
           </span>
         </div>
 
@@ -39,8 +39,8 @@ export function FooterSection() {
           ))}
         </nav>
 
-        <div className="uppercase tracking-widest text-[10px] text-text-muted text-center md:text-right">
-          © {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
+        <div className="text-[10px] text-text-muted text-center md:text-right max-w-md leading-relaxed">
+          {COMPANY_INFO.legalFooter}
         </div>
       </div>
     </footer>

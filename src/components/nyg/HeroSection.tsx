@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ArrowUpRight, ArrowDown } from "lucide-react";
-import { PERSONAL_INFO } from "@/data/portfolio-data";
+import { PERSONAL_INFO, COMPANY_INFO } from "@/data/portfolio-data";
 import { HeaderNav } from "./HeaderNav";
 import { ScrollScrubHeroMedia } from "./ScrollScrubHeroMedia";
 
@@ -77,7 +77,7 @@ export function HeroSection() {
             <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#082D2D]/90 border border-[rgba(184,181,172,0.22)] backdrop-blur-md w-fit shadow-md">
               <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD] animate-pulse" />
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC]">
-                PRECISION AUTOMATION ATELIER // DUBAI
+                SOFTWARE & SYSTEMS CONSULTANCY // UAE
               </span>
             </div>
 
@@ -91,8 +91,7 @@ export function HeroSection() {
 
             {/* Supporting Copy in Manrope */}
             <p className="text-base sm:text-lg text-[#F3F0E8]/90 leading-relaxed max-w-xl font-sans font-normal">
-              NYG Digital designs business automation, workflow tools, and conversion-focused
-              websites that turn scattered work into connected systems.
+              {COMPANY_INFO.subheadline}
             </p>
 
             {/* Primary & Secondary CTAs */}

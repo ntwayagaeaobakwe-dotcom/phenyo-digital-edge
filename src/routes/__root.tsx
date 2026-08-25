@@ -70,14 +70,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { name: "theme-color", content: "#090b10" },
-      { title: "NYG Digital | Business Automation & Web Systems" },
+      { title: "NYG Digital | Software Development & Systems Consultancy" },
       {
         name: "description",
         content:
-          "NYG Digital builds the systems that remove manual work from lead follow-up, scheduling, and reporting for real estate agencies and facility services in Dubai.",
+          "NYG Digital (NYG Digital FZE LLC) is a software-development and computer-systems consultancy registered in Ajman, UAE. We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites.",
       },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "NYG Digital | Business Automation & Web Systems" },
+      { property: "og:site_name", content: "NYG Digital | Software Development & Systems Consultancy" },
       // Default OG/Twitter image — generated preview banner (public/og-image.png).
       { property: "og:image", content: `${ROOT_SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },

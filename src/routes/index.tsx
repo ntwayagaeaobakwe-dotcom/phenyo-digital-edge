@@ -5,15 +5,16 @@ import { SystemStudio } from "@/components/portfolio/SystemStudio";
 import { BottleneckConfigurator } from "@/components/portfolio/BottleneckConfigurator";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { CapabilitySection } from "@/components/portfolio/CapabilitySection";
-import { RoiCalculator } from "@/components/portfolio/RoiCalculator";
+import { EngagementBlueprint } from "@/components/portfolio/EngagementBlueprint";
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { FooterSection } from "@/components/nyg/FooterSection";
 import { getSiteUrl } from "@/lib/seo";
+import { COMPANY_INFO } from "@/data/portfolio-data";
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "NYG Digital | Business Automation & Web Systems";
+const PAGE_TITLE = "NYG Digital | Software Development & Systems Consultancy";
 const PAGE_DESC =
-  "NYG Digital builds the systems that remove manual work from lead follow-up, scheduling, and reporting for real estate agencies and facility services in Dubai.";
+  "NYG Digital (NYG Digital FZE LLC) is a software-development and computer-systems consultancy registered in Ajman, UAE. We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites.";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -24,7 +25,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "NYG Digital, business automation, n8n workflow automation, web development, Dubai systems, real estate automation, facility management automation, API integrations",
+          "NYG Digital, NYG Digital FZE LLC, software development, computer systems consultancy, business automation, n8n workflows, connected systems, digital platforms, UAE automation, Ajman, Dubai",
       },
       { name: "robots", content: "index, follow" },
       { property: "og:title", content: PAGE_TITLE },
@@ -47,14 +48,40 @@ export const Route = createFileRoute("/")({
           "@context": "https://schema.org",
           "@graph": [
             {
-              "@type": "ProfessionalService",
-              "@id": `${SITE_URL}#service`,
-              name: "NYG Digital",
+              "@type": "Organization",
+              "@id": `${SITE_URL}#organization`,
+              name: COMPANY_INFO.brandName,
+              legalName: COMPANY_INFO.legalName,
+              foundingDate: COMPANY_INFO.foundedDate,
               url: SITE_URL,
-              description: PAGE_DESC,
+              description: COMPANY_INFO.description,
+              areaServed: {
+                "@type": "Country",
+                name: COMPANY_INFO.areaServed,
+              },
               address: {
                 "@type": "PostalAddress",
-                addressLocality: "Dubai",
+                addressLocality: COMPANY_INFO.registeredLocality,
+                addressRegion: COMPANY_INFO.registeredLocality,
+                addressCountry: "AE",
+              },
+            },
+            {
+              "@type": "ProfessionalService",
+              "@id": `${SITE_URL}#service`,
+              name: COMPANY_INFO.brandName,
+              legalName: COMPANY_INFO.legalName,
+              url: SITE_URL,
+              description: PAGE_DESC,
+              parentOrganization: { "@id": `${SITE_URL}#organization` },
+              areaServed: {
+                "@type": "Country",
+                name: COMPANY_INFO.areaServed,
+              },
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: COMPANY_INFO.registeredLocality,
+                addressRegion: COMPANY_INFO.registeredLocality,
                 addressCountry: "AE",
               },
             },
@@ -62,8 +89,8 @@ export const Route = createFileRoute("/")({
               "@type": "WebSite",
               "@id": `${SITE_URL}#website`,
               url: SITE_URL,
-              name: "NYG Digital",
-              publisher: { "@id": `${SITE_URL}#service` },
+              name: COMPANY_INFO.brandName,
+              publisher: { "@id": `${SITE_URL}#organization` },
             },
           ],
         }),
@@ -101,8 +128,8 @@ function Home() {
         {/* STAGE 5: CREDIBILITY & DELIVERY */}
         <CapabilitySection />
 
-        {/* STAGE 6: ROI ESTIMATOR */}
-        <RoiCalculator />
+        {/* STAGE 6: ENGAGEMENT BLUEPRINT */}
+        <EngagementBlueprint />
 
         {/* STAGE 7: CONTACT CONVERSION */}
         <ContactSection />

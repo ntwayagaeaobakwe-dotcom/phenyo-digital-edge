@@ -13,7 +13,8 @@ const bottlenecks = [
       "Classify intent & assign owner",
       "Trigger immediate WhatsApp & schedule follow-up",
     ],
-    outcome: "Eliminate dead leads with sub-minute response SLA and automatic CRM ownership.",
+    outcome:
+      "Route new inquiries more quickly and consistently, with response targets established during discovery.",
   },
   {
     id: "scattered",
@@ -37,7 +38,8 @@ const bottlenecks = [
       "Auto-generate contracts & dispatch tasks",
       "Escalate only exceptions to human review",
     ],
-    outcome: "Recover 15–30 hours per team member weekly for high-value client work.",
+    outcome:
+      "Reduce repeated administrative work and create more capacity for client-facing and operational priorities.",
   },
   {
     id: "conversion",
@@ -49,7 +51,8 @@ const bottlenecks = [
       "Pre-qualify lead budget & timeline",
       "Route qualified buyers straight to calendar",
     ],
-    outcome: "A digital presence that actively acts as your top-performing qualification rep.",
+    outcome:
+      "A digital presence that acts as a digital system that helps qualify and route inquiries consistently.",
   },
 ] as const;
 
@@ -142,7 +145,9 @@ export function BottleneckConfigurator() {
                 <PlugZap className="h-3.5 w-3.5" />
                 <span>[ RECOMMENDED_SYSTEM_ARCHITECTURE ]</span>
               </div>
-              <span className="font-mono text-[11px] text-[#B8B5AC]">[ SLA: &lt; 2 WEEKS ]</span>
+              <span className="font-mono text-[11px] text-[#B8B5AC]">
+                [ SCOPE DEFINED AFTER DISCOVERY ]
+              </span>
             </div>
 
             <h3 className="text-2xl sm:text-3xl font-serif font-normal text-[#F3F0E8] tracking-tight">

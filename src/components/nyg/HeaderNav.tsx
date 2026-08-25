@@ -4,7 +4,7 @@ import { NygLogo } from "./NygLogo";
 
 export const AVAILABILITY_STATUS = "Available for selected projects";
 
-function formatDubaiTime(): string {
+function formatUaeTime(): string {
   try {
     return new Intl.DateTimeFormat("en-GB", {
       timeZone: "Asia/Dubai",
@@ -18,7 +18,7 @@ function formatDubaiTime(): string {
 }
 
 export function HeaderNav() {
-  const [dubaiTime, setDubaiTime] = useState<string>("--:--");
+  const [uaeTime, setUaeTime] = useState<string>("--:--");
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string>("hero");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -26,9 +26,9 @@ export function HeaderNav() {
 
   // Time & Scroll Listener
   useEffect(() => {
-    setDubaiTime(formatDubaiTime());
+    setUaeTime(formatUaeTime());
     const interval = setInterval(() => {
-      setDubaiTime(formatDubaiTime());
+      setUaeTime(formatUaeTime());
     }, 10000);
 
     const handleScroll = () => {
@@ -39,7 +39,7 @@ export function HeaderNav() {
       }
 
       // Track active section for indicator
-      const sections = ["hero", "systems", "diagnostic", "projects", "studio", "roi", "contact"];
+      const sections = ["hero", "systems", "diagnostic", "projects", "studio", "process", "contact"];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -64,7 +64,7 @@ export function HeaderNav() {
     { name: "Diagnostic", href: "#diagnostic", id: "diagnostic" },
     { name: "Case Studies", href: "#projects", id: "projects" },
     { name: "Capabilities", href: "#studio", id: "studio" },
-    { name: "ROI Estimator", href: "#roi", id: "roi" },
+    { name: "Process", href: "#process", id: "process" },
   ];
 
   return (
@@ -113,7 +113,7 @@ export function HeaderNav() {
               </div>
             </div>
 
-            {/* RIGHT: Availability, Dubai Clock & Pill CTA */}
+            {/* RIGHT: Availability, UAE Clock & Pill CTA */}
             <div className="hidden lg:flex items-center gap-5">
               {/* Availability Indicator */}
               <div className="flex items-center gap-2 text-xs font-mono text-[#B8B5AC]">
@@ -121,11 +121,11 @@ export function HeaderNav() {
                 <span className="text-[11px] uppercase tracking-wider">{AVAILABILITY_STATUS}</span>
               </div>
 
-              {/* Dubai Clock */}
+              {/* UAE Clock */}
               <div className="flex items-center gap-1.5 font-mono text-xs text-[#B8B5AC] border-l border-[rgba(184,181,172,0.18)] pl-4">
                 <Clock className="w-3.5 h-3.5 text-[#B8B5AC]" />
-                <span className="text-[#F3F0E8] font-medium">{dubaiTime}</span>
-                <span className="text-[#B8B5AC] text-[10px]">DXB</span>
+                <span className="text-[#F3F0E8] font-medium">{uaeTime}</span>
+                <span className="text-[#B8B5AC] text-[10px]">UAE · GST</span>
               </div>
 
               {/* Primary Pill CTA */}
@@ -199,7 +199,7 @@ export function HeaderNav() {
             <div className="pt-2 border-t border-[rgba(184,181,172,0.15)] flex flex-col gap-4">
               <div className="flex items-center justify-between text-xs text-[#B8B5AC] font-mono">
                 <span className="text-[11px] uppercase tracking-wider">{AVAILABILITY_STATUS}</span>
-                <span className="text-[#F3F0E8]">{dubaiTime} DXB</span>
+                <span className="text-[#F3F0E8]">{uaeTime} UAE · GST</span>
               </div>
 
               <a

@@ -2,7 +2,7 @@
 
 ## 1. Visual Theme & Atmosphere
 
-**Thesis:** A bespoke Dubai-based business automation and technology atelier presented through the visual lens of a luxury architectural journal and cinematic technology publication.
+**Thesis:** A bespoke software-development and systems consultancy registered in Ajman and serving businesses across Dubai and the UAE, presented through the visual lens of a luxury architectural journal and cinematic technology publication.
 
 The atmosphere is:
 
@@ -39,7 +39,7 @@ The atmosphere is:
 ### Muted Mineral Accents (Section Fields & Badges)
 
 - **Mineral Mist** (`#CEDDD9`): Diagnostic and assessment field background.
-- **Desert Sand** (`#E5D6C2`): ROI Estimator feature canvas.
+- **Desert Sand** (`#E5D6C2`): Engagement Blueprint (Process) feature canvas.
 - **Fog Blue** (`#C9D6DF`): Accent borders and tags.
 - **Soft Clay** (`#D9BEB0`): Muted callout surfaces.
 
@@ -63,7 +63,7 @@ _Rule: Never display more than two mineral accents in the same viewport._
   - Line height: 1.5–1.65.
   - Max reading width: 58–68 characters.
 - **Technical Mono:** `JetBrains Mono Variable` (`"JetBrains Mono Variable", "JetBrains Mono", monospace`)
-  - Strictly reserved for: System steps (`01/`, `02/`), timestamps, Dubai clock (`DXB`), diagnostic outputs, and data telemetry.
+  - Strictly reserved for: System steps (`01/`, `02/`), timestamps, UAE clock (`UAE · GST`), diagnostic outputs, and data telemetry.
 
 ### Typographic Scale
 
@@ -103,7 +103,7 @@ _Rule: Never display more than two mineral accents in the same viewport._
 3. **Bottleneck Diagnostic:** Mineral Mist (`#CEDDD9`) / Bone (`#FAF8F2`) field with high-contrast Deep Teal solution panel.
 4. **Case Studies:** Full-bleed NYG Deep Teal (`#082D2D`) narrative band.
 5. **Capabilities:** Warm NYG Paper (`#F3F0E8`) with publication-style numbered index.
-6. **ROI Estimator:** Desert Sand (`#E5D6C2`) feature field with monumental serif number.
+6. **Engagement Blueprint (Process):** Desert Sand (`#E5D6C2`) feature field with 3-stage architectural workflow.
 7. **Contact:** NYG Ink (`#080A09`) / Deep Teal (`#082D2D`) closing composition.
 8. **Footer:** Restrained NYG Ink (`#080A09`) surface with warm-white typography.
 

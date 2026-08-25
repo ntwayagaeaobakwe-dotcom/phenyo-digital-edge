@@ -1,5 +1,5 @@
 import { SectionShell } from "./SectionShell";
-import { ABOUT_PILLARS, INTERESTS } from "@/data/portfolio-data";
+import { ABOUT_PILLARS, INTERESTS, COMPANY_INFO } from "@/data/portfolio-data";
 
 export function AboutSection() {
   return (
@@ -7,20 +7,17 @@ export function AboutSection() {
       id="about"
       eyebrow="Direct Studio Model"
       iconGlyph="07"
-      declarativeTitle="Direct access to the developer"
-      qualifierTitle="designing and building your connected system."
+      declarativeTitle="Direct access to the systems consultant"
+      qualifierTitle="designing and building your connected digital systems."
     >
       <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start">
         {/* Short text block */}
         <div className="space-y-6 text-sm sm:text-base leading-relaxed text-text-secondary">
           <p>
-            NYG Digital is a focused automation and web-systems studio for service businesses that
-            need practical operational improvements without agency layers or overhead.
+            {COMPANY_INFO.description} {COMPANY_INFO.subheadline}
           </p>
           <p>
-            You work directly with the engineer mapping your workflow, designing the user interface,
-            and connecting the APIs. Decisions stay transparent, delivery stays accountable, and
-            every system is built around how your business actually operates.
+            {COMPANY_INFO.overview}
           </p>
 
           <div className="grid gap-6 pt-6 sm:grid-cols-3 border-t border-border-subtle">

@@ -55,7 +55,7 @@ export function HeroSection() {
             ref={badgeRef}
             className="reveal-item inline-flex items-center mb-5 border-l-2 border-accent bg-surface-glass px-3 py-1.5 backdrop-blur-md border border-r-border-glass border-t-border-glass border-b-border-glass font-mono text-[11px] uppercase tracking-[0.15em] text-text-primary drop-shadow-md"
           >
-            {"{{PROOF_METRIC}}"} // DUBAI OPERATIONAL SYSTEMS
+            {"{{PROOF_METRIC}}"} // UAE OPERATIONAL SYSTEMS
           </div>
 
           {/* H1 Two-Tone */}

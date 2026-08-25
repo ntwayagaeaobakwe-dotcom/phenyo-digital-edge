@@ -54,15 +54,54 @@ export interface FocusArea {
   iconName: string;
 }
 
+export interface CompanyInfo {
+  brandName: string;
+  legalName: string;
+  entityType: string;
+  registeredJurisdiction: string;
+  registeredLocality: string;
+  registeredCountry: string;
+  foundedDate: string;
+  foundedYear: string;
+  areaServed: string;
+  headline: string;
+  subheadline: string;
+  description: string;
+  overview: string;
+  legalFooter: string;
+}
+
+export const COMPANY_INFO: CompanyInfo = {
+  brandName: "NYG Digital",
+  legalName: "NYG Digital FZE LLC",
+  entityType: "Free Zone Entity (FZE LLC)",
+  registeredJurisdiction: "Ajman NuVentures Centre Free Zone",
+  registeredLocality: "Ajman",
+  registeredCountry: "United Arab Emirates",
+  foundedDate: "2026-08-04",
+  foundedYear: "2026",
+  areaServed: "United Arab Emirates",
+  headline: "Systems that run. Without you.",
+  subheadline:
+    "We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites that help service businesses operate more clearly and efficiently across the UAE.",
+  description:
+    "NYG Digital is the trading brand of NYG Digital FZE LLC, a software-development and computer-systems consultancy registered in Ajman, United Arab Emirates.",
+  overview:
+    "Founded in 2026, NYG Digital combines software development, systems consultancy, data management and practical automation to transform disconnected business processes into dependable digital systems.",
+  legalFooter:
+    "© 2026 NYG Digital. NYG Digital is the trading brand of NYG Digital FZE LLC, a Free Zone Entity registered with Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates.",
+};
+
 export const PERSONAL_INFO = {
-  name: "NYG Digital",
-  title: "Business Automation & Web Development Specialist",
+  name: "Phenyo Ntwayagae",
+  brand: "NYG Digital",
+  title: "Founder & Systems Architect",
   tagline: "Automations That Save You Time. Websites That Help You Grow.",
   headline: "Automations That Save You Time. Websites That Help You Grow.",
   subheadline:
     "I help businesses reduce repetitive work, connect their tools, organize leads, and build professional websites that turn more visitors into inquiries.",
   status: "Available for select projects",
-  location: "International - UTC+4",
+  location: "United Arab Emirates (GST UTC+4)",
   email: "ntwayagaeaobakwe@gmail.com",
   phone: "+971555170113",
   socials: [
@@ -89,7 +128,7 @@ export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "System Studio", href: "#system-studio" },
   { label: "Work", href: "#projects" },
-  { label: "Calculator", href: "#roi-calculator" },
+  { label: "Process", href: "#process" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -548,13 +587,6 @@ export const DEMO_TERMINAL_TABS = [
 ];
 
 export const HERO_TERMINAL_TABS = DEMO_TERMINAL_TABS;
-
-export const ROI_CALCULATOR_DEFAULTS = {
-  hoursPerWeek: 15,
-  teamSize: 3,
-  hourlyCost: 45,
-  automationPct: 70,
-};
 
 // ─── Industry Automation Demo ─────────────────────────────────────────────────
 

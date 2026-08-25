@@ -12,9 +12,9 @@ import { getSiteUrl } from "@/lib/seo";
  */
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "NYG Digital — Business Automation & Web Systems, Dubai";
+const PAGE_TITLE = "NYG Digital — Software Development & Systems Consultancy, UAE";
 const PAGE_DESC =
-  "NYG Digital builds automation systems and web platforms for real estate agencies and facility services companies in Dubai.";
+  "NYG Digital is the trading brand of NYG Digital FZE LLC, a software-development and computer-systems consultancy registered in Ajman, UAE, serving businesses across the UAE.";
 
 // Background media. Files are not in the repo yet — the backdrop renders
 // solid surface-base until they exist (see onError handling below).
@@ -223,9 +223,8 @@ function CardBackdrop() {
   );
 }
 
-// ─── Dubai clock ─────────────────────────────────────────────────────────────
-
-function DubaiClock() {
+// ─── UAE clock ───────────────────────────────────────────────────────────────
+function UaeClock() {
   const [time, setTime] = useState<string | null>(null);
 
   useEffect(() => {
@@ -256,7 +255,7 @@ function DubaiClock() {
 
   return (
     <span className="tabular-nums">
-      Dubai, UAE • <span className="inline-block min-w-[5ch]">{time ?? "--:--"}</span> GST
+      UAE • <span className="inline-block min-w-[5ch]">{time ?? "--:--"}</span> GST
     </span>
   );
 }
@@ -503,13 +502,13 @@ function CardPage() {
                 *
               </div>
               <p className="mt-1 font-mono text-xs leading-relaxed text-text-subtle drop-shadow-md">
-                NYG Digital is my practice —
+                NYG Digital is the trading brand of
                 <br />
-                I build the systems that
+                NYG Digital FZE LLC — we build
                 <br />
-                remove manual work from
+                the connected systems that remove
                 <br />
-                how a business actually runs
+                manual work from your business
               </p>
             </div>
 
@@ -604,7 +603,7 @@ function CardPage() {
                 </Link>
               </p>
               <p className="text-xs text-text-subtle drop-shadow-md sm:text-right">
-                <DubaiClock />
+                <UaeClock />
               </p>
             </div>
           </div>
