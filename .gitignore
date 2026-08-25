@@ -30,3 +30,9 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Skills
+.agents/skills/cinematic-ui/
+.agents/skills/threejs-skills/
+.agents/skills/ui-ux-pro-max-skill/
+
