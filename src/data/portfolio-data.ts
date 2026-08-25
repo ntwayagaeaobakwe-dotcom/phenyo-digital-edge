@@ -64,6 +64,7 @@ export interface CompanyInfo {
   foundedDate: string;
   foundedYear: string;
   areaServed: string;
+  contactEmail: string;
   headline: string;
   subheadline: string;
   description: string;
@@ -81,6 +82,7 @@ export const COMPANY_INFO: CompanyInfo = {
   foundedDate: "2026-08-04",
   foundedYear: "2026",
   areaServed: "United Arab Emirates",
+  contactEmail: "support@nygagency.com",
   headline: "Systems that run. Without you.",
   subheadline:
     "We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites that help service businesses operate more clearly and efficiently across the UAE.",
@@ -102,7 +104,7 @@ export const PERSONAL_INFO = {
     "I help businesses reduce repetitive work, connect their tools, organize leads, and build professional websites that turn more visitors into inquiries.",
   status: "Available for select projects",
   location: "United Arab Emirates (GST UTC+4)",
-  email: "ntwayagaeaobakwe@gmail.com",
+  email: "support@nygagency.com",
   phone: "+971555170113",
   socials: [
     { label: "X / Twitter", href: "https://x.com/phenyont", iconName: "Twitter" },

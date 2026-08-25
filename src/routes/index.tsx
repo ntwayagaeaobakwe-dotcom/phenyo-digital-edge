@@ -9,7 +9,7 @@ import { EngagementBlueprint } from "@/components/portfolio/EngagementBlueprint"
 import { ContactSection } from "@/components/portfolio/ContactSection";
 import { FooterSection } from "@/components/nyg/FooterSection";
 import { getSiteUrl } from "@/lib/seo";
-import { COMPANY_INFO } from "@/data/portfolio-data";
+import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 
 const SITE_URL = getSiteUrl();
 const PAGE_TITLE = "NYG Digital | Software Development & Systems Consultancy";
@@ -54,6 +54,8 @@ export const Route = createFileRoute("/")({
               legalName: COMPANY_INFO.legalName,
               foundingDate: COMPANY_INFO.foundedDate,
               url: SITE_URL,
+              email: PERSONAL_INFO.email,
+              telephone: PERSONAL_INFO.phone,
               description: COMPANY_INFO.description,
               areaServed: {
                 "@type": "Country",
@@ -72,6 +74,8 @@ export const Route = createFileRoute("/")({
               name: COMPANY_INFO.brandName,
               legalName: COMPANY_INFO.legalName,
               url: SITE_URL,
+              email: PERSONAL_INFO.email,
+              telephone: PERSONAL_INFO.phone,
               description: PAGE_DESC,
               parentOrganization: { "@id": `${SITE_URL}#organization` },
               areaServed: {
