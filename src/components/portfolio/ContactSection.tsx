@@ -4,14 +4,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
 import { Mail, Phone, Send, CheckCircle2, Loader2, ArrowUpRight } from "lucide-react";
-import { PERSONAL_INFO, FORM_SERVICE_OPTIONS, FORM_BUDGET_OPTIONS } from "@/data/portfolio-data";
+import { PERSONAL_INFO, FORM_SERVICE_OPTIONS } from "@/data/portfolio-data";
 import { SectionShell } from "./SectionShell";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Please enter your full name (at least 2 characters)"),
   email: z.string().email("Please enter a valid business email address"),
   service: z.string().min(1, "Please select your primary requirement"),
-  budget: z.string().optional(),
   message: z
     .string()
     .min(5, "Please describe the manual bottlenecks or system goals (at least 5 characters)"),
@@ -40,7 +39,6 @@ export function ContactSection() {
       name: "",
       email: "",
       service: FORM_SERVICE_OPTIONS[0],
-      budget: FORM_BUDGET_OPTIONS[1],
       message: "",
     },
   });
@@ -64,7 +62,7 @@ export function ContactSection() {
   const openMailtoFallback = (data: ContactFormValues) => {
     const subject = encodeURIComponent(`NYG Digital System Inquiry - ${data.service}`);
     const contextLine = industryContext ? `\nContext: ${industryContext}` : "";
-    const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\nBudget: ${data.budget || "Not specified"}\n\nProject Scope:\n${data.message}`;
+    const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\n\nProject Scope:\n${data.message}`;
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
     window.location.href = mailtoUrl;
   };
@@ -93,7 +91,6 @@ export function ContactSection() {
           name: data.name,
           email: data.email,
           service: data.service,
-          budget: data.budget || "Not specified",
           message: data.message,
           industryContext: industryContext || null,
           timestamp: new Date().toISOString(),

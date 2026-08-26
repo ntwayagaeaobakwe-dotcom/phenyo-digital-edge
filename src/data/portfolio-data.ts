@@ -551,13 +551,6 @@ export const FORM_SERVICE_OPTIONS = [
   "Not Sure — I'll Describe the Problem",
 ];
 
-export const FORM_BUDGET_OPTIONS = [
-  "Under $1,000",
-  "$1,000 - $3,000",
-  "$3,000 - $5,000",
-  "$5,000+",
-];
-
 export const DEMO_TERMINAL_TABS = [
   {
     id: "tasks",
