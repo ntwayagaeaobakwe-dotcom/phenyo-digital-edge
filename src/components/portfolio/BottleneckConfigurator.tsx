@@ -5,54 +5,54 @@ import { SectionShell } from "./SectionShell";
 const bottlenecks = [
   {
     id: "follow-up",
-    label: "Leads are not followed up immediately",
-    system: "Zero-Leak Lead Routing Pipeline",
-    tools: ["Website / Portals", "n8n Automation Engine", "CRM Sync", "Instant WhatsApp / Email"],
+    label: "Leads are not followed up quickly enough",
+    system: "Automated Lead Routing System",
+    tools: ["Website & Forms", "n8n Automation", "CRM Sync", "Instant WhatsApp & Email"],
     steps: [
-      "Capture & parse each inquiry",
-      "Classify intent & assign owner",
-      "Trigger immediate WhatsApp & schedule follow-up",
+      "Capture & organize each new inquiry",
+      "Match criteria & alert the right team member",
+      "Send instant confirmation & schedule next follow-up",
     ],
     outcome:
-      "Route new inquiries more quickly and consistently, with response targets established during discovery.",
+      "Respond to new inquiries in seconds so potential clients never slip through the cracks.",
   },
   {
     id: "scattered",
     label: "Customer & project data is scattered",
-    system: "Unified Operations Hub & Portal",
-    tools: ["Smart Intake Forms", "Normalized PostgreSQL", "HubSpot / Zoho", "Realtime Dashboard"],
+    system: "Central Operations Hub & Client Portal",
+    tools: ["Smart Intake Forms", "Connected Database", "CRM (HubSpot / Zoho)", "Realtime Dashboard"],
     steps: [
-      "Collect details once via structured intake",
-      "Normalize and sync across tools",
-      "Maintain single source of truth for team",
+      "Collect details once via a simple form",
+      "Sync information automatically across all tools",
+      "Give your team one clear, organized dashboard",
     ],
-    outcome: "No more searching through WhatsApp chats, lost emails, and conflicting spreadsheets.",
+    outcome: "No more searching through lost WhatsApp messages, buried emails, and conflicting spreadsheets.",
   },
   {
     id: "admin",
     label: "Staff repeat manual admin & reporting",
-    system: "Rules-Based Workflow Automation",
-    tools: ["n8n Pipeline", "REST APIs", "Automated PDF Gen", "Slack / WhatsApp Alerts"],
+    system: "Automated Business Admin & Task Workflows",
+    tools: ["n8n Workflows", "Business APIs", "Automated PDF Generator", "WhatsApp & Slack Alerts"],
     steps: [
-      "Listen for operational triggers",
-      "Auto-generate contracts & dispatch tasks",
-      "Escalate only exceptions to human review",
+      "Listen for operational triggers & form submissions",
+      "Auto-generate documents & dispatch team tasks",
+      "Alert staff only when an issue needs human attention",
     ],
     outcome:
-      "Reduce repeated administrative work and create more capacity for client-facing and operational priorities.",
+      "Reduce repeated administrative work and free up hours for client work and revenue.",
   },
   {
     id: "conversion",
     label: "Website doesn't generate qualified inquiries",
-    system: "Conversion Web System & Qualification Route",
-    tools: ["TanStack / React 19", "Interactive Estimators", "Direct Booking", "CRM Ingestion"],
+    system: "High-Converting Website & Booking System",
+    tools: ["Modern React Website", "Interactive Estimators", "Direct Booking", "CRM Lead Capture"],
     steps: [
-      "Clarify the offer & eliminate friction",
-      "Pre-qualify lead budget & timeline",
-      "Route qualified buyers straight to calendar",
+      "Explain your services clearly & build trust",
+      "Guide visitors through simple questions",
+      "Route qualified buyers straight to booking a call",
     ],
     outcome:
-      "A digital presence that acts as a digital system that helps qualify and route inquiries consistently.",
+      "A professional website that clearly explains what you do and turns visitors into active inquiries.",
   },
 ] as const;
 
@@ -74,11 +74,11 @@ export function BottleneckConfigurator() {
   return (
     <SectionShell
       id="diagnostic"
-      eyebrow="Bottleneck Diagnostic"
+      eyebrow="Find What Slows You Down"
       iconGlyph="03"
       themeVariant="mineral"
-      declarativeTitle="You describe the operational friction."
-      qualifierTitle="I design the connected system."
+      declarativeTitle="Select what is slowing your business down."
+      qualifierTitle="We build a connected system to solve it."
     >
       <div className="grid gap-8 lg:grid-cols-12 items-stretch">
         {/* Left Column: 5-Col Asymmetric Bottleneck Selector */}
@@ -128,8 +128,8 @@ export function BottleneckConfigurator() {
           </div>
 
           <div className="p-4 rounded-2xl bg-[#FAF8F2] border border-[rgba(8,45,45,0.12)] text-xs text-[#282B29] flex items-center justify-between font-mono">
-            <span>[ DIAGNOSTIC MATRIX ]</span>
-            <span className="text-[#082D2D] font-semibold">CUSTOM ARCHITECTURE</span>
+            <span>[ COMMON BOTTLENECKS ]</span>
+            <span className="text-[#082D2D] font-semibold">TAILORED SOLUTION</span>
           </div>
         </div>
 
@@ -143,10 +143,10 @@ export function BottleneckConfigurator() {
             <div className="flex items-center justify-between border-b border-[rgba(184,181,172,0.14)] pb-4 mb-6">
               <div className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
                 <PlugZap className="h-3.5 w-3.5" />
-                <span>[ RECOMMENDED_SYSTEM_ARCHITECTURE ]</span>
+                <span>[ RECOMMENDED_SYSTEM_WORKFLOW ]</span>
               </div>
               <span className="font-mono text-[11px] text-[#B8B5AC]">
-                [ SCOPE DEFINED AFTER DISCOVERY ]
+                [ SCOPE CONFIRMED IN REVIEW ]
               </span>
             </div>
 
@@ -157,7 +157,7 @@ export function BottleneckConfigurator() {
             <div className="mt-6 grid gap-6 sm:grid-cols-2">
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC] block mb-3 font-semibold">
-                  INTEGRATED TOOLS & APIS
+                  CONNECTED TOOLS & APIS
                 </span>
                 <div className="flex flex-wrap gap-2">
                   {selected.tools.map((tool) => (
@@ -173,7 +173,7 @@ export function BottleneckConfigurator() {
 
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC] block mb-3 font-semibold">
-                  AUTOMATED SEQUENCE
+                  HOW THE WORKFLOW RUNS
                 </span>
                 <ol className="space-y-2.5 font-mono text-xs">
                   {selected.steps.map((step, index) => (
@@ -196,7 +196,7 @@ export function BottleneckConfigurator() {
               onClick={carryContext}
               className="inline-flex items-center justify-center gap-2 rounded-full bg-[#F3F0E8] hover:bg-white px-6 py-3.5 min-h-[44px] font-mono text-xs uppercase tracking-wider font-bold text-[#080A09] shadow-md active:scale-[0.98] transition-all focus-ring w-full sm:w-fit cursor-pointer"
             >
-              <span>Solve this bottleneck</span>
+              <span>Request a Systems Review</span>
               <ArrowUpRight className="h-3.5 w-3.5" />
             </a>
           </div>

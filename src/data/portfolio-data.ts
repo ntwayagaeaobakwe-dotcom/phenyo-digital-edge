@@ -85,11 +85,11 @@ export const COMPANY_INFO: CompanyInfo = {
   contactEmail: "support@nygagency.com",
   headline: "Systems that run. Without you.",
   subheadline:
-    "We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites that help service businesses operate more clearly and efficiently across the UAE.",
+    "We design business automation, connected workflows, and modern websites that remove repetitive admin and help service businesses across the UAE run efficiently.",
   description:
     "NYG Digital is the trading brand of NYG Digital FZE LLC, a software-development and computer-systems consultancy registered in Ajman, United Arab Emirates.",
   overview:
-    "Founded in 2026, NYG Digital combines software development, systems consultancy, data management and practical automation to transform disconnected business processes into dependable digital systems.",
+    "Founded in 2026, NYG Digital helps businesses replace manual spreadsheets, delayed follow-ups, and disconnected tools with reliable, automated systems.",
   legalFooter:
     "© 2026 NYG Digital. NYG Digital is the trading brand of NYG Digital FZE LLC, a Free Zone Entity registered with Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates.",
 };
@@ -97,7 +97,7 @@ export const COMPANY_INFO: CompanyInfo = {
 export const PERSONAL_INFO = {
   name: "Phenyo Ntwayagae",
   brand: "NYG Digital",
-  title: "Founder & Systems Architect",
+  title: "Founder & Systems Engineer",
   tagline: "Automations That Save You Time. Websites That Help You Grow.",
   headline: "Automations That Save You Time. Websites That Help You Grow.",
   subheadline:
@@ -168,12 +168,12 @@ export const ABOUT_PILLARS = [
     desc: "Designing automated n8n workflows, API integrations, and lead systems that handle repetitive operations in the background.",
   },
   {
-    title: "Web Platform Development",
-    desc: "Building clean, fast, mobile-friendly websites and portals that present services clearly and turn visitors into inquiries.",
+    title: "Web Platforms",
+    desc: "Building clean, fast, mobile-friendly websites that explain your services simply and turn visitors into qualified inquiries.",
   },
   {
-    title: "Operational Leverage",
-    desc: "Connecting disconnected business tools into unified systems that save hours of manual data entry every week.",
+    title: "Connected Systems",
+    desc: "Connecting your everyday business tools into unified workflows that save hours of manual data entry every week.",
   },
 ];
 
@@ -185,7 +185,7 @@ export const INTERESTS = [
   "Client Portals",
   "API Integrations",
   "Process Optimization",
-  "Digital Systems Architecture",
+  "Connected Business Systems",
   "User Experience Design",
 ];
 
@@ -194,34 +194,34 @@ export const EXPERTISE_SKILLS: SkillCategory[] = [
     title: "Business Automation & Workflows",
     iconName: "Workflow",
     items: [
-      "n8n custom workflows",
+      "Custom n8n workflows",
       "Connecting business tools via APIs",
-      "Automated email & messaging updates",
+      "Automated email & messaging alerts",
       "Spreadsheet & CRM synchronization",
       "Data cleanup & formatting",
-      "Error handling & reliability",
+      "Error handling & reliability safeguards",
     ],
   },
   {
     title: "Websites & Web Applications",
     iconName: "Code2",
     items: [
-      "Conversion-focused service websites",
+      "High-converting service websites",
       "Responsive mobile-friendly layouts",
-      "React & Vite application architecture",
+      "Modern React & Vite web applications",
       "Fast load-time optimization",
       "Form integration & lead capture",
-      "Vercel deployment & hosting",
+      "Secure cloud hosting & deployment",
     ],
   },
   {
     title: "Client Portals & Dashboards",
     iconName: "Layers",
     items: [
-      "Client login areas",
+      "Dedicated client login areas",
       "Centralized operational dashboards",
       "User role & access management",
-      "Supabase database integration",
+      "Database & CRM integration",
       "Structured task & approval flows",
     ],
   },
@@ -230,20 +230,20 @@ export const EXPERTISE_SKILLS: SkillCategory[] = [
     iconName: "Target",
     items: [
       "Automated business search workflows",
-      "Lead detail enrichment via APIs",
+      "Lead detail verification via APIs",
       "Data deduplication & cleaning",
       "Structured spreadsheet delivery",
       "CRM import preparation",
     ],
   },
   {
-    title: "Operational Strategy",
+    title: "Workflow Strategy",
     iconName: "Brain",
     items: [
-      "Workflow audit & mapping",
-      "First-principles process design",
+      "Workflow review & process mapping",
+      "Practical systems design",
       "Tool integration evaluation",
-      "Rapid prototyping & iteration",
+      "Rapid prototyping & testing",
     ],
   },
 ];
@@ -257,12 +257,12 @@ export const SERVICES: ServiceItem[] = [
       "Your team spends too much time copying information, updating spreadsheets, sending routine messages, and moving data between different tools.",
     solution: "I build automated workflows that handle these repetitive steps in the background.",
     potentialBenefit:
-      "Reduce manual work, avoid preventable mistakes, and give your team more time for customers and important decisions.",
+      "Reduce manual work, avoid preventable mistakes, and give your team more time for clients and high-value priorities.",
     supportingTools:
-      "Built with n8n, AI tools, APIs, spreadsheets, CRMs, and the applications your business already uses.",
+      "Built with n8n, APIs, spreadsheets, CRMs, and the applications your business already uses.",
     processSteps: [
       "Trigger event occurs",
-      "Data verified & cleaned",
+      "Data verified & formatted",
       "Tools synchronized",
       "Team notified automatically",
     ],
@@ -273,33 +273,33 @@ export const SERVICES: ServiceItem[] = [
     title: "Websites That Generate Inquiries",
     iconName: "Rocket",
     problem:
-      "Your current website looks outdated, confuses visitors, or does not give people a clear reason to contact you.",
+      "Your current website looks outdated, confuses visitors, or does not give people a clear reason to reach out.",
     solution:
-      "I design professional, mobile-friendly websites that clearly explain your offer and guide visitors toward taking action.",
+      "I design professional, mobile-friendly websites that clearly explain your services and guide visitors toward booking a call or submitting an inquiry.",
     potentialBenefit:
-      "Build credibility, make your services easier to understand, and turn more website visitors into inquiries.",
+      "Build credibility, make your services easy to understand, and turn more website visitors into inquiries.",
     supportingTools:
-      "Built with modern web tools, responsive design, clear layouts, and fast loading performance.",
+      "Built with modern web frameworks, responsive layouts, clear copy, and fast loading performance.",
     processSteps: [
       "Visitor lands on site",
       "Understands clear offer",
       "Sees trust proof",
       "Submits inquiry form",
     ],
-    desc: "Fast, modern websites engineered to build credibility, explain complex services simply, and capture qualified business inquiries.",
+    desc: "Fast, modern websites engineered to build credibility, explain services simply, and capture qualified business inquiries.",
   },
   {
     tag: "03",
     title: "Client Portals and Business Dashboards",
     iconName: "Layers",
     problem:
-      "Important information is spread across messages, spreadsheets, emails, and multiple applications.",
+      "Important information is scattered across WhatsApp chats, spreadsheets, emails, and multiple disconnected tools.",
     solution:
-      "I build easy-to-use portals and dashboards that bring important information and actions into one place.",
+      "I build easy-to-use portals and dashboards that bring project details, client communication, and status tracking into one place.",
     potentialBenefit:
-      "Make everyday operations clearer, reduce confusion, and give staff or customers a simpler experience.",
+      "Make everyday operations clearer, reduce confusion, and give your staff and clients a seamless experience.",
     supportingTools:
-      "Built with dedicated login spaces, custom dashboards, and connected database tools.",
+      "Built with secure login spaces, custom dashboards, and connected database tools.",
     processSteps: [
       "User logs into portal",
       "Views unified status",
@@ -313,20 +313,20 @@ export const SERVICES: ServiceItem[] = [
     title: "Lead Research and Organization",
     iconName: "Target",
     problem:
-      "Finding suitable businesses and organizing their information manually takes too much time.",
+      "Finding relevant business leads and organizing their contact information manually takes too much time.",
     solution:
-      "I create systems that research, collect, clean, and organize business information for responsible outreach.",
+      "I build systems that search, collect, verify, and organize prospect data directly into your spreadsheets or CRM.",
     potentialBenefit:
       "Spend less time preparing lead lists and more time having relevant business conversations.",
     supportingTools:
-      "Built with automated search tools, lead enrichment APIs, and clean CRM / spreadsheet formatting.",
+      "Built with automated search workflows, data enrichment APIs, and structured CRM formatting.",
     processSteps: [
       "Business search",
       "Information collected",
       "Duplicates removed",
-      "Lead list reviewed",
+      "Clean list delivered",
     ],
-    desc: "Automated business research systems that gather, enrich, and format lead data directly into your spreadsheets or CRM.",
+    desc: "Automated business research systems that gather, verify, and format lead data directly into your spreadsheets or CRM.",
   },
 ];
 
@@ -341,125 +341,125 @@ export const SERVICES: ServiceItem[] = [
 export const PROJECTS: ProjectItem[] = [
   {
     id: "lead-research-automation",
-    title: "Automated Business Lead Research",
+    title: "Automated Business Lead Research System",
     tag: "Completed Build",
     status: "Completed Build",
-    desc: "An n8n workflow that searched, enriched, and deduplicated business contact data across 15 target areas, delivering 600+ ready-to-contact leads directly into a spreadsheet.",
+    desc: "An automated n8n workflow that searched, verified, and deduplicated business contact data across 15 target areas, delivering 600+ clean leads directly into a spreadsheet.",
     problem:
-      "Building a useful business lead list manually requires repeated searching, copying, checking, and spreadsheet updates.",
+      "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
     solution:
-      "Built and ran a workflow that searched for relevant businesses across 15 target areas, enriched each result with available contact details, removed duplicates, and delivered a clean spreadsheet ready for outreach.",
+      "Built an automated workflow that searched 15 target areas, gathered verified contact details, filtered duplicates, and delivered ready-to-contact leads directly into Google Sheets.",
     howItWorks: [
-      "Defined target business criteria & search parameters for 15 areas",
-      "Gathered public company data & contact information per area",
-      "Cleaned data, removed duplicates, & verified fields",
+      "Defined target business criteria and search parameters for 15 areas",
+      "Gathered public company data and contact details automatically",
+      "Cleaned data, removed duplicates, and validated email & phone records",
       "Delivered 600+ formatted, deduplicated leads ready for outreach",
     ],
     potentialValue:
-      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing what would have been days of manual searching and spreadsheet cleanup.",
-    toolsUsed: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Formatting Logic"],
+      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
+    toolsUsed: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Cleaning Logic"],
     imageUrls: ["/src/assets/placeholder-project-lead-research.jpg"],
     accent: "from-cyan-500/15 to-transparent",
     challenge:
-      "Building a useful business lead list manually requires repeated searching, copying, checking, and spreadsheet updates.",
+      "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
     objective:
-      "Built and ran a workflow that searched for relevant businesses across 15 target areas, enriched each result with available contact details, removed duplicates, and delivered a clean spreadsheet ready for outreach.",
-    techStack: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Formatting Logic"],
+      "Built an automated workflow that searched 15 target areas, gathered verified contact details, filtered duplicates, and delivered ready-to-contact leads directly into Google Sheets.",
+    techStack: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Cleaning Logic"],
     features: [
-      "Defined target business criteria & search parameters for 15 areas",
-      "Gathered public company data & contact information per area",
-      "Cleaned data, removed duplicates, & verified fields",
+      "Defined target business criteria and search parameters for 15 areas",
+      "Gathered public company data and contact details automatically",
+      "Cleaned data, removed duplicates, and validated email & phone records",
       "Delivered 600+ formatted, deduplicated leads ready for outreach",
     ],
     valueCreated:
-      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing what would have been days of manual searching and spreadsheet cleanup.",
+      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
   },
   {
     id: "inquiry-follow-up-workflow",
-    title: "Customer Inquiry and Follow-Up Workflow",
+    title: "Instant Lead Routing & Follow-Up System",
     tag: "Capability Demonstration",
     status: "Capability Demonstration",
-    desc: "A connected system that centralizes incoming website inquiries, notifies team members instantly, and drafts initial responses.",
+    desc: "A connected system that centralizes incoming website inquiries, alerts team members instantly via WhatsApp or email, and prepares the next follow-up step.",
     problem:
-      "Website inquiries can be missed or handled inconsistently when they arrive through different channels.",
+      "Website inquiries can be missed or handled with delays when incoming messages arrive through scattered channels.",
     solution:
-      "A system that collects inquiries, organizes the details, notifies the correct person, and prepares the next follow-up step.",
+      "A connected system that captures inquiries instantly, extracts key details, alerts the right team member, and prepares a rapid response.",
     howItWorks: [
       "Visitor submits an inquiry form on the website",
-      "System structures message data & checks urgency",
-      "Team receives instant notification via email or chat",
-      "Confirmation message sent & task assigned",
+      "System organizes contact details, project need, and urgency",
+      "Assigned team member receives an instant alert via WhatsApp or email",
+      "Instant confirmation sent to client with clear next steps",
     ],
-    potentialValue: "Intended to make inquiry handling faster, clearer, and more consistent.",
-    toolsUsed: ["Webhooks", "n8n", "CRM Integration", "Instant Messaging APIs"],
+    potentialValue: "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
+    toolsUsed: ["n8n Workflows", "Webhooks", "CRM Integration", "Instant Messaging & Email Alerts"],
     imageUrls: ["/src/assets/placeholder-project-inquiry-workflow.jpg"],
     accent: "from-primary/25 to-transparent",
     challenge:
-      "Website inquiries can be missed or handled inconsistently when they arrive through different channels.",
+      "Website inquiries can be missed or handled with delays when incoming messages arrive through scattered channels.",
     objective:
-      "A system that collects inquiries, organizes the details, notifies the correct person, and prepares the next follow-up step.",
-    techStack: ["Webhooks", "n8n", "CRM Integration", "Instant Messaging APIs"],
+      "A connected system that captures inquiries instantly, extracts key details, alerts the right team member, and prepares a rapid response.",
+    techStack: ["n8n Workflows", "Webhooks", "CRM Integration", "Instant Messaging & Email Alerts"],
     features: [
       "Visitor submits an inquiry form on the website",
-      "System structures message data & checks urgency",
-      "Team receives instant notification via email or chat",
-      "Confirmation message sent & task assigned",
+      "System organizes contact details, project need, and urgency",
+      "Assigned team member receives an instant alert via WhatsApp or email",
+      "Instant confirmation sent to client with clear next steps",
     ],
-    valueCreated: "Intended to make inquiry handling faster, clearer, and more consistent.",
+    valueCreated: "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
   },
   {
     id: "business-operations-automation",
-    title: "Business Operations Automation",
+    title: "Automated Business Admin & Task Dispatch",
     tag: "Capability Demonstration",
     status: "Capability Demonstration",
-    desc: "An automated operational backbone connecting spreadsheets, email notifications, and task records into a single background process.",
+    desc: "A centralized workflow connecting forms, spreadsheets, and task alerts to handle routine administration automatically in the background.",
     problem:
-      "Small businesses often manage recurring tasks across spreadsheets, emails, forms, and disconnected applications.",
+      "Teams waste hours every week updating spreadsheets, assigning routine tasks manually, and chasing status updates.",
     solution:
-      "A connected workflow that collects information, organizes it, notifies the correct person, and records the completed action.",
+      "A connected background workflow that validates incoming project data, updates records in a central sheet, and assigns tasks to team members automatically.",
     howItWorks: [
-      "Information received from form or spreadsheet",
-      "Workflow checks details & validates requirements",
-      "Records updated automatically in central system",
-      "Responsible team member notified & follow-up prepared",
+      "Information received from form or spreadsheet update",
+      "Workflow checks details and validates required information",
+      "Central records and dashboards update automatically",
+      "Responsible team member notified with clear deadlines",
     ],
     potentialValue:
-      "Designed to reduce repeated administrative work and make routine operations more consistent.",
-    toolsUsed: ["n8n", "APIs", "Google Sheets", "Email Notifications", "Database Sync"],
+      "Eliminates repetitive data entry and gives managers real-time visibility without manual status chasing.",
+    toolsUsed: ["n8n Workflows", "Google Sheets", "Task Management APIs", "Automated Alerts"],
     imageUrls: ["/src/assets/placeholder-project-operations-automation.jpg"],
     accent: "from-emerald-500/15 to-transparent",
     challenge:
-      "Small businesses often manage recurring tasks across spreadsheets, emails, forms, and disconnected applications.",
+      "Teams waste hours every week updating spreadsheets, assigning routine tasks manually, and chasing status updates.",
     objective:
-      "A connected workflow that collects information, organizes it, notifies the correct person, and records the completed action.",
-    techStack: ["n8n", "APIs", "Google Sheets", "Email Notifications", "Database Sync"],
+      "A connected background workflow that validates incoming project data, updates records in a central sheet, and assigns tasks to team members automatically.",
+    techStack: ["n8n Workflows", "Google Sheets", "Task Management APIs", "Automated Alerts"],
     features: [
-      "Information received from form or spreadsheet",
-      "Workflow checks details & validates requirements",
-      "Records updated automatically in central system",
-      "Responsible team member notified & follow-up prepared",
+      "Information received from form or spreadsheet update",
+      "Workflow checks details and validates required information",
+      "Central records and dashboards update automatically",
+      "Responsible team member notified with clear deadlines",
     ],
     valueCreated:
-      "Designed to reduce repeated administrative work and make routine operations more consistent.",
+      "Eliminates repetitive data entry and gives managers real-time visibility without manual status chasing.",
   },
   {
     id: "conversion-service-website",
-    title: "Conversion-Focused Service Website",
+    title: "High-Converting Service Website & Booking Flow",
     tag: "Personal Project",
     status: "Personal Project",
-    desc: "A premium responsive service website built with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
+    desc: "A fast, responsive service website with clear messaging, structured service offerings, interactive workflow demonstrations, and direct WhatsApp and inquiry paths.",
     problem:
-      "Many service businesses have websites that look acceptable but fail to explain their offer clearly or guide visitors toward making an inquiry.",
+      "Many service websites look generic, confuse visitors with jargon, and fail to generate consistent inquiries.",
     solution:
-      "A premium responsive service website with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
+      "A custom responsive website that explains complex services simply, demonstrates credibility, and gives visitors clear paths to reach out.",
     howItWorks: [
-      "Visitor arrives on clear hero explaining core value",
-      "Explores plain-language services & proof examples",
-      "Calculates potential time savings on interactive tool",
-      "Sends direct inquiry via email or WhatsApp",
+      "Visitor lands on a clean hero explaining the core value",
+      "Explores plain-language services and interactive demonstrations",
+      "Selects specific business challenges and sees practical solutions",
+      "Sends a direct inquiry or starts a WhatsApp conversation",
     ],
     potentialValue:
-      "Designed to help a service provider communicate more clearly, build credibility, and make it easier for prospective customers to take the next step.",
+      "Designed to help a service provider communicate clearly, build credibility, and turn more visitors into active inquiries.",
     toolsUsed: [
       "React",
       "TypeScript",
@@ -471,9 +471,9 @@ export const PROJECTS: ProjectItem[] = [
     imageUrls: ["/src/assets/placeholder-project-conversion-website.jpg"],
     accent: "from-amber-500/15 to-transparent",
     challenge:
-      "Many service businesses have websites that look acceptable but fail to explain their offer clearly or guide visitors toward making an inquiry.",
+      "Many service websites look generic, confuse visitors with jargon, and fail to generate consistent inquiries.",
     objective:
-      "A premium responsive service website with clear messaging, structured services, interactive project explanations, an automation savings calculator, and direct email and WhatsApp inquiry paths.",
+      "A custom responsive website that explains complex services simply, demonstrates credibility, and gives visitors clear paths to reach out.",
     techStack: [
       "React",
       "TypeScript",
@@ -483,64 +483,64 @@ export const PROJECTS: ProjectItem[] = [
       "Responsive UI Design",
     ],
     features: [
-      "Visitor arrives on clear hero explaining core value",
-      "Explores plain-language services & proof examples",
-      "Calculates potential time savings on interactive tool",
-      "Sends direct inquiry via email or WhatsApp",
+      "Visitor lands on a clean hero explaining the core value",
+      "Explores plain-language services and interactive demonstrations",
+      "Selects specific business challenges and sees practical solutions",
+      "Sends a direct inquiry or starts a WhatsApp conversation",
     ],
     valueCreated:
-      "Designed to help a service provider communicate more clearly, build credibility, and make it easier for prospective customers to take the next step.",
+      "Designed to help a service provider communicate clearly, build credibility, and turn more visitors into active inquiries.",
   },
   {
     id: "shorts-content-repurposing",
-    title: "Shorts Content Repurposing Workflow",
+    title: "Automated Video Repurposing Workflow",
     tag: "Capability Demonstration",
     status: "Capability Demonstration",
-    desc: "An automated workflow concept for selecting highlight clips from longer video recordings and formatting them into vertical video drafts.",
+    desc: "An automated workflow concept that extracts key highlights from long recordings and drafts ready-to-edit short-form video scripts.",
     problem:
-      "Repurposing raw video recordings into short-form vertical content manually requires hours of clip scanning and script formatting.",
+      "Manually re-watching long video recordings to find highlights and format clips takes hours of editor time.",
     solution:
-      "A system that parses video transcripts for key highlight moments, formats listicle scripts, and prepares vertical clip templates.",
+      "A system that transcribes recordings, identifies key takeaway moments, and formats concise video scripts for review.",
     howItWorks: [
-      "Parses long-form video transcript for key points",
-      "Formats engaging 60-second vertical video scripts",
-      "Applies caption formatting & hook structures",
-      "Exports structured clip assets for final review",
+      "Extracts transcript from long-form video recording",
+      "Identifies key takeaway points and hooks",
+      "Formats structured 60-second video script drafts",
+      "Prepares clip outlines for final production review",
     ],
     potentialValue:
-      "Intended to simplify content preparation and reduce manual video formatting time.",
-    toolsUsed: ["Python Scripts", "n8n", "Speech-to-Text AI", "Video Formatting Logic"],
+      "Reduces hours of manual footage scanning into ready-to-produce video drafts.",
+    toolsUsed: ["Python Scripts", "n8n Workflows", "AI Transcription", "Content Formatting"],
     imageUrls: ["/src/assets/placeholder-project-shorts-repurposing.jpg"],
     accent: "from-red-500/15 to-transparent",
     challenge:
-      "Repurposing raw video recordings into short-form vertical content manually requires hours of clip scanning and script formatting.",
+      "Manually re-watching long video recordings to find highlights and format clips takes hours of editor time.",
     objective:
-      "A system that parses video transcripts for key highlight moments, formats listicle scripts, and prepares vertical clip templates.",
-    techStack: ["Python Scripts", "n8n", "Speech-to-Text AI", "Video Formatting Logic"],
+      "A system that transcribes recordings, identifies key takeaway moments, and formats concise video scripts for review.",
+    techStack: ["Python Scripts", "n8n Workflows", "AI Transcription", "Content Formatting"],
     features: [
-      "Parses long-form video transcript for key points",
-      "Formats engaging 60-second vertical video scripts",
-      "Applies caption formatting & hook structures",
-      "Exports structured clip assets for final review",
+      "Extracts transcript from long-form video recording",
+      "Identifies key takeaway points and hooks",
+      "Formats structured 60-second video script drafts",
+      "Prepares clip outlines for final production review",
     ],
     valueCreated:
-      "Intended to simplify content preparation and reduce manual video formatting time.",
+      "Reduces hours of manual footage scanning into ready-to-produce video drafts.",
   },
 ];
 
 export const FOCUS_AREAS: FocusArea[] = [
   { label: "Building custom n8n business automation workflows", iconName: "Workflow" },
-  { label: "Designing conversion-focused websites & web applications", iconName: "Layers" },
-  { label: "Connecting tools & software systems via APIs", iconName: "Zap" },
-  { label: "Creating automated lead research & cleanup systems", iconName: "Target" },
+  { label: "Designing high-converting service websites & portals", iconName: "Layers" },
+  { label: "Connecting business tools & software systems via APIs", iconName: "Zap" },
+  { label: "Creating automated lead research & data verification systems", iconName: "Target" },
   { label: "Building client portals & central operational dashboards", iconName: "Code2" },
-  { label: "Cloud hosting, Vercel deployment & modern web tech", iconName: "Cpu" },
+  { label: "Cloud hosting, fast deployment & modern web technologies", iconName: "Cpu" },
 ];
 
 export const CREDENTIALS_SUMMARY = [
   "Specialized Business Automation & n8n Workflow Builder",
-  "Modern Web Developer specializing in React, Vite & conversion design",
-  "Experienced API Integration & Data Systems Specialist",
+  "Modern Web Developer specializing in React, Vite & high-converting design",
+  "Experienced API Integration & Connected Systems Specialist",
 ];
 
 export const FORM_SERVICE_OPTIONS = [

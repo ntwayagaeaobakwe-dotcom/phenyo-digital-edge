@@ -60,10 +60,10 @@ export function HeaderNav() {
   }, []);
 
   const navLinks = [
-    { name: "Systems", href: "#systems", id: "systems" },
-    { name: "Diagnostic", href: "#diagnostic", id: "diagnostic" },
+    { name: "Workflows", href: "#systems", id: "systems" },
+    { name: "Bottlenecks", href: "#diagnostic", id: "diagnostic" },
     { name: "Case Studies", href: "#projects", id: "projects" },
-    { name: "Capabilities", href: "#studio", id: "studio" },
+    { name: "Delivery", href: "#studio", id: "studio" },
     { name: "Process", href: "#process", id: "process" },
   ];
 
@@ -133,7 +133,7 @@ export function HeaderNav() {
                 href="#contact"
                 className="group inline-flex items-center gap-2 bg-[#F3F0E8] hover:bg-white text-[#080A09] text-xs font-semibold px-4.5 py-2 rounded-full transition-all duration-150 active:scale-[0.97] focus-ring"
               >
-                <span>Audit Workflow</span>
+                <span>Request Review</span>
                 <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-150 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </a>
             </div>
@@ -144,7 +144,7 @@ export function HeaderNav() {
                 href="#contact"
                 className="hidden sm:inline-flex items-center gap-1.5 bg-[#F3F0E8] text-[#080A09] text-xs font-semibold px-3.5 py-1.5 rounded-full focus-ring"
               >
-                <span>Audit</span>
+                <span>Review</span>
                 <ArrowUpRight className="w-3.5 h-3.5" />
               </a>
 
@@ -207,7 +207,7 @@ export function HeaderNav() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full inline-flex items-center justify-center gap-2 bg-[#F3F0E8] text-[#080A09] font-semibold py-3.5 rounded-full shadow-md"
               >
-                <span>Tell me what is slowing you down</span>
+                <span>Request a Systems Review</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
             </div>

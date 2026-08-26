@@ -100,7 +100,7 @@ export function HeroSection() {
                 href="#contact"
                 className="inline-flex items-center justify-center gap-2.5 bg-[#F3F0E8] hover:bg-white text-[#080A09] font-semibold text-xs uppercase tracking-wider px-6 py-4 rounded-full transition-all duration-150 active:scale-[0.97] focus-ring text-center shadow-md cursor-pointer"
               >
-                <span>Tell me what is slowing you down</span>
+                <span>Request a Systems Review</span>
                 <ArrowUpRight className="w-4 h-4" />
               </a>
 
@@ -108,7 +108,7 @@ export function HeroSection() {
                 href="#systems"
                 className="inline-flex items-center justify-center gap-2 bg-[#082D2D]/80 hover:bg-[#123E3D] text-[#F3F0E8] border border-[rgba(184,181,172,0.25)] backdrop-blur-md font-medium text-xs uppercase tracking-wider px-5 py-4 rounded-full transition-all duration-150 active:scale-[0.97] focus-ring text-center cursor-pointer"
               >
-                <span>See the system work</span>
+                <span>See how the workflow works</span>
                 <ArrowDown className="w-4 h-4 text-[#5FD8CD]" />
               </a>
             </div>
@@ -134,7 +134,7 @@ export function HeroSection() {
                     <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD]" />
                   </span>
                   <span className="text-[#B8B5AC] font-mono text-[11px]">
-                    Direct Architecture & Build
+                    Systems Design & Engineering
                   </span>
                 </div>
               </div>
@@ -156,19 +156,19 @@ export function HeroSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 border-t border-[rgba(184,181,172,0.18)] pt-3.5 text-xs font-mono text-[#B8B5AC] bg-[#080A09]/60 backdrop-blur-sm px-4 py-2.5 rounded-xl">
             <div className="flex items-center gap-2">
               <span className="text-[#5FD8CD] font-bold">01/</span>
-              <span className="text-[#F3F0E8] font-medium">Inquiry Ingestion</span>
+              <span className="text-[#F3F0E8] font-medium">Instant Lead Capture</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[#5FD8CD] font-bold">02/</span>
-              <span className="text-[#F3F0E8] font-medium">Zero-Leak Lead Routing</span>
+              <span className="text-[#F3F0E8] font-medium">Automated Lead Routing</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[#5FD8CD] font-bold">03/</span>
-              <span className="text-[#F3F0E8] font-medium">Dispatch & CRM Sync</span>
+              <span className="text-[#F3F0E8] font-medium">Team Dispatch & CRM Sync</span>
             </div>
             <div className="flex items-center gap-2">
               <span className="text-[#5FD8CD] font-bold">04/</span>
-              <span className="text-[#F3F0E8] font-medium">Automated Reporting</span>
+              <span className="text-[#F3F0E8] font-medium">Automated Daily Reporting</span>
             </div>
           </div>
         </div>

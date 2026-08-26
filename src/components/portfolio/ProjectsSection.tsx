@@ -16,7 +16,7 @@ export function ProjectsSection() {
   return (
     <SectionShell
       id="projects"
-      eyebrow="System Case Studies"
+      eyebrow="Case Studies & Systems"
       iconGlyph="04"
       themeVariant="teal"
       declarativeTitle="The problem, the system,"
@@ -67,7 +67,7 @@ export function ProjectsSection() {
                   <div className="space-y-4 text-sm font-sans">
                     <div>
                       <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC] block mb-1.5 font-semibold">
-                        THE BOTTLENECK
+                        THE CHALLENGE
                       </span>
                       <p className="text-[#B8B5AC] leading-relaxed font-normal">
                         {project.problem}
@@ -76,7 +76,7 @@ export function ProjectsSection() {
 
                     <div>
                       <span className="font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] block mb-1.5 font-semibold">
-                        SYSTEM ARCHITECTURE
+                        THE CONNECTED SYSTEM
                       </span>
                       <p className="text-[#F3F0E8] leading-relaxed font-normal">
                         {project.solution}
@@ -90,10 +90,10 @@ export function ProjectsSection() {
                       type="button"
                       onClick={() => handleOpenModal(project)}
                       className="inline-flex items-center gap-2 rounded-full bg-[#123E3D] hover:bg-[#194C4B] border border-[rgba(184,181,172,0.25)] px-5 py-3 min-h-[44px] font-mono text-xs uppercase tracking-wider text-[#F3F0E8] hover:text-[#5FD8CD] transition-all cursor-pointer focus-ring"
-                      aria-label={`View architectural details for ${project.title}`}
+                      aria-label={`View system details for ${project.title}`}
                     >
                       <Layers className="h-3.5 w-3.5 text-[#5FD8CD]" />
-                      <span>Inspect Architecture Spec</span>
+                      <span>See How It Works</span>
                       <ChevronRight className="h-4 w-4 ml-1 text-[#B8B5AC]" />
                     </button>
                   </div>
@@ -104,9 +104,9 @@ export function ProjectsSection() {
                   <div className="rounded-3xl border border-[rgba(184,181,172,0.18)] bg-[#080A09]/70 p-6 sm:p-8 shadow-inner space-y-6">
                     <div className="flex items-center justify-between border-b border-[rgba(184,181,172,0.12)] pb-3">
                       <span className="font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
-                        [ INFORMATION_FLOW_MAP ]
+                        [ WORKFLOW_STEPS ]
                       </span>
-                      <span className="font-mono text-[10px] text-[#B8B5AC]">[ ACTIVE ROUTE ]</span>
+                      <span className="font-mono text-[10px] text-[#B8B5AC]">[ STEP-BY-STEP ]</span>
                     </div>
 
                     {/* Step Nodes */}
@@ -129,7 +129,7 @@ export function ProjectsSection() {
                     {/* Tech Stack Chips */}
                     <div className="pt-2 border-t border-[rgba(184,181,172,0.12)]">
                       <span className="font-mono text-[10px] uppercase tracking-widest text-[#B8B5AC] block mb-2">
-                        INTEGRATED STACK
+                        TOOLS & APIS USED
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {project.toolsUsed.map((tool) => (

@@ -50,7 +50,7 @@ export function ContactSection() {
         if (!pending) return;
         sessionStorage.removeItem("pendingIndustryContext");
         setIndustryContext(pending);
-        setValue("message", `[Bottleneck Diagnostic: ${pending}]\n`, { shouldDirty: true });
+        setValue("message", `[Selected Focus: ${pending}]\n`, { shouldDirty: true });
       } catch {
         // storage fallback
       }
@@ -116,7 +116,7 @@ export function ContactSection() {
   return (
     <SectionShell
       id="contact"
-      eyebrow="Direct Architecture Review"
+      eyebrow="Request a Systems Review"
       iconGlyph="07"
       themeVariant="ink"
       declarativeTitle="Tell me what is slowing you down"
@@ -128,7 +128,7 @@ export function ContactSection() {
           <div className="lg:col-span-5 space-y-6">
             <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
               <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD] animate-pulse" />
-              <span>[ 24H_DIRECT_SLA ]</span>
+              <span>[ 24-HOUR RESPONSE ]</span>
             </div>
 
             <h3 className="text-3xl font-serif font-normal text-[#F3F0E8] tracking-tight leading-tight">
@@ -136,15 +136,16 @@ export function ContactSection() {
             </h3>
 
             <p className="text-sm text-[#B8B5AC] leading-relaxed font-sans font-normal">
-              Describe the manual tasks, broken handoffs, or website challenges holding your
-              business back. You will receive a clear technical recommendation, not a sales script.
+              Describe the manual tasks, delayed follow-ups, or website challenges holding your
+              business back. You will receive a practical recommendation on how to solve them—not a
+              generic sales pitch.
             </p>
 
             <div className="space-y-3 font-mono text-xs text-[#B8B5AC] pt-2">
               {[
-                "Direct review of your actual workflow bottlenecks.",
-                "Clear architectural recommendation & software stack.",
-                "If aligned, we build a working prototype first.",
+                "Direct review of your actual workflows & bottlenecks.",
+                "Clear recommendation on the best tools & automation setup.",
+                "If aligned, we build a working demo around your process first.",
               ].map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5">
                   <span className="text-[#5FD8CD] font-bold">[✓]</span>
@@ -193,12 +194,12 @@ export function ContactSection() {
                   <CheckCircle2 className="h-6 w-6" />
                 </div>
                 <h4 className="text-2xl font-serif font-normal text-[#080A09]">
-                  {usedFallback ? "Inquiry Formatted!" : "Inquiry Delivered!"}
+                  {usedFallback ? "Inquiry Formatted in Email!" : "Inquiry Received!"}
                 </h4>
                 <p className="text-[#282B29] max-w-sm mx-auto leading-relaxed font-sans">
                   {usedFallback
                     ? "Your inquiry has been formatted into your default email client. Please click send to finalize."
-                    : "Thank you — your inquiry has been routed to my queue. I will review your operational requirements and respond within 24 hours (GST)."}
+                    : "Thank you — your inquiry has been received. I will review your requirements and respond within 24 hours (GST)."}
                 </p>
                 <button
                   type="button"
@@ -217,9 +218,9 @@ export function ContactSection() {
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-mono text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-[rgba(8,45,45,0.1)]">
                   <span className="text-[#082D2D] font-bold uppercase tracking-widest">
-                    [ INQUIRY_PAYLOAD ]
+                    [ INQUIRY DETAILS ]
                   </span>
-                  <span className="text-[#5C5953] text-[10px]">RESPONSE GUARANTEE &lt; 24H</span>
+                  <span className="text-[#5C5953] text-[10px]">RESPONSE WITHIN 24 HOURS</span>
                 </div>
 
                 {/* Name */}
@@ -272,7 +273,7 @@ export function ContactSection() {
                     htmlFor="service"
                     className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
                   >
-                    PRIMARY SERVICE REQUIREMENT *
+                    HOW CAN WE HELP? *
                   </label>
                   <select
                     id="service"
@@ -293,12 +294,12 @@ export function ContactSection() {
                     htmlFor="message"
                     className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
                   >
-                    PROBLEM DESCRIPTION / GOALS *
+                    WHAT IS SLOWING YOUR BUSINESS DOWN? *
                   </label>
                   <textarea
                     id="message"
                     rows={3}
-                    placeholder="Describe what is taking too much time, disconnected tools, or project goals..."
+                    placeholder="Describe repetitive tasks, scattered spreadsheets, delayed leads, or what you want to automate..."
                     {...register("message")}
                     className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans resize-none focus-ring transition-colors ${
                       errors.message ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
@@ -318,11 +319,11 @@ export function ContactSection() {
                   {isSubmitting ? (
                     <>
                       <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>Transmitting Inquiry Payload...</span>
+                      <span>Sending Inquiry...</span>
                     </>
                   ) : (
                     <>
-                      <span>Request Process Review</span>
+                      <span>Request a Systems Review</span>
                       <Send className="h-3.5 w-3.5" />
                     </>
                   )}

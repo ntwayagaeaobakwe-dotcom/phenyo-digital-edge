@@ -65,7 +65,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="p-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60">
               <div className="flex items-center gap-2 text-xs font-mono text-[#B8B5AC] font-semibold uppercase tracking-wider mb-2">
-                <Target className="h-4 w-4 text-[#B8B5AC]" /> The Bottleneck
+                <Target className="h-4 w-4 text-[#B8B5AC]" /> The Challenge
               </div>
               <p className="text-[#B8B5AC] leading-relaxed text-xs sm:text-sm font-normal">
                 {project.problem}
@@ -74,7 +74,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
 
             <div className="p-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60">
               <div className="flex items-center gap-2 text-xs font-mono text-[#5FD8CD] font-semibold uppercase tracking-wider mb-2">
-                <Zap className="h-4 w-4 text-[#5FD8CD]" /> What Was Built
+                <Zap className="h-4 w-4 text-[#5FD8CD]" /> The System Built
               </div>
               <p className="text-[#F3F0E8] leading-relaxed text-xs sm:text-sm font-normal">
                 {project.solution}
@@ -86,7 +86,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
           {project.howItWorks && project.howItWorks.length > 0 && (
             <div>
               <div className="text-xs font-mono uppercase tracking-widest text-[#B8B5AC] mb-2.5">
-                How It Works — Step-by-Step Workflow
+                Step-by-Step Workflow
               </div>
               <ul className="grid sm:grid-cols-2 gap-2.5 text-xs text-[#B8B5AC]">
                 {project.howItWorks.map((step, idx) => (
@@ -107,7 +107,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
           {/* Supporting Tools & Tech Stack */}
           <div>
             <div className="text-xs font-mono uppercase tracking-widest text-[#B8B5AC] mb-2 flex items-center gap-1.5">
-              <Cpu className="h-3.5 w-3.5 text-[#5FD8CD]" /> Supporting Tools & Applications
+              <Cpu className="h-3.5 w-3.5 text-[#5FD8CD]" /> Connected Tools & Technology
             </div>
             <div className="flex flex-wrap gap-2">
               {project.toolsUsed.map((tool) => (
@@ -124,7 +124,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
           {/* Estimated Value */}
           <div className="p-4 rounded-2xl border border-[rgba(184,181,172,0.18)] bg-[#123E3D]/60 shadow-xs">
             <div className="text-xs font-mono uppercase tracking-widest text-[#5FD8CD] font-semibold mb-1">
-              Estimated Operational Benefit
+              Business Impact & Time Saved
             </div>
             <div className="text-sm font-medium text-[#F3F0E8] leading-relaxed font-sans">
               {project.potentialValue}
@@ -137,7 +137,7 @@ export function ProjectModal({ project, open, onOpenChange }: ProjectModalProps)
               onClick={handleCtaClick}
               className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#F3F0E8] hover:bg-white px-6 py-4 text-xs font-mono uppercase tracking-wider font-bold text-[#080A09] shadow-md active:scale-[0.98] transition-all cursor-pointer focus-ring"
             >
-              <span>Discuss a Similar Build</span>
+              <span>Build a System Like This</span>
               <ArrowUpRight className="h-4 w-4" />
             </button>
           </div>

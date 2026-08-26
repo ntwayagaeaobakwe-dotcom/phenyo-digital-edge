@@ -20,17 +20,17 @@ export function FooterSection() {
           {/* Quick Links */}
           <div className="md:col-span-3 space-y-3 font-mono text-xs">
             <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">
-              [ SYSTEMS ]
+              [ EXPLORE ]
             </span>
             <ul className="space-y-2 text-[#B8B5AC]">
               <li>
                 <a href="#systems" className="hover:text-[#5FD8CD] transition-colors">
-                  Interactive Studio
+                  Interactive Demo
                 </a>
               </li>
               <li>
                 <a href="#diagnostic" className="hover:text-[#5FD8CD] transition-colors">
-                  Bottleneck Diagnostic
+                  Identify Bottlenecks
                 </a>
               </li>
               <li>
@@ -40,7 +40,7 @@ export function FooterSection() {
               </li>
               <li>
                 <a href="#process" className="hover:text-[#5FD8CD] transition-colors">
-                  Process
+                  How We Work
                 </a>
               </li>
             </ul>

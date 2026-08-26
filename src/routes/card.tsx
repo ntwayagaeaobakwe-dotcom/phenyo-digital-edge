@@ -599,7 +599,7 @@ function CardPage() {
                   hash="contact"
                   className="focus-ring text-accent transition hover:brightness-125"
                 >
-                  Book a systems audit
+                  Request a systems review
                 </Link>
               </p>
               <p className="text-xs text-text-subtle drop-shadow-md sm:text-right">

@@ -18,23 +18,23 @@ const WORKFLOW_STAGES = [
   },
   {
     num: "02",
-    title: "Details Extracted",
-    detail: "Contact, need, and urgency",
+    title: "Details Organized",
+    detail: "Contact, service needed, & urgency",
   },
   {
     num: "03",
     title: "Lead Qualified",
-    detail: "Rules and context applied",
+    detail: "Checked against your criteria",
   },
   {
     num: "04",
-    title: "Owner Notified",
-    detail: "One clear point of ownership",
+    title: "Team Notified",
+    detail: "Instant alert to the right person",
   },
   {
     num: "05",
-    title: "Follow-up Prepared",
-    detail: "Next action stays visible",
+    title: "Next Step Prepared",
+    detail: "Follow-up scheduled & logged",
   },
 ] as const;
 
@@ -304,10 +304,10 @@ export function ScrollScrubWorkflowFilm({ onReplayClick }: ScrollScrubWorkflowFi
           <div className="flex flex-col gap-4 border-b border-[rgba(8,45,45,0.1)] pb-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-bold">
-                [ BLUEPRINT // LEAD_ROUTING ]
+                [ WORKFLOW // LEAD_ROUTING ]
               </span>
               <p className="mt-1 text-xs text-[#282B29] font-sans">
-                Scroll to scrub through the 5-stage automated routing sequence.
+                Scroll to see how an incoming lead moves through the 5 connected stages.
               </p>
             </div>
 

@@ -4,41 +4,41 @@ import { SectionShell } from "./SectionShell";
 const stages = [
   {
     step: "01",
-    name: "Diagnose",
+    name: "Discover & Review",
     tagline:
-      "Map the current workflow, tools, handoffs, recurring tasks and operational bottlenecks.",
+      "We review your current workflow, daily tools, and repetitive tasks to identify where time is being lost.",
     icon: Search,
     details: [
-      "Workflow discovery",
-      "Bottleneck identification",
-      "Existing-tool review",
-      "Requirements and constraints",
+      "Workflow mapping",
+      "Identifying manual bottlenecks",
+      "Reviewing existing tools & software",
+      "Defining project goals & requirements",
     ],
   },
   {
     step: "02",
-    name: "Architect",
+    name: "Design & Plan",
     tagline:
-      "Define the connected system, project boundaries, integrations, safeguards and appropriate measures of success.",
+      "We design the connected system, choose the right tools, map each automation step, and set a clear project scope.",
     icon: Compass,
     details: [
-      "System architecture",
-      "Integration planning",
-      "Human review points",
-      "Scope and delivery proposal",
+      "Workflow blueprint & logic",
+      "Tool & API integration planning",
+      "Human review & approval checkpoints",
+      "Clear scope and fixed timeline",
     ],
   },
   {
     step: "03",
     name: "Build & Handover",
     tagline:
-      "Build and test the approved system, document how it works and prepare the client to operate it confidently.",
+      "We build and test your system, document how everything works, and train your team so you can run it with confidence.",
     icon: Cpu,
     details: [
-      "Iterative implementation",
-      "Testing and exception handling",
-      "Documentation",
-      "Client handover",
+      "Custom build & workflow setup",
+      "Thorough testing & error safeguards",
+      "Step-by-step documentation",
+      "Team handover & walkthrough",
     ],
   },
 ] as const;
@@ -47,7 +47,7 @@ export function EngagementBlueprint() {
   return (
     <SectionShell
       id="process"
-      eyebrow="HOW ENGAGEMENTS WORK"
+      eyebrow="How We Work Together"
       iconGlyph="06"
       themeVariant="sand"
       declarativeTitle="Every system begins with the workflow"
@@ -59,11 +59,11 @@ export function EngagementBlueprint() {
           <div className="space-y-1 max-w-2xl">
             <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-semibold flex items-center gap-2">
               <span className="h-1.5 w-1.5 rounded-full bg-[#082D2D]" />
-              [ BESPOKE_DELIVERY_FRAMEWORK ]
+              [ 3-STEP PROCESS ]
             </span>
             <p className="font-sans text-sm sm:text-base text-[#282B29] leading-relaxed">
-              Recommendations, scope, timelines and expected impact are established after
-              understanding the client’s actual operation.
+              Every system is customized to your business. We take time to understand how your team
+              works before recommending the right setup.
             </p>
           </div>
           <div className="flex items-center gap-2 font-mono text-xs text-[#5C5953] shrink-0">
@@ -117,7 +117,7 @@ export function EngagementBlueprint() {
                 {/* Deliverables / Scope Checklist */}
                 <div className="border-t border-[rgba(8,45,45,0.1)] pt-5 mt-2">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-[#5C5953] block mb-3 font-semibold">
-                    KEY SCOPE & DELIVERABLES
+                    KEY DELIVERABLES
                   </span>
                   <ul className="space-y-2.5 font-sans text-xs text-[#282B29]">
                     {stage.details.map((detail) => (
@@ -140,11 +140,11 @@ export function EngagementBlueprint() {
           <div className="space-y-2 text-center md:text-left max-w-xl">
             <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
               <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD] animate-pulse" />
-              <span>[ INDIVIDUAL_SCOPE_COMMITMENT ]</span>
+              <span>[ CLEAR SCOPE & EXPECTATIONS ]</span>
             </div>
             <p className="font-sans text-xs sm:text-sm text-[#B8B5AC] leading-relaxed">
-              Every engagement is scoped individually. No performance or financial outcome is
-              promised before discovery.
+              Every project is scoped individually around your exact business needs. We define
+              clear deliverables before any build begins.
             </p>
           </div>
 
@@ -153,7 +153,7 @@ export function EngagementBlueprint() {
               href="#contact"
               className="inline-flex w-full md:w-auto items-center justify-center gap-2 bg-[#F3F0E8] hover:bg-white text-[#080A09] font-mono text-xs uppercase tracking-wider font-bold px-7 py-4 rounded-full shadow-md transition-all active:scale-[0.98] focus-ring cursor-pointer"
             >
-              <span>Start with a systems audit</span>
+              <span>Request a Systems Review</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

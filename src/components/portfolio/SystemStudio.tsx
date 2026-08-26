@@ -7,50 +7,50 @@ const scenarios = {
   leads: {
     label: "Lead Routing",
     summary:
-      "An incoming inquiry is organized, qualified, routed to the right owner, and prepared for immediate follow-up.",
+      "An incoming inquiry is captured, organized, qualified, routed to the right team member, and prepared for immediate follow-up.",
     nodes: [
       ["Inquiry received", "Website, WhatsApp, or form"],
-      ["Details extracted", "Contact, need, and urgency"],
-      ["Lead qualified", "Rules and context applied"],
-      ["Owner notified", "One clear point of ownership"],
-      ["Follow-up prepared", "Next action stays visible"],
+      ["Details organized", "Contact, need, and urgency"],
+      ["Lead qualified", "Checked against your criteria"],
+      ["Team notified", "Instant alert to the right person"],
+      ["Follow-up prepared", "Next step scheduled and visible"],
     ],
   },
   onboarding: {
     label: "Client Onboarding",
     summary:
-      "A signed client receives an organized record, access, welcome communication, and a visible next step.",
+      "A signed client receives an organized record in your CRM, folder access, welcome instructions, and a clear next step.",
     nodes: [
-      ["Agreement signed", "Trigger the onboarding flow"],
-      ["Record created", "One source of client details"],
-      ["Access granted", "Portal and shared resources"],
-      ["Welcome sent", "Expectations communicated"],
-      ["Kickoff prepared", "Tasks and owners assigned"],
+      ["Agreement signed", "Triggers the onboarding flow"],
+      ["Record created", "Saved to CRM & spreadsheet"],
+      ["Access granted", "Client portal and files ready"],
+      ["Welcome sent", "Clear next steps delivered"],
+      ["Kickoff scheduled", "Tasks and deadlines assigned"],
     ],
   },
 } as const;
 
 const comparisonRows = [
-  { label: "Handoffs", manual: "4–6 manual handoffs", automated: "One review point" },
+  { label: "Handoffs", manual: "4–6 manual handoffs", automated: "1 automated workflow" },
   {
     label: "First response",
     manual: "Hours or next day",
-    automated: "Immediate acknowledgement (< 60s)",
+    automated: "Under 60 seconds",
   },
   {
-    label: "Repeated admin",
-    manual: "Copy, paste, re-entry",
+    label: "Data entry",
+    manual: "Copying & pasting between apps",
     automated: "Captured once, synced everywhere",
   },
   {
-    label: "Follow-up risk",
-    manual: "Depends on memory",
-    automated: "Next action scheduled & tracked",
+    label: "Follow-up tracking",
+    manual: "Relying on memory",
+    automated: "Scheduled & tracked automatically",
   },
   {
-    label: "Customer record",
-    manual: "Chats and spreadsheets",
-    automated: "One connected single source of truth",
+    label: "Customer records",
+    manual: "Scattered in chats and sheets",
+    automated: "One organized source of truth",
   },
 ] as const;
 
@@ -89,7 +89,7 @@ export function SystemStudio() {
   return (
     <SectionShell
       id="systems"
-      eyebrow="Interactive System Studio"
+      eyebrow="Interactive Workflow Demo"
       iconGlyph="02"
       themeVariant="paper"
       declarativeTitle="See how work moves"
@@ -98,8 +98,8 @@ export function SystemStudio() {
       {/* Studio Header & Scenario Selector */}
       <div className="flex flex-col gap-5 border-b border-[rgba(8,45,45,0.1)] pb-6 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-2xl text-sm leading-relaxed text-[#282B29]">
-          This interactive blueprint shows the logic behind practical business automation—what
-          happens, where ownership changes, and which next action is created.
+          See how an automated system works step-by-step—how an inquiry is captured, where
+          information goes, and how your team is notified.
         </p>
         <div
           className="inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs shrink-0"
@@ -134,10 +134,10 @@ export function SystemStudio() {
             <div className="flex flex-col gap-4 border-b border-[rgba(8,45,45,0.1)] pb-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-bold">
-                  [ BLUEPRINT // CLIENT_ONBOARDING ]
+                  [ WORKFLOW // CLIENT_ONBOARDING ]
                 </span>
                 <p className="mt-1 text-xs text-[#282B29] font-sans">
-                  Automated onboarding checklist and client handoff sequence.
+                  Automated onboarding sequence when a new client signs up.
                 </p>
               </div>
             </div>
@@ -220,14 +220,14 @@ export function SystemStudio() {
         <div className="flex flex-col justify-between rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8">
           <div>
             <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-bold">
-              [ OPERATING_MODEL ]
+              [ WORKFLOW_COMPARISON ]
             </span>
             <h3 className="mt-3 text-2xl font-serif font-normal text-[#080A09]">
-              Compare the same process.
+              Compare manual vs. connected.
             </h3>
             <p className="mt-3 text-sm leading-relaxed text-[#282B29] font-sans">
-              Switch between manual and connected execution to see where automation creates
-              consistency rather than complexity.
+              See the difference between manual daily tasks and a connected system that runs
+              reliably in the background.
             </p>
           </div>
           <div className="mt-6 inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs">
@@ -271,8 +271,8 @@ export function SystemStudio() {
             ))}
           </div>
           <p className="border-t border-[rgba(8,45,45,0.08)] mt-3 pt-3 font-mono text-[11px] text-[#5C5953]">
-            Illustrative operational benchmarks. Actual time savings depend on volume and existing
-            tool stack.
+            Typical operational comparisons. Exact time savings depend on your team's volume and existing
+            tools.
           </p>
         </div>
       </div>
