@@ -13,11 +13,12 @@ export function CapabilitySection() {
       <div className="about-layout">
         <figure className="founder-portrait">
           <img
-            src="/phenyo.avif"
+            src="/phenyo-founder-professional.webp"
             alt="Phenyo Ntwayagae, founder of NYG Agency"
-            width="600"
-            height="750"
+            width="960"
+            height="1200"
             loading="lazy"
+            decoding="async"
           />
           <figcaption>
             <strong>{PERSONAL_INFO.name}</strong>

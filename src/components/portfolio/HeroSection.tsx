@@ -79,8 +79,8 @@ export function HeroSection() {
             </div>
           ) : (
             <img
-              src="/phenyo.avif"
-              alt="Phenyo Ntwayagae, founder of NYG Digital"
+              src="/phenyo-founder-professional.webp"
+              alt="Phenyo Ntwayagae, founder of NYG Agency"
               onError={() => setPortraitError(true)}
               className="h-24 w-20 rounded-lg object-cover shrink-0"
             />
@@ -89,7 +89,7 @@ export function HeroSection() {
           <div className="flex flex-col gap-1.5 pr-2">
             <span className="text-sm font-medium text-text-primary">Talk to Phenyo</span>
             <span className="font-mono text-[10px] uppercase tracking-[0.15em] text-text-subtle">
-              Founder, NYG Digital
+              Founder, NYG Agency
             </span>
 
             <a

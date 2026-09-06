@@ -129,7 +129,7 @@ function CardPage() {
           </div>
           <div className="card-founder">
             <img
-              src="/phenyo.avif"
+              src="/phenyo-founder-professional.webp"
               alt="Phenyo Ntwayagae, founder of NYG Agency"
               width="45"
               height="45"
