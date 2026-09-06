@@ -23,7 +23,7 @@ export function FooterSection() {
       <div className="page-width">
         <div className="footer-top">
           <div>
-            <a href="#hero-stage" aria-label="NYG Digital home">
+            <a href="#hero-stage" aria-label="NYG Agency home">
               <NygLogo showWordmark />
             </a>
             <p>

@@ -60,7 +60,7 @@ export function ContactSection() {
   }, [setValue]);
 
   const openMailtoFallback = (data: ContactFormValues) => {
-    const subject = encodeURIComponent(`NYG Digital System Inquiry - ${data.service}`);
+    const subject = encodeURIComponent(`NYG Agency System Inquiry - ${data.service}`);
     const contextLine = industryContext ? `\nContext: ${industryContext}` : "";
     const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\n\nProject Scope:\n${data.message}`;
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
@@ -116,8 +116,8 @@ export function ContactSection() {
     <SectionShell
       id="contact"
       eyebrow="Start a project"
-      declarativeTitle="Have an idea?"
-      qualifierTitle="Let’s build it."
+      declarativeTitle="Let’s define your next move."
+      qualifierTitle="Tell us what needs to work better. We’ll help define the scope and the next step."
       className="contact-section"
     >
       <div className="contact-layout">

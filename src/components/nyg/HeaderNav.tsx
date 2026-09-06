@@ -7,20 +7,41 @@ import {
   DialogDescription,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { NygLogo } from "./NygLogo";
 import { navigateToSection } from "@/lib/navigation";
 
 export const AVAILABILITY_STATUS = "Available for select projects";
 const links = [
+  { name: "Home", id: "hero-stage" },
   { name: "Services", id: "services" },
+  { name: "About", id: "about" },
   { name: "Work", id: "projects" },
-  { name: "Studio", id: "about" },
-  { name: "Process", id: "process" },
+  { name: "Contact", id: "contact" },
 ];
+
+function BrandLockup() {
+  return (
+    <>
+      <img
+        className="brand-lockup brand-lockup-wide"
+        src="/brand/nyg-agency-horizontal.svg"
+        alt="NYG Agency"
+        width="1156"
+        height="200"
+      />
+      <img
+        className="brand-lockup brand-lockup-mark"
+        src="/brand/nyg-agency-monogram.svg"
+        alt="NYG Agency"
+        width="34"
+        height="34"
+      />
+    </>
+  );
+}
 
 export function HeaderNav() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState("");
+  const [active, setActive] = useState("hero-stage");
   const [open, setOpen] = useState(false);
   useEffect(() => {
     const update = () => setScrolled(window.scrollY > 24);
@@ -54,8 +75,8 @@ export function HeaderNav() {
   return (
     <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
       <nav className="page-width nav-inner" aria-label="Main navigation">
-        <a href="#hero-stage" aria-label="NYG Digital home" className="brand-link">
-          <NygLogo showWordmark />
+        <a href="#hero-stage" aria-label="NYG Agency home" className="brand-link">
+          <BrandLockup />
         </a>
         <div className="desktop-links">
           {links.map((link) => (
@@ -74,22 +95,26 @@ export function HeaderNav() {
           </a>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-              <button className="menu-toggle" aria-label="Open navigation menu">
+              <button
+                className="menu-toggle"
+                aria-label="Open navigation menu"
+                aria-expanded={open}
+              >
                 <Menu size={22} />
               </button>
             </DialogTrigger>
             <DialogContent className="mobile-menu">
               <DialogTitle>
-                <NygLogo showWordmark />
+                <BrandLockup />
               </DialogTitle>
               <DialogDescription className="sr-only">
-                Explore NYG Digital and start a project.
+                Explore NYG Agency and start a project.
               </DialogDescription>
               <nav aria-label="Mobile navigation">
                 {[
                   ...links,
                   { name: "Interactive demo", id: "systems" },
-                  { name: "Contact", id: "contact" },
+                  { name: "Our process", id: "process" },
                 ].map((link, i) => (
                   <a
                     href={`#${link.id}`}

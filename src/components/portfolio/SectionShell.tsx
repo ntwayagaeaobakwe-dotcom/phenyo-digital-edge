@@ -26,6 +26,7 @@ export function SectionShell({
   title,
   declarativeTitle,
   qualifierTitle,
+  eyebrow,
   children,
   className = "",
 }: SectionShellProps) {

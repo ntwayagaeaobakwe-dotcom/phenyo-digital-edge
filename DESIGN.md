@@ -1,139 +1,208 @@
-# Design System: NYG Editorial Systems
-
-## 1. Visual Theme & Atmosphere
-
-**Thesis:** A bespoke software-development and systems consultancy registered in Ajman and serving businesses across Dubai and the UAE, presented through the visual lens of a luxury architectural journal and cinematic technology publication.
-
-The atmosphere is:
-
-- **Editorial over SaaS:** Composed like a physical broadsheet or architectural folio with monumental serif display type, compact editorial spreads, and disciplined negative space.
-- **Precise over Decorative:** Free from gratuitous neon glows, floating card clusters, rainbow gradients, and generic AI templates.
-- **Cinematic & Atmospheric:** Alternating between full-bleed cinematic dark teal bands and crisp warm paper spreads.
-- **Human-Centric & Controlled:** Highlighting how technology serves human intention rather than replacing human agency.
-
-### Narrative Architecture: "Portal → Signal → System"
-
-1. **The Portal (Act I):** The rotating cyan-ring hero media acts as the technological gateway into NYG Digital.
-2. **The Signal (Act II):** The portal's cyan light transitions into an architectural signal line that guides the eye through the operational workflow.
-3. **The System (Act III & IV):** Editorial paper and bone spreads represent organized operational clarity, while the liquid-wall depth reveals itself selectively between chapters.
-4. **Resolution (Act V):** The journey resolves into a direct human conversation with the founder.
-
+---
+name: NYG Agency — Compact NYG
+description: A precise Carbon / Platinum identity for connected digital services.
+colors:
+  canvas: "#0b0c0e"
+  panel: "#15171b"
+  raised: "#25282d"
+  text: "#f2f2ef"
+  muted: "#aeb4bd"
+  signal: "#c7ccd2"
+  line: "#34383f"
+  field: "#1f2124"
+  field-border: "#4d4f52"
+  field-placeholder: "#a8aaad"
+  error: "#f6a8a1"
+typography:
+  display:
+    fontFamily: '"Manrope Variable", Manrope, sans-serif'
+    fontSize: "clamp(50px, 5.15vw, 78px)"
+    fontWeight: 500
+    lineHeight: 1.12
+    letterSpacing: "-0.04em"
+  headline:
+    fontFamily: '"Manrope Variable", Manrope, sans-serif'
+    fontSize: "clamp(34px, 4vw, 54px)"
+    lineHeight: 1.15
+    letterSpacing: "-0.035em"
+  body:
+    fontFamily: '"Source Sans 3", -apple-system, BlinkMacSystemFont, sans-serif'
+    fontSize: "18px"
+    lineHeight: 1.7
+  label:
+    fontFamily: '"Manrope Variable", Manrope, sans-serif'
+    fontSize: "12px"
+    fontWeight: 500
+    lineHeight: 1.5
+    letterSpacing: "0.12em"
+  button:
+    fontFamily: '"Manrope Variable", Manrope, sans-serif'
+    fontSize: "13px"
+    fontWeight: 600
+rounded:
+  control: "4px"
+  workflow: "8px"
+  panel: "12px"
+spacing:
+  xs: "8px"
+  sm: "16px"
+  md: "24px"
+  lg: "40px"
+  xl: "64px"
+  section: "clamp(80px, 8vw, 128px)"
+components:
+  button-primary:
+    backgroundColor: "{colors.text}"
+    textColor: "{colors.canvas}"
+    typography: "{typography.button}"
+    rounded: "{rounded.control}"
+    padding: "16px 23px"
+  button-primary-hover:
+    backgroundColor: "{colors.signal}"
+  button-outline:
+    backgroundColor: transparent
+    textColor: "{colors.text}"
+    typography: "{typography.button}"
+    rounded: "{rounded.control}"
+    padding: "16px 23px"
+  button-outline-hover:
+    backgroundColor: "{colors.signal}"
+  input:
+    backgroundColor: "{colors.field}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.control}"
+    padding: "14px"
+  project-preview:
+    backgroundColor: "{colors.raised}"
+    textColor: "{colors.text}"
+    rounded: "{rounded.panel}"
+  navigation:
+    backgroundColor: "{colors.canvas}"
+    textColor: "{colors.muted}"
+  service-row:
+    backgroundColor: transparent
+    textColor: "{colors.text}"
+    padding: "30px 0"
 ---
 
-## 2. Color Palette & Roles
+# Design System: NYG Agency
 
-### Core Palette
+## Overview
 
-- **NYG Ink** (`#080A09`): Primary text on light paper, dark button fills, and near-black baseline surfaces.
-- **NYG Deep Teal** (`#082D2D`): Major dark narrative sections, case-study bands, and media overlays.
-- **NYG Petroleum** (`#123E3D`): Raised dark surfaces, secondary teal bands, and navigation background.
-- **NYG Paper** (`#F3F0E8`): Primary warm light canvas for editorial spreads.
-- **NYG Bone** (`#FAF8F2`): Cards, interactive modules, and lighter editorial surfaces.
-- **NYG Graphite** (`#282B29`): Secondary dark text on light surfaces.
-- **NYG Stone** (`#B8B5AC`): Hairline dividers (`1px`), muted labels, and technical brackets.
+**Creative North Star: "Compact NYG"**
 
-### Signal Color (Strictly Constrained)
+The finalized identity pairs the supplied NYG artwork with carbon surfaces, platinum signals, and clear sans-serif typography. Its character is precise, restrained, and confident. Strong headings, generous section spacing, and practical controls keep the six connected services readable.
 
-- **NYG Aqua** (`#5FD8CD`): Sparingly used signal accent for active operational paths, focus rings, and live status dots. Treated like an illuminated signal on an architectural blueprint—never a neon background fill.
+NYG Agency is the public brand; NYG Digital FZE LLC remains the legal entity. The supplied logo letterforms are binding assets. The interface supports the artwork through proportion and space, without redrawing its geometry.
 
-### Muted Mineral Accents (Section Fields & Badges)
+**Key Characteristics:**
 
-- **Mineral Mist** (`#CEDDD9`): Diagnostic and assessment field background.
-- **Desert Sand** (`#E5D6C2`): Engagement Blueprint (Process) feature canvas.
-- **Fog Blue** (`#C9D6DF`): Accent borders and tags.
-- **Soft Clay** (`#D9BEB0`): Muted callout surfaces.
+- Carbon and platinum tonal contrast.
+- Manrope display type with Source Sans 3 reading text.
+- Supplied artwork, preserved proportions, and responsive lockups.
+- Flat surfaces, fine dividers, and restrained interaction feedback.
 
-_Rule: Never display more than two mineral accents in the same viewport._
+Implementation authority: `src/brand.css` extends `src/studio.css`; `src/styles.css` supplies fonts, semantic compatibility tokens, and global focus behavior. Older token names such as “aqua” and “deep-teal” remain compatibility aliases with neutral values; they do not establish a teal identity.
 
----
+## Colors
 
-## 3. Typography Architecture
+The palette is a cool neutral range with platinum reserved for emphasis and interaction.
 
-### Font Families
+### Primary
 
-- **Display Serif:** `Newsreader Variable` (`"Newsreader Variable", "Newsreader", "Instrument Serif", Georgia, serif`)
-  - Used for: Hero headline, major section statements, monumental ROI numbers, and case-study titles.
-  - Weight: 400–500.
-  - Line height: 0.88–1.05.
-  - Letter spacing: `-0.04em` to `-0.025em`.
-  - Italic treatment: Used selectively for single accent words or phrases, never decorative blocks.
-- **Interface Sans:** `Manrope Variable` (`"Manrope Variable", "Manrope", -apple-system, sans-serif`)
-  - Used for: Navigation, body copy, button labels, form controls, and descriptive paragraphs.
-  - Weight: 400 (regular) / 600 (semibold).
-  - Line height: 1.5–1.65.
-  - Max reading width: 58–68 characters.
-- **Technical Mono:** `JetBrains Mono Variable` (`"JetBrains Mono Variable", "JetBrains Mono", monospace`)
-  - Strictly reserved for: System steps (`01/`, `02/`), timestamps, UAE clock (`UAE · GST`), diagnostic outputs, and data telemetry.
+- **Platinum signal:** selected paths, highlighted words, focus treatment, and primary hover feedback.
+- **Soft white:** primary text and the standard primary action fill.
 
-### Typographic Scale
+### Neutral
 
-- **Hero Display:** `clamp(2.75rem, 6vw, 5.25rem)` (mobile: `2.5rem`)
-- **Major Display:** `clamp(2.25rem, 4.5vw, 3.75rem)`
-- **Section Heading:** `clamp(1.75rem, 3.5vw, 2.75rem)`
-- **Subsection Heading:** `clamp(1.25rem, 2vw, 1.75rem)`
-- **Lead Paragraph:** `clamp(1.05rem, 1.4vw, 1.25rem)`
-- **Body Copy:** `1rem` – `1.0625rem` (16px–17px)
-- **Interface UI:** `0.8125rem` – `0.875rem` (13px–14px)
-- **Technical Metadata:** `0.6875rem` – `0.75rem` (11px–12px)
+- **Carbon canvas:** the page foundation and navigation.
+- **Dark panel:** alternating sections and interactive modules.
+- **Raised charcoal:** project previews and supporting surfaces.
+- **Muted silver:** secondary copy, labels, and metadata.
+- **Graphite line:** structural dividers and outlined controls.
+- **Field charcoal, field border, and placeholder gray:** the contact form's distinct input states.
 
----
+The error token is reserved for validation feedback. It is not a brand accent.
 
-## 4. Component Rules
+**The Neutral Identity Rule.** New brand surfaces use the Carbon / Platinum system; retained compatibility names do not authorize restoring teal or mint.
 
-- **Buttons:**
-  - Shape: Pill-shaped (`rounded-full` / `rounded-xl`).
-  - Primary CTA: NYG Paper (`#F3F0E8`) background with NYG Ink (`#080A09`) text, directional arrow icon, subtle active scale (`0.97`). Zero drop shadow or purple glow.
-  - Secondary CTA: Deep Teal or transparent with 1px Stone hairline border (`#B8B5AC` / `rgba(184, 181, 172, 0.2)`).
-- **Cards & Plates:**
-  - Radius: 16px–24px for structural panels; 28px for large editorial plates.
-  - Elevation: Zero default drop shadows. Depth achieved through tonal contrast (Bone on Paper, Petroleum on Deep Teal) and 1px hairline borders.
-  - No nested cards inside cards.
-- **Dividers & Hairlines:**
-  - 1px solid hairline borders using `rgba(184, 181, 172, 0.25)` on dark or `rgba(8, 45, 45, 0.12)` on light.
-- **Forms & Inputs:**
-  - Paper or dark-teal input surfaces with 1px border.
-  - NYG Aqua (`#5FD8CD`) focus visible rings (`2px` solid, `2px` offset).
+## Typography
 
----
+**Display Font:** Manrope Variable, with Manrope and sans-serif fallbacks.
 
-## 5. Section Color Rhythm
+**Body Font:** Source Sans 3, with system sans-serif fallbacks. Both primary fonts are self-hosted. JetBrains Mono remains available for existing technical annotations; it is not the general body or display face.
 
-1. **Hero:** Full-bleed cinematic Deep Teal media (`#080A09` / `#082D2D`) with Paper White Newsreader headline.
-2. **System Studio:** Warm NYG Paper (`#F3F0E8`) editorial spread with Ink lines and Aqua signal paths.
-3. **Bottleneck Diagnostic:** Mineral Mist (`#CEDDD9`) / Bone (`#FAF8F2`) field with high-contrast Deep Teal solution panel.
-4. **Case Studies:** Full-bleed NYG Deep Teal (`#082D2D`) narrative band.
-5. **Capabilities:** Warm NYG Paper (`#F3F0E8`) with publication-style numbered index.
-6. **Engagement Blueprint (Process):** Desert Sand (`#E5D6C2`) feature field with 3-stage architectural workflow.
-7. **Contact:** NYG Ink (`#080A09`) / Deep Teal (`#082D2D`) closing composition.
-8. **Footer:** Restrained NYG Ink (`#080A09`) surface with warm-white typography.
+Manrope gives headings and controls a compact, geometric presence. Source Sans 3 keeps longer descriptions and forms readable. The frontmatter records the default desktop hierarchy; responsive overrides are described below.
 
----
+### Hierarchy
 
-## 6. Motion & Performance Architecture
+- **Display:** hero statement, medium weight and tight tracking; its emphasized span uses Platinum signal.
+- **Headline:** section headings, balanced wrapping, and a maximum width of 710px.
+- **Body:** reading text; service and project paragraphs use the body scale, while the hero lead uses 20px with 1.65 line height and a 500px maximum width.
+- **Label:** uppercase section eyebrows; navigation uses 12px Manrope without eyebrow tracking.
+- **Button:** semibold Manrope, with compact variants at 12px.
 
-- **Interaction Speeds:**
-  - Micro-interactions & button feedback: `120ms`–`160ms`.
-  - Hover states & color transitions: `160ms`–`220ms`.
-  - Section reveals: `400ms`–`600ms` with easing `cubic-bezier(0.23, 1, 0.32, 1)`.
-- **Media Render Orchestration:**
-  - Hero active (0–85%) $\rightarrow$ liquid background WebGL & video seeking paused.
-  - Content sections active $\rightarrow$ hero canvas render loop idle.
-  - Dense opaque paper sections $\rightarrow$ liquid shader drawing idle.
-  - Tab hidden $\rightarrow$ all media loops cancelled.
-  - No continuous 60 FPS loop when user is stationary.
-- **Accessibility:**
-  - Full `prefers-reduced-motion: reduce` support with high-quality static poster frames.
+**The Two-Font Rule.** Use Manrope for display and control emphasis, and Source Sans 3 for reading text. Do not restore the superseded serif display system.
 
----
+## Layout
 
-## 7. Anti-Patterns (Explicitly Banned)
+The centered page container is at most 1280px wide, with 56px desktop gutters. Gutters become 32px at 1100px and 20px at 639px. The spacing scale in the frontmatter governs the broad rhythm; sections use its fluid section spacing.
 
-- ❌ NO purple-to-pink gradient text or rainbow fills.
-- ❌ NO electric-purple buttons or glowing outer box-shadows.
-- ❌ NO generic 3-column floating glass card grids.
-- ❌ NO heavy backdrop blur layers stacking over text.
-- ❌ NO fake client logos, fabricated metrics, or invented awards.
-- ❌ NO `transition: all` or layout-property animations (`top`, `left`, `width`, `height`).
-- ❌ NO Playfair Display or generic serif replacements.
-- ❌ NO Unbounded as primary display heading.
-- ❌ NO full-page scroll hijacking or custom mouse cursors.
+The desktop hero uses a 1.4:1 text/artwork grid, a 40px gap, and generous vertical padding. At 899px it becomes 1.5:1; at 639px it stacks, keeping text first and centering the artwork underneath. Mobile display type uses `clamp(38px, 9.1vw, 56px)` with 1.13 line height. Mobile section headings use 35px.
+
+The fixed header is 88px high, 80px at 899px, and 72px at 639px. Desktop links give way to a dialog menu below 900px. The horizontal lockup stays in the header until 639px, when the 48px monogram replaces it. The menu dialog retains the horizontal lockup.
+
+Service detail panels use two columns on larger screens and one column at 639px. Section headings stack their title and supporting copy at 899px. Keep the six service categories in the shared service data, rather than duplicating labels across surfaces.
+
+## Elevation & Depth
+
+The main page uses flat tonal layers and fine borders. Project previews gain distinction through Raised charcoal and clipped corners, while service rows rely on dividers. There is no general card-shadow vocabulary. The scrolled header uses a translucent carbon surface and a 12px backdrop blur; reserve this treatment for navigation rather than spreading it across reading surfaces.
+
+Hero copy and identity arrive through a short fade and 10px translation over 500ms, with an 80ms identity delay. Controls use the fast duration (160ms) and navigation surface changes use the normal duration (240ms). Reduced-motion preferences remove entrance transforms and substantially suppress animations and transitions.
+
+## Shapes
+
+Controls use slight corner rounding; project previews use the panel radius and the workflow module retains its smaller workflow radius. Dividers and field borders are 1px. Preserve the native aspect ratio of logo artwork with contained sizing.
+
+**The Artwork Rule.** Use the production SVG assets as supplied. Do not redraw the monogram, reconstruct its letters with text, distort its proportions, or substitute archived concept artwork.
+
+## Components
+
+### Buttons and text links
+
+Primary buttons have a soft-white fill, carbon text, and a minimum height of 52px. The small navigation action has a minimum height of 44px. Outline buttons use a transparent surface and graphite border; their effective hover state uses Platinum signal through the shared brand override. Primary hover uses Platinum signal. Active buttons scale to 0.98; disabled buttons use 0.55 opacity and suppress the transform.
+
+Directional arrows move subtly up and right on hover. Text links remain open, without a filled container, with a minimum height of 44px. Global focus styles provide a 2px platinum outline with a 2px offset; the global important rule is the effective source for offset.
+
+### Inputs / Fields
+
+Fields use their dedicated charcoal fill, light text, fine gray border, and control radius. Inputs, selects, and textareas have a minimum height of 52px through the brand override; textareas retain vertical resizing. Focus changes the border to platinum, and invalid fields use the error color alongside error text. Preserve visible labels and accessible validation wiring.
+
+### Navigation
+
+The fixed header places the supplied horizontal identity on the left, the Home / Services / About / Work / Contact links centrally, and the project action on the right. Active and hovered links brighten and reveal a thin platinum underline. Mobile navigation is a keyboard-accessible dialog with an explicit menu button and large numbered links. Preserve active-section indication, focus behavior, and closing on desktop resize.
+
+### Service accordion
+
+Six numbered service rows organize Web Development, Software & Digital Solutions, AI Automation, Business Consulting, Digital Marketing, and Creative Services. Each uses a real button with expanded state and a linked detail region. One panel starts open; activating the current row closes it. Desktop rows include the service pillar; mobile rows hide it to protect the title width.
+
+### Project previews and workflow controls
+
+Project previews use rounded, bordered surfaces and an explicit open affordance. Keep completion, demonstration, and concept labels accurate. The workflow explorer uses underlined tab-like buttons with a 44px minimum height; selected state changes color and border. These functional diagrams remain supporting material beneath the primary service story.
+
+## Do's and Don'ts
+
+### Do:
+
+- **Do** use the Carbon / Platinum tokens for new brand surfaces.
+- **Do** preserve supplied logo artwork and its native proportions.
+- **Do** pair Manrope headings with Source Sans 3 reading text.
+- **Do** keep focus, reduced-motion behavior, and mobile reading order intact.
+- **Do** identify the public brand as NYG Agency and retain NYG Digital FZE LLC in legal disclosures.
+
+### Don't:
+
+- **Don't** restore the superseded teal, mint, or serif visual direction.
+- **Don't** substitute archived logo concepts for the supplied production identity.
+- **Don't** add ornamental shadows, glows, or gradients to routine controls.
+- **Don't** invent client results, testimonials, awards, or business facts.

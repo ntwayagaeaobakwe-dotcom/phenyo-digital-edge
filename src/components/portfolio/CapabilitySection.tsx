@@ -5,8 +5,8 @@ export function CapabilitySection() {
   return (
     <SectionShell
       id="about"
-      eyebrow="The studio"
-      declarativeTitle="Technical minds. Human approach."
+      eyebrow="About NYG"
+      declarativeTitle="Clear thinking. Direct accountability."
       qualifierTitle="A direct partnership with the person designing, building, and connecting your systems."
     >
       <span id="studio" className="anchor-alias" />
@@ -14,7 +14,7 @@ export function CapabilitySection() {
         <figure className="founder-portrait">
           <img
             src="/phenyo.avif"
-            alt="Phenyo Ntwayagae, founder of NYG Digital"
+            alt="Phenyo Ntwayagae, founder of NYG Agency"
             width="600"
             height="750"
             loading="lazy"
@@ -26,14 +26,14 @@ export function CapabilitySection() {
         </figure>
         <div className="about-copy">
           <h3>
-            Small by design.
+            Strategy in view.
             <br />
-            <span>Ambitious by nature.</span>
+            <span>Detail in hand.</span>
           </h3>
           <p>
-            NYG Digital brings web development, AI, and automation under one roof. From a better
-            website to a more connected business, this computer-systems consultancy makes complex
-            technical work feel clear and manageable.
+            NYG Agency brings strategy, design, web development, and AI automation into one
+            connected approach. From a better website to a more connected business, this
+            computer-systems consultancy makes complex technical work feel clear and manageable.
           </p>
           <p>
             Founded by {PERSONAL_INFO.name}, our studio works directly with businesses across the

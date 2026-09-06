@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/nyg/HeroSection";
 import { HeaderNav } from "@/components/nyg/HeaderNav";
 import { ServicesSection } from "@/components/nyg/ServicesSection";
+import { AGENCY_SERVICES } from "@/data/agency-services";
 import { SystemStudio } from "@/components/portfolio/SystemStudio";
 import { BottleneckConfigurator } from "@/components/portfolio/BottleneckConfigurator";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
@@ -18,9 +19,9 @@ import { getSiteUrl } from "@/lib/seo";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "Web Development, AI & Automation in UAE | NYG Digital";
+const PAGE_TITLE = "Web Development, AI & Automation in UAE | NYG Agency";
 const PAGE_DESC =
-  "NYG Digital is an Ajman-based computer-systems consultancy for web development, AI solutions, and n8n business automation serving Dubai and the UAE.";
+  "NYG Agency is an Ajman-based computer-systems consultancy for web development, AI solutions, and n8n business automation serving Dubai and the UAE.";
 
 const AREA_SERVED = [
   { "@type": "City", name: "Ajman" },
@@ -28,49 +29,24 @@ const AREA_SERVED = [
   { "@type": "Country", name: "United Arab Emirates" },
 ];
 
-const SERVICE_SCHEMA = [
-  {
-    "@type": "Service",
-    "@id": `${SITE_URL}#web-development`,
-    name: "Web Development",
-    serviceType: "Website and web application development",
-    description:
-      "Responsive, accessible websites and web applications designed for businesses in Ajman, Dubai, and across the UAE.",
-    provider: { "@id": `${SITE_URL}#organization` },
-    areaServed: AREA_SERVED,
-    url: `${SITE_URL}#services`,
-  },
-  {
-    "@type": "Service",
-    "@id": `${SITE_URL}#ai-solutions`,
-    name: "AI Solutions",
-    serviceType: "Practical AI integrations and digital experiences",
-    description:
-      "Human-reviewed AI integrations that turn business information into useful insights and more capable digital experiences.",
-    provider: { "@id": `${SITE_URL}#organization` },
-    areaServed: AREA_SERVED,
-    url: `${SITE_URL}#services`,
-  },
-  {
-    "@type": "Service",
-    "@id": `${SITE_URL}#business-automation`,
-    name: "Business Automation",
-    serviceType: "n8n workflow automation and connected systems",
-    description:
-      "Connected n8n workflows that move information between forms, APIs, CRM tools, spreadsheets, and notifications.",
-    provider: { "@id": `${SITE_URL}#organization` },
-    areaServed: AREA_SERVED,
-    url: `${SITE_URL}#services`,
-  },
-];
+const SERVICE_SCHEMA = AGENCY_SERVICES.map((service, index) => ({
+  "@type": "Service",
+  "@id": `${SITE_URL}#service-${index + 1}`,
+  name: service.title,
+  serviceType: service.title,
+  description: service.text,
+  provider: { "@id": `${SITE_URL}#organization` },
+  areaServed: AREA_SERVED,
+  url: `${SITE_URL}#services`,
+}));
 
 const FAQ_SCHEMA = [
   {
     "@type": "Question",
-    name: "What does NYG Digital build?",
+    name: "What does NYG Agency build?",
     acceptedAnswer: {
       "@type": "Answer",
-      text: "NYG Digital builds websites and web applications, practical AI integrations, and connected business automation systems around the way your team works.",
+      text: "NYG Agency builds websites and web applications, practical AI integrations, and connected business automation systems around the way your team works.",
     },
   },
   {
@@ -78,7 +54,7 @@ const FAQ_SCHEMA = [
     name: "Do you work with businesses in Dubai and Ajman?",
     acceptedAnswer: {
       "@type": "Answer",
-      text: "Yes. NYG Digital is registered in Ajman and serves businesses in Dubai and across the wider United Arab Emirates.",
+      text: "Yes. NYG Agency is registered in Ajman and serves businesses in Dubai and across the wider United Arab Emirates.",
     },
   },
   {
@@ -100,7 +76,7 @@ const HOME_SCHEMA = {
       name: COMPANY_INFO.brandName,
       legalName: COMPANY_INFO.legalName,
       url: SITE_URL,
-      logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` },
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/brand/nyg-agency-horizontal.svg` },
       image: `${SITE_URL}/og-image.png`,
       foundingDate: COMPANY_INFO.foundedDate,
       email: PERSONAL_INFO.email,
@@ -121,7 +97,11 @@ const HOME_SCHEMA = {
         "n8n workflow automation",
         "Computer systems consultancy",
       ],
-      sameAs: PERSONAL_INFO.socials.map((social) => social.href),
+      founder: {
+        "@type": "Person",
+        name: PERSONAL_INFO.name,
+        sameAs: PERSONAL_INFO.socials.map((social) => social.href),
+      },
       areaServed: AREA_SERVED,
       address: {
         "@type": "PostalAddress",
@@ -137,7 +117,14 @@ const HOME_SCHEMA = {
       description: PAGE_DESC,
       email: PERSONAL_INFO.email,
       telephone: PERSONAL_INFO.phone,
-      serviceType: ["Web development", "AI solutions", "Business automation"],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "NYG Agency capabilities",
+        itemListElement: SERVICE_SCHEMA.map((service) => ({
+          "@type": "Offer",
+          itemOffered: { "@id": service["@id"] },
+        })),
+      },
       parentOrganization: { "@id": `${SITE_URL}#organization` },
       areaServed: AREA_SERVED,
       address: {
@@ -182,7 +169,10 @@ export const Route = createFileRoute("/")({
       { title: PAGE_TITLE },
       { name: "description", content: PAGE_DESC },
       { name: "author", content: PERSONAL_INFO.name },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { property: "og:title", content: PAGE_TITLE },
       { property: "og:description", content: PAGE_DESC },
       { property: "og:url", content: SITE_URL },
@@ -192,12 +182,18 @@ export const Route = createFileRoute("/")({
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
+      {
+        property: "og:image:alt",
+        content: "NYG Agency — web development, AI, and business automation in the UAE",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: PAGE_TITLE },
       { name: "twitter:description", content: PAGE_DESC },
       { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
-      { name: "twitter:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
+      {
+        name: "twitter:image:alt",
+        content: "NYG Agency — web development, AI, and business automation in the UAE",
+      },
     ],
     links: [{ rel: "canonical", href: SITE_URL }],
     scripts: [

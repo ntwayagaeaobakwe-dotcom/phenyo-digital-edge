@@ -69,32 +69,42 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#101311" },
-      { title: "Web Development, AI & Automation in UAE | NYG Digital" },
+      { name: "theme-color", content: "#0B0C0E" },
+      { title: "Web Development, AI & Automation in UAE | NYG Agency" },
       {
         name: "description",
         content:
-          "NYG Digital is an Ajman-based computer-systems consultancy for web development, AI solutions, and n8n business automation serving Dubai and the UAE.",
+          "NYG Agency is an Ajman-based computer-systems consultancy for web development, AI solutions, and n8n business automation serving Dubai and the UAE.",
       },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "NYG Digital" },
+      { property: "og:site_name", content: "NYG Agency" },
       { property: "og:locale", content: "en_AE" },
       // Default OG/Twitter image — generated preview banner (public/og-image.png).
       { property: "og:image", content: `${ROOT_SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
+      {
+        property: "og:image:alt",
+        content: "NYG Agency — web development, AI, and business automation in the UAE",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: `${ROOT_SITE_URL}/og-image.png` },
-      { name: "twitter:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
+      {
+        name: "twitter:image:alt",
+        content: "NYG Agency — web development, AI, and business automation in the UAE",
+      },
     ],
     links: [
       // Fonts are self-hosted via @fontsource-variable imports in styles.css —
       // no external font CDN.
       { rel: "stylesheet", href: appCss },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
-      { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.ico", sizes: "16x16 32x32 48x48" },
+      { rel: "icon", href: "/favicon-32.png", type: "image/png", sizes: "32x32" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
     ],
@@ -116,7 +126,7 @@ function RootShell({ children }: { children: ReactNode }) {
           hidden
           dangerouslySetInnerHTML={{
             __html:
-              "<!-- THESIS: NYG connects web, AI, and automation through one founder-led studio. OWN-WORLD: charcoal surfaces, silver Manrope typography, mint signals, fine rules, open layouts. STORY: understand the offer, explore real builds and clearly labeled demos, start a conversation. FIRST VIEWPORT: large left headline and CTAs; right interactive three-layer system. FORM: user-pinned dark technology studio; direction seed ed44b7cd, user authority overrides degraded roll. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->",
+              "<!-- THESIS: NYG connects strategy, digital execution and business systems. OWN-WORLD: authoritative Compact monogram, carbon/platinum, Manrope and Source Sans 3, open composition and measured rules. STORY: understand the offer, inspect honestly labeled work, start a scoped project conversation. FIRST VIEWPORT: broad left statement and one primary action; large flat supplied monogram at right. FORM: user-pinned luxury-tech identity supersedes direction seed 29835be5, degraded without challengers. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->",
           }}
         />
         {children}

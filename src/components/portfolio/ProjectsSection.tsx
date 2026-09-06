@@ -107,21 +107,32 @@ export function ProjectsSection() {
               <i />
               <i />
               <i />
-              <span>NYG DIGITAL / INTERFACE STUDY</span>
+              <span>NYG AGENCY / INTERFACE STUDY</span>
             </div>
             <div className="mini-site">
-              <span className="mini-brand">NYG DIGITAL</span>
+              <span className="mini-brand">
+                <img
+                  src="/brand/nyg-agency-wordmark.svg"
+                  alt="NYG Agency"
+                  width="951"
+                  height="180"
+                  loading="lazy"
+                />
+              </span>
               <div className="mini-hero">
                 <strong>
                   Digital systems.
                   <br />
                   Human ambition.
                 </strong>
-                <div className="mini-orbit">
-                  <span />
-                  <span />
-                  <span />
-                </div>
+                <img
+                  className="mini-identity"
+                  src="/brand/nyg-agency-monogram.svg"
+                  alt=""
+                  width="120"
+                  height="120"
+                  loading="lazy"
+                />
               </div>
               <span className="mini-cta">Let's build something</span>
               <div className="mini-footer">

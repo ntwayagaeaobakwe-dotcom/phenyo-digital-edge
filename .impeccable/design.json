@@ -1,0 +1,319 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-06T15:40:50.939Z",
+  "title": "Design System: NYG Agency",
+  "extensions": {
+    "colorMeta": {
+      "canvas": {
+        "role": "neutral",
+        "displayName": "Carbon canvas",
+        "tonalRamp": [
+          "oklch(15% 0.005 260)",
+          "oklch(26% 0.005 260)",
+          "oklch(38% 0.005 260)",
+          "oklch(49% 0.005 260)",
+          "oklch(61% 0.005 260)",
+          "oklch(72% 0.005 260)",
+          "oklch(84% 0.005 260)",
+          "oklch(95% 0.005 260)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Dark panel",
+        "tonalRamp": [
+          "oklch(15% 0.009 265)",
+          "oklch(26% 0.009 265)",
+          "oklch(38% 0.009 265)",
+          "oklch(49% 0.009 265)",
+          "oklch(61% 0.009 265)",
+          "oklch(72% 0.009 265)",
+          "oklch(84% 0.009 265)",
+          "oklch(95% 0.009 265)"
+        ]
+      },
+      "raised": {
+        "role": "neutral",
+        "displayName": "Raised charcoal",
+        "tonalRamp": [
+          "oklch(15% 0.012 265)",
+          "oklch(26% 0.012 265)",
+          "oklch(38% 0.012 265)",
+          "oklch(49% 0.012 265)",
+          "oklch(61% 0.012 265)",
+          "oklch(72% 0.012 265)",
+          "oklch(84% 0.012 265)",
+          "oklch(95% 0.012 265)"
+        ]
+      },
+      "text": {
+        "role": "primary",
+        "displayName": "Soft white",
+        "tonalRamp": [
+          "oklch(15% 0.004 100)",
+          "oklch(26% 0.004 100)",
+          "oklch(38% 0.004 100)",
+          "oklch(49% 0.004 100)",
+          "oklch(61% 0.004 100)",
+          "oklch(72% 0.004 100)",
+          "oklch(84% 0.004 100)",
+          "oklch(95% 0.004 100)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted silver",
+        "tonalRamp": [
+          "oklch(15% 0.014 260)",
+          "oklch(26% 0.014 260)",
+          "oklch(38% 0.014 260)",
+          "oklch(49% 0.014 260)",
+          "oklch(61% 0.014 260)",
+          "oklch(72% 0.014 260)",
+          "oklch(84% 0.014 260)",
+          "oklch(95% 0.014 260)"
+        ]
+      },
+      "signal": {
+        "role": "primary",
+        "displayName": "Platinum signal",
+        "tonalRamp": [
+          "oklch(15% 0.01 255)",
+          "oklch(26% 0.01 255)",
+          "oklch(38% 0.01 255)",
+          "oklch(49% 0.01 255)",
+          "oklch(61% 0.01 255)",
+          "oklch(72% 0.01 255)",
+          "oklch(84% 0.01 255)",
+          "oklch(95% 0.01 255)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Graphite line",
+        "tonalRamp": [
+          "oklch(15% 0.014 265)",
+          "oklch(26% 0.014 265)",
+          "oklch(38% 0.014 265)",
+          "oklch(49% 0.014 265)",
+          "oklch(61% 0.014 265)",
+          "oklch(72% 0.014 265)",
+          "oklch(84% 0.014 265)",
+          "oklch(95% 0.014 265)"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Field charcoal",
+        "tonalRamp": [
+          "oklch(15% 0.008 265)",
+          "oklch(26% 0.008 265)",
+          "oklch(38% 0.008 265)",
+          "oklch(49% 0.008 265)",
+          "oklch(61% 0.008 265)",
+          "oklch(72% 0.008 265)",
+          "oklch(84% 0.008 265)",
+          "oklch(95% 0.008 265)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field border",
+        "tonalRamp": [
+          "oklch(15% 0.007 265)",
+          "oklch(26% 0.007 265)",
+          "oklch(38% 0.007 265)",
+          "oklch(49% 0.007 265)",
+          "oklch(61% 0.007 265)",
+          "oklch(72% 0.007 265)",
+          "oklch(84% 0.007 265)",
+          "oklch(95% 0.007 265)"
+        ]
+      },
+      "field-placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder gray",
+        "tonalRamp": [
+          "oklch(15% 0.005 265)",
+          "oklch(26% 0.005 265)",
+          "oklch(38% 0.005 265)",
+          "oklch(49% 0.005 265)",
+          "oklch(61% 0.005 265)",
+          "oklch(72% 0.005 265)",
+          "oklch(84% 0.005 265)",
+          "oklch(95% 0.005 265)"
+        ]
+      },
+      "error": {
+        "role": "semantic",
+        "displayName": "Validation error",
+        "tonalRamp": [
+          "oklch(15% 0.09 25)",
+          "oklch(26% 0.09 25)",
+          "oklch(38% 0.09 25)",
+          "oklch(49% 0.09 25)",
+          "oklch(61% 0.09 25)",
+          "oklch(72% 0.09 25)",
+          "oklch(84% 0.09 25)",
+          "oklch(95% 0.09 25)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Hero statement."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Balanced section headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Reading text and form content."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Uppercase section eyebrows."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Primary and outline action labels."
+      }
+    },
+    "shadows": [],
+    "motion": [
+      {
+        "name": "duration-fast",
+        "value": "160ms",
+        "purpose": "Primary control feedback."
+      },
+      {
+        "name": "duration-normal",
+        "value": "240ms",
+        "purpose": "Navigation surface transition."
+      },
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.23, 1, 0.32, 1)",
+        "purpose": "Effective global ease-out from styles.css."
+      },
+      {
+        "name": "brand-arrive",
+        "value": "500ms",
+        "purpose": "Opacity and 10px vertical entrance; identity delay 80ms; disabled for reduced motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1100px"
+      },
+      {
+        "name": "tablet",
+        "value": "899px"
+      },
+      {
+        "name": "mobile",
+        "value": "639px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Main project action with directional feedback.",
+      "html": "<button class=\"ds-button-primary\">Start a project <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-button-primary{font-family:var(--font-display,\"Manrope Variable\",Manrope,sans-serif);display:inline-flex;align-items:center;justify-content:center;gap:30px;min-height:52px;padding:16px 23px;border:1px solid transparent;border-radius:var(--radius-control,4px);background:var(--text,#f2f2ef);color:var(--canvas,#0b0c0e);font-size:13px;font-weight:600;cursor:pointer;transition:background var(--duration-fast,160ms),transform var(--duration-fast,160ms)}.ds-button-primary:hover{background:var(--signal,#c7ccd2)}.ds-button-primary:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}.ds-button-primary:active{transform:scale(.98)}.ds-button-primary:disabled{opacity:.55;cursor:not-allowed;transform:none}.ds-button-primary svg{transition:transform 180ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-button-primary:hover svg{transform:translate(2px,-2px)}@media(prefers-reduced-motion:reduce){.ds-button-primary,.ds-button-primary svg{transition:none}.ds-button-primary:active,.ds-button-primary:hover svg{transform:none}}"
+    },
+    {
+      "name": "Outline Button",
+      "kind": "button",
+      "refersTo": "button-outline",
+      "description": "Secondary action on a dark surface.",
+      "html": "<button class=\"ds-button-outline\">View work <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></button>",
+      "css": ".ds-button-outline{font-family:var(--font-display,\"Manrope Variable\",Manrope,sans-serif);display:inline-flex;align-items:center;justify-content:center;gap:30px;min-height:52px;padding:16px 23px;border:1px solid var(--line,#34383f);border-radius:var(--radius-control,4px);background:transparent;color:var(--text,#f2f2ef);font-size:13px;font-weight:600;cursor:pointer;transition:background var(--duration-fast,160ms),transform var(--duration-fast,160ms)}.ds-button-outline:hover{background:var(--signal,#c7ccd2)}.ds-button-outline:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}.ds-button-outline:active{transform:scale(.98)}.ds-button-outline:disabled{opacity:.55;cursor:not-allowed;transform:none}.ds-button-outline svg{transition:transform 180ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-button-outline:hover svg{transform:translate(2px,-2px)}@media(prefers-reduced-motion:reduce){.ds-button-outline,.ds-button-outline svg{transition:none}.ds-button-outline:active,.ds-button-outline:hover svg{transform:none}}"
+    },
+    {
+      "name": "Text Link",
+      "kind": "button",
+      "description": "Open directional link for supporting actions.",
+      "html": "<a class=\"ds-text-link\" href=\"#contact\">Discuss your requirements <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></a>",
+      "css": ".ds-text-link{font-family:var(--font-sans,\"Source Sans 3\",sans-serif);display:inline-flex;align-items:center;gap:var(--space-sm,16px);min-height:44px;padding:8px 0;font-size:15px;font-weight:600;text-decoration:none;color:var(--text,#f2f2ef);transition:color 180ms}.ds-text-link:hover{color:var(--signal,#c7ccd2)}.ds-text-link:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}"
+    },
+    {
+      "name": "Contact Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Visible label and platinum focus border; validation state uses error color.",
+      "html": "<label class=\"ds-field-label\" for=\"ds-email\">Email address</label><input class=\"ds-field\" id=\"ds-email\" type=\"email\" placeholder=\"you@company.com\" />",
+      "css": ".ds-field-label{font-family:var(--font-sans,\"Source Sans 3\",sans-serif);display:block;font-size:14px;color:var(--text,#f2f2ef);margin-bottom:12px}.ds-field{font-family:var(--font-sans,\"Source Sans 3\",sans-serif);display:block;width:calc(100% - 30px);min-height:52px;background:#1f2124;color:var(--text,#f2f2ef);border:1px solid #4d4f52;border-radius:var(--radius-control,4px);padding:14px;font-size:17px;transition:border-color 180ms}.ds-field::placeholder{color:#a8aaad;opacity:1}.ds-field:focus{border-color:var(--signal,#c7ccd2)}.ds-field:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}.ds-field[aria-invalid=true]{border-color:#f6a8a1}"
+    },
+    {
+      "name": "Navigation Links",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Header links with an active location underline. Full header uses supplied artwork.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Example navigation\"><a href=\"#hero-stage\" aria-current=\"location\">Home</a><a href=\"#services\">Services</a><a href=\"#about\">About</a><a href=\"#projects\">Work</a><a href=\"#contact\">Contact</a></nav>",
+      "css": ".ds-nav{font-family:var(--font-display,\"Manrope Variable\",Manrope,sans-serif);display:flex;flex-wrap:wrap;gap:27px;background:var(--canvas,#0b0c0e);padding:16px}.ds-nav a{position:relative;color:var(--muted,#aeb4bd);font-size:12px;padding:15px 0;text-decoration:none;transition:color 180ms}.ds-nav a:after{content:\"\";position:absolute;bottom:5px;left:0;width:100%;height:1px;background:var(--signal,#c7ccd2);transform:scaleX(0);transform-origin:left;transition:transform 220ms var(--ease-out,cubic-bezier(.23,1,.32,1))}.ds-nav a:hover,.ds-nav a[aria-current]{color:var(--text,#f2f2ef)}.ds-nav a:hover:after,.ds-nav a[aria-current]:after{transform:scaleX(1)}.ds-nav a:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}@media(prefers-reduced-motion:reduce){.ds-nav a,.ds-nav a:after{transition:none}}"
+    },
+    {
+      "name": "Service Row",
+      "kind": "custom",
+      "refersTo": "service-row",
+      "description": "Numbered capability trigger; application connects this button to an accessible detail region.",
+      "html": "<button class=\"ds-service-row\" aria-expanded=\"false\"><span class=\"ds-service-number\">01</span><span>Web Development</span><span class=\"ds-service-plus\" aria-hidden=\"true\">+</span></button>",
+      "css": ".ds-service-row{font-family:var(--font-display,\"Manrope Variable\",Manrope,sans-serif);display:flex;align-items:center;gap:30px;padding:30px 0;width:100%;border:0;border-bottom:1px solid var(--line,#34383f);background:transparent;color:var(--text,#f2f2ef);font-size:clamp(24px,2.5vw,34px);text-align:left;cursor:pointer}.ds-service-number{font-size:13px;min-width:24px;color:var(--muted,#aeb4bd)}.ds-service-plus{margin-left:auto}.ds-service-row:hover{color:var(--signal,#c7ccd2)}.ds-service-row:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}"
+    },
+    {
+      "name": "Project Preview",
+      "kind": "card",
+      "refersTo": "project-preview",
+      "description": "Bordered project container with a clear open action; content remains accurately qualified.",
+      "html": "<button class=\"ds-preview\"><span class=\"ds-preview-label\">Project demonstration</span><span class=\"ds-preview-title\">Automated Business Lead Research System</span><span class=\"ds-preview-open\">Open project <svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M7 17 17 7M7 7h10v10\"/></svg></span></button>",
+      "css": ".ds-preview{font-family:var(--font-sans,\"Source Sans 3\",sans-serif);display:flex;flex-direction:column;gap:24px;width:100%;min-height:240px;padding:27px 25px;border:1px solid #505255;border-radius:var(--radius-panel,12px);background:var(--raised,#25282d);color:var(--text,#f2f2ef);text-align:left;overflow:hidden;cursor:pointer}.ds-preview-label{color:var(--muted,#aeb4bd);font-size:12px}.ds-preview-title{font-family:var(--font-display,\"Manrope Variable\",Manrope,sans-serif);font-size:28px;letter-spacing:-.035em}.ds-preview-open{display:inline-flex;align-items:center;gap:16px;align-self:flex-end;margin-top:auto;padding:8px;font-size:14px}.ds-preview:hover .ds-preview-open{background:var(--text,#f2f2ef);color:var(--canvas,#0b0c0e)}.ds-preview:focus-visible{outline:2px solid var(--signal,#c7ccd2);outline-offset:2px;}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Compact NYG",
+    "overview": "The finalized identity pairs the supplied NYG artwork with carbon surfaces, platinum signals, and clear sans-serif typography. Its character is precise, restrained, and confident. Strong headings, generous section spacing, and practical controls keep the six connected services readable.\n\nNYG Agency is the public brand; NYG Digital FZE LLC remains the legal entity. The supplied logo letterforms are binding assets. The interface supports the artwork through proportion and space, without redrawing its geometry.",
+    "keyCharacteristics": [
+      "Carbon and platinum tonal contrast.",
+      "Manrope display type with Source Sans 3 reading text.",
+      "Supplied artwork, preserved proportions, and responsive lockups.",
+      "Flat surfaces, fine dividers, and restrained interaction feedback."
+    ],
+    "rules": [
+      {
+        "name": "The Neutral Identity Rule",
+        "body": "New brand surfaces use the Carbon / Platinum system; retained compatibility names do not authorize restoring teal or mint.",
+        "section": "colors"
+      },
+      {
+        "name": "The Two-Font Rule",
+        "body": "Use Manrope for display and control emphasis, and Source Sans 3 for reading text. Do not restore the superseded serif display system.",
+        "section": "typography"
+      },
+      {
+        "name": "The Artwork Rule",
+        "body": "Use the production SVG assets as supplied. Do not redraw the monogram, reconstruct its letters with text, distort its proportions, or substitute archived concept artwork.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "**Do** use the Carbon / Platinum tokens for new brand surfaces.",
+      "**Do** preserve supplied logo artwork and its native proportions.",
+      "**Do** pair Manrope headings with Source Sans 3 reading text.",
+      "**Do** keep focus, reduced-motion behavior, and mobile reading order intact.",
+      "**Do** identify the public brand as NYG Agency and retain NYG Digital FZE LLC in legal disclosures."
+    ],
+    "donts": [
+      "**Don't** restore the superseded teal, mint, or serif visual direction.",
+      "**Don't** substitute archived logo concepts for the supplied production identity.",
+      "**Don't** add ornamental shadows, glows, or gradients to routine controls.",
+      "**Don't** invent client results, testimonials, awards, or business facts."
+    ]
+  }
+}

@@ -62,16 +62,16 @@ export function EngagementBlueprint() {
       <div id="faq" className="process-faq" aria-labelledby="faq-heading">
         <h3 id="faq-heading">Questions businesses ask.</h3>
         <details>
-          <summary>What does NYG Digital build?</summary>
+          <summary>What does NYG Agency build?</summary>
           <p>
-            NYG Digital builds websites and web applications, practical AI integrations, and
+            NYG Agency builds websites and web applications, practical AI integrations, and
             connected business automation systems around the way your team works.
           </p>
         </details>
         <details>
           <summary>Do you work with businesses in Dubai and Ajman?</summary>
           <p>
-            Yes. NYG Digital is registered in Ajman and serves businesses in Dubai and across the
+            Yes. NYG Agency is registered in Ajman and serves businesses in Dubai and across the
             wider United Arab Emirates.
           </p>
         </details>

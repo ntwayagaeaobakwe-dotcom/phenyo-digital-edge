@@ -15,16 +15,19 @@ import {
 import { ScrollScrubWorkflowFilm } from "@/components/portfolio/ScrollScrubWorkflowFilm";
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "NYG Digital Business Card | UAE Software Consultancy";
+const PAGE_TITLE = "NYG Agency Business Card | UAE Software Consultancy";
 const PAGE_DESC =
-  "Connect with Phenyo Ntwayagae, founder of NYG Digital, an Ajman-based software development, AI, and business automation consultancy serving the UAE.";
+  "Connect with Phenyo Ntwayagae, founder of NYG Agency, an Ajman-based software development, AI, and business automation consultancy serving the UAE.";
 export const Route = createFileRoute("/card")({
   component: CardPage,
   head: () => ({
     meta: [
       { title: PAGE_TITLE },
       { name: "description", content: PAGE_DESC },
-      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
+      {
+        name: "robots",
+        content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      },
       { property: "og:title", content: PAGE_TITLE },
       { property: "og:description", content: PAGE_DESC },
       { property: "og:url", content: SITE_URL + "/card" },
@@ -32,12 +35,18 @@ export const Route = createFileRoute("/card")({
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "NYG Digital — software development, AI, and automation consultancy in the UAE" },
+      {
+        property: "og:image:alt",
+        content: "NYG Agency — software development, AI, and automation consultancy in the UAE",
+      },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: PAGE_TITLE },
       { name: "twitter:description", content: PAGE_DESC },
       { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
-      { name: "twitter:image:alt", content: "NYG Digital — software development, AI, and automation consultancy in the UAE" },
+      {
+        name: "twitter:image:alt",
+        content: "NYG Agency — software development, AI, and automation consultancy in the UAE",
+      },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/card" }],
     scripts: [
@@ -72,7 +81,7 @@ function CardPage() {
         Skip to main content
       </a>
       <header className="page-width card-nav">
-        <Link to="/" aria-label="NYG Digital home">
+        <Link to="/" aria-label="NYG Agency home">
           <NygLogo showWordmark />
         </Link>
         <nav className="card-nav-links" aria-label="Business card navigation">
@@ -96,7 +105,7 @@ function CardPage() {
           </h1>
           <p>
             Web development, AI solutions, and intelligent automation. Built around your business,
-            by NYG Digital.
+            by NYG Agency.
           </p>
           <div className="card-actions">
             <Link to="/" hash="contact" className="button">
@@ -121,7 +130,7 @@ function CardPage() {
           <div className="card-founder">
             <img
               src="/phenyo.avif"
-              alt="Phenyo Ntwayagae, founder of NYG Digital"
+              alt="Phenyo Ntwayagae, founder of NYG Agency"
               width="45"
               height="45"
               loading="lazy"

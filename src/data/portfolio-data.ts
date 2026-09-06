@@ -73,7 +73,7 @@ export interface CompanyInfo {
 }
 
 export const COMPANY_INFO: CompanyInfo = {
-  brandName: "NYG Digital",
+  brandName: "NYG Agency",
   legalName: "NYG Digital FZE LLC",
   entityType: "Free Zone Entity (FZE LLC)",
   registeredJurisdiction: "Ajman NuVentures Centre Free Zone",
@@ -87,16 +87,16 @@ export const COMPANY_INFO: CompanyInfo = {
   subheadline:
     "We design business automation, connected workflows, and modern websites that remove repetitive admin and help service businesses across the UAE run efficiently.",
   description:
-    "NYG Digital is the trading brand of NYG Digital FZE LLC, a software-development and computer-systems consultancy registered in Ajman, United Arab Emirates.",
+    "NYG Agency is the trading brand of NYG Digital FZE LLC, a software-development and computer-systems consultancy registered in Ajman, United Arab Emirates.",
   overview:
-    "Founded in 2026, NYG Digital helps businesses replace manual spreadsheets, delayed follow-ups, and disconnected tools with reliable, automated systems.",
+    "Founded in 2026, NYG Agency helps businesses replace manual spreadsheets, delayed follow-ups, and disconnected tools with reliable, automated systems.",
   legalFooter:
-    "© 2026 NYG Digital. NYG Digital is the trading brand of NYG Digital FZE LLC, a Free Zone Entity registered with Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates.",
+    "© 2026 NYG Agency. NYG Agency is the trading brand of NYG Digital FZE LLC, a Free Zone Entity registered with Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates.",
 };
 
 export const PERSONAL_INFO = {
   name: "Phenyo Ntwayagae",
-  brand: "NYG Digital",
+  brand: "NYG Agency",
   title: "Founder & Systems Engineer",
   tagline: "Automations That Save You Time. Websites That Help You Grow.",
   headline: "Automations That Save You Time. Websites That Help You Grow.",
@@ -390,7 +390,8 @@ export const PROJECTS: ProjectItem[] = [
       "Assigned team member receives an instant alert via WhatsApp or email",
       "Instant confirmation sent to client with clear next steps",
     ],
-    potentialValue: "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
+    potentialValue:
+      "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
     toolsUsed: ["n8n Workflows", "Webhooks", "CRM Integration", "Instant Messaging & Email Alerts"],
     imageUrls: ["/src/assets/placeholder-project-inquiry-workflow.jpg"],
     accent: "from-primary/25 to-transparent",
@@ -405,7 +406,8 @@ export const PROJECTS: ProjectItem[] = [
       "Assigned team member receives an instant alert via WhatsApp or email",
       "Instant confirmation sent to client with clear next steps",
     ],
-    valueCreated: "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
+    valueCreated:
+      "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
   },
   {
     id: "business-operations-automation",
@@ -507,8 +509,7 @@ export const PROJECTS: ProjectItem[] = [
       "Formats structured 60-second video script drafts",
       "Prepares clip outlines for final production review",
     ],
-    potentialValue:
-      "Reduces hours of manual footage scanning into ready-to-produce video drafts.",
+    potentialValue: "Reduces hours of manual footage scanning into ready-to-produce video drafts.",
     toolsUsed: ["Python Scripts", "n8n Workflows", "AI Transcription", "Content Formatting"],
     imageUrls: ["/src/assets/placeholder-project-shorts-repurposing.jpg"],
     accent: "from-red-500/15 to-transparent",
@@ -523,8 +524,7 @@ export const PROJECTS: ProjectItem[] = [
       "Formats structured 60-second video script drafts",
       "Prepares clip outlines for final production review",
     ],
-    valueCreated:
-      "Reduces hours of manual footage scanning into ready-to-produce video drafts.",
+    valueCreated: "Reduces hours of manual footage scanning into ready-to-produce video drafts.",
   },
 ];
 
@@ -550,6 +550,10 @@ export const FORM_SERVICE_OPTIONS = [
   "Websites That Generate Inquiries",
   "Client Portals & Dashboards",
   "Lead Research & Organization",
+  "Software & Digital Solutions",
+  "Digital Marketing",
+  "Creative Services",
+  "Business Consulting",
   "Not Sure — I'll Describe the Problem",
 ];
 

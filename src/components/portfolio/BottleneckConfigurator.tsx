@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ArrowUpRight, Check } from "lucide-react";
 import { SectionShell } from "./SectionShell";
+import { navigateToSection } from "@/lib/navigation";
 
 const bottlenecks = [
   {
@@ -67,15 +68,6 @@ export function BottleneckConfigurator() {
   const [selectedId, setSelectedId] = useState<BottleneckId>(bottlenecks[0].id);
   const selected = bottlenecks.find((item) => item.id === selectedId) ?? bottlenecks[0];
 
-  const carryContext = () => {
-    try {
-      sessionStorage.setItem("pendingIndustryContext", selected.label);
-      window.dispatchEvent(new CustomEvent("industryContextSet"));
-    } catch {
-      // Storage unavailable fallback
-    }
-  };
-
   return (
     <SectionShell
       id="diagnostic"
@@ -117,7 +109,14 @@ export function BottleneckConfigurator() {
             ))}
           </div>
           <p>{selected.outcome}</p>
-          <a href="#contact" onClick={carryContext} className="button">
+          <a
+            href="#contact"
+            onClick={(event) => {
+              event.preventDefault();
+              navigateToSection("contact", { context: selected.label });
+            }}
+            className="button"
+          >
             Discuss this system <ArrowUpRight size={16} />
           </a>
           <small>We’ll confirm the right scope together.</small>

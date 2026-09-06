@@ -1,6 +1,12 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "ntwayagaeaobakwe-dotcom-phenyo-digital-edge",
+  "routes": [
+    {
+      "pattern": "*nygagency.com/*",
+      "zone_name": "nygagency.com"
+    }
+  ],
   "main": ".output/server/index.mjs",
   "compatibility_date": "2026-08-25",
   "compatibility_flags": [

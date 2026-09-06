@@ -1,48 +1,53 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
-import { SystemVisual } from "./SystemVisual";
-import { AVAILABILITY_STATUS } from "./HeaderNav";
+
 export function HeroSection() {
   return (
-    <section id="hero-stage" className="hero-section">
+    <section id="hero-stage" className="hero-section" aria-labelledby="hero-title">
       <div className="page-width hero-layout">
         <div className="hero-copy">
-          <h1>
-            We build digital
-            <br className="desktop-break" /> systems that
-            <br className="desktop-break" /> <span>work smarter.</span>
+          <h1 id="hero-title">
+            Better systems.
+            <br />
+            <span>Stronger business.</span>
           </h1>
           <p className="hero-description">
-            Web development, practical AI solutions, and n8n workflow automation for businesses in
-            Ajman, Dubai, and across the UAE.
+            Web development, AI automation, and digital strategy — connected around the way your
+            business works.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="button">
               Start a project <ArrowUpRight size={18} />
             </a>
             <a href="#projects" className="text-link">
-              Explore our work <ArrowDown size={16} />
+              Explore the work <ArrowDown size={16} />
             </a>
           </div>
-          <p className="availability">
-            <span />
-            {AVAILABILITY_STATUS}
-            <span className="availability-separator">/</span>Based in the UAE
-          </p>
+          <p className="hero-location">Based in Ajman. Working across Dubai and the UAE.</p>
         </div>
-        <SystemVisual />
+        <div className="hero-identity" aria-hidden="true">
+          <span className="identity-caption">NYG / AGENCY</span>
+          <img
+            src="/brand/nyg-agency-monogram.svg"
+            alt=""
+            width="120"
+            height="120"
+            fetchPriority="high"
+          />
+          <span className="identity-footnote">Clarity in every connection.</span>
+        </div>
       </div>
       <div className="page-width hero-foot">
         <p>
-          From first impression.
+          One considered approach.
           <br />
-          <span>To everything that happens next.</span>
+          <span>From strategy to working systems.</span>
         </p>
         <div>
-          <span>Web development</span>
-          <span>AI solutions</span>
-          <span>Business automation</span>
+          <a href="#services">Build</a>
+          <a href="#services">Automate</a>
+          <a href="#services">Grow</a>
         </div>
-        <a href="#services" aria-label="Scroll to services">
+        <a href="#services" aria-label="Explore our capabilities">
           <ArrowDown size={20} />
         </a>
       </div>
