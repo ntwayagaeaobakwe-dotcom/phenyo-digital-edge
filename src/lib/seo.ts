@@ -6,7 +6,7 @@
  * SSR-safe and guards browser environment from unsafe `process` references.
  */
 
-const DEFAULT_PROD_SITE_URL = "https://ntwayagae.com";
+const DEFAULT_PROD_SITE_URL = "https://nygagency.com";
 const DEFAULT_DEV_SITE_URL = "http://localhost:3000";
 
 export function getSiteUrl(): string {
@@ -26,7 +26,7 @@ export function getSiteUrl(): string {
   }
 
   // Client-side fallback if env variable was not set
-  if (!rawUrl && typeof window !== "undefined" && window.location?.origin) {
+  if (!rawUrl && import.meta.env.DEV && typeof window !== "undefined" && window.location?.origin) {
     rawUrl = window.location.origin;
   }
 

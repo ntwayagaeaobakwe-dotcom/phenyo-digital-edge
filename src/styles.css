@@ -1,12 +1,26 @@
 /* Self-hosted variable fonts */
-@import "@fontsource-variable/newsreader/index.css";
-@import "@fontsource-variable/newsreader/wght-italic.css";
-@import "@fontsource-variable/manrope";
-@import "@fontsource-variable/unbounded";
-@import "@fontsource-variable/jetbrains-mono";
+
+@import "./studio.css";
 
 @import "tailwindcss" source(none);
-@source "../src";
+@source "./routes";
+@source "./components/nyg/HeaderNav.tsx";
+@source "./components/nyg/HeroSection.tsx";
+@source "./components/nyg/NygLogo.tsx";
+@source "./components/nyg/SystemVisual.tsx";
+@source "./components/nyg/ServicesSection.tsx";
+@source "./components/nyg/FooterSection.tsx";
+@source "./components/portfolio/BottleneckConfigurator.tsx";
+@source "./components/portfolio/CapabilitySection.tsx";
+@source "./components/portfolio/ContactSection.tsx";
+@source "./components/portfolio/EngagementBlueprint.tsx";
+@source "./components/portfolio/ProjectsSection.tsx";
+@source "./components/portfolio/ProjectModal.tsx";
+@source "./components/portfolio/SectionShell.tsx";
+@source "./components/portfolio/SystemStudio.tsx";
+@source "./components/portfolio/ScrollScrubWorkflowFilm.tsx";
+@source "./components/ui/dialog.tsx";
+@source "./components/ui/sonner.tsx";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -20,16 +34,16 @@
   --radius-pill: 9999px;
 
   /* NYG Editorial Systems Core Palette */
-  --color-ink: #080a09;
+  --color-ink: #101311;
   --color-deep-teal: #082d2d;
-  --color-petroleum: #123e3d;
-  --color-paper: #f3f0e8;
+  --color-petroleum: #191e1b;
+  --color-paper: #edf1ed;
   --color-bone: #faf8f2;
   --color-graphite: #282b29;
-  --color-stone: #b8b5ac;
+  --color-stone: #a7b1a9;
 
   /* Signal Color (Constrained Architectural Accents) */
-  --color-aqua: #5fd8cd;
+  --color-aqua: #b5ddc7;
 
   /* Muted Editorial Mineral Accents */
   --color-mineral-mist: #ceddd9;
@@ -38,20 +52,20 @@
   --color-soft-clay: #d9beb0;
 
   /* Semantic Dark Environment Surfaces */
-  --color-surface-base: #080a09;
-  --color-surface-raised: #123e3d;
+  --color-surface-base: #101311;
+  --color-surface-raised: #191e1b;
   --color-surface-sunken: #05060a;
   --color-surface-overlay: rgba(8, 45, 45, 0.85);
   --color-surface-nav: rgba(8, 10, 9, 0.9);
-  --color-surface-paper: #f3f0e8;
+  --color-surface-paper: #edf1ed;
   --color-surface-bone: #faf8f2;
 
   /* Semantic Typography Tokens */
-  --color-text-primary: #f3f0e8;
-  --color-text-muted: #b8b5ac;
+  --color-text-primary: #edf1ed;
+  --color-text-muted: #a7b1a9;
   --color-text-subtle: rgba(184, 181, 172, 0.6);
   --color-text-faint: rgba(184, 181, 172, 0.35);
-  --color-text-dark: #080a09;
+  --color-text-dark: #101311;
   --color-text-graphite: #282b29;
 
   /* Semantic Hairline Borders */
@@ -61,14 +75,14 @@
   --color-border-paper: rgba(8, 45, 45, 0.14);
 
   /* Accents & Focus Rings */
-  --color-accent: #5fd8cd;
+  --color-accent: #b5ddc7;
   --color-accent-hover: #48c7bc;
-  --color-focus-ring: #5fd8cd;
+  --color-focus-ring: #b5ddc7;
 
   /* Primary Action Tokens */
-  --color-action-primary: #f3f0e8;
+  --color-action-primary: #edf1ed;
   --color-action-primary-hover: #ffffff;
-  --color-action-primary-foreground: #080a09;
+  --color-action-primary-foreground: #101311;
 
   /* Aliases for generic component frameworks */
   --color-background: var(--color-surface-base);
@@ -77,38 +91,38 @@
   --color-card-foreground: var(--color-text-primary);
   --color-popover: var(--color-surface-raised);
   --color-popover-foreground: var(--color-text-primary);
-  --color-primary: #5fd8cd;
-  --color-primary-foreground: #080a09;
+  --color-primary: #b5ddc7;
+  --color-primary-foreground: #101311;
   --color-secondary: var(--color-surface-raised);
   --color-secondary-foreground: var(--color-text-primary);
   --color-muted: var(--color-surface-raised);
   --color-muted-foreground: var(--color-text-muted);
   --color-destructive: #d9beb0;
-  --color-destructive-foreground: #080a09;
+  --color-destructive-foreground: #101311;
   --color-border: var(--color-border-subtle);
   --color-input: var(--color-border-subtle);
   --color-ring: var(--color-focus-ring);
 
   /* Typography Stacks */
-  --font-serif: "Newsreader Variable", "Newsreader", "Instrument Serif", Georgia, serif;
-  --font-display: "Newsreader Variable", "Newsreader", "Instrument Serif", Georgia, serif;
+  --font-serif: "Manrope Variable", Manrope, sans-serif;
+  --font-display: "Manrope Variable", Manrope, sans-serif;
   --font-sans: "Manrope Variable", "Manrope", -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono Variable", "JetBrains Mono", monospace;
 }
 
 :root {
   --radius: 16px;
-  --background: #080a09;
-  --foreground: #f3f0e8;
+  --background: #101311;
+  --foreground: #edf1ed;
 
-  --color-ink: #080a09;
+  --color-ink: #101311;
   --color-deep-teal: #082d2d;
-  --color-petroleum: #123e3d;
-  --color-paper: #f3f0e8;
+  --color-petroleum: #191e1b;
+  --color-paper: #edf1ed;
   --color-bone: #faf8f2;
   --color-graphite: #282b29;
-  --color-stone: #b8b5ac;
-  --color-aqua: #5fd8cd;
+  --color-stone: #a7b1a9;
+  --color-aqua: #b5ddc7;
 
   /* Ease Curves */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -122,7 +136,7 @@
   html {
     scroll-behavior: smooth;
     color-scheme: dark;
-    background-color: #080a09;
+    background-color: #101311;
   }
   body {
     background-color: var(--color-surface-base);
@@ -131,7 +145,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     selection-background-color: rgba(95, 216, 205, 0.25);
-    selection-color: #f3f0e8;
+    selection-color: #edf1ed;
   }
 
   /* High-Contrast Accessible Focus Visible Ring in NYG Aqua */
@@ -158,72 +172,18 @@
   border-color: rgba(184, 181, 172, 0.2);
 }
 
-/* Editorial Section Themes */
-.editorial-paper {
-  background-color: #f3f0e8 !important;
-  color: #080a09 !important;
+@font-face {
+  font-family: "Manrope Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 800;
+  src: url("@fontsource-variable/manrope/files/manrope-latin-wght-normal.woff2") format("woff2");
 }
-.editorial-paper .text-text-primary {
-  color: #080a09 !important;
-}
-.editorial-paper .text-text-muted {
-  color: #282b29 !important;
-}
-.editorial-paper .text-text-subtle {
-  color: #5c5953 !important;
-}
-.editorial-paper .border-border-subtle {
-  border-color: rgba(8, 45, 45, 0.12) !important;
-}
-.editorial-paper .border-border-default {
-  border-color: rgba(8, 45, 45, 0.2) !important;
-}
-
-.editorial-bone {
-  background-color: #faf8f2 !important;
-  color: #080a09 !important;
-}
-
-.editorial-mineral {
-  background-color: #ceddd9 !important;
-  color: #080a09 !important;
-}
-
-.editorial-sand {
-  background-color: #e5d6c2 !important;
-  color: #080a09 !important;
-}
-
-.editorial-teal {
-  background-color: #082d2d !important;
-  color: #f3f0e8 !important;
-}
-
-.editorial-ink {
-  background-color: #080a09 !important;
-  color: #f3f0e8 !important;
-}
-
-/* Scroll-triggered reveal animation classes */
-.reveal-item {
-  opacity: 0;
-  transform: translateY(1.25rem);
-  transition:
-    opacity 500ms cubic-bezier(0.23, 1, 0.32, 1),
-    transform 500ms cubic-bezier(0.23, 1, 0.32, 1);
-  will-change: transform, opacity;
-}
-
-.reveal-item.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal-item {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-    will-change: auto !important;
-  }
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url("@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2")
+    format("woff2");
 }

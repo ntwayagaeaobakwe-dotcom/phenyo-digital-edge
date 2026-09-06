@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Check, CheckCircle2, CircleAlert, Play, RotateCcw } from "lucide-react";
+import { ArrowRight, Check, Play, RotateCcw } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { ScrollScrubWorkflowFilm } from "./ScrollScrubWorkflowFilm";
 
@@ -61,19 +61,20 @@ export function SystemStudio() {
   const [activeStep, setActiveStep] = useState(0);
   const [comparison, setComparison] = useState<"manual" | "automated">("automated");
   const [onboardingRunId, setOnboardingRunId] = useState(0);
+  const [filmOpen, setFilmOpen] = useState(false);
 
   // Animate DOM workflow when Client Onboarding is active
   useEffect(() => {
-    if (scenario !== "onboarding") return;
+    if (onboardingRunId === 0) return;
 
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reducedMotion) {
-      setActiveStep(scenarios.onboarding.nodes.length - 1);
+      setActiveStep(scenarios[scenario].nodes.length - 1);
       return;
     }
 
     setActiveStep(0);
-    const timers = scenarios.onboarding.nodes
+    const timers = scenarios[scenario].nodes
       .slice(1)
       .map((_, index) => window.setTimeout(() => setActiveStep(index + 1), (index + 1) * 650));
     return () => timers.forEach(window.clearTimeout);
@@ -81,201 +82,108 @@ export function SystemStudio() {
 
   const switchScenario = (value: ScenarioKey) => {
     setScenario(value);
-    if (value === "onboarding") {
-      setOnboardingRunId((current) => current + 1);
-    }
+    setOnboardingRunId((current) => current + 1);
   };
 
   return (
     <SectionShell
       id="systems"
-      eyebrow="Interactive Workflow Demo"
-      iconGlyph="02"
-      themeVariant="paper"
-      declarativeTitle="See how work moves"
-      qualifierTitle="from initial request to organized next action."
+      eyebrow="Interactive workflow demo"
+      declarativeTitle="Less friction. More flow."
+      qualifierTitle="Follow the journey from an incoming request to an organized next action."
     >
-      {/* Studio Header & Scenario Selector */}
-      <div className="flex flex-col gap-5 border-b border-[rgba(8,45,45,0.1)] pb-6 sm:flex-row sm:items-center sm:justify-between">
-        <p className="max-w-2xl text-sm leading-relaxed text-[#282B29]">
-          See how an automated system works step-by-step—how an inquiry is captured, where
-          information goes, and how your team is notified.
-        </p>
-        <div
-          className="inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs shrink-0"
-          aria-label="System scenario"
-        >
-          {(Object.keys(scenarios) as ScenarioKey[]).map((key) => (
-            <button
-              key={key}
-              type="button"
-              aria-pressed={scenario === key}
-              onClick={() => switchScenario(key)}
-              className={`rounded-full px-4 py-2 min-h-[40px] font-medium transition-all uppercase tracking-wider cursor-pointer focus-ring text-xs ${
-                scenario === key
-                  ? "bg-[#080A09] text-[#F3F0E8] font-semibold shadow-xs"
-                  : "text-[#282B29] hover:text-[#080A09]"
-              }`}
-            >
-              {scenarios[key].label}
-            </button>
-          ))}
+      <span id="system-studio" className="anchor-alias" />
+      <div className="workflow-studio">
+        <div className="workflow-toolbar">
+          <div className="segmented-control" role="group" aria-label="System scenario">
+            {(Object.keys(scenarios) as ScenarioKey[]).map((key) => (
+              <button
+                type="button"
+                key={key}
+                aria-pressed={scenario === key}
+                onClick={() => switchScenario(key)}
+              >
+                {scenarios[key].label}
+              </button>
+            ))}
+          </div>
+          <span className="demo-label">Interactive demonstration</span>
         </div>
+        <div className="workflow-diagram">
+          <ol aria-label={scenarios[scenario].label + " workflow stages"}>
+            {scenarios[scenario].nodes.map(([title, detail], index) => (
+              <li
+                key={title}
+                className={index <= activeStep ? "step-complete" : ""}
+                aria-current={index === activeStep ? "step" : undefined}
+              >
+                <div className="workflow-step-top">
+                  <span>0{index + 1}</span>
+                  {index <= activeStep ? <Check size={16} /> : <span className="step-wait" />}
+                </div>
+                <h3>{title}</h3>
+                <p>{detail}</p>
+                {index < 4 && <ArrowRight className="workflow-connector" size={16} />}
+              </li>
+            ))}
+          </ol>
+        </div>
+        <div className="workflow-bottom">
+          <p>{scenarios[scenario].summary}</p>
+          <button
+            className="text-link"
+            type="button"
+            onClick={() => setOnboardingRunId((current) => current + 1)}
+          >
+            {onboardingRunId ? <RotateCcw size={16} /> : <Play size={16} />}{" "}
+            {onboardingRunId ? "Replay flow" : "Run the workflow"}
+          </button>
+        </div>
+        <p className="sr-only" aria-live="polite">
+          {onboardingRunId > 0 && activeStep === 4
+            ? "Workflow complete. All five stages finished."
+            : ""}
+        </p>
       </div>
-
-      {/* Scenario Stage Presentation */}
-      <div className="mt-6">
-        {scenario === "leads" ? (
-          /* Cinematic Scroll-Scrubbed Workflow Film for Lead Routing */
-          <ScrollScrubWorkflowFilm />
-        ) : (
-          /* Accessible Editorial DOM Workflow for Client Onboarding */
-          <div className="rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8 shadow-xs">
-            <div className="flex flex-col gap-4 border-b border-[rgba(8,45,45,0.1)] pb-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-bold">
-                  [ WORKFLOW // CLIENT_ONBOARDING ]
-                </span>
-                <p className="mt-1 text-xs text-[#282B29] font-sans">
-                  Automated onboarding sequence when a new client signs up.
-                </p>
-              </div>
-            </div>
-
-            <div className="pt-6">
-              <div className="grid gap-3 lg:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr] lg:items-center">
-                {scenarios.onboarding.nodes.map(([title, detail], index) => {
-                  const complete = index <= activeStep;
-                  return (
-                    <div key={title} className="contents">
-                      <div
-                        className={`min-h-28 rounded-2xl border p-4 transition-all duration-300 ${
-                          complete
-                            ? "border-[#082D2D] bg-[#F3F0E8] shadow-xs ring-1 ring-[#082D2D]/15"
-                            : "border-[rgba(8,45,45,0.1)] bg-[#FAF8F2]"
-                        }`}
-                      >
-                        <div className="flex items-start justify-between gap-3">
-                          <span className="font-mono text-[11px] text-[#5C5953] font-semibold">
-                            0{index + 1}
-                          </span>
-                          <span
-                            className={`grid h-5 w-5 place-items-center rounded-full text-[10px] ${
-                              complete
-                                ? "bg-[#082D2D] text-[#5FD8CD] font-bold"
-                                : "border border-[rgba(8,45,45,0.2)] text-[#5C5953]"
-                            }`}
-                          >
-                            {complete ? <Check className="h-3 w-3" /> : index + 1}
-                          </span>
-                        </div>
-                        <p className="mt-3 text-xs font-mono uppercase tracking-wider font-bold text-[#080A09]">
-                          {title}
-                        </p>
-                        <p className="mt-1 text-xs text-[#282B29] leading-relaxed font-sans">
-                          {detail}
-                        </p>
-                      </div>
-                      {index < scenarios.onboarding.nodes.length - 1 ? (
-                        <div
-                          className="relative mx-auto flex h-6 w-6 items-center justify-center lg:h-4 lg:w-6"
-                          aria-hidden="true"
-                        >
-                          <ArrowRight
-                            className={`relative h-4 w-4 rotate-90 transition-colors duration-300 lg:rotate-0 ${
-                              index < activeStep ? "text-[#082D2D]" : "text-[#B8B5AC]"
-                            }`}
-                          />
-                        </div>
-                      ) : null}
-                    </div>
-                  );
-                })}
-              </div>
-
-              <div className="mt-7 flex flex-col gap-4 border-t border-[rgba(8,45,45,0.1)] pt-5 sm:flex-row sm:items-center sm:justify-between">
-                <p className="max-w-2xl text-xs text-[#282B29] font-medium font-sans">
-                  {scenarios.onboarding.summary}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => setOnboardingRunId((current) => current + 1)}
-                  className="inline-flex w-fit items-center justify-center gap-2 rounded-full border border-[rgba(8,45,45,0.2)] bg-[#082D2D] px-5 py-2.5 min-h-[40px] font-mono text-xs uppercase tracking-wider font-semibold text-[#F3F0E8] hover:bg-[#123E3D] transition-all focus-ring cursor-pointer"
-                >
-                  {activeStep === scenarios.onboarding.nodes.length - 1 ? (
-                    <RotateCcw className="h-3.5 w-3.5 text-[#5FD8CD]" />
-                  ) : (
-                    <Play className="h-3.5 w-3.5 text-[#5FD8CD]" />
-                  )}
-                  Replay flow
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-      </div>
-
-      {/* Operating Model Comparison Panel */}
-      <div className="mt-8 grid gap-6 lg:grid-cols-[0.75fr_1.25fr]">
-        <div className="flex flex-col justify-between rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8">
-          <div>
-            <span className="font-mono text-[11px] uppercase tracking-widest text-[#082D2D] font-bold">
-              [ WORKFLOW_COMPARISON ]
-            </span>
-            <h3 className="mt-3 text-2xl font-serif font-normal text-[#080A09]">
-              Compare manual vs. connected.
-            </h3>
-            <p className="mt-3 text-sm leading-relaxed text-[#282B29] font-sans">
-              See the difference between manual daily tasks and a connected system that runs
-              reliably in the background.
-            </p>
-          </div>
-          <div className="mt-6 inline-flex w-fit items-center rounded-full border border-[rgba(8,45,45,0.14)] bg-[#F3F0E8] p-1 font-mono text-xs">
+      <div className="workflow-comparison">
+        <div>
+          <h3>A connected way to work.</h3>
+          <p>Explore how the everyday experience changes.</p>
+          <div className="segmented-control" role="group" aria-label="Compare workflows">
             {(["manual", "automated"] as const).map((option) => (
               <button
                 key={option}
                 type="button"
-                onClick={() => setComparison(option)}
                 aria-pressed={comparison === option}
-                className={`rounded-full px-4 py-2 min-h-[40px] font-medium uppercase tracking-wider transition-all cursor-pointer focus-ring text-xs ${
-                  comparison === option
-                    ? "bg-[#080A09] text-[#F3F0E8] font-semibold shadow-xs"
-                    : "text-[#282B29] hover:text-[#080A09]"
-                }`}
+                onClick={() => setComparison(option)}
               >
-                {option}
+                {option === "manual" ? "Manual" : "Automated"}
               </button>
             ))}
           </div>
         </div>
-
-        <div className="rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8">
-          <div className="divide-y divide-[rgba(8,45,45,0.08)]">
-            {comparisonRows.map((row) => (
-              <div
-                key={row.label}
-                className="grid gap-2 py-3.5 sm:grid-cols-[0.85fr_1.15fr] sm:items-center"
-              >
-                <span className="font-mono text-xs uppercase tracking-wider text-[#5C5953] font-medium">
-                  {row.label}
-                </span>
-                <span className="flex items-center gap-2 text-xs font-semibold text-[#080A09]">
-                  {comparison === "automated" ? (
-                    <CheckCircle2 className="h-4 w-4 shrink-0 text-[#082D2D]" />
-                  ) : (
-                    <CircleAlert className="h-4 w-4 shrink-0 text-[#5C5953]" />
-                  )}
-                  {comparison === "automated" ? row.automated : row.manual}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="border-t border-[rgba(8,45,45,0.08)] mt-3 pt-3 font-mono text-[11px] text-[#5C5953]">
-            Typical operational comparisons. Exact time savings depend on your team's volume and existing
-            tools.
-          </p>
+        <div className="comparison-rows" aria-live="polite">
+          {comparisonRows.map((row) => (
+            <div key={row.label}>
+              <span>{row.label}</span>
+              <strong>{comparison === "automated" ? row.automated : row.manual}</strong>
+            </div>
+          ))}
+          <small>
+            Illustrative comparison. Actual timing and savings depend on your tools, workflow, and
+            volume.
+          </small>
         </div>
       </div>
+      <details
+        className="workflow-film-disclosure"
+        onToggle={(event) => setFilmOpen(event.currentTarget.open)}
+      >
+        <summary>
+          Watch the lead-routing workflow film <Play size={15} />
+        </summary>
+        {filmOpen && <ScrollScrubWorkflowFilm />}
+      </details>
     </SectionShell>
   );
 }

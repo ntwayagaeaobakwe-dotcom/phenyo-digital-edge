@@ -544,6 +544,8 @@ export const CREDENTIALS_SUMMARY = [
 ];
 
 export const FORM_SERVICE_OPTIONS = [
+  "Web Development",
+  "AI Solutions",
   "Business Automation",
   "Websites That Generate Inquiries",
   "Client Portals & Dashboards",

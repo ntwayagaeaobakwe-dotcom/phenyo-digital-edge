@@ -1,83 +1,76 @@
+import { useEffect, useState } from "react";
+import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { NygLogo } from "./NygLogo";
 import { PERSONAL_INFO, COMPANY_INFO } from "@/data/portfolio-data";
-
 export function FooterSection() {
+  const [time, setTime] = useState("--:--");
+  useEffect(() => {
+    const tick = () =>
+      setTime(
+        new Intl.DateTimeFormat("en-GB", {
+          timeZone: "Asia/Dubai",
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+        }).format(new Date()),
+      );
+    tick();
+    const interval = setInterval(tick, 60000);
+    return () => clearInterval(interval);
+  }, []);
   return (
-    <footer className="bg-[#080A09] border-t border-[rgba(184,181,172,0.16)] pt-16 pb-12 text-[#B8B5AC]">
-      <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 pb-12 border-b border-[rgba(184,181,172,0.12)] items-start">
-          {/* Logo & Overview */}
-          <div className="md:col-span-6 space-y-4">
-            <NygLogo showWordmark={true} />
-            <p className="font-serif italic font-normal text-lg text-[#F3F0E8] max-w-md leading-relaxed">
-              {COMPANY_INFO.headline}
+    <footer className="site-footer">
+      <div className="page-width">
+        <div className="footer-top">
+          <div>
+            <a href="#hero-stage" aria-label="NYG Digital home">
+              <NygLogo showWordmark />
+            </a>
+            <p>
+              Digital systems.
+              <br />
+              Built for what comes next.
             </p>
-            <p className="text-xs text-[#B8B5AC] max-w-md leading-relaxed font-sans font-normal">
-              {COMPANY_INFO.subheadline}
-            </p>
-          </div>
-
-          {/* Quick Links */}
-          <div className="md:col-span-3 space-y-3 font-mono text-xs">
-            <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">
-              [ EXPLORE ]
+            <span className="footer-clock">
+              UAE <span>{time}</span> GST / UTC+4
             </span>
-            <ul className="space-y-2 text-[#B8B5AC]">
-              <li>
-                <a href="#systems" className="hover:text-[#5FD8CD] transition-colors">
-                  Interactive Demo
-                </a>
-              </li>
-              <li>
-                <a href="#diagnostic" className="hover:text-[#5FD8CD] transition-colors">
-                  Identify Bottlenecks
-                </a>
-              </li>
-              <li>
-                <a href="#projects" className="hover:text-[#5FD8CD] transition-colors">
-                  Case Studies
-                </a>
-              </li>
-              <li>
-                <a href="#process" className="hover:text-[#5FD8CD] transition-colors">
-                  How We Work
-                </a>
-              </li>
-            </ul>
           </div>
-
-          {/* Registered Entity & Location */}
-          <div className="md:col-span-3 space-y-3 font-mono text-xs">
-            <span className="text-[#F3F0E8] uppercase tracking-widest font-semibold block">
-              [ REGISTERED ENTITY ]
-            </span>
-            <p className="text-[#B8B5AC] leading-relaxed">
-              <strong className="text-[#F3F0E8] font-normal">{COMPANY_INFO.legalName}</strong>
+          <div className="footer-links">
+            <a href="#services">Services</a>
+            <a href="#projects">Selected work</a>
+            <a href="#systems">Interactive demo</a>
+            <a href="#diagnostic">Find your next step</a>
+            <a href="#process">Our process</a>
+            <a href="/card">
+              Digital business card <ArrowUpRight size={13} />
+            </a>
+          </div>
+          <div className="footer-entity">
+            <p>
+              {COMPANY_INFO.legalName}
               <br />
               {COMPANY_INFO.registeredJurisdiction}
               <br />
               {COMPANY_INFO.registeredLocality}, {COMPANY_INFO.registeredCountry}
-              <br />
-              <span className="text-[#B8B5AC]/70">Asia/Dubai (GST UTC+4)</span>
             </p>
-            <a
-              href={`mailto:${PERSONAL_INFO.email}`}
-              className="text-[#5FD8CD] hover:underline block pt-1"
-            >
+            <a href={`mailto:${PERSONAL_INFO.email}`}>
               {PERSONAL_INFO.email}
+              <ArrowUpRight size={14} />
             </a>
+            <div className="social-links">
+              {PERSONAL_INFO.socials.map((social) => (
+                <a href={social.href} key={social.label} target="_blank" rel="noopener noreferrer">
+                  {social.label}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
-
-        <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono text-[#B8B5AC]">
-          <p className="leading-relaxed text-center md:text-left max-w-2xl">
-            {COMPANY_INFO.legalFooter}
-          </p>
-          <div className="flex items-center gap-6 shrink-0">
-            <a href="#hero-stage" className="hover:text-[#F3F0E8] transition-colors">
-              Back to top ↑
-            </a>
-          </div>
+        <div className="footer-bottom">
+          <p>{COMPANY_INFO.legalFooter}</p>
+          <a href="#hero-stage">
+            Back to top <ArrowUp size={16} />
+          </a>
         </div>
       </div>
     </footer>

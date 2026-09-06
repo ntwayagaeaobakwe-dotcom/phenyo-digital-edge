@@ -1,20 +1,179 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/nyg/HeroSection";
-import { LiquidScrollBackground } from "@/components/nyg/LiquidScrollBackground";
+import { HeaderNav } from "@/components/nyg/HeaderNav";
+import { ServicesSection } from "@/components/nyg/ServicesSection";
 import { SystemStudio } from "@/components/portfolio/SystemStudio";
 import { BottleneckConfigurator } from "@/components/portfolio/BottleneckConfigurator";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { CapabilitySection } from "@/components/portfolio/CapabilitySection";
 import { EngagementBlueprint } from "@/components/portfolio/EngagementBlueprint";
-import { ContactSection } from "@/components/portfolio/ContactSection";
+import { lazy, Suspense } from "react";
+const ContactSection = lazy(() =>
+  import("@/components/portfolio/ContactSection").then((module) => ({
+    default: module.ContactSection,
+  })),
+);
 import { FooterSection } from "@/components/nyg/FooterSection";
 import { getSiteUrl } from "@/lib/seo";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "NYG Digital | Software Development & Systems Consultancy";
+const PAGE_TITLE = "Web Development, AI & Automation in UAE | NYG Digital";
 const PAGE_DESC =
-  "NYG Digital (NYG Digital FZE LLC) is a software-development and computer-systems consultancy registered in Ajman, UAE. We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites.";
+  "NYG Digital is an Ajman-based computer-systems consultancy for web development, AI solutions, and n8n business automation serving Dubai and the UAE.";
+
+const AREA_SERVED = [
+  { "@type": "City", name: "Ajman" },
+  { "@type": "City", name: "Dubai" },
+  { "@type": "Country", name: "United Arab Emirates" },
+];
+
+const SERVICE_SCHEMA = [
+  {
+    "@type": "Service",
+    "@id": `${SITE_URL}#web-development`,
+    name: "Web Development",
+    serviceType: "Website and web application development",
+    description:
+      "Responsive, accessible websites and web applications designed for businesses in Ajman, Dubai, and across the UAE.",
+    provider: { "@id": `${SITE_URL}#organization` },
+    areaServed: AREA_SERVED,
+    url: `${SITE_URL}#services`,
+  },
+  {
+    "@type": "Service",
+    "@id": `${SITE_URL}#ai-solutions`,
+    name: "AI Solutions",
+    serviceType: "Practical AI integrations and digital experiences",
+    description:
+      "Human-reviewed AI integrations that turn business information into useful insights and more capable digital experiences.",
+    provider: { "@id": `${SITE_URL}#organization` },
+    areaServed: AREA_SERVED,
+    url: `${SITE_URL}#services`,
+  },
+  {
+    "@type": "Service",
+    "@id": `${SITE_URL}#business-automation`,
+    name: "Business Automation",
+    serviceType: "n8n workflow automation and connected systems",
+    description:
+      "Connected n8n workflows that move information between forms, APIs, CRM tools, spreadsheets, and notifications.",
+    provider: { "@id": `${SITE_URL}#organization` },
+    areaServed: AREA_SERVED,
+    url: `${SITE_URL}#services`,
+  },
+];
+
+const FAQ_SCHEMA = [
+  {
+    "@type": "Question",
+    name: "What does NYG Digital build?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "NYG Digital builds websites and web applications, practical AI integrations, and connected business automation systems around the way your team works.",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "Do you work with businesses in Dubai and Ajman?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "Yes. NYG Digital is registered in Ajman and serves businesses in Dubai and across the wider United Arab Emirates.",
+    },
+  },
+  {
+    "@type": "Question",
+    name: "What is n8n workflow automation?",
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: "n8n workflow automation connects forms, APIs, CRM tools, spreadsheets, and alerts so information moves between the tools your business already uses.",
+    },
+  },
+];
+
+const HOME_SCHEMA = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}#organization`,
+      name: COMPANY_INFO.brandName,
+      legalName: COMPANY_INFO.legalName,
+      url: SITE_URL,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/favicon.svg` },
+      image: `${SITE_URL}/og-image.png`,
+      foundingDate: COMPANY_INFO.foundedDate,
+      email: PERSONAL_INFO.email,
+      telephone: PERSONAL_INFO.phone,
+      contactPoint: {
+        "@type": "ContactPoint",
+        contactType: "customer service",
+        email: PERSONAL_INFO.email,
+        telephone: PERSONAL_INFO.phone,
+        areaServed: "AE",
+        availableLanguage: "en",
+      },
+      description: COMPANY_INFO.description,
+      knowsAbout: [
+        "Web development",
+        "AI solutions",
+        "Business automation",
+        "n8n workflow automation",
+        "Computer systems consultancy",
+      ],
+      sameAs: PERSONAL_INFO.socials.map((social) => social.href),
+      areaServed: AREA_SERVED,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: COMPANY_INFO.registeredLocality,
+        addressCountry: "AE",
+      },
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": `${SITE_URL}#professional-service`,
+      name: COMPANY_INFO.brandName,
+      url: SITE_URL,
+      description: PAGE_DESC,
+      email: PERSONAL_INFO.email,
+      telephone: PERSONAL_INFO.phone,
+      serviceType: ["Web development", "AI solutions", "Business automation"],
+      parentOrganization: { "@id": `${SITE_URL}#organization` },
+      areaServed: AREA_SERVED,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: COMPANY_INFO.registeredLocality,
+        addressCountry: "AE",
+      },
+    },
+    ...SERVICE_SCHEMA,
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}#website`,
+      url: SITE_URL,
+      name: COMPANY_INFO.brandName,
+      inLanguage: "en-AE",
+      publisher: { "@id": `${SITE_URL}#organization` },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}#webpage`,
+      url: SITE_URL,
+      name: PAGE_TITLE,
+      description: PAGE_DESC,
+      inLanguage: "en-AE",
+      isPartOf: { "@id": `${SITE_URL}#website` },
+      about: { "@id": `${SITE_URL}#organization` },
+      primaryImageOfPage: { "@type": "ImageObject", url: `${SITE_URL}/og-image.png` },
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${SITE_URL}#faq`,
+      url: `${SITE_URL}#faq`,
+      mainEntity: FAQ_SCHEMA,
+    },
+  ],
+};
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -22,82 +181,29 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: PAGE_TITLE },
       { name: "description", content: PAGE_DESC },
-      {
-        name: "keywords",
-        content:
-          "NYG Digital, NYG Digital FZE LLC, software development, computer systems consultancy, business automation, n8n workflows, connected systems, digital platforms, UAE automation, Ajman, Dubai",
-      },
-      { name: "robots", content: "index, follow" },
+      { name: "author", content: PERSONAL_INFO.name },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { property: "og:title", content: PAGE_TITLE },
       { property: "og:description", content: PAGE_DESC },
       { property: "og:url", content: SITE_URL },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: COMPANY_INFO.brandName },
+      { property: "og:locale", content: "en_AE" },
       { property: "og:image", content: `${SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: PAGE_TITLE },
       { name: "twitter:description", content: PAGE_DESC },
       { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
+      { name: "twitter:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
     ],
     links: [{ rel: "canonical", href: SITE_URL }],
     scripts: [
       {
         type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@graph": [
-            {
-              "@type": "Organization",
-              "@id": `${SITE_URL}#organization`,
-              name: COMPANY_INFO.brandName,
-              legalName: COMPANY_INFO.legalName,
-              foundingDate: COMPANY_INFO.foundedDate,
-              url: SITE_URL,
-              email: PERSONAL_INFO.email,
-              telephone: PERSONAL_INFO.phone,
-              description: COMPANY_INFO.description,
-              areaServed: {
-                "@type": "Country",
-                name: COMPANY_INFO.areaServed,
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: COMPANY_INFO.registeredLocality,
-                addressRegion: COMPANY_INFO.registeredLocality,
-                addressCountry: "AE",
-              },
-            },
-            {
-              "@type": "ProfessionalService",
-              "@id": `${SITE_URL}#service`,
-              name: COMPANY_INFO.brandName,
-              legalName: COMPANY_INFO.legalName,
-              url: SITE_URL,
-              email: PERSONAL_INFO.email,
-              telephone: PERSONAL_INFO.phone,
-              description: PAGE_DESC,
-              parentOrganization: { "@id": `${SITE_URL}#organization` },
-              areaServed: {
-                "@type": "Country",
-                name: COMPANY_INFO.areaServed,
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: COMPANY_INFO.registeredLocality,
-                addressRegion: COMPANY_INFO.registeredLocality,
-                addressCountry: "AE",
-              },
-            },
-            {
-              "@type": "WebSite",
-              "@id": `${SITE_URL}#website`,
-              url: SITE_URL,
-              name: COMPANY_INFO.brandName,
-              publisher: { "@id": `${SITE_URL}#organization` },
-            },
-          ],
-        }),
+        children: JSON.stringify(HOME_SCHEMA),
       },
     ],
   }),
@@ -105,43 +211,32 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <div className="relative min-h-screen bg-[#080A09] text-[#080A09] selection:bg-[#082D2D] selection:text-[#5FD8CD]">
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-6 focus:py-3.5 focus:bg-[#F3F0E8] focus:text-[#080A09] focus:rounded-full focus-ring font-mono text-xs uppercase tracking-wider font-semibold inline-flex items-center min-h-[44px] shadow-lg border border-[rgba(8,45,45,0.2)]"
-      >
+    <div className="nyg-site">
+      <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-
-      {/* Persistent Liquid Digital Wall Atmosphere */}
-      <LiquidScrollBackground />
-
-      <main id="main-content" tabIndex={-1} className="outline-none relative z-10">
-        {/* STAGE 1: HERO WITH SCROLL-SCRUBBED CINEMATIC VIDEO */}
+      <HeaderNav />
+      <main id="main-content" tabIndex={-1}>
         <HeroSection />
-
-        {/* STAGE 2: SYSTEM STUDIO */}
-        <SystemStudio />
-
-        {/* STAGE 3: BOTTLENECK CONFIGURATOR */}
-        <BottleneckConfigurator />
-
-        {/* STAGE 4: CASE STUDIES */}
+        <ServicesSection />
         <ProjectsSection />
-
-        {/* STAGE 5: CREDIBILITY & DELIVERY */}
+        <SystemStudio />
+        <BottleneckConfigurator />
         <CapabilitySection />
-
-        {/* STAGE 6: ENGAGEMENT BLUEPRINT */}
         <EngagementBlueprint />
-
-        {/* STAGE 7: CONTACT CONVERSION */}
-        <ContactSection />
+        <Suspense
+          fallback={
+            <section id="contact" className="studio-section page-width">
+              <h2>Have an idea? Let’s build it.</h2>
+              <a href={`mailto:${PERSONAL_INFO.email}`}>{PERSONAL_INFO.email}</a>
+            </section>
+          }
+        >
+          <ContactSection />
+        </Suspense>
       </main>
-
       <FooterSection />
     </div>
   );
 }
-
 export default Home;

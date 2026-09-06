@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
-import { Mail, Phone, Send, CheckCircle2, Loader2, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, CheckCircle2, Loader2, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS } from "@/data/portfolio-data";
 import { SectionShell } from "./SectionShell";
 
@@ -23,7 +23,6 @@ const CONTACT_WEBHOOK_URL = import.meta.env.VITE_CONTACT_WEBHOOK_URL as string |
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [industryContext, setIndustryContext] = useState("");
-  const [submitError, setSubmitError] = useState<string | null>(null);
   const [usedFallback, setUsedFallback] = useState(false);
 
   const {
@@ -55,6 +54,7 @@ export function ContactSection() {
         // storage fallback
       }
     };
+    handler();
     window.addEventListener("industryContextSet", handler);
     return () => window.removeEventListener("industryContextSet", handler);
   }, [setValue]);
@@ -68,7 +68,6 @@ export function ContactSection() {
   };
 
   const onSubmit = async (data: ContactFormValues) => {
-    setSubmitError(null);
     setUsedFallback(false);
 
     if (!CONTACT_WEBHOOK_URL) {
@@ -116,221 +115,167 @@ export function ContactSection() {
   return (
     <SectionShell
       id="contact"
-      eyebrow="Request a Systems Review"
-      iconGlyph="07"
-      themeVariant="ink"
-      declarativeTitle="Tell me what is slowing you down"
-      qualifierTitle="and I will map the simplest next step."
+      eyebrow="Start a project"
+      declarativeTitle="Have an idea?"
+      qualifierTitle="Let’s build it."
+      className="contact-section"
     >
-      <div className="rounded-3xl border border-[rgba(184,181,172,0.18)] bg-[#082D2D]/85 p-8 sm:p-12 backdrop-blur-2xl shadow-2xl relative overflow-hidden">
-        <div className="grid lg:grid-cols-12 gap-12 items-start relative z-10">
-          {/* Left 5 Columns: Engagement Commitment & Direct Contacts */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#5FD8CD] animate-pulse" />
-              <span>[ 24-HOUR RESPONSE ]</span>
+      <div className="contact-layout">
+        <div className="contact-intro">
+          <p>
+            A new website. A smarter workflow. A problem worth solving. Tell us what you have in
+            mind, and we’ll find the next step together.
+          </p>
+          <p className="contact-reassurance">
+            Direct access to the founder.
+            <br />
+            Thoughtful recommendations. Clear scope.
+          </p>
+          <a className="contact-direct" href={`mailto:${PERSONAL_INFO.email}`}>
+            <Mail size={19} />
+            <span>{PERSONAL_INFO.email}</span>
+            <ArrowUpRight size={19} />
+          </a>
+          <a
+            className="contact-direct"
+            href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Phone size={19} />
+            <span>
+              Talk on WhatsApp<small>{PERSONAL_INFO.phone}</small>
+            </span>
+            <ArrowUpRight size={19} />
+          </a>
+          <p className="contact-note">Response target: within 24 hours (GST).</p>
+        </div>
+        <div className="contact-form-wrap">
+          {submitted ? (
+            <div className="form-success" role="status">
+              <CheckCircle2 size={38} strokeWidth={1.2} />
+              <h3>{usedFallback ? "Your inquiry is ready." : "Thank you. We’re on it."}</h3>
+              <p>
+                {usedFallback
+                  ? "We’ve opened your email app with the details. Press send there to deliver your inquiry. If your email app didn’t open, use the direct email link."
+                  : "Your inquiry has been received. We’ll review your project and respond within 24 hours (GST)."}
+              </p>
+              <button
+                type="button"
+                className="text-link"
+                onClick={() => {
+                  setSubmitted(false);
+                  setUsedFallback(false);
+                  reset();
+                }}
+              >
+                Start another inquiry <ArrowUpRight size={16} />
+              </button>
             </div>
-
-            <h3 className="text-3xl font-serif font-normal text-[#F3F0E8] tracking-tight leading-tight">
-              Direct review with the builder.
-            </h3>
-
-            <p className="text-sm text-[#B8B5AC] leading-relaxed font-sans font-normal">
-              Describe the manual tasks, delayed follow-ups, or website challenges holding your
-              business back. You will receive a practical recommendation on how to solve them—not a
-              generic sales pitch.
-            </p>
-
-            <div className="space-y-3 font-mono text-xs text-[#B8B5AC] pt-2">
-              {[
-                "Direct review of your actual workflows & bottlenecks.",
-                "Clear recommendation on the best tools & automation setup.",
-                "If aligned, we build a working demo around your process first.",
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-start gap-2.5">
-                  <span className="text-[#5FD8CD] font-bold">[✓]</span>
-                  <span className="text-[#F3F0E8] font-sans text-xs">{item}</span>
-                </div>
-              ))}
-            </div>
-
-            {/* Direct Contact Cards */}
-            <div className="space-y-3 pt-4 border-t border-[rgba(184,181,172,0.14)]">
-              <div className="flex items-center gap-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60 p-4">
-                <Mail className="h-4 w-4 text-[#5FD8CD] shrink-0" />
-                <div className="flex flex-col text-xs font-mono">
-                  <span className="text-[10px] text-[#B8B5AC]">DIRECT EMAIL</span>
-                  <a
-                    href={`mailto:${PERSONAL_INFO.email}`}
-                    className="text-[#F3F0E8] hover:text-[#5FD8CD] transition-colors font-medium font-sans"
-                  >
-                    {PERSONAL_INFO.email}
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-4 rounded-2xl border border-[rgba(184,181,172,0.14)] bg-[#080A09]/60 p-4">
-                <Phone className="h-4 w-4 text-[#5FD8CD] shrink-0" />
-                <div className="flex flex-col text-xs font-mono">
-                  <span className="text-[10px] text-[#B8B5AC]">DIRECT WHATSAPP (UAE)</span>
-                  <a
-                    href={`https://wa.me/${PERSONAL_INFO.phone.replace(/[^0-9]/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#F3F0E8] hover:text-[#5FD8CD] transition-colors font-medium font-sans"
-                  >
-                    {PERSONAL_INFO.phone}
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Right 7 Columns: Precision Paper Form Plane */}
-          <div className="lg:col-span-7 rounded-3xl border border-[rgba(8,45,45,0.14)] bg-[#FAF8F2] p-6 sm:p-8 shadow-xl text-[#080A09]">
-            {submitted ? (
-              <div className="py-8 text-center space-y-4 font-mono text-xs">
-                <div className="inline-grid h-12 w-12 place-items-center rounded-full bg-[#082D2D]/10 text-[#082D2D] mx-auto">
-                  <CheckCircle2 className="h-6 w-6" />
-                </div>
-                <h4 className="text-2xl font-serif font-normal text-[#080A09]">
-                  {usedFallback ? "Inquiry Formatted in Email!" : "Inquiry Received!"}
-                </h4>
-                <p className="text-[#282B29] max-w-sm mx-auto leading-relaxed font-sans">
-                  {usedFallback
-                    ? "Your inquiry has been formatted into your default email client. Please click send to finalize."
-                    : "Thank you — your inquiry has been received. I will review your requirements and respond within 24 hours (GST)."}
-                </p>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setSubmitted(false);
-                    setSubmitError(null);
-                    setUsedFallback(false);
-                    reset();
-                  }}
-                  className="text-[#082D2D] underline hover:text-black pt-2 cursor-pointer uppercase tracking-wider font-mono text-xs"
-                >
-                  Submit another inquiry
-                </button>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 font-mono text-xs">
-                <div className="flex items-center justify-between pb-3 border-b border-[rgba(8,45,45,0.1)]">
-                  <span className="text-[#082D2D] font-bold uppercase tracking-widest">
-                    [ INQUIRY DETAILS ]
-                  </span>
-                  <span className="text-[#5C5953] text-[10px]">RESPONSE WITHIN 24 HOURS</span>
-                </div>
-
-                {/* Name */}
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
-                  >
-                    YOUR NAME *
+          ) : (
+            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+              <div className="form-row">
+                <div className="form-field">
+                  <label htmlFor="form-name">
+                    Your name <span>*</span>
                   </label>
                   <input
-                    id="name"
+                    id="form-name"
                     type="text"
-                    placeholder="e.g. Tariq Al-Mansoor"
+                    autoComplete="name"
+                    placeholder="Alex Morgan"
                     {...register("name")}
-                    className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans focus-ring transition-colors ${
-                      errors.name ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
-                    }`}
+                    aria-invalid={!!errors.name}
+                    aria-describedby={errors.name ? "name-error" : undefined}
                   />
                   {errors.name && (
-                    <p className="text-red-600 text-xs font-sans mt-1">{errors.name.message}</p>
+                    <p className="form-error" id="name-error" role="alert">
+                      {errors.name.message}
+                    </p>
                   )}
                 </div>
-
-                {/* Email */}
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
-                  >
-                    BUSINESS EMAIL *
+                <div className="form-field">
+                  <label htmlFor="email">
+                    Email address <span>*</span>
                   </label>
                   <input
                     id="email"
                     type="email"
-                    placeholder="tariq@company.com"
+                    autoComplete="email"
+                    placeholder="alex@company.com"
                     {...register("email")}
-                    className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans focus-ring transition-colors ${
-                      errors.email ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
-                    }`}
+                    aria-invalid={!!errors.email}
+                    aria-describedby={errors.email ? "email-error" : undefined}
                   />
                   {errors.email && (
-                    <p className="text-red-600 text-xs font-sans mt-1">{errors.email.message}</p>
+                    <p className="form-error" id="email-error" role="alert">
+                      {errors.email.message}
+                    </p>
                   )}
                 </div>
-
-                {/* Service Requirement */}
-                <div>
-                  <label
-                    htmlFor="service"
-                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
-                  >
-                    HOW CAN WE HELP? *
-                  </label>
-                  <select
-                    id="service"
-                    {...register("service")}
-                    className="w-full rounded-2xl bg-[#F3F0E8] border border-[rgba(8,45,45,0.14)] px-4 py-3 text-sm text-[#080A09] font-sans focus-ring"
-                  >
-                    {FORM_SERVICE_OPTIONS.map((svc) => (
-                      <option key={svc} value={svc} className="bg-[#FAF8F2] text-[#080A09]">
-                        {svc}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Message */}
-                <div>
-                  <label
-                    htmlFor="message"
-                    className="block uppercase tracking-widest text-[#5C5953] mb-1.5 text-[11px] font-semibold"
-                  >
-                    WHAT IS SLOWING YOUR BUSINESS DOWN? *
-                  </label>
-                  <textarea
-                    id="message"
-                    rows={3}
-                    placeholder="Describe repetitive tasks, scattered spreadsheets, delayed leads, or what you want to automate..."
-                    {...register("message")}
-                    className={`w-full rounded-2xl bg-[#F3F0E8] border px-4 py-3 text-sm text-[#080A09] font-sans resize-none focus-ring transition-colors ${
-                      errors.message ? "border-red-600" : "border-[rgba(8,45,45,0.14)]"
-                    }`}
-                  />
-                  {errors.message && (
-                    <p className="text-red-600 text-xs font-sans mt-1">{errors.message.message}</p>
-                  )}
-                </div>
-
-                {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#080A09] hover:bg-[#123E3D] px-6 py-4 font-mono text-xs uppercase tracking-wider font-bold text-[#F3F0E8] shadow-md active:scale-[0.98] transition-all cursor-pointer focus-ring disabled:opacity-50"
+              </div>
+              <div className="form-field">
+                <label htmlFor="service">
+                  What can we help with? <span>*</span>
+                </label>
+                <select
+                  id="service"
+                  {...register("service")}
+                  aria-invalid={!!errors.service}
+                  aria-describedby={errors.service ? "service-error" : undefined}
                 >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 className="h-4 w-4 animate-spin" />
-                      <span>Sending Inquiry...</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>Request a Systems Review</span>
-                      <Send className="h-3.5 w-3.5" />
-                    </>
-                  )}
-                </button>
-              </form>
-            )}
-          </div>
+                  {FORM_SERVICE_OPTIONS.map((service) => (
+                    <option key={service} value={service}>
+                      {service}
+                    </option>
+                  ))}
+                </select>
+                {errors.service && (
+                  <p className="form-error" id="service-error" role="alert">
+                    {errors.service.message}
+                  </p>
+                )}
+              </div>
+              <div className="form-field">
+                <label htmlFor="message">
+                  Tell us about your project <span>*</span>
+                </label>
+                <textarea
+                  id="message"
+                  rows={4}
+                  placeholder="The idea, the challenge, or what you’d like to make possible…"
+                  {...register("message")}
+                  aria-invalid={!!errors.message}
+                  aria-describedby={errors.message ? "message-error" : undefined}
+                />
+                {errors.message && (
+                  <p className="form-error" id="message-error" role="alert">
+                    {errors.message.message}
+                  </p>
+                )}
+              </div>
+              <button type="submit" disabled={isSubmitting} className="button contact-submit">
+                {isSubmitting ? (
+                  <>
+                    <span>Sending inquiry…</span>
+                    <Loader2 className="animate-spin" size={18} />
+                  </>
+                ) : (
+                  <>
+                    <span>
+                      {CONTACT_WEBHOOK_URL ? "Send project inquiry" : "Prepare project email"}
+                    </span>
+                    <ArrowUpRight size={18} />
+                  </>
+                )}
+              </button>
+              <p className="form-footnote">
+                {CONTACT_WEBHOOK_URL
+                  ? "Your details are used to respond to your project inquiry."
+                  : "Opens your email app. Review your message and press send."}
+              </p>
+            </form>
+          )}
         </div>
       </div>
     </SectionShell>

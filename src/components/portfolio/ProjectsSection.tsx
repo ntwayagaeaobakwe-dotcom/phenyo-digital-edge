@@ -1,156 +1,170 @@
-import { useState } from "react";
-import { ChevronRight, Info, Layers } from "lucide-react";
+import { lazy, Suspense, useState } from "react";
+import { ArrowUpRight, ArrowRight, Database, Filter, Search, Table2 } from "lucide-react";
 import { SectionShell } from "./SectionShell";
-import { PROJECTS, ProjectItem } from "@/data/portfolio-data";
-import { ProjectModal } from "./ProjectModal";
+import { PROJECTS, type ProjectItem } from "@/data/portfolio-data";
+const ProjectModal = lazy(() =>
+  import("./ProjectModal").then((module) => ({ default: module.ProjectModal })),
+);
+
+function ResearchPreview() {
+  return (
+    <div
+      className="research-preview"
+      aria-label="Schematic of the completed lead research workflow"
+    >
+      <div className="preview-topline">
+        <span>Lead research / Workflow schematic</span>
+        <span>n8n + APIs</span>
+      </div>
+      <div className="research-flow">
+        {[
+          { icon: Search, label: "Discover", sub: "Target areas" },
+          { icon: Filter, label: "Verify", sub: "Clean & deduplicate" },
+          { icon: Database, label: "Organize", sub: "Structured records" },
+          { icon: Table2, label: "Deliver", sub: "Google Sheets" },
+        ].map((step, i) => (
+          <div className="research-step" key={step.label}>
+            <div className="research-icon">
+              <step.icon size={25} strokeWidth={1.4} />
+            </div>
+            <strong>{step.label}</strong>
+            <span>{step.sub}</span>
+            {i < 3 && <ArrowRight className="research-arrow" size={16} />}
+          </div>
+        ))}
+      </div>
+      <div className="research-result">
+        <span className="result-dot" />
+        <span>Search → verify → deduplicate → deliver</span>
+      </div>
+    </div>
+  );
+}
 
 export function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
   const [modalOpen, setModalOpen] = useState(false);
-
-  const handleOpenModal = (project: ProjectItem) => {
+  const open = (project: ProjectItem) => {
     setSelectedProject(project);
     setModalOpen(true);
   };
-
+  const featured = PROJECTS[0];
+  const website = PROJECTS.find((project) => project.id === "conversion-service-website")!;
   return (
     <SectionShell
       id="projects"
-      eyebrow="Case Studies & Systems"
-      iconGlyph="04"
-      themeVariant="teal"
-      declarativeTitle="The problem, the system,"
-      qualifierTitle="and how information moves."
+      eyebrow="Selected work"
+      declarativeTitle="Good thinking. Working systems."
+      qualifierTitle="A closer look at the builds, experiments, and practical problems behind the work."
     >
-      <div className="space-y-12">
-        {PROJECTS.map((project, index) => {
-          const isEven = index % 2 === 1;
-
-          return (
-            <article
-              key={project.id}
-              className="rounded-3xl border border-[rgba(184,181,172,0.18)] bg-[#082D2D] p-7 sm:p-10 backdrop-blur-xl relative overflow-hidden shadow-xl"
-            >
-              <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-                {/* Information Column */}
-                <div className={`lg:col-span-6 space-y-6 ${isEven ? "lg:order-2" : "lg:order-1"}`}>
-                  {/* Top Meta Bar */}
-                  <div className="flex items-center justify-between gap-4 border-b border-[rgba(184,181,172,0.14)] pb-4">
-                    <div className="flex items-center gap-3">
-                      <span className="font-mono text-sm font-bold text-[#5FD8CD]">
-                        0{index + 1}
-                      </span>
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC]">
-                        [ {project.tag} ]
-                      </span>
-                    </div>
-
-                    <span className="font-mono text-[10px] uppercase tracking-widest text-[#B8B5AC] px-3 py-1 rounded-full bg-[#123E3D] border border-[rgba(184,181,172,0.2)]">
-                      {project.status}
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl sm:text-3xl lg:text-[34px] font-serif font-normal text-[#F3F0E8] tracking-tight leading-[1.12]">
-                    {project.title}
-                  </h3>
-
-                  {/* Concept Disclaimer if any */}
-                  {project.disclaimer && (
-                    <div className="p-3.5 rounded-2xl border border-[rgba(184,181,172,0.2)] bg-[#123E3D]/80 text-xs font-mono text-[#F3F0E8] flex items-start gap-2.5">
-                      <Info className="h-4 w-4 text-[#5FD8CD] shrink-0 mt-0.5" />
-                      <span className="leading-relaxed">{project.disclaimer}</span>
-                    </div>
-                  )}
-
-                  {/* Problem & Solution Breakdown */}
-                  <div className="space-y-4 text-sm font-sans">
-                    <div>
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#B8B5AC] block mb-1.5 font-semibold">
-                        THE CHALLENGE
-                      </span>
-                      <p className="text-[#B8B5AC] leading-relaxed font-normal">
-                        {project.problem}
-                      </p>
-                    </div>
-
-                    <div>
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] block mb-1.5 font-semibold">
-                        THE CONNECTED SYSTEM
-                      </span>
-                      <p className="text-[#F3F0E8] leading-relaxed font-normal">
-                        {project.solution}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* CTA Details Button */}
-                  <div className="pt-2 flex items-center justify-between">
-                    <button
-                      type="button"
-                      onClick={() => handleOpenModal(project)}
-                      className="inline-flex items-center gap-2 rounded-full bg-[#123E3D] hover:bg-[#194C4B] border border-[rgba(184,181,172,0.25)] px-5 py-3 min-h-[44px] font-mono text-xs uppercase tracking-wider text-[#F3F0E8] hover:text-[#5FD8CD] transition-all cursor-pointer focus-ring"
-                      aria-label={`View system details for ${project.title}`}
-                    >
-                      <Layers className="h-3.5 w-3.5 text-[#5FD8CD]" />
-                      <span>See How It Works</span>
-                      <ChevronRight className="h-4 w-4 ml-1 text-[#B8B5AC]" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Visual Workflow Diagram / Information Path Column */}
-                <div className={`lg:col-span-6 ${isEven ? "lg:order-1" : "lg:order-2"}`}>
-                  <div className="rounded-3xl border border-[rgba(184,181,172,0.18)] bg-[#080A09]/70 p-6 sm:p-8 shadow-inner space-y-6">
-                    <div className="flex items-center justify-between border-b border-[rgba(184,181,172,0.12)] pb-3">
-                      <span className="font-mono text-[11px] uppercase tracking-widest text-[#5FD8CD] font-semibold">
-                        [ WORKFLOW_STEPS ]
-                      </span>
-                      <span className="font-mono text-[10px] text-[#B8B5AC]">[ STEP-BY-STEP ]</span>
-                    </div>
-
-                    {/* Step Nodes */}
-                    <div className="space-y-3">
-                      {project.howItWorks.map((step, idx) => (
-                        <div
-                          key={idx}
-                          className="flex items-start gap-3 p-3.5 rounded-2xl border border-[rgba(184,181,172,0.12)] bg-[#123E3D]/50"
-                        >
-                          <span className="font-mono text-xs font-bold shrink-0 mt-0.5 text-[#5FD8CD]">
-                            0{idx + 1}.
-                          </span>
-                          <span className="text-xs font-sans text-[#F3F0E8] leading-snug">
-                            {step}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Tech Stack Chips */}
-                    <div className="pt-2 border-t border-[rgba(184,181,172,0.12)]">
-                      <span className="font-mono text-[10px] uppercase tracking-widest text-[#B8B5AC] block mb-2">
-                        TOOLS & APIS USED
-                      </span>
-                      <div className="flex flex-wrap gap-2">
-                        {project.toolsUsed.map((tool) => (
-                          <span
-                            key={tool}
-                            className="font-mono text-[11px] rounded-lg border border-[rgba(184,181,172,0.15)] bg-[#082D2D] px-2.5 py-1 text-[#B8B5AC]"
-                          >
-                            {tool}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
+      <span id="work" className="anchor-alias" />
+      <article className="featured-project">
+        <button
+          className="project-preview"
+          onClick={() => open(featured)}
+          aria-label={`View system details for ${featured.title}`}
+        >
+          <ResearchPreview />
+          <span className="preview-open">
+            <ArrowUpRight size={22} />
+          </span>
+        </button>
+        <div className="project-summary">
+          <div className="project-meta">
+            <span>{featured.status}</span>
+            <span>Automation / Data systems</span>
+          </div>
+          <h3>{featured.title}</h3>
+          <p>{featured.problem}</p>
+          <div className="project-outcome">
+            <span>Result</span>
+            <p>600+ clean leads across 15 target areas, delivered into Google Sheets.</p>
+          </div>
+          <button className="text-link" onClick={() => open(featured)}>
+            Explore the build <ArrowUpRight size={16} />
+          </button>
+        </div>
+      </article>
+      <article className="website-project">
+        <div className="project-summary">
+          <div className="project-meta">
+            <span>{website.status}</span>
+            <span>Web development</span>
+          </div>
+          <h3>{website.title}</h3>
+          <p>{website.solution}</p>
+          <button className="text-link" onClick={() => open(website)}>
+            Inside the experience <ArrowUpRight size={16} />
+          </button>
+        </div>
+        <button
+          className="website-preview project-preview"
+          aria-label={`View system details for ${website.title}`}
+          onClick={() => open(website)}
+        >
+          <div className="mini-browser">
+            <div className="browser-top">
+              <i />
+              <i />
+              <i />
+              <span>NYG DIGITAL / INTERFACE STUDY</span>
+            </div>
+            <div className="mini-site">
+              <span className="mini-brand">NYG DIGITAL</span>
+              <div className="mini-hero">
+                <strong>
+                  Digital systems.
+                  <br />
+                  Human ambition.
+                </strong>
+                <div className="mini-orbit">
+                  <span />
+                  <span />
+                  <span />
                 </div>
               </div>
-            </article>
-          );
-        })}
+              <span className="mini-cta">Let's build something</span>
+              <div className="mini-footer">
+                <span>WEB</span>
+                <span>AI</span>
+                <span>AUTOMATION</span>
+              </div>
+            </div>
+          </div>
+          <span className="preview-open">
+            <ArrowUpRight size={22} />
+          </span>
+        </button>
+      </article>
+      <div className="work-experiments">
+        <div className="experiments-heading">
+          <h3>Inside the lab.</h3>
+          <p>Capability demonstrations. Explore the approach and intended value.</p>
+        </div>
+        {PROJECTS.filter((project) => project !== featured && project !== website).map(
+          (project, index) => (
+            <button
+              className="experiment-row"
+              key={project.id}
+              onClick={() => open(project)}
+              aria-label={`View system details for ${project.title}`}
+            >
+              <span className="experiment-num">0{index + 1}</span>
+              <span>
+                <strong>{project.title}</strong>
+                <span>{project.toolsUsed.slice(0, 3).join(" / ")}</span>
+              </span>
+              <span className="experiment-status">{project.status}</span>
+              <ArrowUpRight size={22} />
+            </button>
+          ),
+        )}
       </div>
-
-      <ProjectModal project={selectedProject} open={modalOpen} onOpenChange={setModalOpen} />
+      {selectedProject && (
+        <Suspense fallback={<p role="status">Opening project details…</p>}>
+          <ProjectModal project={selectedProject} open={modalOpen} onOpenChange={setModalOpen} />
+        </Suspense>
+      )}
     </SectionShell>
   );
 }

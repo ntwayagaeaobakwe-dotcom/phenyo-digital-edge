@@ -69,27 +69,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "theme-color", content: "#090b10" },
-      { title: "NYG Digital | Software Development & Systems Consultancy" },
+      { name: "theme-color", content: "#101311" },
+      { title: "Web Development, AI & Automation in UAE | NYG Digital" },
       {
         name: "description",
         content:
-          "NYG Digital (NYG Digital FZE LLC) is a software-development and computer-systems consultancy registered in Ajman, UAE. We design business automation, workflow tools, connected systems, digital platforms and conversion-focused websites.",
+          "NYG Digital is an Ajman-based computer-systems consultancy for web development, AI solutions, and n8n business automation serving Dubai and the UAE.",
       },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" },
       { property: "og:type", content: "website" },
-      { property: "og:site_name", content: "NYG Digital | Software Development & Systems Consultancy" },
+      { property: "og:site_name", content: "NYG Digital" },
+      { property: "og:locale", content: "en_AE" },
       // Default OG/Twitter image — generated preview banner (public/og-image.png).
       { property: "og:image", content: `${ROOT_SITE_URL}/og-image.png` },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:image", content: `${ROOT_SITE_URL}/og-image.png` },
+      { name: "twitter:image:alt", content: "NYG Digital — web development, AI, and business automation in the UAE" },
     ],
     links: [
       // Fonts are self-hosted via @fontsource-variable imports in styles.css —
       // no external font CDN.
       { rel: "stylesheet", href: appCss },
-      { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "alternate icon", href: "/favicon.ico", type: "image/x-icon" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
       { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
@@ -106,6 +112,13 @@ function RootShell({ children }: { children: ReactNode }) {
         <HeadContent />
       </head>
       <body>
+        <div
+          hidden
+          dangerouslySetInnerHTML={{
+            __html:
+              "<!-- THESIS: NYG connects web, AI, and automation through one founder-led studio. OWN-WORLD: charcoal surfaces, silver Manrope typography, mint signals, fine rules, open layouts. STORY: understand the offer, explore real builds and clearly labeled demos, start a conversation. FIRST VIEWPORT: large left headline and CTAs; right interactive three-layer system. FORM: user-pinned dark technology studio; direction seed ed44b7cd, user authority overrides degraded roll. FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, and DESIGN.md -->",
+          }}
+        />
         {children}
         <Scripts />
       </body>
