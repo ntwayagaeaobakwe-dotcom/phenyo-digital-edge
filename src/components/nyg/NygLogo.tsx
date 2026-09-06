@@ -6,11 +6,12 @@ interface NygLogoProps extends SVGProps<SVGSVGElement> {
 export function NygLogo({ className, showWordmark = false, ...props }: NygLogoProps) {
   return (
     <span className={cn("nyg-logo", className)}>
-      <svg viewBox="0 0 36 36" fill="none" aria-hidden="true" {...props}>
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true" {...props}>
         <path
-          d="M4 29V7L17 29V7M20 7L26 16L32 7M26 16V29H33V22H28"
+          d="M7 37V11l18 26V11M23 11l8 10 8-10M31 21v16M40 25h-8v12h9V29h-5"
           stroke="currentColor"
-          strokeWidth="2.5"
+          strokeWidth="3"
+          strokeLinecap="round"
           strokeLinejoin="round"
         />
       </svg>
