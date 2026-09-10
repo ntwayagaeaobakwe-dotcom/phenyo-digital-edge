@@ -145,6 +145,51 @@
   font-size: 14px;
 }
 
+.research-preview-real {
+  gap: 18px;
+  padding: 22px;
+  background: var(--canvas);
+}
+
+.research-screenshot {
+  display: block;
+  width: 100%;
+  min-height: 250px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  filter: saturate(0.72) contrast(1.04);
+  transition:
+    filter 240ms ease,
+    transform 240ms ease;
+}
+
+.project-preview:hover .research-screenshot {
+  filter: saturate(0.9) contrast(1.06);
+  transform: scale(1.012);
+}
+
+.case-study-evidence {
+  margin: 4px 0 8px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-panel);
+  background: var(--canvas);
+}
+
+.case-study-evidence img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.case-study-evidence figcaption {
+  padding: 12px 16px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
 @media (max-width: 1100px) {
   .hero-sculpture .hero-copy {
     max-width: 440px;

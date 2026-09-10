@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState } from "react";
-import { ArrowUpRight, ArrowRight, Database, Filter, Search, Table2 } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { SectionShell } from "./SectionShell";
 import { PROJECTS, type ProjectItem } from "@/data/portfolio-data";
 const ProjectModal = lazy(() =>
@@ -9,33 +9,24 @@ const ProjectModal = lazy(() =>
 function ResearchPreview() {
   return (
     <div
-      className="research-preview"
-      aria-label="Schematic of the completed lead research workflow"
+      className="research-preview research-preview-real"
+      aria-label="Actual n8n lead research workflow: Google Places data cleaned and delivered to Google Sheets"
     >
       <div className="preview-topline">
-        <span>Lead research / Workflow schematic</span>
-        <span>n8n + APIs</span>
+        <span>Actual workflow / Lead research</span>
+        <span>n8n + Google Places + Sheets</span>
       </div>
-      <div className="research-flow">
-        {[
-          { icon: Search, label: "Discover", sub: "Target areas" },
-          { icon: Filter, label: "Verify", sub: "Clean & deduplicate" },
-          { icon: Database, label: "Organize", sub: "Structured records" },
-          { icon: Table2, label: "Deliver", sub: "Google Sheets" },
-        ].map((step, i) => (
-          <div className="research-step" key={step.label}>
-            <div className="research-icon">
-              <step.icon size={25} strokeWidth={1.4} />
-            </div>
-            <strong>{step.label}</strong>
-            <span>{step.sub}</span>
-            {i < 3 && <ArrowRight className="research-arrow" size={16} />}
-          </div>
-        ))}
-      </div>
+      <img
+        className="research-screenshot"
+        src="/workflow-studio/lead-research-actual.png"
+        alt="Workflow showing edit fields, split places, Google Places request, duplicate removal, and 634 items appended to a sheet"
+        width="2048"
+        height="698"
+        loading="lazy"
+      />
       <div className="research-result">
         <span className="result-dot" />
-        <span>Search → verify → deduplicate → deliver</span>
+        <span>15 target areas · 634 items appended or updated in the sheet</span>
       </div>
     </div>
   );

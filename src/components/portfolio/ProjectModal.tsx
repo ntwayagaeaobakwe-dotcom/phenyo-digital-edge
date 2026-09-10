@@ -24,6 +24,18 @@ export function ProjectModal({ project, open, onOpenChange }: Props) {
           <DialogTitle>{project.title}</DialogTitle>
           <DialogDescription>{project.desc}</DialogDescription>
         </DialogHeader>
+        {project.id === "lead-research-automation" && project.imageUrls?.[0] && (
+          <figure className="case-study-evidence">
+            <img
+              src={project.imageUrls[0]}
+              alt="Actual lead research workflow used to collect and deduplicate business records"
+              width="2048"
+              height="698"
+              loading="lazy"
+            />
+            <figcaption>Workflow evidence from the completed lead research build.</figcaption>
+          </figure>
+        )}
         {project.disclaimer && <p className="project-notice">{project.disclaimer}</p>}
         <div className="modal-story">
           <div>

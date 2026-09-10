@@ -363,7 +363,7 @@ export const PROJECTS: ProjectItem[] = [
     potentialValue:
       "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
     toolsUsed: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Cleaning Logic"],
-    imageUrls: ["/src/assets/placeholder-project-lead-research.jpg"],
+    imageUrls: ["/workflow-studio/lead-research-actual.png"],
     accent: "from-cyan-500/15 to-transparent",
     challenge:
       "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
