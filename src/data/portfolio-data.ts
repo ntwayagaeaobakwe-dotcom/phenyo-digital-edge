@@ -110,8 +110,13 @@ export const PERSONAL_INFO = {
     { label: "X / Twitter", href: "https://x.com/phenyont", iconName: "Twitter" },
     {
       label: "Instagram",
-      href: "https://www.instagram.com/phenyontwayagae",
+      href: "https://www.instagram.com/nygdigitalagency",
       iconName: "Instagram",
+    },
+    {
+      label: "TikTok",
+      href: "https://www.tiktok.com/@nygdigitalagency",
+      iconName: "TikTok",
     },
     {
       label: "GitHub",
@@ -120,7 +125,7 @@ export const PERSONAL_INFO = {
     },
     {
       label: "LinkedIn",
-      href: "https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/",
+      href: "https://www.linkedin.com/company/nyg-digital/",
       iconName: "Linkedin",
     },
   ],
