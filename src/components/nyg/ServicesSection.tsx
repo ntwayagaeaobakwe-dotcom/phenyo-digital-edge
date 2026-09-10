@@ -13,50 +13,70 @@ export function ServicesSection() {
       eyebrow="Our capabilities"
       declarativeTitle="Build. Automate. Grow."
       qualifierTitle="Six connected capabilities. One clear direction for your business."
+      className="services-visual"
     >
-      <div className="service-list">
-        {AGENCY_SERVICES.map((service, i) => (
-          <article
-            className={`service-item ${active === i ? "service-active" : ""}`}
-            key={service.title}
-          >
-            <h3>
-              <button
-                id={`service-button-${i}`}
-                aria-expanded={active === i}
-                aria-controls={`service-panel-${i}`}
-                onClick={() => setActive(active === i ? null : i)}
-              >
-                <span className="service-number">0{i + 1}</span>
-                <span>{service.title}</span>
-                <span className="service-intro">{service.pillar}</span>
-                {active === i ? <Minus aria-hidden="true" /> : <Plus aria-hidden="true" />}
-              </button>
-            </h3>
-            <div
-              id={`service-panel-${i}`}
-              role="region"
-              aria-labelledby={`service-button-${i}`}
-              hidden={active !== i}
-              className="service-panel"
+      <div className="capabilities-layout">
+        <figure className="capabilities-artwork">
+          <picture>
+            <img
+              src="/brand/platinum-sculpture.webp"
+              alt=""
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
+          <figcaption>
+            <span>
+              {active === null ? "One connected approach." : AGENCY_SERVICES[active].pillar}
+            </span>
+            <p>
+              {active === null ? "Clarity in every connection." : AGENCY_SERVICES[active].intro}
+            </p>
+          </figcaption>
+        </figure>
+        <div className="service-list">
+          {AGENCY_SERVICES.map((service, i) => (
+            <article
+              className={`service-item ${active === i ? "service-active" : ""}`}
+              key={service.title}
             >
-              <div>
-                <p>{service.text}</p>
-                <a href="#contact" className="text-link">
-                  Discuss your requirements <ArrowUpRight size={16} />
-                </a>
+              <h3>
+                <button
+                  id={`service-button-${i}`}
+                  aria-expanded={active === i}
+                  aria-controls={`service-panel-${i}`}
+                  onClick={() => setActive(active === i ? null : i)}
+                >
+                  <span>{service.title}</span>
+                  {active === i ? <Minus aria-hidden="true" /> : <Plus aria-hidden="true" />}
+                </button>
+              </h3>
+              <div
+                id={`service-panel-${i}`}
+                role="region"
+                aria-labelledby={`service-button-${i}`}
+                hidden={active !== i}
+                className="service-panel"
+              >
+                <div>
+                  <p>{service.text}</p>
+                  <a href="#contact" className="text-link">
+                    Discuss your requirements <ArrowUpRight size={16} />
+                  </a>
+                </div>
+                <div className="service-detail">
+                  <ul>
+                    {service.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="service-detail">
-                <p>{service.intro}</p>
-                <ul>
-                  {service.tags.map((tag) => (
-                    <li key={tag}>{tag}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </article>
-        ))}
+            </article>
+          ))}
+        </div>
       </div>
       <details className="capability-explorer">
         <summary>

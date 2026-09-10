@@ -2,6 +2,7 @@
 
 @import "./studio.css";
 @import "./brand.css";
+@import "./sculpture.css";
 
 @import "tailwindcss" source(none);
 @source "./routes";

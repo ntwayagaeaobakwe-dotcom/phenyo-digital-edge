@@ -2,8 +2,19 @@ import { ArrowDown, ArrowUpRight } from "lucide-react";
 
 export function HeroSection() {
   return (
-    <section id="hero-stage" className="hero-section" aria-labelledby="hero-title">
+    <section id="hero-stage" className="hero-section hero-sculpture" aria-labelledby="hero-title">
       <div className="page-width hero-layout">
+        <picture className="hero-artwork" aria-hidden="true">
+          <img
+            src="/brand/platinum-sculpture.webp"
+            srcSet="/brand/platinum-sculpture-960.webp 960w, /brand/platinum-sculpture.webp 1600w"
+            sizes="(max-width: 639px) 100vw, (max-width: 899px) 65vw, 78vw"
+            alt=""
+            width="1600"
+            height="1200"
+            fetchPriority="high"
+          />
+        </picture>
         <div className="hero-copy">
           <h1 id="hero-title">
             Better systems.
@@ -22,25 +33,11 @@ export function HeroSection() {
               Explore the work <ArrowDown size={16} />
             </a>
           </div>
-          <p className="hero-location">Based in Ajman. Working across Dubai and the UAE.</p>
-        </div>
-        <div className="hero-identity" aria-hidden="true">
-          <span className="identity-caption">NYG / AGENCY</span>
-          <img
-            src="/brand/nyg-agency-monogram.svg"
-            alt=""
-            width="120"
-            height="120"
-            fetchPriority="high"
-          />
-          <span className="identity-footnote">Clarity in every connection.</span>
         </div>
       </div>
       <div className="page-width hero-foot">
         <p>
-          One considered approach.
-          <br />
-          <span>From strategy to working systems.</span>
+          Based in Ajman. <span>Working across Dubai and the UAE.</span>
         </p>
         <div>
           <a href="#services">Build</a>
