@@ -69,7 +69,7 @@ export function ProjectsSection() {
           <p>{featured.problem}</p>
           <div className="project-outcome">
             <span>Result</span>
-            <p>600+ clean leads across 15 target areas, delivered into Google Sheets.</p>
+            <p>Recorded run: 634 items at the final Google Sheets step.</p>
           </div>
           <button className="text-link" onClick={() => open(featured)}>
             Explore the build <ArrowUpRight size={16} />

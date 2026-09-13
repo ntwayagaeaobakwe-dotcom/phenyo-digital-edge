@@ -15,7 +15,7 @@ const bottlenecks = [
       "Send instant confirmation & schedule next follow-up",
     ],
     outcome:
-      "Respond to new inquiries in seconds so potential clients never slip through the cracks.",
+      "Organize incoming enquiries and prepare follow-up so your team can respond more consistently.",
   },
   {
     id: "scattered",

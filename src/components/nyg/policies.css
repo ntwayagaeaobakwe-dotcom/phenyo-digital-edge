@@ -1,0 +1,58 @@
+.policy-home {
+  display: inline-block;
+  margin: 2rem max(1.5rem, calc((100% - 1120px) / 2));
+  color: #e7e8eb;
+}
+.policy-page {
+  max-width: 780px;
+  margin: 2rem auto 6rem;
+  padding: 0 1.5rem;
+  color: #e7e8eb;
+  line-height: 1.8;
+}
+.policy-page h1 {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  line-height: 1.15;
+}
+.policy-page h2 {
+  font-size: 1.3rem;
+  margin: 2.5rem 0 0.75rem;
+}
+.policy-page p {
+  color: #c9cbd1;
+}
+.policy-page nav,
+.footer-policies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 1.5rem;
+  margin: 2rem 0;
+}
+.policy-page a,
+.footer-policies a,
+.form-privacy a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.footer-policies,
+.form-privacy {
+  color: #c9cbd1;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+:where(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid #e7e8eb;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

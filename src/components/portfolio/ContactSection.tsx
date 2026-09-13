@@ -173,7 +173,7 @@ export function ContactSection() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit(onSubmit)} noValidate>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate aria-describedby="enquiry-privacy">
               <div className="form-row">
                 <div className="form-field">
                   <label htmlFor="form-name">
@@ -184,6 +184,8 @@ export function ContactSection() {
                     type="text"
                     autoComplete="name"
                     placeholder="Alex Morgan"
+                    required
+                    maxLength={150}
                     {...register("name")}
                     aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? "name-error" : undefined}
@@ -203,6 +205,8 @@ export function ContactSection() {
                     type="email"
                     autoComplete="email"
                     placeholder="alex@company.com"
+                    required
+                    maxLength={254}
                     {...register("email")}
                     aria-invalid={!!errors.email}
                     aria-describedby={errors.email ? "email-error" : undefined}
@@ -220,6 +224,7 @@ export function ContactSection() {
                 </label>
                 <select
                   id="service"
+                  required
                   {...register("service")}
                   aria-invalid={!!errors.service}
                   aria-describedby={errors.service ? "service-error" : undefined}
@@ -244,6 +249,8 @@ export function ContactSection() {
                   id="message"
                   rows={4}
                   placeholder="The idea, the challenge, or what you’d like to make possible…"
+                  required
+                  maxLength={5000}
                   {...register("message")}
                   aria-invalid={!!errors.message}
                   aria-describedby={errors.message ? "message-error" : undefined}
@@ -254,6 +261,11 @@ export function ContactSection() {
                   </p>
                 )}
               </div>
+              <p className="form-privacy" id="enquiry-privacy">
+                We use your details to discuss and respond to your enquiry. Please do not include
+                passwords, identity documents or sensitive customer information. Sending an enquiry
+                does not subscribe you to marketing. Read our <a href="/privacy">Privacy Policy</a>.
+              </p>
               <button type="submit" disabled={isSubmitting} className="button contact-submit">
                 {isSubmitting ? (
                   <>

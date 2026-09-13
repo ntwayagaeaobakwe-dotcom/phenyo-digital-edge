@@ -349,16 +349,16 @@ export const PROJECTS: ProjectItem[] = [
     title: "Automated Business Lead Research System",
     tag: "Completed Build",
     status: "Completed Build",
-    desc: "An automated n8n workflow that searched, verified, and deduplicated business contact data across 15 target areas, delivering 600+ clean leads directly into a spreadsheet.",
+    desc: "An n8n workflow connecting Google Places searches, duplicate removal and Google Sheets. The recorded run shows 634 items at the final sheet step.",
     problem:
       "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
     solution:
-      "Built an automated workflow that searched 15 target areas, gathered verified contact details, filtered duplicates, and delivered ready-to-contact leads directly into Google Sheets.",
+      "Built a workflow to search configured areas, collect business records from Google Places, remove duplicates and append or update records in Google Sheets.",
     howItWorks: [
       "Defined target business criteria and search parameters for 15 areas",
       "Gathered public company data and contact details automatically",
-      "Cleaned data, removed duplicates, and validated email & phone records",
-      "Delivered 600+ formatted, deduplicated leads ready for outreach",
+      "Split the returned records and applied a duplicate-removal step",
+      "The recorded execution shows 634 items at the Google Sheets step",
     ],
     potentialValue:
       "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
@@ -368,13 +368,13 @@ export const PROJECTS: ProjectItem[] = [
     challenge:
       "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
     objective:
-      "Built an automated workflow that searched 15 target areas, gathered verified contact details, filtered duplicates, and delivered ready-to-contact leads directly into Google Sheets.",
+      "Built a workflow to search configured areas, collect business records from Google Places, remove duplicates and append or update records in Google Sheets.",
     techStack: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Cleaning Logic"],
     features: [
       "Defined target business criteria and search parameters for 15 areas",
       "Gathered public company data and contact details automatically",
-      "Cleaned data, removed duplicates, and validated email & phone records",
-      "Delivered 600+ formatted, deduplicated leads ready for outreach",
+      "Split the returned records and applied a duplicate-removal step",
+      "The recorded execution shows 634 items at the Google Sheets step",
     ],
     valueCreated:
       "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
@@ -396,7 +396,7 @@ export const PROJECTS: ProjectItem[] = [
       "Instant confirmation sent to client with clear next steps",
     ],
     potentialValue:
-      "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
+      "Designed to make enquiries easier to track and reduce manual routing. Response times depend on the implementation and connected services.",
     toolsUsed: ["n8n Workflows", "Webhooks", "CRM Integration", "Instant Messaging & Email Alerts"],
     imageUrls: ["/src/assets/placeholder-project-inquiry-workflow.jpg"],
     accent: "from-primary/25 to-transparent",
@@ -412,7 +412,7 @@ export const PROJECTS: ProjectItem[] = [
       "Instant confirmation sent to client with clear next steps",
     ],
     valueCreated:
-      "Ensures no inquiry is missed and cuts response time from hours to under 60 seconds.",
+      "Designed to make enquiries easier to track and reduce manual routing. Response times depend on the implementation and connected services.",
   },
   {
     id: "business-operations-automation",
@@ -451,7 +451,7 @@ export const PROJECTS: ProjectItem[] = [
   },
   {
     id: "conversion-service-website",
-    title: "High-Converting Service Website & Booking Flow",
+    title: "Service Website & Enquiry Flow",
     tag: "Personal Project",
     status: "Personal Project",
     desc: "A fast, responsive service website with clear messaging, structured service offerings, interactive workflow demonstrations, and direct WhatsApp and inquiry paths.",

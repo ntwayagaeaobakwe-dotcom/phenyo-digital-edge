@@ -1,3 +1,4 @@
+import "./policies.css";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
 import { NygLogo } from "./NygLogo";
@@ -23,7 +24,7 @@ export function FooterSection() {
       <div className="page-width">
         <div className="footer-top">
           <div>
-            <a href="#hero-stage" aria-label="NYG Agency home">
+            <a href="/#hero-stage" aria-label="NYG Agency home">
               <NygLogo showWordmark />
             </a>
             <p>
@@ -36,11 +37,11 @@ export function FooterSection() {
             </span>
           </div>
           <div className="footer-links">
-            <a href="#services">Services</a>
-            <a href="#projects">Selected work</a>
-            <a href="#systems">Interactive demo</a>
-            <a href="#diagnostic">Find your next step</a>
-            <a href="#process">Our process</a>
+            <a href="/#services">Services</a>
+            <a href="/#projects">Selected work</a>
+            <a href="/#systems">Interactive demo</a>
+            <a href="/#diagnostic">Find your next step</a>
+            <a href="/#process">Our process</a>
             <a href="/card">
               Digital business card <ArrowUpRight size={13} />
             </a>
@@ -66,9 +67,15 @@ export function FooterSection() {
             </div>
           </div>
         </div>
+        <nav className="footer-policies" aria-label="Website policies">
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Website Terms</a>
+          <a href="/cancellations">Cancellations &amp; Refunds</a>
+          <a href="/cookies">Cookies &amp; Storage</a>
+        </nav>
         <div className="footer-bottom">
           <p>{COMPANY_INFO.legalFooter}</p>
-          <a href="#hero-stage">
+          <a href="/#hero-stage">
             Back to top <ArrowUp size={16} />
           </a>
         </div>
