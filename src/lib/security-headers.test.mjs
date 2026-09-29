@@ -17,6 +17,10 @@ test("protects successful and error responses without losing body or headers", a
     assert.equal(result.headers.get("x-frame-options"), "SAMEORIGIN");
     assert.match(result.headers.get("content-security-policy"), /frame-ancestors 'self'/);
     assert.equal(result.headers.get("set-cookie"), "sample=value; Secure; HttpOnly");
+    assert.equal(
+      result.headers.get("link"),
+      status === 200 ? '<https://nygagency.com/>; rel="canonical"' : null,
+    );
   }
 });
 
@@ -24,7 +28,24 @@ test("keeps editor previews frameable and avoids HSTS on HTTP", () => {
   const preview = secureResponse(new Response("preview"), new Request("http://localhost:3000/"));
   assert.equal(preview.headers.get("x-frame-options"), null);
   assert.equal(preview.headers.get("strict-transport-security"), null);
-  const www = secureResponse(new Response("site"), new Request("https://www.nygagency.com/card"));
+  const www = secureResponse(
+    new Response("site", { headers: { "content-type": "text/html" } }),
+    new Request("https://www.nygagency.com/card"),
+  );
   assert.equal(www.headers.get("x-frame-options"), "SAMEORIGIN");
   assert.equal(www.headers.get("strict-transport-security"), "max-age=31536000");
+  assert.equal(www.headers.get("link"), '<https://nygagency.com/card>; rel="canonical"');
+});
+
+test("adds canonicals only to successful HTML pages", () => {
+  const json = secureResponse(
+    new Response("{}", { headers: { "content-type": "application/json" } }),
+    new Request("https://nygagency.com/api/status"),
+  );
+  const missing = secureResponse(
+    new Response("missing", { status: 404, headers: { "content-type": "text/html" } }),
+    new Request("https://nygagency.com/missing"),
+  );
+  assert.equal(json.headers.get("link"), null);
+  assert.equal(missing.headers.get("link"), null);
 });

@@ -195,7 +195,7 @@ export const Route = createFileRoute("/")({
         content: "NYG Agency — web development, AI, and business automation in the UAE",
       },
     ],
-    links: [{ rel: "canonical", href: SITE_URL }],
+    links: [{ rel: "canonical", href: `${SITE_URL}/` }],
     scripts: [
       {
         type: "application/ld+json",

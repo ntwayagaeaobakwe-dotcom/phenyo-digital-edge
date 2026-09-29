@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://nygagency.com/</loc>
-    <lastmod>2026-09-06</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -12,8 +12,8 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
-<url><loc>https://nygagency.com/privacy</loc><lastmod>2026-09-13</lastmod></url>
-<url><loc>https://nygagency.com/terms</loc><lastmod>2026-09-13</lastmod></url>
-<url><loc>https://nygagency.com/cancellations</loc><lastmod>2026-09-13</lastmod></url>
-<url><loc>https://nygagency.com/cookies</loc><lastmod>2026-09-13</lastmod></url>
+  <url><loc>https://nygagency.com/privacy</loc><lastmod>2026-09-13</lastmod></url>
+  <url><loc>https://nygagency.com/terms</loc><lastmod>2026-09-13</lastmod></url>
+  <url><loc>https://nygagency.com/cancellations</loc><lastmod>2026-09-13</lastmod></url>
+  <url><loc>https://nygagency.com/cookies</loc><lastmod>2026-09-13</lastmod></url>
 </urlset>

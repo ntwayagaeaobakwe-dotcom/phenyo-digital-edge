@@ -15,6 +15,18 @@ export function secureResponse(response: Response, request: Request): Response {
     if (url.protocol === "https:") {
       headers.set("Strict-Transport-Security", "max-age=31536000");
     }
+
+    // Reinforce the HTML canonical in the HTTP response. This is especially
+    // useful while search engines separate the domain from an old hosting
+    // placeholder that they previously grouped with it.
+    if (
+      response.status >= 200 &&
+      response.status < 300 &&
+      (headers.get("content-type") ?? "").includes("text/html")
+    ) {
+      const pathname = url.pathname === "/" ? "/" : url.pathname.replace(/\/+$/, "");
+      headers.set("Link", `<https://nygagency.com${pathname}>; rel="canonical"`);
+    }
   }
 
   return new Response(response.body, {
