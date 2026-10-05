@@ -22,7 +22,7 @@ const SITE_URL = getSiteUrl();
 const PAGE_URL = `${SITE_URL}/work/lead-generation-automation`;
 const PAGE_TITLE = "n8n Lead Generation Automation Case Study | NYG Agency";
 const PAGE_DESCRIPTION =
-  "See how NYG Agency built an n8n lead generation and AI enrichment workflow using Google Places, Sheets, Gemini, Brave Search, and SerpApi.";
+  "See how NYG Agency built three connected n8n workflows using Google Places, Sheets, Gemini, Brave Search, SerpApi, and Hunter for lead research and contact enrichment.";
 
 const PROCESS = [
   { title: "Search configuration", detail: "Reusable business type, location, and radius inputs." },
@@ -49,7 +49,12 @@ const PROCESS = [
   },
   {
     title: "Contact enrichment",
-    detail: "Brave Search and SerpApi support owner and contact discovery.",
+    detail: "Gemini, Brave Search, and SerpApi research each business and its people.",
+  },
+  {
+    title: "Hunter Filter",
+    detail:
+      "Designated people are matched, checked with Hunter emailFinder, and saved for outreach.",
   },
   {
     title: "Lead database",
@@ -86,6 +91,8 @@ const TECHNOLOGIES = [
   "Google Gemini",
   "Brave Search",
   "SerpApi",
+  "Hunter emailFinder",
+  "Telegram",
   "JavaScript",
   "OAuth 2.0",
 ];
@@ -291,7 +298,8 @@ function LeadGenerationCaseStudy() {
                 <p>
                   A second workflow reads those records, uses Google Gemini with Brave Search and
                   SerpApi, processes the response in JavaScript, and writes the research back to
-                  Sheets. Waits, loops, conditions, and alerts make the enrichment stage observable.
+                  Sheets. A third Hunter Filter workflow matches designated people, finds contact
+                  details, updates its status, and sends a Telegram summary.
                 </p>
               </div>
             </div>
@@ -317,7 +325,7 @@ function LeadGenerationCaseStudy() {
           <div className="case-heading-row">
             <h2 id="process-heading">From search configuration to a reviewable lead database.</h2>
             <p>
-              Nine connected stages, designed to remain understandable when the market, location, or
+              Ten connected stages, designed to remain understandable when the market, location, or
               search radius changes.
             </p>
           </div>
@@ -341,8 +349,9 @@ function LeadGenerationCaseStudy() {
             <div className="case-heading-row">
               <h2 id="proof-heading">Evidence from the system itself.</h2>
               <p>
-                These are captures of the two actual n8n editors. The collection image shows a
-                completed run; the enrichment image shows its configured stages and branches.
+                These are captures of the three actual n8n editors. Together they show collection,
+                research, contact discovery, and the Google Sheets data layer without exposing
+                private lead records.
               </p>
             </div>
             <div className="proof-grid">
@@ -352,18 +361,18 @@ function LeadGenerationCaseStudy() {
                 </div>
                 <a
                   className="case-image-link"
-                  href="/workflow-studio/enrichment-workflow-current.webp"
+                  href="/workflow-studio/clinic-enrichment-current.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Open full-size screenshot of the enrichment workflow"
                 >
                   <picture>
                     <source
-                      srcSet="/workflow-studio/enrichment-workflow-current.avif"
+                      srcSet="/workflow-studio/clinic-enrichment-current.avif"
                       type="image/avif"
                     />
                     <img
-                      src="/workflow-studio/enrichment-workflow-current.webp"
+                      src="/workflow-studio/clinic-enrichment-current.webp"
                       alt="Actual n8n enrichment workflow showing Sheets intake, item loops, Gemini AI Agent with Brave Search and SerpApi, JavaScript processing, Sheets output, and error notifications"
                       width="1825"
                       height="930"
@@ -378,6 +387,56 @@ function LeadGenerationCaseStudy() {
                   the nodes.
                 </figcaption>
               </figure>
+              <figure className="proof-figure">
+                <div className="proof-figure-toolbar">
+                  03 / Hunter contact filter <span>Actual n8n editor capture</span>
+                </div>
+                <a
+                  className="case-image-link"
+                  href="/workflow-studio/hunter-filter-current.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Open full-size screenshot of the Hunter Filter workflow"
+                >
+                  <picture>
+                    <source
+                      srcSet="/workflow-studio/hunter-filter-current.avif"
+                      type="image/avif"
+                    />
+                    <img
+                      src="/workflow-studio/hunter-filter-current.webp"
+                      alt="Actual n8n Hunter Filter workflow showing Sheets intake, designated people matching, Hunter emailFinder, CC25Hunter output, status updates, and a Telegram summary"
+                      width="1825"
+                      height="930"
+                      loading="lazy"
+                    />
+                  </picture>
+                </a>
+                <figcaption>
+                  <strong>Hunter Filter workflow.</strong> Sheet rows are matched against designated
+                  people, checked through Hunter emailFinder, saved to the CC25Hunter sheet, and
+                  marked as searched before a Telegram summary is sent.
+                </figcaption>
+              </figure>
+              <aside className="sheets-data-card" aria-label="Google Sheets data layer">
+                <div>
+                  <p className="proof-ledger-title">
+                    <Database size={18} /> Google Sheets data layer
+                  </p>
+                  <h3>One working database across the three workflows.</h3>
+                  <p>
+                    The n8n leads workbook keeps collection, clinic research, people, and Hunter
+                    results in separate operational tabs. The public case study shows the write
+                    paths and sheet names while keeping the underlying rows private.
+                  </p>
+                </div>
+                <div className="sheet-tab-list" aria-label="Workbook tabs">
+                  <span>CC25-09</span>
+                  <span>CC25Hunter</span>
+                  <span>clinics-dubai</span>
+                  <span>Persons</span>
+                </div>
+              </aside>
               <aside className="proof-ledger" aria-label="Verified enrichment workflow nodes">
                 <p className="proof-ledger-title">
                   <Search size={18} /> Live enrichment workflow observed
