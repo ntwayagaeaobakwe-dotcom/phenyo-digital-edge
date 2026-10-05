@@ -10,23 +10,23 @@ function ResearchPreview() {
   return (
     <div
       className="research-preview research-preview-real"
-      aria-label="Actual n8n lead research workflow: Google Places data cleaned and delivered to Google Sheets"
+      aria-label="Actual n8n Google Places lead scraper with pagination and a Google Sheets output"
     >
       <div className="preview-topline">
-        <span>Actual workflow / Lead research</span>
-        <span>n8n + Google Places + Sheets</span>
+        <span>Actual workflow / Business discovery</span>
+        <span>n8n + Places + Sheets</span>
       </div>
       <img
         className="research-screenshot"
-        src="/workflow-studio/lead-research-actual.png"
-        alt="Workflow showing edit fields, split places, Google Places request, duplicate removal, and 634 items appended to a sheet"
-        width="2048"
-        height="698"
+        src="/workflow-studio/places-workflow-current.webp"
+        alt="Current n8n workflow showing geocoding, Google Places search, pagination, a 90-business cap, and 60 items written to Google Sheets in the captured run"
+        width="1825"
+        height="930"
         loading="lazy"
       />
       <div className="research-result">
         <span className="result-dot" />
-        <span>15 target areas · 634 items appended or updated in the sheet</span>
+        <span>Captured run · 60 items at the Google Sheets step</span>
       </div>
     </div>
   );
@@ -69,11 +69,11 @@ export function ProjectsSection() {
           <p>{featured.problem}</p>
           <div className="project-outcome">
             <span>Result</span>
-            <p>Recorded run: 634 items at the final Google Sheets step.</p>
+            <p>Captured run: 60 items at the Google Sheets step.</p>
           </div>
-          <button className="text-link" onClick={() => open(featured)}>
-            Explore the build <ArrowUpRight size={16} />
-          </button>
+          <a className="text-link" href="/work/lead-generation-automation">
+            View the full case study <ArrowUpRight size={16} />
+          </a>
         </div>
       </article>
       <article className="website-project">

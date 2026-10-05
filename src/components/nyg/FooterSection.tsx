@@ -39,6 +39,7 @@ export function FooterSection() {
           <div className="footer-links">
             <a href="/#services">Services</a>
             <a href="/#projects">Selected work</a>
+            <a href="/work/lead-generation-automation">Automation case study</a>
             <a href="/#systems">Interactive demo</a>
             <a href="/#diagnostic">Find your next step</a>
             <a href="/#process">Our process</a>

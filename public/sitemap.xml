@@ -12,6 +12,12 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
+  <url>
+    <loc>https://nygagency.com/work/lead-generation-automation</loc>
+    <lastmod>2026-10-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url><loc>https://nygagency.com/privacy</loc><lastmod>2026-09-13</lastmod></url>
   <url><loc>https://nygagency.com/terms</loc><lastmod>2026-09-13</lastmod></url>
   <url><loc>https://nygagency.com/cancellations</loc><lastmod>2026-09-13</lastmod></url>

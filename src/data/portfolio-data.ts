@@ -349,35 +349,38 @@ export const PROJECTS: ProjectItem[] = [
     title: "Automated Business Lead Research System",
     tag: "Completed Build",
     status: "Completed Build",
-    desc: "An n8n workflow connecting Google Places searches, duplicate removal and Google Sheets. The recorded run shows 634 items at the final sheet step.",
+    desc: "An n8n workflow connecting Google Places, controlled pagination, and Google Sheets. The captured run shows 60 items at the final sheet step.",
     problem:
       "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
     solution:
-      "Built a workflow to search configured areas, collect business records from Google Places, remove duplicates and append or update records in Google Sheets.",
+      "Built a workflow to geocode a search location, collect business records from Google Places, control pagination and volume, and append or update Google Sheets rows.",
     howItWorks: [
-      "Defined target business criteria and search parameters for 15 areas",
-      "Gathered public company data and contact details automatically",
-      "Split the returned records and applied a duplicate-removal step",
-      "The recorded execution shows 634 items at the Google Sheets step",
+      "Set the business search criteria and geocoded the target location",
+      "Collected public business records through Google Places API (New)",
+      "Stored page tokens and capped the workflow at 90 businesses per run",
+      "The captured execution shows 60 items at the Google Sheets step",
     ],
     potentialValue:
-      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
-    toolsUsed: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Cleaning Logic"],
-    imageUrls: ["/workflow-studio/lead-research-actual.png"],
+      "Makes business discovery repeatable and keeps records in a structured sheet for review before outreach.",
+    toolsUsed: ["n8n Workflows", "Google Places API", "Google Geocoding", "Google Sheets"],
+    imageUrls: [
+      "/workflow-studio/places-workflow-current.webp",
+      "/workflow-studio/enrichment-workflow-current.webp",
+    ],
     accent: "from-cyan-500/15 to-transparent",
     challenge:
       "Building a qualified business lead list manually requires hours of repetitive searching, copy-pasting, and spreadsheet cleanup.",
     objective:
-      "Built a workflow to search configured areas, collect business records from Google Places, remove duplicates and append or update records in Google Sheets.",
-    techStack: ["n8n Workflows", "Business Data APIs", "Google Sheets", "Data Cleaning Logic"],
+      "Built a workflow to geocode a search location, collect business records from Google Places, control pagination and volume, and append or update Google Sheets rows.",
+    techStack: ["n8n Workflows", "Google Places API", "Google Geocoding", "Google Sheets"],
     features: [
-      "Defined target business criteria and search parameters for 15 areas",
-      "Gathered public company data and contact details automatically",
-      "Split the returned records and applied a duplicate-removal step",
-      "The recorded execution shows 634 items at the Google Sheets step",
+      "Set the business search criteria and geocoded the target location",
+      "Collected public business records through Google Places API (New)",
+      "Stored page tokens and capped the workflow at 90 businesses per run",
+      "The captured execution shows 60 items at the Google Sheets step",
     ],
     valueCreated:
-      "Delivered 600+ deduplicated, ready-to-contact leads across 15 areas — replacing days of manual searching and spreadsheet cleanup.",
+      "Makes business discovery repeatable and keeps records in a structured sheet for review before outreach.",
   },
   {
     id: "inquiry-follow-up-workflow",

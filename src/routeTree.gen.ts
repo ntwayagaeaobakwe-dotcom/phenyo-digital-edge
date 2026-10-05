@@ -15,6 +15,7 @@ import { Route as CardRouteImport } from './routes/card'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as WorkLeadGenerationAutomationRouteImport } from './routes/work.lead-generation-automation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,12 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkLeadGenerationAutomationRoute =
+  WorkLeadGenerationAutomationRouteImport.update({
+    id: '/work/lead-generation-automation',
+    path: '/work/lead-generation-automation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +70,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +80,27 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/cancellations' | '/card' | '/cookies' | '/privacy' | '/terms'
+    | '/'
+    | '/cancellations'
+    | '/card'
+    | '/cookies'
+    | '/privacy'
+    | '/terms'
+    | '/work/lead-generation-automation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/cancellations' | '/card' | '/cookies' | '/privacy' | '/terms'
+  to:
+    | '/'
+    | '/cancellations'
+    | '/card'
+    | '/cookies'
+    | '/privacy'
+    | '/terms'
+    | '/work/lead-generation-automation'
   id:
     | '__root__'
     | '/'
@@ -86,6 +109,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/work/lead-generation-automation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +119,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  WorkLeadGenerationAutomationRoute: typeof WorkLeadGenerationAutomationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +166,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/lead-generation-automation': {
+      id: '/work/lead-generation-automation'
+      path: '/work/lead-generation-automation'
+      fullPath: '/work/lead-generation-automation'
+      preLoaderRoute: typeof WorkLeadGenerationAutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -151,6 +183,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  WorkLeadGenerationAutomationRoute: WorkLeadGenerationAutomationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
