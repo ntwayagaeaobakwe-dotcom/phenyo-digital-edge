@@ -13,6 +13,18 @@ colors:
   field-border: "#4d4f52"
   field-placeholder: "#a8aaad"
   error: "#f6a8a1"
+# Material and typography extension
+surfaces:
+  homepage-background: "Continuous LineWaves canvas with a carbon gradient veil"
+  glass: "Platinum-tinted translucent panels with inner refraction, 28px panel radius, and 14px controls"
+  header: "Translucent fixed navigation with blur and a compact motion control"
+typography-roles:
+  display: "Manrope Variable, weight 520, tight tracking and balanced wrapping"
+  reading: "Source Sans 3, 17–19px, 1.55 line height, short measure"
+  technical: "JetBrains Mono Variable, uppercase micro-labels with 0.14em tracking"
+motion:
+  background: "LineWaves remains continuous across the homepage and can be paused from the header"
+  accessibility: "Reduced-motion users receive a static wave field and the motion toggle is hidden"
 typography:
   display:
     fontFamily: '"Manrope Variable", Manrope, sans-serif'

@@ -73,6 +73,65 @@
   background:
     radial-gradient(ellipse at 95% 30%, #202630 0, transparent 28%),
     radial-gradient(ellipse at 0 65%, #1c222b 0, transparent 24%), #0b0c0e;
+  font-family: var(--font-sans);
+  font-kerning: normal;
+  text-rendering: optimizeLegibility;
+}
+.nyg-site :is(h1, h2, h3, h4, .button, .desktop-links a, .menu-toggle, .header-motion-toggle) {
+  font-family: var(--font-display);
+}
+.nyg-site :is(h1, h2, h3, h4) {
+  text-wrap: balance;
+}
+.nyg-site .section-eyebrow,
+.nyg-site .hero-foot,
+.nyg-site .service-detail,
+.nyg-site .menu-index {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+.nyg-site .hero-sculpture .hero-copy h1 {
+  font-size: clamp(2.75rem, 5vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.055em;
+  font-weight: 520;
+}
+.nyg-site .hero-sculpture .hero-description {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+}
+.nyg-site .section-heading h2 {
+  font-size: clamp(2.35rem, 4.6vw, 3.65rem);
+  line-height: 1.04;
+  letter-spacing: -0.05em;
+  font-weight: 520;
+}
+.nyg-site .section-heading > p,
+.nyg-site .service-panel p,
+.nyg-site .hero-foot p {
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+.nyg-site .service-item h3 button {
+  font-family: var(--font-display);
+  font-weight: 520;
+  letter-spacing: -0.025em;
+}
+.nyg-site .button,
+.nyg-site .text-link {
+  letter-spacing: -0.01em;
+}
+@media (max-width: 639px) {
+  .nyg-site .hero-sculpture .hero-copy h1 {
+    font-size: clamp(2.65rem, 12vw, 3.5rem);
+    line-height: 1.02;
+  }
+  .nyg-site .section-heading h2 {
+    font-size: clamp(2.3rem, 11vw, 3.25rem);
+  }
 }
 .nyg-site .site-header,
 .nyg-site .site-header.is-scrolled {
