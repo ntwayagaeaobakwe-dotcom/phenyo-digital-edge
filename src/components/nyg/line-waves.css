@@ -32,18 +32,66 @@
 }
 .services-waves .service-list,
 .services-waves .capability-explorer {
-  background: rgba(9, 10, 12, 0.78);
+  background: linear-gradient(135deg, rgb(255 255 255 / 7%), transparent 48%), rgb(17 20 25 / 68%);
+  border: 0;
+  border-radius: 30px;
+  -webkit-backdrop-filter: blur(24px) saturate(125%);
+  backdrop-filter: blur(24px) saturate(125%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 15%),
+    inset 0 -1px 0 rgb(255 255 255 / 4%),
+    0 20px 60px rgb(0 0 0 / 18%);
+}
+.services-waves .service-list {
+  padding: 12px;
+}
+.services-waves .service-item {
+  border: 0;
+  border-radius: 22px;
+  padding-inline: 22px;
+  transition:
+    background 220ms ease,
+    box-shadow 220ms ease;
+}
+.services-waves .service-item + .service-item {
+  margin-top: 6px;
+}
+.services-waves .service-item.service-active {
+  background: linear-gradient(120deg, rgb(255 255 255 / 8%), rgb(255 255 255 / 2%));
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+}
+.services-waves .service-item:focus-within {
+  background-color: rgb(255 255 255 / 5%);
+}
+.services-waves .service-item h3 > button:focus-visible {
+  outline: 2px solid #d5dae2;
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+.services-waves .capabilities-artwork {
+  border-radius: 32px;
+  background: transparent;
+  mask-image: linear-gradient(transparent, #000 8%, #000 90%, transparent);
+}
+.services-waves .capability-explorer {
+  padding: 24px 30px;
 }
 .nyg-site .services-waves #services {
   background: transparent;
+  border-top: 0;
 }
 .waves-toggle {
   display: block;
   margin: 0 auto 28px;
   padding: 10px 16px;
-  border: 1px solid #484b50;
+  border: 0;
   border-radius: 24px;
-  background: #111316;
+  background: rgb(30 34 40 / 70%);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 16%),
+    0 8px 24px rgb(0 0 0 / 15%);
   color: #c9cdd2;
   font-size: 12px;
   cursor: pointer;
@@ -53,12 +101,46 @@
   outline-offset: 4px;
 }
 @media (max-width: 639px) {
+  .services-waves .service-list {
+    padding: 8px;
+    border-radius: 24px;
+  }
+  .services-waves .service-item {
+    padding-inline: 16px;
+    border-radius: 18px;
+  }
+  .services-waves .capability-explorer {
+    padding: 20px;
+    border-radius: 24px;
+  }
   .line-waves-background {
     opacity: 0.45;
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .services-waves .service-item {
+    transition: none;
+  }
   .waves-toggle {
     display: none;
+  }
+}
+@media (hover: hover) {
+  .services-waves .service-item:hover {
+    background-color: rgb(255 255 255 / 5%);
+  }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .services-waves .service-list,
+  .services-waves .capability-explorer {
+    background-color: #181b20;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .services-waves .service-list,
+  .services-waves .capability-explorer,
+  .waves-toggle {
+    background: #181b20;
+    backdrop-filter: none;
   }
 }
