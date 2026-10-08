@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/nyg/HeroSection";
 import { HeaderNav } from "@/components/nyg/HeaderNav";
 import { ServicesSection } from "@/components/nyg/ServicesSection";
+import { ServicesBackdrop } from "@/components/nyg/ServicesBackdrop";
 import { AGENCY_SERVICES } from "@/data/agency-services";
 import { SystemStudio } from "@/components/portfolio/SystemStudio";
 import { BottleneckConfigurator } from "@/components/portfolio/BottleneckConfigurator";
@@ -214,7 +215,9 @@ function Home() {
       <HeaderNav />
       <main id="main-content" tabIndex={-1}>
         <HeroSection />
-        <ServicesSection />
+        <ServicesBackdrop>
+          <ServicesSection />
+        </ServicesBackdrop>
         <ProjectsSection />
         <SystemStudio />
         <BottleneckConfigurator />
