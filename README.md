@@ -12,6 +12,10 @@ Open your project in the [Lovable editor](https://lovable.dev) and keep building
 
 ## Development
 
+Use npm and the committed package-lock.json for local and Cloudflare builds.
+Install with `npm ci`, build with `npm run build`, and deploy with `npx wrangler deploy`.
+Keep a single lockfile so Cloudflare does not select a stale Bun dependency graph.
+
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
 
 ```sh
