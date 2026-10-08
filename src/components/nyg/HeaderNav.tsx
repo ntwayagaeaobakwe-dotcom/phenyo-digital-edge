@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu } from "lucide-react";
+import { ArrowUpRight, Menu, Pause, Play } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -39,7 +39,13 @@ function BrandLockup() {
   );
 }
 
-export function HeaderNav() {
+export function HeaderNav({
+  motionPaused = false,
+  onToggleMotion,
+}: {
+  motionPaused?: boolean;
+  onToggleMotion?: () => void;
+}) {
   const [scrolled, setScrolled] = useState(false);
   const [active, setActive] = useState("hero-stage");
   const [open, setOpen] = useState(false);
@@ -90,6 +96,21 @@ export function HeaderNav() {
           ))}
         </div>
         <div className="nav-actions">
+          {onToggleMotion && (
+            <button
+              className="header-motion-toggle"
+              onClick={onToggleMotion}
+              aria-pressed={motionPaused}
+              aria-label={motionPaused ? "Resume background motion" : "Pause background motion"}
+              title={motionPaused ? "Resume background motion" : "Pause background motion"}
+            >
+              {motionPaused ? (
+                <Play size={16} aria-hidden="true" />
+              ) : (
+                <Pause size={16} aria-hidden="true" />
+              )}
+            </button>
+          )}
           <a href="#contact" className="button button-small">
             Start a project <ArrowUpRight size={15} />
           </a>

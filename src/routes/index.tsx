@@ -2,14 +2,14 @@ import { createFileRoute } from "@tanstack/react-router";
 import { HeroSection } from "@/components/nyg/HeroSection";
 import { HeaderNav } from "@/components/nyg/HeaderNav";
 import { ServicesSection } from "@/components/nyg/ServicesSection";
-import { ServicesBackdrop } from "@/components/nyg/ServicesBackdrop";
+import { SiteBackdrop } from "@/components/nyg/ServicesBackdrop";
 import { AGENCY_SERVICES } from "@/data/agency-services";
 import { SystemStudio } from "@/components/portfolio/SystemStudio";
 import { BottleneckConfigurator } from "@/components/portfolio/BottleneckConfigurator";
 import { ProjectsSection } from "@/components/portfolio/ProjectsSection";
 import { CapabilitySection } from "@/components/portfolio/CapabilitySection";
 import { EngagementBlueprint } from "@/components/portfolio/EngagementBlueprint";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 const ContactSection = lazy(() =>
   import("@/components/portfolio/ContactSection").then((module) => ({
     default: module.ContactSection,
@@ -207,17 +207,19 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const [motionPaused, setMotionPaused] = useState(false);
   return (
-    <div className="nyg-site">
+    <SiteBackdrop paused={motionPaused}>
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
-      <HeaderNav />
+      <HeaderNav
+        motionPaused={motionPaused}
+        onToggleMotion={() => setMotionPaused((paused) => !paused)}
+      />
       <main id="main-content" tabIndex={-1}>
         <HeroSection />
-        <ServicesBackdrop>
-          <ServicesSection />
-        </ServicesBackdrop>
+        <ServicesSection />
         <ProjectsSection />
         <SystemStudio />
         <BottleneckConfigurator />
@@ -235,7 +237,7 @@ function Home() {
         </Suspense>
       </main>
       <FooterSection />
-    </div>
+    </SiteBackdrop>
   );
 }
 export default Home;

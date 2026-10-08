@@ -1,0 +1,281 @@
+/* Carbon / Platinum glass: shared material, open reading areas, clear controls.
+   Extends the established site; content, routes and SEO remain authoritative. */
+.site-waves.services-waves {
+  overflow: clip;
+  background: #0b0c0e;
+}
+.site-waves .line-waves-background {
+  position: fixed;
+  inset: 0;
+  mask-image: none;
+  opacity: 0.38;
+}
+.site-waves.services-waves::before {
+  position: fixed;
+  background: linear-gradient(
+    90deg,
+    rgb(11 12 14 / 78%),
+    rgb(11 12 14 / 35%) 60%,
+    rgb(11 12 14 / 60%)
+  );
+}
+.header-motion-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  color: #fff;
+  background: rgb(255 255 255 / 8%);
+  cursor: pointer;
+}
+.header-motion-toggle:hover {
+  background: rgb(255 255 255 / 16%);
+}
+.header-motion-toggle:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+@media (max-width: 420px) {
+  .nyg-site .nav-actions {
+    gap: 6px;
+  }
+  .nyg-site .nav-actions .button {
+    padding-inline: 12px;
+  }
+  .nyg-site .nav-actions .button svg {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-motion-toggle {
+    display: none;
+  }
+}
+.site-waves .hero-artwork {
+  opacity: 0.86;
+  mask-image: radial-gradient(ellipse at 60% 50%, #000 20%, transparent 72%);
+}
+.nyg-site .hero-section {
+  background: transparent;
+}
+.nyg-site {
+  --glass-fill: rgb(23 27 33 / 72%);
+  --glass-sheen: linear-gradient(135deg, rgb(255 255 255 / 7%), transparent 55%);
+  --glass-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 15%), inset 0 -1px 0 rgb(255 255 255 / 4%),
+    0 20px 60px rgb(0 0 0 / 16%);
+  --radius-control: 14px;
+  --radius-panel: 28px;
+  background:
+    radial-gradient(ellipse at 95% 30%, #202630 0, transparent 28%),
+    radial-gradient(ellipse at 0 65%, #1c222b 0, transparent 24%), #0b0c0e;
+}
+.nyg-site .site-header,
+.nyg-site .site-header.is-scrolled {
+  background: rgb(12 15 20 / 58%);
+  border: 0;
+  box-shadow: inset 0 -1px 0 rgb(255 255 255 / 8%);
+  -webkit-backdrop-filter: blur(24px) saturate(140%);
+  backdrop-filter: blur(24px) saturate(140%);
+}
+.nyg-site .site-header.is-scrolled {
+  background: rgb(12 15 20 / 76%);
+}
+.nyg-site .button,
+.nyg-site .menu-toggle {
+  border-radius: 999px;
+}
+.nyg-site .studio-section {
+  border-top: 0;
+}
+.nyg-site :is(#projects, #systems, #diagnostic, #about, #process, #contact) {
+  background: transparent;
+}
+.nyg-site
+  :is(
+    .workflow-studio,
+    .diagnostic-result,
+    .contact-form-wrap,
+    .process-faq,
+    .work-experiments,
+    .about-copy,
+    .process-layout
+  ) {
+  background: var(--glass-sheen), var(--glass-fill);
+  border: 0;
+  border-radius: var(--radius-panel);
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(20px) saturate(120%);
+  backdrop-filter: blur(20px) saturate(120%);
+}
+.nyg-site
+  :is(
+    .diagnostic-result,
+    .contact-form-wrap,
+    .process-faq,
+    .work-experiments,
+    .about-copy,
+    .process-layout
+  ) {
+  padding: clamp(24px, 3vw, 40px);
+}
+.nyg-site .process-layout {
+  gap: 32px;
+}
+.nyg-site .process-layout article {
+  border: 0;
+  padding-top: 0;
+}
+.nyg-site .process-layout details,
+.nyg-site .process-close,
+.nyg-site .studio-registration,
+.nyg-site .workflow-film-disclosure {
+  border-color: rgb(255 255 255 / 10%);
+}
+.nyg-site .workflow-toolbar,
+.nyg-site .workflow-bottom {
+  border-color: rgb(255 255 255 / 7%);
+}
+.nyg-site .workflow-diagram li {
+  border: 0;
+  border-radius: 16px;
+  background: rgb(255 255 255 / 3%);
+  box-shadow: none;
+}
+.nyg-site .workflow-diagram li.step-complete {
+  background: rgb(225 233 245 / 10%);
+}
+.nyg-site .segmented-control {
+  border: 0;
+  border-radius: 999px;
+  background: rgb(0 0 0 / 24%);
+  padding: 5px;
+}
+.nyg-site .segmented-control button {
+  border: 0;
+  border-radius: 999px;
+  min-height: 44px;
+}
+.nyg-site .diagnostic-options {
+  border: 0;
+  display: grid;
+  gap: 10px;
+}
+.nyg-site .diagnostic-options button {
+  border: 0;
+  border-radius: 20px;
+  padding: 22px;
+  background: rgb(255 255 255 / 3%);
+}
+.nyg-site .diagnostic-options button[aria-pressed="true"] {
+  background: rgb(225 233 245 / 10%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 14%);
+}
+.nyg-site .project-preview {
+  border: 0;
+  border-radius: 28px;
+  box-shadow: var(--glass-shadow);
+}
+.nyg-site .experiment-row {
+  border: 0;
+  border-radius: 16px;
+  padding-inline: 16px;
+}
+.nyg-site .experiment-row + .experiment-row {
+  margin-top: 8px;
+}
+.nyg-site .process-faq details {
+  border: 0;
+}
+.nyg-site .process-faq summary {
+  border-radius: 12px;
+  min-height: 48px;
+}
+.nyg-site .process-faq h3 {
+  margin-top: 0;
+}
+.nyg-site .founder-portrait {
+  overflow: hidden;
+  border-radius: 28px;
+}
+.nyg-site :is(input, select, textarea) {
+  border-radius: 14px;
+  background-color: rgb(8 11 16 / 65%);
+}
+.nyg-site select option {
+  background: #181b20;
+}
+.nyg-site .site-footer {
+  background: linear-gradient(180deg, rgb(32 38 47 / 35%), rgb(11 12 14 / 90%));
+  border-top: 0;
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 8%);
+}
+.mobile-menu,
+.project-dialog {
+  background: rgb(18 22 29 / 92%);
+  border: 0;
+  border-radius: 28px;
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 16%),
+    0 24px 70px rgb(0 0 0 / 30%);
+}
+@media (hover: hover) {
+  .nyg-site :is(.experiment-row, .diagnostic-options button, .process-faq summary):hover {
+    background-color: rgb(255 255 255 / 7%);
+  }
+}
+@media (max-width: 639px) {
+  .nyg-site {
+    --radius-panel: 22px;
+  }
+  .nyg-site .process-layout {
+    gap: 36px;
+  }
+  .nyg-site .diagnostic-options button {
+    padding: 18px;
+  }
+  .nyg-site .about-copy {
+    min-width: 0;
+  }
+}
+@supports not (backdrop-filter: blur(1px)) {
+  .nyg-site .site-header,
+  .nyg-site
+    :is(
+      .workflow-studio,
+      .diagnostic-result,
+      .contact-form-wrap,
+      .process-faq,
+      .work-experiments,
+      .about-copy,
+      .process-layout
+    ) {
+    background: #171b22;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .nyg-site .site-header,
+  .nyg-site .site-header.is-scrolled,
+  .nyg-site
+    :is(
+      .workflow-studio,
+      .diagnostic-result,
+      .contact-form-wrap,
+      .process-faq,
+      .work-experiments,
+      .about-copy,
+      .process-layout
+    ),
+  .mobile-menu,
+  .project-dialog {
+    background: #171b22;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
