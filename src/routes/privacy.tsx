@@ -39,6 +39,7 @@ export const Route = createFileRoute("/privacy")({
         name: "description",
         content: "How NYG Agency handles website visits and project enquiries.",
       },
+      { name: "robots", content: "noindex, follow" },
     ],
     links: [{ rel: "canonical", href: "https://nygagency.com/privacy" }],
   }),

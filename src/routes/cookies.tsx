@@ -27,6 +27,7 @@ export const Route = createFileRoute("/cookies")({
         name: "description",
         content: "How browser storage and external services relate to this website.",
       },
+      { name: "robots", content: "noindex, follow" },
     ],
     links: [{ rel: "canonical", href: "https://nygagency.com/cookies" }],
   }),

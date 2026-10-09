@@ -35,6 +35,7 @@ export const Route = createFileRoute("/terms")({
         name: "description",
         content: "Information about using this website and arranging a project.",
       },
+      { name: "robots", content: "noindex, follow" },
     ],
     links: [{ rel: "canonical", href: "https://nygagency.com/terms" }],
   }),

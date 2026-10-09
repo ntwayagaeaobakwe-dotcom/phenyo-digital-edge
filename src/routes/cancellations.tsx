@@ -27,6 +27,7 @@ export const Route = createFileRoute("/cancellations")({
         name: "description",
         content: "How to discuss changes, cancellations and refund requests.",
       },
+      { name: "robots", content: "noindex, follow" },
     ],
     links: [{ rel: "canonical", href: "https://nygagency.com/cancellations" }],
   }),
