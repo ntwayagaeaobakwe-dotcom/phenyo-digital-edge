@@ -22,7 +22,7 @@ const SITE_URL = getSiteUrl();
 const PAGE_URL = `${SITE_URL}/work/lead-generation-automation`;
 const PAGE_TITLE = "n8n Lead Generation Automation Case Study | NYG Agency";
 const PAGE_DESCRIPTION =
-  "See how NYG Agency built three connected n8n workflows using Google Places, Sheets, Gemini, Brave Search, SerpApi, and Hunter for lead research and contact enrichment.";
+  "See how NYG Agency built three connected n8n workflows with Google Places, Sheets, Gemini, Brave Search, SerpApi, and Hunter for lead research.";
 
 const PROCESS = [
   { title: "Search configuration", detail: "Reusable business type, location, and radius inputs." },
@@ -116,7 +116,7 @@ const STRUCTURED_DATA = {
       url: PAGE_URL,
       image: `${SITE_URL}/workflow-studio/places-workflow-current.webp`,
       datePublished: "2026-10-05",
-      dateModified: "2026-10-05",
+      dateModified: "2026-10-09",
       inLanguage: "en-AE",
       author: { "@type": "Person", name: PERSONAL_INFO.name },
       publisher: {
