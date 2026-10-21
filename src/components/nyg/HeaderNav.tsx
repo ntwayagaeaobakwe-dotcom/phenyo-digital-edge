@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { ArrowUpRight, Menu, Pause, Play } from "lucide-react";
+import { navigateToSection } from "@/lib/navigation";
 import {
   Dialog,
   DialogContent,
@@ -8,16 +9,16 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-export const AVAILABILITY_STATUS = "Available for select website projects";
-
 const links = [
-  { name: "Home", href: "/#hero-stage", id: "hero-stage" },
   { name: "Services", href: "/#services", id: "services" },
-  { name: "Industries", href: "/#industries", id: "industries" },
   { name: "Work", href: "/#work", id: "work" },
   { name: "About", href: "/#about", id: "about" },
-  { name: "Contact", href: "/#contact", id: "contact" },
 ];
+
+function handleReviewClick(event: React.MouseEvent<HTMLAnchorElement>) {
+  event.preventDefault();
+  navigateToSection("#contact", { focusInput: true });
+}
 
 function BrandLockup() {
   return (
@@ -92,8 +93,8 @@ export function HeaderNav({
               )}
             </button>
           )}
-          <a href="/#contact" className="button button-small">
-            Discuss your website <ArrowUpRight size={15} aria-hidden="true" />
+          <a href="/#contact" onClick={handleReviewClick} className="button button-small">
+            Request a Website Review <ArrowUpRight size={15} aria-hidden="true" />
           </a>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -120,11 +121,18 @@ export function HeaderNav({
                     <ArrowUpRight size={22} aria-hidden="true" />
                   </a>
                 ))}
+                <a
+                  href="/#contact"
+                  className="mobile-menu-review"
+                  onClick={(event) => {
+                    setOpen(false);
+                    handleReviewClick(event);
+                  }}
+                >
+                  Request a Website Review
+                  <ArrowUpRight size={20} aria-hidden="true" />
+                </a>
               </nav>
-              <p className="availability">
-                <span />
-                {AVAILABILITY_STATUS}
-              </p>
             </DialogContent>
           </Dialog>
         </div>

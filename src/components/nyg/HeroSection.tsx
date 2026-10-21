@@ -1,52 +1,56 @@
-import { ArrowDown, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { navigateToSection } from "@/lib/navigation";
+import "./hero-section.css";
 
 export function HeroSection() {
+  const handleContactClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    navigateToSection("#contact", { focusInput: true });
+  };
+
+  const handleServicesClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    navigateToSection("#services");
+  };
+
   return (
-    <section id="hero-stage" className="hero-section hero-sculpture" aria-labelledby="hero-title">
-      <div className="page-width hero-layout">
-        <picture className="hero-artwork" aria-hidden="true">
-          <img
-            src="/brand/platinum-sculpture.webp"
-            srcSet="/brand/platinum-sculpture-960.webp 960w, /brand/platinum-sculpture.webp 1600w"
-            sizes="(max-width: 639px) 100vw, (max-width: 899px) 65vw, 78vw"
-            alt=""
-            width="1600"
-            height="1200"
-            fetchPriority="high"
-          />
-        </picture>
-        <div className="hero-copy">
-          <h1 id="hero-title">
-            Web design &amp; development.
-            <br />
-            <span>Built for ambitious businesses.</span>
+    <section id="hero-stage" className="hero-contractor-section" aria-labelledby="hero-title">
+      <div className="page-width hero-contractor-container">
+        <div className="hero-copy-column">
+          <h1 id="hero-title" className="hero-main-heading">
+            Websites for contractors who build{" "}
+            <span className="hero-heading-highlight">exceptional commercial spaces.</span>
           </h1>
-          <p className="hero-description">
-            Fast, polished business websites that build credibility, clarify your services and make
-            it easier for customers to enquire or book.
+
+          <p className="hero-sub-description">
+            NYG Digital designs and develops premium websites for{" "}
+            <strong>
+              tenant improvement, commercial build-out, and interior fit-out contractors.
+            </strong>
           </p>
-          <div className="hero-actions">
-            <a href="#contact" className="button">
-              Discuss your website <ArrowUpRight size={18} />
+
+          <div className="hero-cta-group">
+            <a
+              href="#contact"
+              onClick={handleContactClick}
+              className="hero-btn-primary"
+              id="hero-cta-review"
+            >
+              <span>Request a Website Review</span>
+              <ArrowUpRight size={17} aria-hidden="true" />
             </a>
-            <a href="#work" className="text-link">
-              Explore our work <ArrowDown size={16} />
+
+            <a
+              href="#services"
+              onClick={handleServicesClick}
+              className="hero-btn-secondary"
+              id="hero-cta-services"
+            >
+              <span>Explore Services</span>
+              <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>
         </div>
-      </div>
-      <div className="page-width hero-foot">
-        <p>
-          Based in Dubai. <span>Working with businesses internationally.</span>
-        </p>
-        <div>
-          <a href="#services">Design</a>
-          <a href="#services">Develop</a>
-          <a href="#services">Improve</a>
-        </div>
-        <a href="#services" aria-label="Explore our capabilities">
-          <ArrowDown size={20} />
-        </a>
       </div>
     </section>
   );
