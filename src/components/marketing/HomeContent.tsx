@@ -1,5 +1,5 @@
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { APPROACH, HOMEPAGE_SERVICES, INDUSTRIES } from "@/data/web-agency-content";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { HOMEPAGE_SERVICES } from "@/data/web-agency-content";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 
 const problems = [
@@ -17,27 +17,28 @@ const problems = [
   ],
 ] as const;
 
-const principles = [
-  [
-    "01",
-    "Customer journeys first",
-    "Structure follows the decisions a prospective customer needs to make.",
-  ],
-  [
-    "02",
-    "Design and code together",
-    "The visual idea and its implementation are resolved as one system.",
-  ],
-  [
-    "03",
-    "Measured interaction",
-    "Motion clarifies hierarchy, feedback and change instead of competing for attention.",
-  ],
-  [
-    "04",
-    "Direct collaboration",
-    "You work with the person making the strategic and technical decisions.",
-  ],
+const homepageProcess = [
+  {
+    title: "Discovery & Website Review",
+    detail: "Review the current site, services, audience, project evidence, and inquiry path.",
+    deliverable: "Review notes and agreed scope.",
+  },
+  {
+    title: "Strategy, Structure & Design",
+    detail:
+      "Shape the pages around the contractor’s capabilities, service area, and project portfolio.",
+    deliverable: "Sitemap, page outlines, and design direction.",
+  },
+  {
+    title: "Development & Integration",
+    detail: "Build the responsive experience and connect the agreed forms and business systems.",
+    deliverable: "A working site ready for review.",
+  },
+  {
+    title: "Testing, Launch & Handover",
+    detail: "Check the pages, links, forms, and responsive states before release.",
+    deliverable: "Launch checklist and handover notes.",
+  },
 ] as const;
 
 export function HomeContent() {
@@ -114,103 +115,6 @@ export function HomeContent() {
       </section>
 
       <section
-        id="industries"
-        className="home-section industry-section"
-        aria-labelledby="industries-heading"
-      >
-        <div className="page-width">
-          <p className="section-kicker">Selected sectors</p>
-          <div className="home-heading-row">
-            <h2 id="industries-heading">One design language cannot answer every buying journey.</h2>
-            <p>
-              The information, reassurance and action a visitor needs changes with the service in
-              front of them.
-            </p>
-          </div>
-          <div className="industry-list">
-            {INDUSTRIES.map((industry, index) => (
-              <a href={industry.href} key={industry.href}>
-                <span>0{index + 1}</span>
-                <h3>{industry.title}</h3>
-                <p>{industry.detail}</p>
-                <ArrowUpRight aria-hidden="true" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="work" className="home-section work-section" aria-labelledby="work-heading">
-        <div className="page-width">
-          <div className="work-intro">
-            <div>
-              <p className="section-kicker">Selected work · honest by design</p>
-              <h2 id="work-heading">Show the evidence. Leave out the theatre.</h2>
-            </div>
-            <p>
-              Current public work is presented with its real status. No fabricated clients, results
-              or testimonials.
-            </p>
-          </div>
-
-          <article className="work-showcase">
-            <div className="work-browser" aria-label="NYG Digital website interface study">
-              <div className="work-browser-bar">
-                <span>NYG / DIGITAL EXPERIENCE</span>
-                <span>LIVE · 2026</span>
-              </div>
-              <div className="work-browser-canvas">
-                <div className="work-browser-nav">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-                <div className="work-browser-title">
-                  <small>CLARITY / CREDIBILITY / ACTION</small>
-                  <strong>Web experiences that earn the next conversation.</strong>
-                </div>
-                <div className="work-browser-object" aria-hidden="true">
-                  <span />
-                </div>
-                <div className="work-browser-foot">
-                  <span />
-                  <span />
-                </div>
-              </div>
-            </div>
-            <div className="work-showcase-copy">
-              <p className="work-status">In-house website build · Live</p>
-              <h3>NYG Digital service website and enquiry journey</h3>
-              <p>
-                A responsive business website built to explain complex services clearly, demonstrate
-                real work and provide direct email and WhatsApp paths.
-              </p>
-              <a href="#contact">
-                Discuss a similar website <ArrowRight size={15} />
-              </a>
-            </div>
-          </article>
-
-          <a className="work-supporting" href="/work/lead-generation-automation">
-            <picture>
-              <source srcSet="/workflow-studio/places-workflow-current.avif" type="image/avif" />
-              <img
-                src="/workflow-studio/places-workflow-current.webp"
-                alt="Actual n8n Google Places lead research workflow shown in the n8n editor"
-                width="1825"
-                height="930"
-                loading="lazy"
-              />
-            </picture>
-            <span>Supporting capability · Actual workflow</span>
-            <strong>Lead research and enrichment automation</strong>
-            <p>See how the customer-facing website can connect to useful operations behind it.</p>
-            <ArrowUpRight aria-hidden="true" />
-          </a>
-        </div>
-      </section>
-
-      <section
         id="approach"
         className="home-section process-section"
         aria-labelledby="approach-heading"
@@ -218,38 +122,28 @@ export function HomeContent() {
         <div className="page-width">
           <p className="section-kicker">A deliberate process</p>
           <div className="home-heading-row">
-            <h2 id="approach-heading">Each stage answers a different question.</h2>
-            <p>The build only moves forward when the decision underneath it is clear.</p>
+            <h2 id="approach-heading">A clear route from review to handover.</h2>
+            <p>
+              Each stage has a defined output, shaped around the contractor’s services, projects,
+              and inquiry process.
+            </p>
           </div>
-          <ol className="process-rail">
-            {APPROACH.map(([title, detail], index) => (
-              <li key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <div>
+          <ol className="process-grid">
+            {homepageProcess.map(({ title, detail, deliverable }, index) => (
+              <li className="process-stage" key={title}>
+                <span className="process-stage-number" aria-hidden="true">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <div className="process-stage-copy">
                   <h3>{title}</h3>
                   <p>{detail}</p>
+                  <p className="process-deliverable">
+                    <span>Deliverable</span> {deliverable}
+                  </p>
                 </div>
               </li>
             ))}
           </ol>
-        </div>
-      </section>
-
-      <section className="home-section principles-section" aria-labelledby="principles-heading">
-        <div className="page-width">
-          <div className="principles-intro">
-            <p className="section-kicker">Why NYG Digital</p>
-            <h2 id="principles-heading">One line of thought from strategy to launch.</h2>
-          </div>
-          <div className="principle-list">
-            {principles.map(([number, title, detail]) => (
-              <article key={title}>
-                <span>{number}</span>
-                <h3>{title}</h3>
-                <p>{detail}</p>
-              </article>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -270,31 +164,13 @@ export function HomeContent() {
             <figcaption>{PERSONAL_INFO.name} · Founder</figcaption>
           </figure>
           <div className="founder-copy">
-            <p className="section-kicker">The person behind the work</p>
-            <h2 id="about-heading">
-              Direct access to the person shaping and building your website.
-            </h2>
+            <p className="section-kicker">Founder</p>
+            <h2 id="about-heading">Work directly with the founder.</h2>
             <p>
-              NYG Digital is an independent web design and development studio founded by{" "}
-              {PERSONAL_INFO.name}. We work with established service businesses in the UAE, the
-              United States and other international markets through a direct remote process.
+              {PERSONAL_INFO.name} founded NYG Digital, an independent web design and development
+              studio registered in {COMPANY_INFO.registeredLocality} and operating from Dubai. The
+              studio works remotely with clients in the UAE, United States, and other markets.
             </p>
-            <p>
-              Our registered company is {COMPANY_INFO.legalName} in Ajman, United Arab Emirates. We
-              operate from Dubai and do not claim a physical office in the United States.
-            </p>
-            <ul>
-              {[
-                "Clear scope and deliverables before development",
-                "Responsive, accessible and performance-aware implementation",
-                "A maintainable handover with room for ongoing improvement",
-              ].map((item) => (
-                <li key={item}>
-                  <Check size={16} />
-                  {item}
-                </li>
-              ))}
-            </ul>
             <a
               href="https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/"
               target="_blank"

@@ -41,8 +41,8 @@ export function FooterSection() {
             <a href="/services/website-redesign">Website redesign</a>
             <a href="/services/custom-web-development">Custom development</a>
             <a href="/services/booking-websites">Booking websites</a>
-            <a href="/#industries">Industries</a>
-            <a href="/#work">Selected work</a>
+            <a href="/#approach">Our process</a>
+            <a href="/work/lead-generation-automation">Lead-generation automation</a>
             <a href="/card">
               Digital business card <ArrowUpRight size={13} />
             </a>
