@@ -16,9 +16,9 @@ const ContactSection = lazy(() =>
 );
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "Web Design & Development Agency | NYG Digital";
+const PAGE_TITLE = "Web Design for Commercial Contractors | NYG Digital";
 const PAGE_DESC =
-  "NYG Digital designs business websites, redesigns outdated sites, and builds booking and enquiry experiences for UAE and international clients.";
+  "NYG Digital is UAE-registered and builds websites for U.S. commercial contractors remotely, while serving clients in the UAE and other markets.";
 
 const HOME_SCHEMA = {
   "@context": "https://schema.org",
@@ -41,8 +41,8 @@ const HOME_SCHEMA = {
         url: "https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/",
       },
       areaServed: [
-        { "@type": "Country", name: "United Arab Emirates" },
         { "@type": "Country", name: "United States" },
+        { "@type": "Country", name: "United Arab Emirates" },
       ],
       address: {
         "@type": "PostalAddress",
@@ -60,7 +60,7 @@ const HOME_SCHEMA = {
       email: PERSONAL_INFO.email,
       telephone: PERSONAL_INFO.phone,
       parentOrganization: { "@id": `${SITE_URL}#organization` },
-      areaServed: ["United Arab Emirates", "United States", "International remote clients"],
+      areaServed: ["United States", "United Arab Emirates", "International remote clients"],
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Website design and development services",

@@ -7,6 +7,10 @@ const SITE_URL = getSiteUrl();
 export function marketingPageHead(page: MarketingPage) {
   const url = `${SITE_URL}${page.path}`;
   const image = `${SITE_URL}/og-image.png`;
+  const servedCountries =
+    page.primaryMarket === "United States"
+      ? ["United States", "United Arab Emirates"]
+      : ["United Arab Emirates", "United States"];
   const schema = {
     "@context": "https://schema.org",
     "@graph": [
@@ -36,10 +40,7 @@ export function marketingPageHead(page: MarketingPage) {
           url: SITE_URL,
           email: PERSONAL_INFO.email,
         },
-        areaServed: [
-          { "@type": "Country", name: "United Arab Emirates" },
-          { "@type": "Country", name: "United States" },
-        ],
+        areaServed: servedCountries.map((name) => ({ "@type": "Country", name })),
         audience: { "@type": "Audience", audienceType: page.audience },
       },
       {

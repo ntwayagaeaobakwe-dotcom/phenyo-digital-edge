@@ -1,44 +1,76 @@
-import { useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import * as z from "zod";
 import { toast } from "sonner";
 import { Mail, Phone, CheckCircle2, Loader2, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS } from "@/data/portfolio-data";
+import {
+  contactFormSchema,
+  type ContactFormValues,
+  type ValidatedContactFormValues,
+} from "@/lib/contact-intake";
 import { SectionShell } from "./SectionShell";
 
-const contactSchema = z.object({
-  name: z.string().min(2, "Please enter your full name (at least 2 characters)"),
-  email: z.string().email("Please enter a valid business email address"),
-  service: z.string().min(1, "Please select your primary requirement"),
-  message: z.string().min(10, "Please describe your website requirement (at least 10 characters)"),
-});
+const DEFAULT_SERVICE = "Not sure — I’ll describe the requirement";
+const SERVICE_PAGE_MAP: Record<string, string> = {
+  "/services/web-design": "Website Design",
+  "/services/website-redesign": "Website Redesign",
+  "/services/custom-web-development": "Custom Web Development",
+};
 
-type ContactFormValues = z.infer<typeof contactSchema>;
+type Attempt = { fingerprint: string; submissionId: string };
 
-const CONTACT_WEBHOOK_URL = import.meta.env.VITE_CONTACT_WEBHOOK_URL as string | undefined;
+function createSubmissionId() {
+  if (typeof crypto.randomUUID === "function") return crypto.randomUUID();
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  bytes[6] = (bytes[6] & 0x0f) | 0x40;
+  bytes[8] = (bytes[8] & 0x3f) | 0x80;
+  const hex = Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+  return `${hex.slice(0, 8)}-${hex.slice(8, 12)}-${hex.slice(12, 16)}-${hex.slice(16, 20)}-${hex.slice(20)}`;
+}
 
 export function ContactSection() {
   const [submitted, setSubmitted] = useState(false);
   const [industryContext, setIndustryContext] = useState("");
-  const [usedFallback, setUsedFallback] = useState(false);
+  const [sourcePath, setSourcePath] = useState("/");
+  const [submissionError, setSubmissionError] = useState("");
+  const attemptRef = useRef<Attempt | null>(null);
 
   const {
     register,
     handleSubmit,
     reset,
     setValue,
+    watch,
     formState: { errors, isSubmitting },
-  } = useForm<ContactFormValues>({
+  } = useForm<ContactFormValues, unknown, ValidatedContactFormValues>({
     mode: "onBlur",
-    resolver: zodResolver(contactSchema),
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
-      service: FORM_SERVICE_OPTIONS[0],
+      service: DEFAULT_SERVICE,
       message: "",
+      companyWebsite: "",
     },
   });
+  const values = watch();
+
+  useEffect(() => {
+    try {
+      const search = new URLSearchParams(window.location.search);
+      const source = search.get("source") ?? "/";
+      const requestedService = search.get("service") ?? "";
+      const expectedService = SERVICE_PAGE_MAP[source];
+
+      if (expectedService && requestedService === expectedService) {
+        setSourcePath(source);
+        setValue("service", expectedService);
+      }
+    } catch {
+      setSourcePath("/");
+    }
+  }, [setValue]);
 
   useEffect(() => {
     const handler = (): void => {
@@ -46,10 +78,12 @@ export function ContactSection() {
         const pending = sessionStorage.getItem("pendingIndustryContext");
         if (!pending) return;
         sessionStorage.removeItem("pendingIndustryContext");
-        setIndustryContext(pending);
-        setValue("message", `[Selected Focus: ${pending}]\n`, { shouldDirty: true });
+        setIndustryContext(pending.slice(0, 300));
+        setValue("message", `[Selected Focus: ${pending.slice(0, 300)}]\n`, {
+          shouldDirty: true,
+        });
       } catch {
-        // storage fallback
+        // Continue with the information already entered in the form.
       }
     };
     handler();
@@ -61,52 +95,62 @@ export function ContactSection() {
     const subject = encodeURIComponent(`NYG Digital Website Inquiry - ${data.service}`);
     const contextLine = industryContext ? `\nContext: ${industryContext}` : "";
     const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\n\nProject Scope:\n${data.message}`;
-    const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
-    window.location.href = mailtoUrl;
+    return `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
   };
 
-  const onSubmit = async (data: ContactFormValues) => {
-    setUsedFallback(false);
-
-    if (!CONTACT_WEBHOOK_URL) {
-      toast.success("Inquiry formatted! Opening your email client...");
-      setUsedFallback(true);
-      setSubmitted(true);
-      openMailtoFallback(data);
-      return;
+  const onSubmit = async (data: ValidatedContactFormValues) => {
+    setSubmissionError("");
+    const submissionFields = {
+      name: data.name.trim().replace(/\s+/g, " "),
+      email: data.email.trim().toLowerCase(),
+      service: data.service,
+      message: data.message.trim(),
+      industryContext: industryContext || null,
+      sourcePath,
+    };
+    const fingerprint = JSON.stringify(submissionFields);
+    if (!attemptRef.current || attemptRef.current.fingerprint !== fingerprint) {
+      attemptRef.current = { fingerprint, submissionId: createSubmissionId() };
     }
 
+    const submissionId = attemptRef.current.submissionId;
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 10000);
+    const timeoutId = window.setTimeout(() => controller.abort(), 12_000);
 
     try {
-      const response = await fetch(CONTACT_WEBHOOK_URL, {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         signal: controller.signal,
         body: JSON.stringify({
-          name: data.name,
-          email: data.email,
-          service: data.service,
-          message: data.message,
-          industryContext: industryContext || null,
-          timestamp: new Date().toISOString(),
+          ...submissionFields,
+          submissionId,
+          companyWebsite: data.companyWebsite ?? "",
         }),
       });
+      window.clearTimeout(timeoutId);
 
-      clearTimeout(timeoutId);
+      const result = (await response.json().catch(() => null)) as {
+        accepted?: unknown;
+        recorded?: unknown;
+        submissionId?: unknown;
+      } | null;
+      if (
+        !response.ok ||
+        result?.accepted !== true ||
+        result.recorded !== true ||
+        result.submissionId !== submissionId
+      ) {
+        throw new Error("Inquiry was not confirmed as recorded.");
+      }
 
-      if (!response.ok) throw new Error(`Webhook responded with ${response.status}`);
-
-      toast.success("Inquiry received! I'll personally respond within 24 hours.");
       setSubmitted(true);
-    } catch (error) {
-      clearTimeout(timeoutId);
-      console.error("Contact submission error, falling back to email:", error);
-      toast.error("Opening your email client to deliver inquiry directly.");
-      setUsedFallback(true);
-      setSubmitted(true);
-      openMailtoFallback(data);
+      toast.success("Your inquiry has been recorded.");
+    } catch {
+      window.clearTimeout(timeoutId);
+      setSubmissionError(
+        "We couldn’t confirm that your inquiry was recorded. Your details are still here. Retry, or contact NYG Digital using one of the options below.",
+      );
     }
   };
 
@@ -146,25 +190,31 @@ export function ContactSection() {
             </span>
             <ArrowUpRight size={19} />
           </a>
-          <p className="contact-note">Response target: within 24 hours (GST).</p>
+          <p className="contact-note">We’ll reply using the contact details you provide.</p>
         </div>
         <div className="contact-form-wrap">
           {submitted ? (
             <div className="form-success" role="status">
               <CheckCircle2 size={38} strokeWidth={1.2} />
-              <h3>{usedFallback ? "Your inquiry is ready." : "Thank you. We’re on it."}</h3>
+              <h3>Your inquiry has been recorded.</h3>
               <p>
-                {usedFallback
-                  ? "We’ve opened your email app with the details. Press send there to deliver your inquiry. If your email app didn’t open, use the direct email link."
-                  : "Your inquiry has been received. We’ll review your project and respond within 24 hours (GST)."}
+                NYG Digital will follow up using the email address you provided. This confirms the
+                inquiry was recorded; it does not confirm delivery of an email notification.
               </p>
               <button
                 type="button"
                 className="text-link"
                 onClick={() => {
                   setSubmitted(false);
-                  setUsedFallback(false);
-                  reset();
+                  setSubmissionError("");
+                  attemptRef.current = null;
+                  reset({
+                    name: "",
+                    email: "",
+                    service: SERVICE_PAGE_MAP[sourcePath] ?? DEFAULT_SERVICE,
+                    message: "",
+                    companyWebsite: "",
+                  });
                 }}
               >
                 Start another inquiry <ArrowUpRight size={16} />
@@ -172,6 +222,14 @@ export function ContactSection() {
             </div>
           ) : (
             <form onSubmit={handleSubmit(onSubmit)} noValidate aria-describedby="enquiry-privacy">
+              <input
+                className="sr-only"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                {...register("companyWebsite")}
+              />
               <div className="form-row">
                 <div className="form-field">
                   <label htmlFor="form-name">
@@ -259,6 +317,22 @@ export function ContactSection() {
                   </p>
                 )}
               </div>
+              {submissionError && (
+                <div className="form-error" role="alert">
+                  <p>{submissionError}</p>
+                  <button
+                    type="button"
+                    className="text-link"
+                    disabled={isSubmitting}
+                    onClick={() => void handleSubmit(onSubmit)()}
+                  >
+                    Retry inquiry <ArrowUpRight size={16} />
+                  </button>
+                  <a className="text-link" href={openMailtoFallback(values)}>
+                    Open a prepared email <ArrowUpRight size={16} />
+                  </a>
+                </div>
+              )}
               <p className="form-privacy" id="enquiry-privacy">
                 We use your details to discuss and respond to your enquiry. Please do not include
                 passwords, identity documents or sensitive customer information. Sending an enquiry
@@ -273,16 +347,14 @@ export function ContactSection() {
                 ) : (
                   <>
                     <span>
-                      {CONTACT_WEBHOOK_URL ? "Send project inquiry" : "Prepare project email"}
+                      {submissionError ? "Retry project inquiry" : "Send project inquiry"}
                     </span>
                     <ArrowUpRight size={18} />
                   </>
                 )}
               </button>
               <p className="form-footnote">
-                {CONTACT_WEBHOOK_URL
-                  ? "Your details are used to respond to your project inquiry."
-                  : "Opens your email app. Review your message and press send."}
+                Your inquiry is confirmed only after it has been accepted and recorded.
               </p>
             </form>
           )}

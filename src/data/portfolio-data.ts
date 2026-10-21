@@ -81,7 +81,7 @@ export const COMPANY_INFO: CompanyInfo = {
   registeredCountry: "United Arab Emirates",
   foundedDate: "2026-08-04",
   foundedYear: "2026",
-  areaServed: "United Arab Emirates and international remote clients",
+  areaServed: "United States primarily; United Arab Emirates and international remote clients",
   contactEmail: "support@nygagency.com",
   headline: "Web design and development for ambitious businesses.",
   subheadline:

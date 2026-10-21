@@ -7,6 +7,10 @@ import { SiteBackdrop } from "@/components/nyg/ServicesBackdrop";
 
 export function IntentPage({ page }: { page: MarketingPage }) {
   const [motionPaused, setMotionPaused] = useState(false);
+  const contactHref = page.formService
+    ? `/?service=${encodeURIComponent(page.formService)}&source=${encodeURIComponent(page.path)}#contact`
+    : "/#contact";
+  const ctaLabel = page.ctaLabel ?? "Discuss your website";
   return (
     <SiteBackdrop paused={motionPaused} className="marketing-page">
       <a href="#main-content" className="skip-link">
@@ -31,8 +35,8 @@ export function IntentPage({ page }: { page: MarketingPage }) {
             <div>
               <p className="intent-lead">{page.intro}</p>
               <p>{page.audience}</p>
-              <a className="button" href="/#contact">
-                Discuss your website <ArrowRight size={17} />
+              <a className="button" href={contactHref}>
+                {ctaLabel} <ArrowRight size={17} />
               </a>
             </div>
           </div>
@@ -116,8 +120,8 @@ export function IntentPage({ page }: { page: MarketingPage }) {
               Share the current situation, the audience and the outcome you want. We’ll reply with a
               practical next step.
             </p>
-            <a className="button" href="/#contact">
-              Discuss your website <ArrowRight size={17} />
+            <a className="button" href={contactHref}>
+              {ctaLabel} <ArrowRight size={17} />
             </a>
           </div>
         </section>

@@ -34,11 +34,19 @@ The root configuration identifies the existing Worker and route. Nitro generates
 - The source-map upload credential stays in the ignored `.env.sentry-build-plugin` file or the deployment environment as `SENTRY_AUTH_TOKEN`.
 - The build uploads browser source maps to Sentry, then removes every public `.map` file before Cloudflare deployment.
 
-## Contact behavior
+## Contact workflow
 
-The release preserves the existing email preparation flow. Without `VITE_CONTACT_WEBHOOK_URL`, the form validates the inquiry and opens the visitor's email application; it does not deliver email itself.
+The form posts to the same-origin `/api/contact` server route. The route is fail-closed until `N8N_CONTACT_WEBHOOK_URL`, `N8N_CONTACT_WEBHOOK_TOKEN`, `CONTACT_IDEMPOTENCY_TOKEN`, the D1 binding, and the existing rate-limit binding are configured. Do not use a `VITE_` variable: Vite exposes those values in the browser bundle. The webhook URL must be the n8n production webhook over HTTPS, and the workflow must verify the bearer token.
 
-For direct submission, supply an authorized HTTPS endpoint through that build-time variable, configure server validation, rate limiting and appropriate CORS, then rebuild. Test actual delivery with authorization before advertising confirmed delivery. Do not put secrets in the browser bundle or webhook URL.
+For local development, place those values in the ignored `.dev.vars` file. For production, set Worker secrets with `wrangler secret put N8N_CONTACT_WEBHOOK_URL`, `wrangler secret put N8N_CONTACT_WEBHOOK_TOKEN`, and `wrangler secret put CONTACT_IDEMPOTENCY_TOKEN`; then build and deploy only after an authorized controlled test. Preserve current Cloudflare variables with `--keep-vars`. The `CONTACT_IDEMPOTENCY_DB` D1 binding is the durable, unique-key coordination store; it contains submission IDs and processing state, not inquiry text or contact details. Apply its SQL migrations before deploying.
+
+The route validates and normalizes fields, bounds the request body to 8 KiB, checks same-origin requests, rejects a filled honeypot, applies the `CONTACT_SUBMISSION_LIMITER` binding (5 submissions per IP per 60 seconds), and times out the n8n request after 10 seconds. It sends no personal details to application logs. The Cloudflare Worker rate-limit binding is approximate per Cloudflare location, so add a stricter Cloudflare rule or workflow-side protection if observed abuse requires it. Confirm the rate-limit namespace ID is unique in the Cloudflare account before deployment.
+
+The browser reports success only when n8n returns HTTP success with JSON `{ "status": "accepted", "recorded": true, "submissionId": "<same-id>" }`. The workflow must claim the ID through the authenticated `/api/contact/idempotency` endpoint before touching Sheets, then confirm the row exists and mark the ID recorded. This atomic D1 claim serializes concurrent retries; if the workflow crashes after appending, its next attempt can inspect the row before appending and then finish the D1 state transition. The same `submissionId` is reused on an unchanged retry. Email notification is a separate workflow step and must never be presented as confirmed inbox delivery based on this response.
+
+Expected n8n input fields: `submissionId`, `submittedAt`, `name`, `email`, `service`, `message`, `industryContext`, and `sourcePath`. Map those fields to matching Google Sheets columns, use the D1 claim plus a Sheet lookup to prevent duplicate rows, then attempt an email notification using the submitted details and reply-to address. Record notification status separately from the durable inquiry row. Do not mark the lead accepted if the sheet write failed.
+
+Until the production URL, bearer token, n8n persistence response, Google Sheets mapping, and email notification path are configured and tested, the API returns a safe unavailable/error response. The form keeps its values and offers retry and a manually selected prepared-email option. Do not report the workflow as operational before a controlled end-to-end test verifies the Sheet row and email notification attempt.
 
 ## Verification and recovery
 

@@ -11,7 +11,7 @@ const sections = [
   ],
   [
     "How the enquiry form works",
-    "The website currently prepares a message in your email application. Preparing the message does not send it to NYG; you review and send it yourself. Your email provider processes the message when you send it. If you choose WhatsApp, that service processes your interaction under its own privacy terms.",
+    "The enquiry form sends the details you submit to the Cloudflare-hosted website endpoint. While the n8n production workflow is not configured, the endpoint rejects online submissions and does not forward them; the form keeps your details available so you can retry or choose a direct contact option. When online submission is enabled, the server validates the details and forwards accepted inquiries to NYG Digital's n8n workflow for recording in Google Sheets and a separate email notification attempt. A success message means the workflow confirmed the inquiry was recorded; it does not confirm delivery of the notification to an inbox. If you use the prepared email option, your email provider processes the message after you choose to send it. If you choose WhatsApp, that service processes your interaction under its own privacy terms.",
   ],
   [
     "Website visits and browser storage",
@@ -19,7 +19,7 @@ const sections = [
   ],
   [
     "Purpose and service providers",
-    "Enquiry information is used to respond, discuss requirements and manage related business correspondence. Hosting, email and communication providers may process information as part of providing these services, potentially outside the UAE. Sending an enquiry is not a signup for marketing messages.",
+    "Enquiry information is used to respond, discuss requirements and manage related business correspondence. Cloudflare processes requests to host and protect the website. If the online workflow is enabled, n8n, Google Sheets and the email provider configured for notifications process the inquiry as part of that workflow. Hosting, spreadsheet, email and communication providers may process information outside the UAE. Sending an enquiry is not a signup for marketing messages.",
   ],
   [
     "Retention and your requests",
@@ -27,7 +27,7 @@ const sections = [
   ],
   [
     "Changes",
-    "This notice describes the current website. It should be updated if enquiry handling, tracking or service providers change. Last updated: 13 September 2026.",
+    "This notice describes the current website and the conditional inquiry workflow. It should be updated if enquiry handling, tracking or service providers change. Last updated: 22 October 2026.",
   ],
 ] as const;
 export const Route = createFileRoute("/privacy")({

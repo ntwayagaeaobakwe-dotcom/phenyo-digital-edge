@@ -15,6 +15,7 @@ import { Route as CardRouteImport } from './routes/card'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as ApiContactRouteImport } from './routes/api.contact'
 import { Route as IndustriesHomeServicesRouteImport } from './routes/industries.home-services'
 import { Route as IndustriesInteriorDesignFitOutRouteImport } from './routes/industries.interior-design-fit-out'
 import { Route as IndustriesTourismChartersRouteImport } from './routes/industries.tourism-charters'
@@ -23,6 +24,7 @@ import { Route as ServicesCustomWebDevelopmentRouteImport } from './routes/servi
 import { Route as ServicesWebDesignRouteImport } from './routes/services.web-design'
 import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
 import { Route as WorkLeadGenerationAutomationRouteImport } from './routes/work.lead-generation-automation'
+import { Route as ApiContactIdempotencyRouteImport } from './routes/api.contact.idempotency'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +54,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
   path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiContactRoute = ApiContactRouteImport.update({
+  id: '/api/contact',
+  path: '/api/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustriesHomeServicesRoute = IndustriesHomeServicesRouteImport.update({
@@ -98,6 +105,11 @@ const WorkLeadGenerationAutomationRoute =
     path: '/work/lead-generation-automation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ApiContactIdempotencyRoute = ApiContactIdempotencyRouteImport.update({
+  id: '/idempotency',
+  path: '/idempotency',
+  getParentRoute: () => ApiContactRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -106,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/api/contact': typeof ApiContactRouteWithChildren
   '/industries/home-services': typeof IndustriesHomeServicesRoute
   '/industries/interior-design-fit-out': typeof IndustriesInteriorDesignFitOutRoute
   '/industries/tourism-charters': typeof IndustriesTourismChartersRoute
@@ -114,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/services/web-design': typeof ServicesWebDesignRoute
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
+  '/api/contact/idempotency': typeof ApiContactIdempotencyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -122,6 +136,7 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/api/contact': typeof ApiContactRouteWithChildren
   '/industries/home-services': typeof IndustriesHomeServicesRoute
   '/industries/interior-design-fit-out': typeof IndustriesInteriorDesignFitOutRoute
   '/industries/tourism-charters': typeof IndustriesTourismChartersRoute
@@ -130,6 +145,7 @@ export interface FileRoutesByTo {
   '/services/web-design': typeof ServicesWebDesignRoute
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
+  '/api/contact/idempotency': typeof ApiContactIdempotencyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -139,6 +155,7 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/api/contact': typeof ApiContactRouteWithChildren
   '/industries/home-services': typeof IndustriesHomeServicesRoute
   '/industries/interior-design-fit-out': typeof IndustriesInteriorDesignFitOutRoute
   '/industries/tourism-charters': typeof IndustriesTourismChartersRoute
@@ -147,6 +164,7 @@ export interface FileRoutesById {
   '/services/web-design': typeof ServicesWebDesignRoute
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
+  '/api/contact/idempotency': typeof ApiContactIdempotencyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -157,6 +175,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/api/contact'
     | '/industries/home-services'
     | '/industries/interior-design-fit-out'
     | '/industries/tourism-charters'
@@ -165,6 +184,7 @@ export interface FileRouteTypes {
     | '/services/web-design'
     | '/services/website-redesign'
     | '/work/lead-generation-automation'
+    | '/api/contact/idempotency'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -173,6 +193,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/api/contact'
     | '/industries/home-services'
     | '/industries/interior-design-fit-out'
     | '/industries/tourism-charters'
@@ -181,6 +202,7 @@ export interface FileRouteTypes {
     | '/services/web-design'
     | '/services/website-redesign'
     | '/work/lead-generation-automation'
+    | '/api/contact/idempotency'
   id:
     | '__root__'
     | '/'
@@ -189,6 +211,7 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/api/contact'
     | '/industries/home-services'
     | '/industries/interior-design-fit-out'
     | '/industries/tourism-charters'
@@ -197,6 +220,7 @@ export interface FileRouteTypes {
     | '/services/web-design'
     | '/services/website-redesign'
     | '/work/lead-generation-automation'
+    | '/api/contact/idempotency'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -206,6 +230,7 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  ApiContactRoute: typeof ApiContactRouteWithChildren
   IndustriesHomeServicesRoute: typeof IndustriesHomeServicesRoute
   IndustriesInteriorDesignFitOutRoute: typeof IndustriesInteriorDesignFitOutRoute
   IndustriesTourismChartersRoute: typeof IndustriesTourismChartersRoute
@@ -258,6 +283,13 @@ declare module '@tanstack/react-router' {
       path: '/terms'
       fullPath: '/terms'
       preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/contact': {
+      id: '/api/contact'
+      path: '/api/contact'
+      fullPath: '/api/contact'
+      preLoaderRoute: typeof ApiContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industries/home-services': {
@@ -316,8 +348,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkLeadGenerationAutomationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/contact/idempotency': {
+      id: '/api/contact/idempotency'
+      path: '/idempotency'
+      fullPath: '/api/contact/idempotency'
+      preLoaderRoute: typeof ApiContactIdempotencyRouteImport
+      parentRoute: typeof ApiContactRoute
+    }
   }
 }
+
+interface ApiContactRouteChildren {
+  ApiContactIdempotencyRoute: typeof ApiContactIdempotencyRoute
+}
+
+const ApiContactRouteChildren: ApiContactRouteChildren = {
+  ApiContactIdempotencyRoute: ApiContactIdempotencyRoute,
+}
+
+const ApiContactRouteWithChildren = ApiContactRoute._addFileChildren(
+  ApiContactRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -326,6 +377,7 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  ApiContactRoute: ApiContactRouteWithChildren,
   IndustriesHomeServicesRoute: IndustriesHomeServicesRoute,
   IndustriesInteriorDesignFitOutRoute: IndustriesInteriorDesignFitOutRoute,
   IndustriesTourismChartersRoute: IndustriesTourismChartersRoute,

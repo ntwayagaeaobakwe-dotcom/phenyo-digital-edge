@@ -5,6 +5,9 @@ export type MarketingPage = {
   title: string;
   description: string;
   h1: string;
+  formService?: string;
+  ctaLabel?: string;
+  primaryMarket?: "United States" | "United Arab Emirates";
   intro: string;
   audience: string;
   challengeTitle: string;
@@ -126,92 +129,97 @@ export const MARKETING_PAGES: Record<string, MarketingPage> = {
   webDesign: {
     path: "/services/web-design",
     section: "Services",
-    eyebrow: "Professional website design",
-    title: "Professional Website Design Services | NYG Digital",
+    eyebrow: "Commercial contractor website design",
+    title: "Website Design for Commercial Contractors | NYG Digital",
     description:
-      "NYG Digital designs polished, responsive business websites with clear customer journeys, strong content structure and practical enquiry paths.",
-    h1: "Professional website design built around your business.",
+      "Website design for commercial fit-out, tenant improvement, build-out and renovation contractors. Plan project pages and clear inquiry paths with NYG Digital.",
+    h1: "Website design for commercial contractors.",
+    formService: "Website Design",
+    ctaLabel: "Request a website review",
+    primaryMarket: "United States",
     intro:
-      "A business website should make your value easy to understand and the next step easy to take. We combine strategy, content structure, interface design and development so the finished site works as one coherent customer experience.",
+      "Build a clear, responsive website for the work you deliver. We structure services, sectors, verified project information and inquiry paths so prospective clients can assess fit and know how to start.",
     audience:
-      "This service is for established service businesses creating a new website or replacing a temporary online presence with a professional platform they can build on.",
-    challengeTitle: "A website has to do more than look current.",
+      "For commercial fit-out, tenant improvement, build-out, renovation and interior construction firms that need a new website. NYG Digital is registered in the UAE and serves U.S.-based contractors remotely, alongside clients in the UAE and other markets.",
+    challengeTitle: "Make your capabilities easy to assess.",
     challenges: [
-      "Visitors need to understand the offer without translating internal language.",
-      "Services, proof and contact options need a clear hierarchy on mobile and desktop.",
-      "The site needs to feel credible without relying on unsupported claims or decorative excess.",
+      "Project teams need to see which sectors, scopes and project types fit your work.",
+      "Project photography needs verified scope and delivery context to support evaluation.",
+      "Prospects need a clear route to discuss a project, request an RFQ or send a bid invitation.",
     ],
-    deliverableTitle: "A complete business website, designed as a working system.",
+    deliverableTitle: "A contractor website built around project clarity.",
     deliverables: [
       {
-        title: "Page and journey planning",
+        title: "Service and sector structure",
         detail:
-          "A practical structure for the questions customers ask and the actions they need to take.",
+          "Organize the contractor’s verified capabilities, project types and target sectors into a useful page structure.",
       },
       {
-        title: "Responsive interface design",
+        title: "Project portfolio system",
         detail:
-          "A polished visual system that adapts cleanly across phones, tablets and larger screens.",
+          "Present approved project images and facts with context for scope, location and delivery role.",
       },
       {
-        title: "Production development",
+        title: "Responsive website build",
         detail:
-          "Maintainable implementation, accessible interactions and dependable contact paths.",
+          "Build an accessible, maintainable website that works across phones, tablets and desktop screens.",
       },
       {
-        title: "Search foundations",
+        title: "Project inquiry path",
         detail:
-          "Semantic content, page metadata, crawlable links, image guidance and technical SEO basics.",
+          "Give project teams a clear way to share an initial brief or request a conversation about procurement requirements.",
       },
     ],
     process: APPROACH.map(([title, detail]) => ({ title, detail })),
     outcome:
-      "You receive a website that presents the business clearly, supports real customer decisions and is ready for ongoing improvement after launch.",
+      "The finished website helps a prospective client understand your services, review relevant project evidence and choose a clear next step.",
     related: [
-      { label: "Website redesign", href: "/services/website-redesign" },
-      { label: "Custom web development", href: "/services/custom-web-development" },
-      { label: "Home services websites", href: "/industries/home-services" },
+      { label: "Website redesign for contractors", href: "/services/website-redesign" },
+      { label: "Custom contractor web development", href: "/services/custom-web-development" },
     ],
   },
   websiteRedesign: {
     path: "/services/website-redesign",
     section: "Services",
-    eyebrow: "Business website redesign",
-    title: "Business Website Redesign Services | NYG Digital",
+    eyebrow: "Commercial contractor website redesign",
+    title: "Website Redesign for Commercial Contractors | NYG Digital",
     description:
-      "Redesign an outdated business website with clearer messaging, better mobile usability, faster performance and a stronger enquiry journey.",
-    h1: "Turn an outdated website into a stronger business asset.",
+      "Redesign a commercial contractor website with clearer services, project evidence and inquiry paths. NYG Digital works remotely with U.S. and international firms.",
+    h1: "Make your contractor website easier to evaluate.",
+    formService: "Website Redesign",
+    ctaLabel: "Request a redesign review",
+    primaryMarket: "United States",
     intro:
-      "A redesign is an opportunity to fix the reasons a website feels difficult to use or no longer represents the business. We review the current experience, keep what remains useful and rebuild the structure, presentation and technical foundation around today’s priorities.",
+      "A redesign should make the contractor’s current capabilities easier to assess while protecting useful content and search routes. We review the existing site, then reshape its structure, project presentation and technical foundations around today’s business priorities.",
     audience:
-      "This service suits established businesses with a live website that looks dated, performs poorly on mobile, is hard to update or does not guide prospects toward the right action.",
-    challengeTitle: "The visible design is only part of the problem.",
+      "For commercial fit-out, tenant improvement, build-out, renovation and interior construction businesses whose live website no longer reflects their work or makes project inquiries straightforward. NYG Digital is registered in the UAE and serves U.S.-based contractors remotely, alongside clients in the UAE and other markets.",
+    challengeTitle: "A redesign must preserve what already works.",
     challenges: [
-      "Important services may be buried under an old navigation or unclear page structure.",
-      "Mobile layouts, slow assets or weak contrast can make the experience harder to use.",
-      "Legacy content and URLs need careful handling so useful search equity is not discarded.",
+      "Priority sectors, project types or procurement capabilities may be hard to find.",
+      "Outdated project presentation can obscure the contractor’s current scope and delivery role.",
+      "Existing URLs, search traffic and useful content need a deliberate migration plan.",
     ],
-    deliverableTitle: "A measured redesign with continuity where it matters.",
+    deliverableTitle: "A focused redesign with continuity built in.",
     deliverables: [
       {
-        title: "Existing-site review",
+        title: "Current-site and content review",
         detail:
-          "A practical audit of content, journeys, page inventory, technology, metadata and working integrations.",
+          "Review pages, project materials, inquiry paths, metadata, URLs and the integrations the business still uses.",
       },
       {
-        title: "Content and navigation reset",
+        title: "Contractor-focused structure",
         detail:
-          "A clearer hierarchy that helps customers find services, proof and contact options.",
+          "Make services, sectors, project evidence and procurement contact options easier for project teams to assess.",
       },
       {
-        title: "Responsive redesign",
+        title: "Responsive visual redesign",
         detail:
-          "A refined visual direction that respects the brand and works across current devices.",
+          "Refresh the presentation while retaining the contractor’s approved brand and working content.",
       },
       {
-        title: "Migration and redirects",
+        title: "Migration and launch checks",
         detail:
-          "A controlled launch plan for retained content, changed URLs, analytics and contact functionality.",
+          "Plan redirects for changed URLs and test inquiry delivery, analytics and other agreed business connections before launch.",
       },
     ],
     process: [
@@ -241,55 +249,54 @@ export const MARKETING_PAGES: Record<string, MarketingPage> = {
       },
     ],
     outcome:
-      "The result is a faster, clearer website that reflects the business today while protecting important routes and operational connections during the change.",
+      "The redesigned site should reflect the contractor’s current work, make relevant project information easier to find and protect agreed URLs and business connections during the change.",
     related: [
-      { label: "Website design", href: "/services/web-design" },
-      { label: "Custom web development", href: "/services/custom-web-development" },
-      {
-        label: "Interior design and fit-out websites",
-        href: "/industries/interior-design-fit-out",
-      },
+      { label: "Website design for contractors", href: "/services/web-design" },
+      { label: "Custom contractor web development", href: "/services/custom-web-development" },
     ],
   },
   customDevelopment: {
     path: "/services/custom-web-development",
     section: "Services",
-    eyebrow: "Custom web development",
-    title: "Custom Web Development Agency | NYG Digital",
+    eyebrow: "Custom contractor web development",
+    title: "Custom Web Development for Contractors | NYG Digital",
     description:
-      "Custom web development for business websites, interactive tools and connected digital experiences that need more than a standard template.",
-    h1: "Custom web development for requirements that do not fit a template.",
+      "Custom web development for commercial contractors who need structured project libraries, tailored RFQ journeys or connected business systems.",
+    h1: "Custom web development for contractor workflows.",
+    formService: "Custom Web Development",
+    ctaLabel: "Discuss a custom requirement",
+    primaryMarket: "United States",
     intro:
-      "Some websites need tailored interactions, structured data, third-party connections or application-like features. We translate those requirements into a focused web solution without making the experience feel technical to the people using it.",
+      "When a contractor’s project library, RFQ intake or connected systems need more than a standard content page, custom development can fit the workflow to the business. We define the requirement first, then scope only the functionality the project needs.",
     audience:
-      "This service is for businesses that have moved beyond a basic brochure site and need a dependable interface shaped around a specific workflow, data source or customer journey.",
-    challengeTitle: "Custom functionality should simplify the experience.",
+      "For commercial fit-out, tenant improvement, build-out, renovation and interior construction teams with a defined website or system requirement beyond standard pages. NYG Digital is registered in the UAE and serves U.S.-based contractors remotely, alongside clients in the UAE and other markets.",
+    challengeTitle: "Build only what the workflow requires.",
     challenges: [
-      "Generic plugins can force the business into a workflow that does not match how it operates.",
-      "Multiple tools may need to exchange information without exposing complexity to customers.",
-      "A feature-rich website still needs to remain usable, fast, accessible and maintainable.",
+      "Standard website features may not support the contractor’s project data or review process.",
+      "RFQ requests or integrations may need to move information between existing systems.",
+      "Custom features should remain accessible, maintainable and clearly scoped for handover.",
     ],
-    deliverableTitle: "Purpose-built functionality with a clear operational role.",
+    deliverableTitle: "Purpose-built functionality with a defined scope.",
     deliverables: [
       {
-        title: "Technical discovery",
+        title: "Requirements and system review",
         detail:
-          "Requirements, data, integrations, risks and user roles translated into a buildable scope.",
+          "Map users, project data, access needs, integrations and constraints before choosing an implementation.",
       },
       {
-        title: "Interface and interaction design",
+        title: "Workflow and interface design",
         detail:
-          "Flows and screen states designed around real tasks, including errors and edge cases.",
+          "Plan clear states for project browsing, inquiry intake or other agreed contractor tasks.",
       },
       {
-        title: "Application development",
+        title: "Scoped development",
         detail:
-          "Custom front-end and connected services using the appropriate existing or agreed stack.",
+          "Build only the agreed custom features and connect approved systems where access and APIs permit.",
       },
       {
         title: "Testing and handover",
         detail:
-          "Responsive, accessibility and functional testing with clear operational documentation.",
+          "Test agreed user flows and provide practical notes for maintaining the delivered functionality.",
       },
     ],
     process: [
@@ -309,11 +316,10 @@ export const MARKETING_PAGES: Record<string, MarketingPage> = {
       { title: "Release", detail: "Test, deploy, monitor and hand over the finished system." },
     ],
     outcome:
-      "You receive a web experience shaped around the requirement, with the interface, integrations and technical decisions documented clearly.",
+      "The result is a scoped web feature or integration with a clear role in the contractor’s workflow and a documented handover.",
     related: [
-      { label: "Booking website development", href: "/services/booking-websites" },
-      { label: "Website design", href: "/services/web-design" },
-      { label: "Tourism and charter websites", href: "/industries/tourism-charters" },
+      { label: "Website redesign for contractors", href: "/services/website-redesign" },
+      { label: "Website design for contractors", href: "/services/web-design" },
     ],
   },
   bookingWebsites: {

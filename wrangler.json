@@ -9,14 +9,30 @@
   ],
   "main": ".output/server/index.mjs",
   "compatibility_date": "2026-08-25",
-  "compatibility_flags": [
-    "nodejs_compat"
-  ],
+  "compatibility_flags": ["nodejs_compat"],
   "assets": {
     "binding": "ASSETS",
     "directory": ".output/public"
   },
+  "d1_databases": [
+    {
+      "binding": "CONTACT_IDEMPOTENCY_DB",
+      "database_name": "nyg-digital-inquiries",
+      "database_id": "18dab358-3db3-437b-addb-72873147dca0",
+      "migrations_dir": "migrations"
+    }
+  ],
   "observability": {
     "enabled": true
-  }
+  },
+  "ratelimits": [
+    {
+      "name": "CONTACT_SUBMISSION_LIMITER",
+      "namespace_id": "2026102201",
+      "simple": {
+        "limit": 5,
+        "period": 60
+      }
+    }
+  ]
 }
