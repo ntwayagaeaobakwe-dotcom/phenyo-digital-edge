@@ -3,7 +3,7 @@ import { PolicyPage } from "@/components/nyg/PolicyPage";
 const sections = [
   [
     "Who we are",
-    "NYG Agency is the trading brand of NYG Digital FZE LLC, registered in Ajman NuVentures Centre Free Zone, United Arab Emirates. Contact support@nygagency.com for privacy questions or requests.",
+    "NYG Digital is operated by NYG Digital FZE LLC, registered in Ajman NuVentures Centre Free Zone, United Arab Emirates. Contact support@nygagency.com for privacy questions or requests.",
   ],
   [
     "Information involved",
@@ -34,10 +34,10 @@ export const Route = createFileRoute("/privacy")({
   component: Page,
   head: () => ({
     meta: [
-      { title: "Privacy Policy | NYG Agency" },
+      { title: "Privacy Policy | NYG Digital" },
       {
         name: "description",
-        content: "How NYG Agency handles website visits and project enquiries.",
+        content: "How NYG Digital handles website visits and project enquiries.",
       },
       { name: "robots", content: "noindex, follow" },
     ],
@@ -48,7 +48,7 @@ function Page() {
   return (
     <PolicyPage
       title="Privacy Policy"
-      intro="How NYG Agency handles website visits and project enquiries."
+      intro="How NYG Digital handles website visits and project enquiries."
       sections={sections}
     />
   );

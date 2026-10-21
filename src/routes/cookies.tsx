@@ -22,7 +22,7 @@ export const Route = createFileRoute("/cookies")({
   component: Page,
   head: () => ({
     meta: [
-      { title: "Cookies & Storage | NYG Agency" },
+      { title: "Cookies & Storage | NYG Digital" },
       {
         name: "description",
         content: "How browser storage and external services relate to this website.",

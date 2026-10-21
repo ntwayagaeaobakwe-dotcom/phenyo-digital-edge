@@ -12,7 +12,7 @@ export function PolicyPage({
   return (
     <>
       <a className="policy-home" href="/">
-        ← NYG Agency home
+        ← NYG Digital home
       </a>
       <main className="policy-page" id="main-content">
         <h1>{title}</h1>

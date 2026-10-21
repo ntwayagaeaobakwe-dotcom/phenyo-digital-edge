@@ -1,15 +1,16 @@
-# NYG Agency deployment
+# NYG Digital deployment
 
 Production: https://nygagency.com
 
 React 19, TanStack Start, Vite and Nitro server rendering run on the existing Cloudflare Worker. Deploy the full server and assets output; static file hosting alone does not run these routes and metadata.
 
-## Current release — 6 September 2026
+## Current release — 21 October 2026
 
 - Worker: `ntwayagaeaobakwe-dotcom-phenyo-digital-edge`.
 - Verified route: `*nygagency.com/*`, zone `nygagency.com`.
-- Published version: `b4ca9d15-2558-4c06-a475-78d2a09caa5c`.
-- Previous version for recovery: `c5ee21a8-e075-42d3-95e2-ea241b0e33c4`.
+- Published version: `0b36de1a-d689-4a14-9e9a-d4d6afd88c25`.
+- Previous stable version for recovery: `f2207793-641f-47f6-97fb-2679565a194c`.
+- Release scope: the completed agency redesign and SEO work, plus Sentry error monitoring, tracing, release metadata and private browser source-map uploads.
 - Published directly with Wrangler; no Git commit or push performed by this release task.
 
 ## Build and deploy
@@ -23,6 +24,15 @@ npx wrangler deploy --config .output/server/wrangler.json --keep-vars
 ```
 
 The root configuration identifies the existing Worker and route. Nitro generates the deployment configuration with the server entry, module rules and ASSETS binding. Preserve remote variables with `--keep-vars`. Production metadata defaults to `https://nygagency.com`; use that origin if setting `VITE_SITE_URL` at build time. Public `VITE_` variables must never contain secrets.
+
+## Sentry monitoring
+
+- Organization: `nyg-digital`.
+- Project: `nyg-digital-website`.
+- SDK: `@sentry/tanstackstart-react` for browser, server, routing, request middleware and React error-boundary coverage.
+- Production trace sampling: 20%; development trace sampling: 100%.
+- The source-map upload credential stays in the ignored `.env.sentry-build-plugin` file or the deployment environment as `SENTRY_AUTH_TOKEN`.
+- The build uploads browser source maps to Sentry, then removes every public `.map` file before Cloudflare deployment.
 
 ## Contact behavior
 

@@ -1,5 +1,7 @@
 import "./lib/error-capture";
 
+import * as Sentry from "@sentry/tanstackstart-react";
+import { ensureSentryServerInitialized } from "./instrument.server";
 import { consumeLastCapturedError } from "./lib/error-capture";
 import { renderErrorPage } from "./lib/error-page";
 import { secureResponse } from "./lib/security-headers";
@@ -30,7 +32,11 @@ async function normalizeCatastrophicSsrResponse(response: Response): Promise<Res
   const body = await response.clone().text();
   if (!isH3SwallowedErrorBody(body)) return response;
 
-  console.error(consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`));
+  const error = consumeLastCapturedError() ?? new Error(`h3 swallowed SSR error: ${body}`);
+  console.error(error);
+  Sentry.captureException(error, {
+    mechanism: { type: "auto.http.tanstackstart.ssr", handled: false },
+  });
   return new Response(renderErrorPage(), {
     status: 500,
     headers: { "content-type": "text/html; charset=utf-8" },
@@ -46,8 +52,11 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
-export default {
+const serverEntry = {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    // Cloudflare Workers forbid timers during module initialization. The Node
+    // transport starts its client-report timer here, inside the request scope.
+    ensureSentryServerInitialized();
     const redirect = canonicalRedirect(request);
     if (redirect) return secureResponse(redirect, request);
     try {
@@ -56,6 +65,9 @@ export default {
       return secureResponse(await normalizeCatastrophicSsrResponse(response), request);
     } catch (error) {
       console.error(error);
+      Sentry.captureException(error, {
+        mechanism: { type: "auto.http.tanstackstart.server_entry", handled: false },
+      });
       return secureResponse(
         new Response(renderErrorPage(), {
           status: 500,
@@ -66,3 +78,7 @@ export default {
     }
   },
 };
+
+export default Sentry.wrapFetchWithSentry(
+  serverEntry as Parameters<typeof Sentry.wrapFetchWithSentry>[0],
+) as typeof serverEntry;

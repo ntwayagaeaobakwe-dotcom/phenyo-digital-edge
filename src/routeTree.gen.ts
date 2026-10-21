@@ -15,6 +15,13 @@ import { Route as CardRouteImport } from './routes/card'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
+import { Route as IndustriesHomeServicesRouteImport } from './routes/industries.home-services'
+import { Route as IndustriesInteriorDesignFitOutRouteImport } from './routes/industries.interior-design-fit-out'
+import { Route as IndustriesTourismChartersRouteImport } from './routes/industries.tourism-charters'
+import { Route as ServicesBookingWebsitesRouteImport } from './routes/services.booking-websites'
+import { Route as ServicesCustomWebDevelopmentRouteImport } from './routes/services.custom-web-development'
+import { Route as ServicesWebDesignRouteImport } from './routes/services.web-design'
+import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
 import { Route as WorkLeadGenerationAutomationRouteImport } from './routes/work.lead-generation-automation'
 
 const IndexRoute = IndexRouteImport.update({
@@ -47,6 +54,44 @@ const TermsRoute = TermsRouteImport.update({
   path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
+const IndustriesHomeServicesRoute = IndustriesHomeServicesRouteImport.update({
+  id: '/industries/home-services',
+  path: '/industries/home-services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesInteriorDesignFitOutRoute =
+  IndustriesInteriorDesignFitOutRouteImport.update({
+    id: '/industries/interior-design-fit-out',
+    path: '/industries/interior-design-fit-out',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const IndustriesTourismChartersRoute =
+  IndustriesTourismChartersRouteImport.update({
+    id: '/industries/tourism-charters',
+    path: '/industries/tourism-charters',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesBookingWebsitesRoute = ServicesBookingWebsitesRouteImport.update({
+  id: '/services/booking-websites',
+  path: '/services/booking-websites',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesCustomWebDevelopmentRoute =
+  ServicesCustomWebDevelopmentRouteImport.update({
+    id: '/services/custom-web-development',
+    path: '/services/custom-web-development',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const ServicesWebDesignRoute = ServicesWebDesignRouteImport.update({
+  id: '/services/web-design',
+  path: '/services/web-design',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesWebsiteRedesignRoute = ServicesWebsiteRedesignRouteImport.update({
+  id: '/services/website-redesign',
+  path: '/services/website-redesign',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const WorkLeadGenerationAutomationRoute =
   WorkLeadGenerationAutomationRouteImport.update({
     id: '/work/lead-generation-automation',
@@ -61,6 +106,13 @@ export interface FileRoutesByFullPath {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/industries/home-services': typeof IndustriesHomeServicesRoute
+  '/industries/interior-design-fit-out': typeof IndustriesInteriorDesignFitOutRoute
+  '/industries/tourism-charters': typeof IndustriesTourismChartersRoute
+  '/services/booking-websites': typeof ServicesBookingWebsitesRoute
+  '/services/custom-web-development': typeof ServicesCustomWebDevelopmentRoute
+  '/services/web-design': typeof ServicesWebDesignRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
 }
 export interface FileRoutesByTo {
@@ -70,6 +122,13 @@ export interface FileRoutesByTo {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/industries/home-services': typeof IndustriesHomeServicesRoute
+  '/industries/interior-design-fit-out': typeof IndustriesInteriorDesignFitOutRoute
+  '/industries/tourism-charters': typeof IndustriesTourismChartersRoute
+  '/services/booking-websites': typeof ServicesBookingWebsitesRoute
+  '/services/custom-web-development': typeof ServicesCustomWebDevelopmentRoute
+  '/services/web-design': typeof ServicesWebDesignRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
 }
 export interface FileRoutesById {
@@ -80,6 +139,13 @@ export interface FileRoutesById {
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
+  '/industries/home-services': typeof IndustriesHomeServicesRoute
+  '/industries/interior-design-fit-out': typeof IndustriesInteriorDesignFitOutRoute
+  '/industries/tourism-charters': typeof IndustriesTourismChartersRoute
+  '/services/booking-websites': typeof ServicesBookingWebsitesRoute
+  '/services/custom-web-development': typeof ServicesCustomWebDevelopmentRoute
+  '/services/web-design': typeof ServicesWebDesignRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
 }
 export interface FileRouteTypes {
@@ -91,6 +157,13 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/industries/home-services'
+    | '/industries/interior-design-fit-out'
+    | '/industries/tourism-charters'
+    | '/services/booking-websites'
+    | '/services/custom-web-development'
+    | '/services/web-design'
+    | '/services/website-redesign'
     | '/work/lead-generation-automation'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -100,6 +173,13 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/industries/home-services'
+    | '/industries/interior-design-fit-out'
+    | '/industries/tourism-charters'
+    | '/services/booking-websites'
+    | '/services/custom-web-development'
+    | '/services/web-design'
+    | '/services/website-redesign'
     | '/work/lead-generation-automation'
   id:
     | '__root__'
@@ -109,6 +189,13 @@ export interface FileRouteTypes {
     | '/cookies'
     | '/privacy'
     | '/terms'
+    | '/industries/home-services'
+    | '/industries/interior-design-fit-out'
+    | '/industries/tourism-charters'
+    | '/services/booking-websites'
+    | '/services/custom-web-development'
+    | '/services/web-design'
+    | '/services/website-redesign'
     | '/work/lead-generation-automation'
   fileRoutesById: FileRoutesById
 }
@@ -119,6 +206,13 @@ export interface RootRouteChildren {
   CookiesRoute: typeof CookiesRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
+  IndustriesHomeServicesRoute: typeof IndustriesHomeServicesRoute
+  IndustriesInteriorDesignFitOutRoute: typeof IndustriesInteriorDesignFitOutRoute
+  IndustriesTourismChartersRoute: typeof IndustriesTourismChartersRoute
+  ServicesBookingWebsitesRoute: typeof ServicesBookingWebsitesRoute
+  ServicesCustomWebDevelopmentRoute: typeof ServicesCustomWebDevelopmentRoute
+  ServicesWebDesignRoute: typeof ServicesWebDesignRoute
+  ServicesWebsiteRedesignRoute: typeof ServicesWebsiteRedesignRoute
   WorkLeadGenerationAutomationRoute: typeof WorkLeadGenerationAutomationRoute
 }
 
@@ -166,6 +260,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/industries/home-services': {
+      id: '/industries/home-services'
+      path: '/industries/home-services'
+      fullPath: '/industries/home-services'
+      preLoaderRoute: typeof IndustriesHomeServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/interior-design-fit-out': {
+      id: '/industries/interior-design-fit-out'
+      path: '/industries/interior-design-fit-out'
+      fullPath: '/industries/interior-design-fit-out'
+      preLoaderRoute: typeof IndustriesInteriorDesignFitOutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries/tourism-charters': {
+      id: '/industries/tourism-charters'
+      path: '/industries/tourism-charters'
+      fullPath: '/industries/tourism-charters'
+      preLoaderRoute: typeof IndustriesTourismChartersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/booking-websites': {
+      id: '/services/booking-websites'
+      path: '/services/booking-websites'
+      fullPath: '/services/booking-websites'
+      preLoaderRoute: typeof ServicesBookingWebsitesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/custom-web-development': {
+      id: '/services/custom-web-development'
+      path: '/services/custom-web-development'
+      fullPath: '/services/custom-web-development'
+      preLoaderRoute: typeof ServicesCustomWebDevelopmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/web-design': {
+      id: '/services/web-design'
+      path: '/services/web-design'
+      fullPath: '/services/web-design'
+      preLoaderRoute: typeof ServicesWebDesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services/website-redesign': {
+      id: '/services/website-redesign'
+      path: '/services/website-redesign'
+      fullPath: '/services/website-redesign'
+      preLoaderRoute: typeof ServicesWebsiteRedesignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/work/lead-generation-automation': {
       id: '/work/lead-generation-automation'
       path: '/work/lead-generation-automation'
@@ -183,6 +326,13 @@ const rootRouteChildren: RootRouteChildren = {
   CookiesRoute: CookiesRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,
+  IndustriesHomeServicesRoute: IndustriesHomeServicesRoute,
+  IndustriesInteriorDesignFitOutRoute: IndustriesInteriorDesignFitOutRoute,
+  IndustriesTourismChartersRoute: IndustriesTourismChartersRoute,
+  ServicesBookingWebsitesRoute: ServicesBookingWebsitesRoute,
+  ServicesCustomWebDevelopmentRoute: ServicesCustomWebDevelopmentRoute,
+  ServicesWebDesignRoute: ServicesWebDesignRoute,
+  ServicesWebsiteRedesignRoute: ServicesWebsiteRedesignRoute,
   WorkLeadGenerationAutomationRoute: WorkLeadGenerationAutomationRoute,
 }
 export const routeTree = rootRouteImport

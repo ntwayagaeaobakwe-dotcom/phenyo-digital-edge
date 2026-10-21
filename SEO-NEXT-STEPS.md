@@ -1,81 +1,50 @@
-# NYG Agency SEO handover
+# NYG Digital SEO handover
 
-6 September 2026 · https://nygagency.com
+17 October 2026 · https://nygagency.com
 
-These priorities reflect the current website and stated UAE services, not measured keyword volume or ranking forecasts.
+This release repositions NYG Digital around web design and web development. The content targets buyer intent in the UAE and international remote markets without claiming a US office, unverified address, client outcome, review or award.
 
-## Implemented and preserved
+## Page and topic map
 
-- Updated homepage/card titles, descriptions, Open Graph, Twitter metadata and social preview for NYG Agency. Legal name NYG Digital FZE LLC is retained.
-- Production canonicals, server-rendered content, robots.txt and the two-route XML sitemap remain in place.
-- One H1 per page; descriptive service headings and accessible panels. Copy identifies web development, AI automation, Ajman, Dubai and the UAE without keyword lists.
-- Organization, ProfessionalService, WebSite, WebPage, six Service nodes and visible-content FAQ schema use stable identifiers. Shared service data keeps descriptions synchronized. Founder social links belong to the Person entity.
-- Exact supplied logos, favicon variants, compressed social preview and self-hosted variable fonts. No new runtime dependency was added for the redesign.
-- Internal navigation, project details, contact pathways and the supplied LinkedIn URL preserved.
+| URL                                   | Primary topic                              | Title                                                        |
+| ------------------------------------- | ------------------------------------------ | ------------------------------------------------------------ |
+| `/`                                   | web design and development agency          | Web Design & Development Agency \| NYG Digital               |
+| `/services/web-design`                | professional business website design       | Professional Website Design Services \| NYG Digital          |
+| `/services/website-redesign`          | website redesign services                  | Business Website Redesign Services \| NYG Digital            |
+| `/services/custom-web-development`    | custom website development                 | Custom Web Development Agency \| NYG Digital                 |
+| `/services/booking-websites`          | booking and lead generation websites       | Booking & Lead Generation Website Development \| NYG Digital |
+| `/industries/home-services`           | contractor and home service website design | Home Services & Contractor Website Design \| NYG Digital     |
+| `/industries/interior-design-fit-out` | interior design and fit-out websites       | Interior Design & Fit-Out Website Design \| NYG Digital      |
+| `/industries/tourism-charters`        | tourism and charter website development    | Tourism & Charter Website Development \| NYG Digital         |
+| `/work/lead-generation-automation`    | supporting n8n capability                  | n8n Lead Generation Automation Case Study \| NYG Digital     |
 
-## Remaining issues and priorities
+## Implemented
 
-1. **Verify discovery and measurement.** Confirm Search Console ownership, submit the existing sitemap, inspect `/` and `/card`, and review indexing and field performance. Configure inquiry/contact-click analytics with the actual property and applicable consent choices. Account setup was not available during this release. [Google sitemap guidance](https://developers.google.com/search/docs/crawling-indexing/sitemaps/build-sitemap).
-2. **Add substantive service pages.** The current two public pages concentrate service intent on the homepage. Publish the first three proposals below and link them from corresponding service panels and the footer. Avoid duplicate city pages with only place names changed.
-3. **Strengthen documented proof.** Publish a permissioned case study with the actual problem, delivery, constraints and supported outcome. Keep demos and concepts clearly labeled. Pursue relevant partner and directory links; no purchased bulk links or invented reviews.
-4. **Confirm local eligibility.** Set up or update Business Profile only if the real operation qualifies; online-only businesses are not eligible. Use verified identity and location details. [Google eligibility guidance](https://support.google.com/business/answer/13763036?hl=en-GB).
-5. **Measure and refine.** No field Core Web Vitals, ranking, backlink or analytics data was available. Responsive browser checks do not establish a Core Web Vitals pass. Prioritize improvements from published-site measurements and qualified inquiry data.
+- One descriptive H1, unique title and unique description on every public marketing page.
+- Self-referencing canonical, Open Graph and Twitter/X metadata on the homepage and seven intent pages.
+- Server-rendered content and crawlable internal links between services, industries, work and enquiry paths.
+- Organization, ProfessionalService, WebSite and WebPage data on the homepage. Each intent page includes WebPage, Service and BreadcrumbList data.
+- Accurate `robots.txt`, HTTPS sitemap, non-www canonical host and existing permanent host redirect.
+- Policy pages stay linked and crawlable but use `noindex, follow`; they are excluded from the sitemap.
+- Responsive layouts, semantic landmarks, visible focus states, reduced-motion support and descriptive image alternatives.
+- New 1200 × 630 social preview aligned with the web design and development positioning.
 
-Structured data was checked for parseability and content consistency, not certified by Google's Rich Results Test. The locality-only address deliberately omits unverified street details; this may limit local-business rich-result eligibility. Add only confirmed public information. [Google local-business requirements](https://developers.google.com/search/docs/appearance/structured-data/local-business).
+## Content priorities
 
-## Proposed service pages
+Publish only when there is enough original experience, evidence or practical advice to make the page useful:
 
-### 1. `/services/web-development-uae`
+1. **When should a business redesign its website?** Compare warning signs, content and technical audits, migration risk, redirects and launch planning. Link to website redesign.
+2. **What makes a contractor website effective?** Cover services, service areas, project context, mobile quotation paths and accurate trust information. Link to home services.
+3. **Website vs WhatsApp-only bookings for tourism businesses.** Explain discovery, structured requests, guest expectations, operational handoff and when WhatsApp still helps. Link to tourism and booking pages.
+4. **How to evaluate a business website before commissioning a redesign.** Provide a practical review across messaging, navigation, mobile use, performance, accessibility, analytics and ownership.
 
-- Title: **Web Development in UAE | NYG Agency**
-- Description: **Websites and web applications for UAE businesses. Plan a clear, maintainable platform with NYG Agency in Ajman, serving Dubai and the wider UAE.**
-- Keywords: web development UAE; web application development Dubai.
-- H1: **Web development for UAE businesses**
-- H2 outline: What your website needs to achieve; Websites and web applications; Integrations and content management; Delivery and handover; Discuss your project.
-- Include actual deliverables, client inputs, maintenance responsibilities and an existing example. Link to automation for connected forms.
+## External tasks
 
-### 2. `/services/ai-business-automation-uae`
+1. Verify the live release in Google Search Console, submit `https://nygagency.com/sitemap.xml` and inspect the homepage plus the seven new URLs.
+2. Request indexing after the live site and sitemap are confirmed. Indexing remains Google’s decision.
+3. Confirm the production analytics beacon still records page views, then define consent-aware events for contact CTA, email and WhatsApp clicks if the existing analytics setup supports them.
+4. Create or update a Google Business Profile only if the operation meets Google’s eligibility rules and the business can provide verified public details. Do not add an invented Dubai or US address.
+5. Obtain permissioned case studies and relevant industry links. Avoid purchased bulk backlinks, fabricated testimonials and unsupported performance claims.
+6. Review Search Console queries, Core Web Vitals field data and qualified enquiry quality after enough real traffic exists; browser testing alone cannot establish ranking or field performance.
 
-- Title: **AI & Business Automation UAE | NYG Agency**
-- Description: **Connect tools, reduce manual handoffs and apply AI where it fits. Explore practical business automation with NYG Agency for Dubai and UAE teams.**
-- Keywords: AI automation UAE; business automation Dubai.
-- H1: **AI and business automation for UAE teams**
-- H2 outline: Find the bottleneck; Rules or AI; CRM and document workflows; Human review and monitoring; Plan a bounded pilot.
-- Distinguish demonstrations from deployed work; explain failure handling without invented savings.
-
-### 3. `/services/n8n-workflow-automation`
-
-- Title: **n8n Workflow Automation UAE | NYG Agency**
-- Description: **Connect forms, CRMs, spreadsheets and APIs with n8n. NYG Agency scopes workflow automation, error handling and handover for UAE businesses.**
-- Keywords: n8n workflow automation; n8n automation UAE.
-- H1: **n8n workflows built around your operations**
-- H2 outline: Which workflows fit; Triggers and integrations; Approvals and exceptions; Hosting and credentials; Handover and support.
-- Include a labeled lead-intake or onboarding example and known ongoing third-party costs.
-
-### 4. `/services/software-development-dubai`
-
-- Title: **Software Development Dubai & UAE | NYG Agency**
-- Description: **Plan custom software, internal tools and connected digital platforms with NYG Agency, serving businesses in Dubai, Ajman and across the UAE.**
-- Keyword: software development Dubai.
-- H1: **Software that fits your business operations**
-- H2 outline: When custom software fits; Internal tools and portals; Data and integration design; Phased delivery; Ownership and maintenance.
-- Describe service area accurately without implying a Dubai office.
-
-### 5. `/services/computer-systems-consultancy-uae`
-
-- Title: **Computer Systems Consultancy UAE | NYG Agency**
-- Description: **Review disconnected tools and plan practical improvements with NYG Agency. Computer-systems consultancy for businesses in Ajman, Dubai and the UAE.**
-- Keyword: computer systems consultancy UAE.
-- H1: **A clearer plan for your business systems**
-- H2 outline: Current-state review; Workflow mapping; Tool selection and trade-offs; Implementation roadmap; Engagement deliverables.
-- Explain concrete review outputs and decision criteria.
-
-## Supporting article proposals
-
-| Title and H1                                         | Meta description                                                                                                                | Target intent                           | H2 outline                                                                                                                        |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| What to automate first in a UAE service business     | Choose a first automation project by comparing repeat work, data quality, exceptions and handover needs before selecting tools. | business automation planning UAE        | Map repeat work; Assess risk; Select a pilot; Define success; Assign ownership. Link to automation service.                       |
-| n8n lead intake: from website form to CRM            | A lead-intake workflow with validation, deduplication, CRM updates, alerts and error handling. A clearly labeled n8n example.   | n8n CRM workflow automation             | Inputs and permissions; Validate data; Route and notify; Handle failure; Operate the workflow. Link to n8n service.               |
-| Website or web application: choosing the right scope | Compare a website, client portal and custom web application by user tasks, integrations, ownership and maintenance needs.       | website vs web application for business | User goals; Data and permissions; Integration needs; Ongoing responsibilities; Scoping checklist. Link to web and software pages. |
-
-These are proposals, not published pages. Search Console setup, analytics, Business Profile changes, sitemap submission and outreach require relevant account access and have not been performed by this release.
+Structured data is checked for parseability and alignment with visible content. It does not guarantee a rich result or ranking improvement.

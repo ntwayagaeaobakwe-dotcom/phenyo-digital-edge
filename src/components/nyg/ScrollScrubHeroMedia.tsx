@@ -205,7 +205,7 @@ export function ScrollScrubHeroMedia({
     });
 
     // Step B: Progressively preload remaining frames in idle time
-    let queueIndex = 0;
+    const queueIndex = 0;
     const idlePreload = () => {
       if (cancelled || !isVisibleRef.current || !isTabActiveRef.current) return;
 

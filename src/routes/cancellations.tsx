@@ -22,7 +22,7 @@ export const Route = createFileRoute("/cancellations")({
   component: Page,
   head: () => ({
     meta: [
-      { title: "Cancellations & Refunds | NYG Agency" },
+      { title: "Cancellations & Refunds | NYG Digital" },
       {
         name: "description",
         content: "How to discuss changes, cancellations and refund requests.",

@@ -3,7 +3,7 @@ import { PolicyPage } from "@/components/nyg/PolicyPage";
 const sections = [
   [
     "Website operator",
-    "This website is operated by NYG Digital FZE LLC, trading as NYG Agency, registered in Ajman NuVentures Centre Free Zone, United Arab Emirates. Questions can be sent to support@nygagency.com.",
+    "This website is operated by NYG Digital FZE LLC, registered in Ajman NuVentures Centre Free Zone, United Arab Emirates. Questions can be sent to support@nygagency.com.",
   ],
   [
     "Information and enquiries",
@@ -30,7 +30,7 @@ export const Route = createFileRoute("/terms")({
   component: Page,
   head: () => ({
     meta: [
-      { title: "Website Terms | NYG Agency" },
+      { title: "Website Terms | NYG Digital" },
       {
         name: "description",
         content: "Information about using this website and arranging a project.",

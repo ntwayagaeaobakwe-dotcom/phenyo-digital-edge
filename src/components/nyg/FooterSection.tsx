@@ -24,25 +24,25 @@ export function FooterSection() {
       <div className="page-width">
         <div className="footer-top">
           <div>
-            <a href="/#hero-stage" aria-label="NYG Agency home">
+            <a href="/#hero-stage" aria-label="NYG Digital home">
               <NygLogo showWordmark />
             </a>
             <p>
-              Digital systems.
+              Professional websites.
               <br />
-              Built for what comes next.
+              Built around the customer journey.
             </p>
             <span className="footer-clock">
               UAE <span>{time}</span> GST / UTC+4
             </span>
           </div>
           <div className="footer-links">
-            <a href="/#services">Services</a>
-            <a href="/#projects">Selected work</a>
-            <a href="/work/lead-generation-automation">Automation case study</a>
-            <a href="/#systems">Interactive demo</a>
-            <a href="/#diagnostic">Find your next step</a>
-            <a href="/#process">Our process</a>
+            <a href="/services/web-design">Website design</a>
+            <a href="/services/website-redesign">Website redesign</a>
+            <a href="/services/custom-web-development">Custom development</a>
+            <a href="/services/booking-websites">Booking websites</a>
+            <a href="/#industries">Industries</a>
+            <a href="/#work">Selected work</a>
             <a href="/card">
               Digital business card <ArrowUpRight size={13} />
             </a>

@@ -73,7 +73,7 @@ export interface CompanyInfo {
 }
 
 export const COMPANY_INFO: CompanyInfo = {
-  brandName: "NYG Agency",
+  brandName: "NYG Digital",
   legalName: "NYG Digital FZE LLC",
   entityType: "Free Zone Entity (FZE LLC)",
   registeredJurisdiction: "Ajman NuVentures Centre Free Zone",
@@ -81,27 +81,27 @@ export const COMPANY_INFO: CompanyInfo = {
   registeredCountry: "United Arab Emirates",
   foundedDate: "2026-08-04",
   foundedYear: "2026",
-  areaServed: "United Arab Emirates",
+  areaServed: "United Arab Emirates and international remote clients",
   contactEmail: "support@nygagency.com",
-  headline: "Systems that run. Without you.",
+  headline: "Web design and development for ambitious businesses.",
   subheadline:
-    "We design business automation, connected workflows, and modern websites that remove repetitive admin and help service businesses across the UAE run efficiently.",
+    "We design and develop modern business websites that improve credibility, clarify services and make enquiries easier.",
   description:
-    "NYG Agency is the trading brand of NYG Digital FZE LLC, a software-development and computer-systems consultancy registered in Ajman, United Arab Emirates.",
+    "NYG Digital is a web design and development studio operated by NYG Digital FZE LLC, registered in Ajman, United Arab Emirates.",
   overview:
-    "Founded in 2026, NYG Agency helps businesses replace manual spreadsheets, delayed follow-ups, and disconnected tools with reliable, automated systems.",
+    "Founded in 2026, NYG Digital creates polished, responsive websites and connected customer journeys for established service businesses.",
   legalFooter:
-    "© 2026 NYG Agency. NYG Agency is the trading brand of NYG Digital FZE LLC, a Free Zone Entity registered with Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates.",
+    "© 2026 NYG Digital FZE LLC. Registered with Ajman NuVentures Centre Free Zone, Ajman, United Arab Emirates.",
 };
 
 export const PERSONAL_INFO = {
   name: "Phenyo Ntwayagae",
-  brand: "NYG Agency",
-  title: "Founder & Systems Engineer",
-  tagline: "Automations That Save You Time. Websites That Help You Grow.",
-  headline: "Automations That Save You Time. Websites That Help You Grow.",
+  brand: "NYG Digital",
+  title: "Founder & Web Developer",
+  tagline: "Professional websites built around your customers.",
+  headline: "Professional websites built around your customers.",
   subheadline:
-    "I help businesses reduce repetitive work, connect their tools, organize leads, and build professional websites that turn more visitors into inquiries.",
+    "I help established businesses present their services clearly and turn website interest into useful enquiries.",
   status: "Available for select projects",
   location: "United Arab Emirates (GST UTC+4)",
   email: "support@nygagency.com",
@@ -552,17 +552,14 @@ export const CREDENTIALS_SUMMARY = [
 ];
 
 export const FORM_SERVICE_OPTIONS = [
-  "Web Development",
-  "AI Solutions",
-  "Business Automation",
-  "Websites That Generate Inquiries",
-  "Client Portals & Dashboards",
-  "Lead Research & Organization",
-  "Software & Digital Solutions",
-  "Digital Marketing",
-  "Creative Services",
-  "Business Consulting",
-  "Not Sure — I'll Describe the Problem",
+  "Website Design",
+  "Website Redesign",
+  "Custom Web Development",
+  "Booking or Enquiry Website",
+  "Website Performance or SEO Improvements",
+  "Ongoing Website Improvements",
+  "Supporting Automation or Integration",
+  "Not sure — I’ll describe the requirement",
 ];
 
 export const DEMO_TERMINAL_TABS = [

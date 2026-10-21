@@ -11,9 +11,7 @@ const contactSchema = z.object({
   name: z.string().min(2, "Please enter your full name (at least 2 characters)"),
   email: z.string().email("Please enter a valid business email address"),
   service: z.string().min(1, "Please select your primary requirement"),
-  message: z
-    .string()
-    .min(5, "Please describe the manual bottlenecks or system goals (at least 5 characters)"),
+  message: z.string().min(10, "Please describe your website requirement (at least 10 characters)"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
@@ -60,7 +58,7 @@ export function ContactSection() {
   }, [setValue]);
 
   const openMailtoFallback = (data: ContactFormValues) => {
-    const subject = encodeURIComponent(`NYG Agency System Inquiry - ${data.service}`);
+    const subject = encodeURIComponent(`NYG Digital Website Inquiry - ${data.service}`);
     const contextLine = industryContext ? `\nContext: ${industryContext}` : "";
     const bodyText = `Name: ${data.name}\nEmail: ${data.email}\nService: ${data.service}${contextLine}\n\nProject Scope:\n${data.message}`;
     const mailtoUrl = `mailto:${PERSONAL_INFO.email}?subject=${subject}&body=${encodeURIComponent(bodyText)}`;
@@ -115,21 +113,21 @@ export function ContactSection() {
   return (
     <SectionShell
       id="contact"
-      eyebrow="Start a project"
-      declarativeTitle="Let’s define your next move."
-      qualifierTitle="Tell us what needs to work better. We’ll help define the scope and the next step."
+      eyebrow="Discuss your website"
+      declarativeTitle="Tell us what your website needs to achieve."
+      qualifierTitle="Share the current situation, the audience and the outcome you want. We’ll reply with a practical next step."
       className="contact-section"
     >
       <div className="contact-layout">
         <div className="contact-intro">
           <p>
-            A new website. A smarter workflow. A problem worth solving. Tell us what you have in
-            mind, and we’ll find the next step together.
+            A new website, a focused redesign or a customer journey that needs to work better. Tell
+            us what you have today and what you want to make easier.
           </p>
           <p className="contact-reassurance">
             Direct access to the founder.
             <br />
-            Thoughtful recommendations. Clear scope.
+            Practical recommendations. Clear scope.
           </p>
           <a className="contact-direct" href={`mailto:${PERSONAL_INFO.email}`}>
             <Mail size={19} />
@@ -248,7 +246,7 @@ export function ContactSection() {
                 <textarea
                   id="message"
                   rows={4}
-                  placeholder="The idea, the challenge, or what you’d like to make possible…"
+                  placeholder="Your current website, the audience, the main challenge and the outcome you want…"
                   required
                   maxLength={5000}
                   {...register("message")}

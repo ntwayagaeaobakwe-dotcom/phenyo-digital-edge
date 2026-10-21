@@ -15,9 +15,9 @@ import {
 import { ScrollScrubWorkflowFilm } from "@/components/portfolio/ScrollScrubWorkflowFilm";
 
 const SITE_URL = getSiteUrl();
-const PAGE_TITLE = "NYG Agency Business Card | UAE Software Consultancy";
+const PAGE_TITLE = "Phenyo Ntwayagae | Founder, NYG Digital";
 const PAGE_DESC =
-  "Connect with Phenyo Ntwayagae, founder of NYG Agency, an Ajman-based software development, AI, and business automation consultancy serving the UAE.";
+  "Connect with Phenyo Ntwayagae, founder of NYG Digital, a Dubai-based web design and development studio serving UAE and international businesses.";
 export const Route = createFileRoute("/card")({
   component: CardPage,
   head: () => ({
@@ -37,7 +37,7 @@ export const Route = createFileRoute("/card")({
       { property: "og:image:height", content: "630" },
       {
         property: "og:image:alt",
-        content: "NYG Agency — software development, AI, and automation consultancy in the UAE",
+        content: "NYG Digital web design and development studio",
       },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: PAGE_TITLE },
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/card")({
       { name: "twitter:image", content: `${SITE_URL}/og-image.png` },
       {
         name: "twitter:image:alt",
-        content: "NYG Agency — software development, AI, and automation consultancy in the UAE",
+        content: "NYG Digital web design and development studio",
       },
     ],
     links: [{ rel: "canonical", href: SITE_URL + "/card" }],
@@ -81,7 +81,7 @@ function CardPage() {
         Skip to main content
       </a>
       <header className="page-width card-nav">
-        <Link to="/" aria-label="NYG Agency home">
+        <Link to="/" aria-label="NYG Digital home">
           <NygLogo showWordmark />
         </Link>
         <nav className="card-nav-links" aria-label="Business card navigation">
@@ -99,17 +99,17 @@ function CardPage() {
       <main id="card-main" className="page-width card-body">
         <div>
           <h1>
-            Digital systems.
+            Professional websites.
             <br />
             <span>Human ambition.</span>
           </h1>
           <p>
-            Web development, AI solutions, and intelligent automation. Built around your business,
-            by NYG Agency.
+            Web design and development built around your business, your customers and a clear path
+            to enquiry.
           </p>
           <div className="card-actions">
             <Link to="/" hash="contact" className="button">
-              Start a project <ArrowUpRight size={17} />
+              Discuss your website <ArrowUpRight size={17} />
             </Link>
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
@@ -130,7 +130,7 @@ function CardPage() {
           <div className="card-founder">
             <img
               src="/phenyo-founder-professional.webp"
-              alt="Phenyo Ntwayagae, founder of NYG Agency"
+              alt="Phenyo Ntwayagae, founder of NYG Digital"
               width="45"
               height="45"
               loading="lazy"
@@ -148,7 +148,7 @@ function CardPage() {
         <p>
           {COMPANY_INFO.legalName} · Registered in Ajman, UAE.
           <br />
-          Web platforms · AI integrations · Lead routing · CRM & data · Reporting dashboards
+          Website design · Website redesign · Custom development · Booking and enquiry websites
         </p>
         <div className="card-contact-links">
           <a href={`mailto:${PERSONAL_INFO.email}`}>

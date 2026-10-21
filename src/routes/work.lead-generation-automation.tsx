@@ -20,9 +20,9 @@ import "./workflow-case-study.css";
 
 const SITE_URL = getSiteUrl();
 const PAGE_URL = `${SITE_URL}/work/lead-generation-automation`;
-const PAGE_TITLE = "n8n Lead Generation Automation Case Study | NYG Agency";
+const PAGE_TITLE = "n8n Lead Generation Automation Case Study | NYG Digital";
 const PAGE_DESCRIPTION =
-  "See how NYG Agency built three connected n8n workflows with Google Places, Sheets, Gemini, Brave Search, SerpApi, and Hunter for lead research.";
+  "See how NYG Digital built three connected n8n workflows with Google Places, Sheets, Gemini, Brave Search, SerpApi and Hunter for lead research.";
 
 const PROCESS = [
   { title: "Search configuration", detail: "Reusable business type, location, and radius inputs." },
@@ -179,7 +179,7 @@ function CaseStudyHeader() {
   return (
     <header className="case-header">
       <nav className="page-width case-nav" aria-label="Case study navigation">
-        <a href="/#hero-stage" aria-label="NYG Agency home" className="case-brand">
+        <a href="/#hero-stage" aria-label="NYG Digital home" className="case-brand">
           <NygLogo showWordmark />
         </a>
         <div>

@@ -17,32 +17,32 @@ export function HeroSection() {
         </picture>
         <div className="hero-copy">
           <h1 id="hero-title">
-            Better systems.
+            Web design &amp; development.
             <br />
-            <span>Stronger business.</span>
+            <span>Built for ambitious businesses.</span>
           </h1>
           <p className="hero-description">
-            Web development, AI automation, and digital strategy — connected around the way your
-            business works.
+            Fast, polished business websites that build credibility, clarify your services and make
+            it easier for customers to enquire or book.
           </p>
           <div className="hero-actions">
             <a href="#contact" className="button">
-              Start a project <ArrowUpRight size={18} />
+              Discuss your website <ArrowUpRight size={18} />
             </a>
-            <a href="#projects" className="text-link">
-              Explore the work <ArrowDown size={16} />
+            <a href="#work" className="text-link">
+              Explore our work <ArrowDown size={16} />
             </a>
           </div>
         </div>
       </div>
       <div className="page-width hero-foot">
         <p>
-          Based in Ajman. <span>Working across Dubai and the UAE.</span>
+          Based in Dubai. <span>Working with businesses internationally.</span>
         </p>
         <div>
-          <a href="#services">Build</a>
-          <a href="#services">Automate</a>
-          <a href="#services">Grow</a>
+          <a href="#services">Design</a>
+          <a href="#services">Develop</a>
+          <a href="#services">Improve</a>
         </div>
         <a href="#services" aria-label="Explore our capabilities">
           <ArrowDown size={20} />

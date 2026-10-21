@@ -233,7 +233,9 @@ export function ScrollVideo() {
     return () => {
       isUnmounted = true;
       if (typeof idleHandle === "number" && "cancelIdleCallback" in window) {
-        (window as Window & { cancelIdleCallback?: (handle: number) => void }).cancelIdleCallback?.(idleHandle);
+        (window as Window & { cancelIdleCallback?: (handle: number) => void }).cancelIdleCallback?.(
+          idleHandle,
+        );
       }
       if (idleTimer) clearTimeout(idleTimer);
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);

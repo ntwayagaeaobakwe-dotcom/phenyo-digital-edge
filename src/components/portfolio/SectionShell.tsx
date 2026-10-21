@@ -9,15 +9,7 @@ interface SectionShellProps {
   className?: string;
   hasDivider?: boolean;
   themeVariant?:
-    | "paper"
-    | "mineral"
-    | "sand"
-    | "teal"
-    | "ink"
-    | "dark"
-    | "light"
-    | "midnight"
-    | "iris";
+    "paper" | "mineral" | "sand" | "teal" | "ink" | "dark" | "light" | "midnight" | "iris";
   iconGlyph?: string;
   maxWidthClass?: string;
 }

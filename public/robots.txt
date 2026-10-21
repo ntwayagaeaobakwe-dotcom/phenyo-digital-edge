@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+# Public policy pages remain crawlable for linked disclosures but are marked noindex in page metadata.
+
 Sitemap: https://nygagency.com/sitemap.xml

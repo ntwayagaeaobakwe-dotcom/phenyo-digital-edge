@@ -16,9 +16,7 @@ export function AboutSection() {
           <p>
             {COMPANY_INFO.description} {COMPANY_INFO.subheadline}
           </p>
-          <p>
-            {COMPANY_INFO.overview}
-          </p>
+          <p>{COMPANY_INFO.overview}</p>
 
           <div className="grid gap-6 pt-6 sm:grid-cols-3 border-t border-border-subtle">
             {ABOUT_PILLARS.map((pillar, idx) => (
