@@ -5,7 +5,7 @@ import { FooterSection } from "@/components/nyg/FooterSection";
 import { HeroSection } from "@/components/nyg/HeroSection";
 import { SiteBackdrop } from "@/components/nyg/ServicesBackdrop";
 import { HomeContent } from "@/components/marketing/HomeContent";
-import { PRIMARY_SERVICES } from "@/data/web-agency-content";
+import { HOMEPAGE_SERVICES } from "@/data/web-agency-content";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 import { getSiteUrl } from "@/lib/seo";
 
@@ -64,12 +64,12 @@ const HOME_SCHEMA = {
       hasOfferCatalog: {
         "@type": "OfferCatalog",
         name: "Website design and development services",
-        itemListElement: PRIMARY_SERVICES.map((service) => ({
+        itemListElement: HOMEPAGE_SERVICES.map((service) => ({
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
             name: service.title,
-            description: service.summary,
+            description: service.description,
             url: `${SITE_URL}${service.href}`,
           },
         })),

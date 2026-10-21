@@ -50,6 +50,37 @@ export const PRIMARY_SERVICES = [
   },
 ] as const;
 
+// The homepage uses a focused set while the broader service catalog and booking route remain intact.
+export const HOMEPAGE_SERVICES = [
+  {
+    number: "01",
+    title: "Website Redesign for Commercial Contractors",
+    href: "/services/website-redesign",
+    description:
+      "Modernize an existing contractor website so completed projects, sectors, and capabilities are easier to assess.",
+    capabilities:
+      "Project presentation · Sector clarity · Mobile navigation · Inquiry pathways · SEO preservation",
+  },
+  {
+    number: "02",
+    title: "Website Design & Development",
+    href: "/services/web-design",
+    description:
+      "A new responsive website for commercial contractors that makes services, project experience, and company credentials clear.",
+    capabilities:
+      "Service and sector pages · Project portfolio structure · Technical SEO · Accessibility · Clear inquiry experience",
+  },
+  {
+    number: "03",
+    title: "Custom Web Development",
+    href: "/services/custom-web-development",
+    description:
+      "Tailored functionality for requirements beyond a standard contractor website, scoped around the project.",
+    capabilities:
+      "Structured portfolio systems · Custom project inquiry or RFQ forms · Integrations · CMS when justified",
+  },
+] as const;
+
 export const INDUSTRIES = [
   {
     title: "Home Services & Remodeling",

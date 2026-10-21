@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import { APPROACH, INDUSTRIES, PRIMARY_SERVICES } from "@/data/web-agency-content";
+import { APPROACH, HOMEPAGE_SERVICES, INDUSTRIES } from "@/data/web-agency-content";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 
 const problems = [
@@ -42,9 +41,6 @@ const principles = [
 ] as const;
 
 export function HomeContent() {
-  const [activeServiceIndex, setActiveServiceIndex] = useState(0);
-  const activeService = PRIMARY_SERVICES[activeServiceIndex];
-
   return (
     <>
       <section className="home-section problem-section" aria-labelledby="problem-heading">
@@ -81,63 +77,39 @@ export function HomeContent() {
         aria-labelledby="services-heading"
       >
         <div className="page-width">
-          <p className="section-kicker">Web practice · 01—04</p>
+          <p className="section-kicker">Commercial contractor websites</p>
           <div className="home-heading-row services-heading-row">
-            <h2 id="services-heading">Four ways to make the website work harder.</h2>
+            <h2 id="services-heading">Website design and development for commercial contractors</h2>
             <p>
-              Start from zero, rebuild what exists, add custom functionality or improve the path
-              from interest to enquiry.
+              NYG Digital builds and redesigns websites for established commercial contractors in
+              tenant improvement, commercial build-out, commercial renovation, and interior
+              construction.
             </p>
           </div>
 
-          <div className="service-stage">
-            <div className="service-index" role="list" aria-label="Website services">
-              {PRIMARY_SERVICES.map((service, index) => (
-                <a
-                  href={service.href}
-                  key={service.href}
-                  role="listitem"
-                  className={activeServiceIndex === index ? "is-active" : ""}
-                  onMouseEnter={() => setActiveServiceIndex(index)}
-                  onFocus={() => setActiveServiceIndex(index)}
-                  onPointerDown={() => setActiveServiceIndex(index)}
-                >
-                  <span>{service.number}</span>
-                  <div>
-                    <h3>{service.title}</h3>
-                    <p>{service.summary}</p>
-                  </div>
-                  <ArrowUpRight aria-hidden="true" />
+          <ol className="service-rows" aria-label="Website services">
+            {HOMEPAGE_SERVICES.map((service, index) => (
+              <li
+                className={`service-row${index === 0 ? " service-row-primary" : ""}`}
+                key={service.href}
+              >
+                <span className="service-row-number" aria-hidden="true">
+                  {service.number}
+                </span>
+                <h3>{service.title}</h3>
+                <div className="service-row-copy">
+                  <p>{service.description}</p>
+                  <p className="service-capabilities">
+                    <span>Capabilities</span> {service.capabilities}
+                  </p>
+                </div>
+                <a className="service-row-link" href={service.href}>
+                  <span>Explore this service</span>
+                  <ArrowUpRight aria-hidden="true" size={18} />
                 </a>
-              ))}
-            </div>
-
-            <aside className="service-preview" aria-label={`Preview: ${activeService.title}`}>
-              <div className="service-preview-bar" aria-hidden="true">
-                <span />
-                <span />
-                <span />
-                <em>nyg / service.{activeService.number}</em>
-              </div>
-              <div className="service-preview-canvas" key={activeService.href}>
-                <div className="service-preview-meta">
-                  <span>Selected service</span>
-                  <span>{activeService.number} / 04</span>
-                </div>
-                <div className="service-preview-copy">
-                  <small>NYG DIGITAL</small>
-                  <strong>{activeService.title}</strong>
-                  <p>{activeService.problem}</p>
-                  <i>View the service</i>
-                </div>
-                <div className="service-preview-orbit" aria-hidden="true">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-            </aside>
-          </div>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
