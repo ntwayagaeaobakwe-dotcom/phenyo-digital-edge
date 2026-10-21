@@ -4,14 +4,18 @@ import { APPROACH, INDUSTRIES, PRIMARY_SERVICES } from "@/data/web-agency-conten
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 
 const problems = [
-  ["Presentation", "Your digital presence should feel as considered as the work you deliver."],
-  ["Customer journey", "People should understand the offer and the next step without searching."],
   [
-    "Mobile usability",
-    "The experience should remain calm, clear and useful on the smallest screen.",
+    "Capability and sector clarity",
+    "A prospective client may not know whether a contractor takes on tenant improvements, commercial build-outs, or interior construction in their sector. A clear hierarchy of real services, commercial sectors, and verified capabilities helps visitors assess project fit.",
   ],
-  ["Performance", "Every visual decision should earn the time and bandwidth it consumes."],
-  ["Service clarity", "Good-fit prospects should be able to recognise themselves in the message."],
+  [
+    "Project portfolio context",
+    "Strong photography shows the finished space, but may not explain the contractor’s delivery responsibilities. Presenting the project sector, scope of work, relevant specifications, and delivery role gives each project useful context.",
+  ],
+  [
+    "Project inquiries and RFQs",
+    "A generic contact form may not tell a project team how to discuss scope, request an RFQ, or send a bid invitation. A clear inquiry path can collect useful initial details and make project qualification easier without adding an unnecessary procurement portal.",
+  ],
 ] as const;
 
 const principles = [
@@ -46,22 +50,28 @@ export function HomeContent() {
       <section className="home-section problem-section" aria-labelledby="problem-heading">
         <div className="page-width problem-layout">
           <div className="problem-statement">
-            <p className="section-kicker">What the website must resolve</p>
-            <h2 id="problem-heading">A capable business should never look difficult to trust.</h2>
+            <p className="section-kicker">Websites for commercial contractors</p>
+            <h2 id="problem-heading">Your work deserves more than a gallery.</h2>
             <p>
-              We remove the small points of doubt that appear between first impression and first
-              enquiry.
+              NYG Digital designs websites for commercial contractors that make capabilities easier
+              to understand, completed projects easier to evaluate, and project inquiries easier to
+              start.
             </p>
           </div>
           <ol className="problem-index">
             {problems.map(([title, detail], index) => (
               <li key={title}>
                 <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{title}</h3>
-                <p>{detail}</p>
+                <div className="problem-copy">
+                  <h3>{title}</h3>
+                  <p>{detail}</p>
+                </div>
               </li>
             ))}
           </ol>
+          <a className="problem-link" href="/services/website-redesign">
+            Explore our website redesign approach <ArrowRight aria-hidden="true" size={15} />
+          </a>
         </div>
       </section>
 

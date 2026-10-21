@@ -92,64 +92,88 @@
   line-height: 1.68;
 }
 
-/* The opening contrast break is deliberately editorial: statement on the left, diagnosis on the right. */
+/* The opening section stays translucent so the metallic wave backdrop remains present. */
 .problem-section {
-  color: #131518;
-  background: #e7e5df;
-}
-.problem-section .section-kicker {
-  color: #64676c;
+  color: #f2f2ef;
+  background: linear-gradient(180deg, rgb(11 12 14 / 42%), rgb(11 12 14 / 58%));
 }
 .problem-layout {
   display: grid;
-  grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
-  gap: clamp(4rem, 10vw, 10rem);
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+  column-gap: clamp(3rem, 7vw, 7rem);
+  row-gap: 2.5rem;
   align-items: start;
 }
 .problem-statement {
-  position: sticky;
-  top: calc(var(--nav-height) + 3rem);
+  min-width: 0;
 }
 .problem-statement h2 {
-  max-width: 10ch;
+  max-width: 9ch;
 }
 .problem-statement > p:last-child {
   max-width: 30rem;
   margin: 2rem 0 0;
-  color: #595d63;
-  font-size: 1.1rem;
+  color: #c2c6cb;
+  font-size: 1.08rem;
   line-height: 1.65;
 }
 .problem-index {
   margin: 0;
   padding: 0;
   list-style: none;
-  border-top: 1px solid #bbb9b3;
+  border-top: 1px solid rgb(242 242 239 / 24%);
 }
 .problem-index li {
   display: grid;
-  grid-template-columns: 3.25rem minmax(9rem, 0.6fr) minmax(0, 1fr);
-  gap: 1.5rem;
-  align-items: baseline;
-  padding: 1.65rem 0;
-  border-bottom: 1px solid #bbb9b3;
+  grid-template-columns: 2.75rem minmax(0, 1fr);
+  gap: 1.1rem;
+  align-items: start;
+  padding: 1.9rem 0;
+  border-bottom: 1px solid rgb(242 242 239 / 20%);
 }
 .problem-index span {
-  color: #575a5f;
+  padding-top: 0.2rem;
+  color: #c7ccd2;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.1em;
 }
 .problem-index h3 {
   margin: 0;
-  font-size: 1rem;
-  font-weight: 680;
-  letter-spacing: -0.025em;
+  color: #f2f2ef;
+  font-size: 1.2rem;
+  font-weight: 620;
+  letter-spacing: -0.035em;
+  line-height: 1.3;
 }
 .problem-index p {
-  margin: 0;
-  color: #5b5e63;
-  line-height: 1.58;
+  max-width: 42rem;
+  margin: 0.65rem 0 0;
+  color: #b8bec6;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.problem-link {
+  grid-column: 2;
+  justify-self: start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 2.75rem;
+  color: #e2e5e9;
+  font-size: 0.94rem;
+  text-decoration-color: rgb(226 229 233 / 48%);
+  text-underline-offset: 0.28em;
+  transition: color 180ms ease, gap 180ms ease;
+}
+.problem-link:hover {
+  gap: 0.85rem;
+  color: #fff;
+}
+.problem-link:focus-visible {
+  border-radius: 2px;
+  outline: 2px solid #d7dde5;
+  outline-offset: 4px;
 }
 
 .services-section {
@@ -1035,6 +1059,16 @@
 }
 
 @media (max-width: 980px) {
+  .problem-layout {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  }
+  .problem-statement h2 {
+    max-width: 11ch;
+  }
+  .problem-link {
+    grid-column: 1;
+  }
   .service-stage {
     grid-template-columns: 1fr;
   }
@@ -1093,6 +1127,9 @@
 }
 
 @media (max-width: 760px) {
+  .home-section.problem-section {
+    padding-block: 4.75rem;
+  }
   .home-section {
     padding-block: 5.5rem;
   }
@@ -1225,6 +1262,9 @@
   .industry-list svg,
   .work-supporting,
   .work-supporting img {
+    transition-duration: 0.01ms;
+  }
+  .problem-link {
     transition-duration: 0.01ms;
   }
 }
