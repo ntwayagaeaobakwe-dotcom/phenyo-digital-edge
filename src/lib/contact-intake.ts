@@ -47,6 +47,7 @@ export const contactSubmissionSchema = contactFormSchema.extend({
   submissionId: z.string().uuid(),
   industryContext: z.string().trim().max(300).nullable(),
   sourcePath: z.enum(CONTACT_SOURCE_PATHS),
+  company: z.string().trim().max(200).optional(),
 });
 
 export type ContactFormValues = z.input<typeof contactFormSchema>;

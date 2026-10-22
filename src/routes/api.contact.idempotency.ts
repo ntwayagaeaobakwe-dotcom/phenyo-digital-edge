@@ -103,12 +103,14 @@ async function handleIdempotencyRequest(request: Request): Promise<Response> {
     }
 
     const state = operation === "recorded" ? "recorded" : "failed";
+    const eligibleStates =
+      operation === "release" ? "('processing', 'recorded')" : "('processing')";
     const updated = await database
       .prepare(
         `UPDATE contact_idempotency
        SET state = ?, lease_expires_at = NULL,
            updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
-       WHERE submission_id = ? AND state = 'processing'
+       WHERE submission_id = ? AND state IN ${eligibleStates}
        RETURNING submission_id`,
       )
       .bind(state, submissionId)
