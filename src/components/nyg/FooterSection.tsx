@@ -1,7 +1,6 @@
 import "./policies.css";
 import { useEffect, useState } from "react";
 import { ArrowUpRight, ArrowUp } from "lucide-react";
-import { NygLogo } from "./NygLogo";
 import { PERSONAL_INFO, COMPANY_INFO } from "@/data/portfolio-data";
 export function FooterSection() {
   const [time, setTime] = useState("--:--");
@@ -24,9 +23,6 @@ export function FooterSection() {
       <div className="page-width">
         <div className="footer-top">
           <div>
-            <a href="/#hero-stage" aria-label="NYG Digital home">
-              <NygLogo showWordmark />
-            </a>
             <p>
               Professional websites.
               <br />
@@ -48,13 +44,7 @@ export function FooterSection() {
             </a>
           </div>
           <div className="footer-entity">
-            <p>
-              {COMPANY_INFO.legalName}
-              <br />
-              {COMPANY_INFO.registeredJurisdiction}
-              <br />
-              {COMPANY_INFO.registeredLocality}, {COMPANY_INFO.registeredCountry}
-            </p>
+            <p>{`${COMPANY_INFO.registeredJurisdiction}, ${COMPANY_INFO.registeredLocality}, ${COMPANY_INFO.registeredCountry}.`}</p>
             <a href={`mailto:${PERSONAL_INFO.email}`}>
               {PERSONAL_INFO.email}
               <ArrowUpRight size={14} />
@@ -75,7 +65,7 @@ export function FooterSection() {
           <a href="/cookies">Cookies &amp; Storage</a>
         </nav>
         <div className="footer-bottom">
-          <p>{COMPANY_INFO.legalFooter}</p>
+          <p>© 2026 {COMPANY_INFO.legalName}. All rights reserved.</p>
           <a href="/#hero-stage">
             Back to top <ArrowUp size={16} />
           </a>

@@ -1513,7 +1513,7 @@ section[id],
 .footer-top > div:first-child > p {
   font-size: 17px;
   line-height: 1.5;
-  margin-top: 23px;
+  margin-top: 0;
   letter-spacing: -0.02em;
 }
 .footer-clock {
