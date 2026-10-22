@@ -34,6 +34,17 @@
   text-decoration: underline;
   text-underline-offset: 0.2em;
 }
+.policy-page button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  cursor: pointer;
+}
 .footer-policies,
 .form-privacy {
   color: #c9cbd1;

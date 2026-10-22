@@ -1,13 +1,16 @@
 import { FooterSection } from "./FooterSection";
 import "./policies.css";
+import type { ReactNode } from "react";
 export function PolicyPage({
   title,
   intro,
   sections,
+  footerAction,
 }: {
   title: string;
   intro: string;
   sections: readonly (readonly [string, string])[];
+  footerAction?: ReactNode;
 }) {
   return (
     <>
@@ -23,6 +26,7 @@ export function PolicyPage({
             <p>{text}</p>
           </section>
         ))}
+        {footerAction}
         <nav aria-label="Website policies">
           <a href="/privacy">Privacy</a>
           <a href="/terms">Website terms</a>

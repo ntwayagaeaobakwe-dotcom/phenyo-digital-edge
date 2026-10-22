@@ -4,6 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
 import { Mail, Phone, CheckCircle2, Loader2, ArrowUpRight } from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS } from "@/data/portfolio-data";
+import { trackAcceptedLead } from "@/lib/analytics";
 import {
   contactFormSchema,
   type ContactFormValues,
@@ -136,7 +137,7 @@ export function ContactSection() {
         submissionId?: unknown;
       } | null;
       if (
-        !response.ok ||
+        response.status !== 202 ||
         result?.accepted !== true ||
         result.recorded !== true ||
         result.submissionId !== submissionId
@@ -144,6 +145,7 @@ export function ContactSection() {
         throw new Error("Inquiry was not confirmed as recorded.");
       }
 
+      trackAcceptedLead(submissionId, data.service, sourcePath);
       setSubmitted(true);
       toast.success("Your inquiry has been recorded.");
     } catch {

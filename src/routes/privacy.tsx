@@ -15,7 +15,7 @@ const sections = [
   ],
   [
     "Website visits and browser storage",
-    "Cloudflare hosts and delivers this website and may process technical information, including IP addresses and request information, to deliver and protect it. The live site also loads a Cloudflare Insights beacon for analytics and performance measurement. The site uses temporary session storage to carry a selected business challenge into the enquiry form. See our Cookies & Storage page for details.",
+    "Cloudflare hosts and delivers this website and may process technical information, including IP addresses and request information, to deliver and protect it. Cloudflare Insights measures website performance. Google Analytics 4 is loaded only if a visitor allows optional analytics; it measures page visits and confirmed enquiry events with non-personal service and page categories. The name, email address, phone number and message submitted in the enquiry form are not sent to Google. See Cookies & Storage to review or change the choice.",
   ],
   [
     "Purpose and service providers",
@@ -27,7 +27,7 @@ const sections = [
   ],
   [
     "Changes",
-    "This notice describes the current website and inquiry workflow. It should be updated if enquiry handling, tracking or service providers change. Last updated: 22 October 2026.",
+    "This notice describes the current website, inquiry workflow and consent-gated analytics. It should be updated if enquiry handling, tracking or service providers change. Last updated: 22 October 2026.",
   ],
 ] as const;
 export const Route = createFileRoute("/privacy")({

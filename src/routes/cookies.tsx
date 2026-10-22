@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PolicyPage } from "@/components/nyg/PolicyPage";
+import { openAnalyticsSettings } from "@/lib/analytics";
 const sections = [
   [
     "Current website features",
@@ -11,11 +12,11 @@ const sections = [
   ],
   [
     "Advertising and analytics",
-    "The live website loads a Cloudflare Insights beacon for website analytics and performance measurement. Cloudflare processes technical information associated with those requests. No advertising pixel was identified in the reviewed application. External destinations such as WhatsApp, LinkedIn and Instagram have their own tracking and privacy practices when you visit them. This notice should be reviewed before adding trackers or third-party embeds.",
+    "The site uses Cloudflare Insights for website performance measurement. Google Analytics 4 may also measure page visits and confirmed enquiries only after you choose Allow analytics in the privacy prompt. The Google tag is not loaded when you choose Essential only. GA4 receives a controlled service category, page path and form type for a confirmed enquiry; names, email addresses, phone numbers and message contents are not sent. Google Analytics advertising features and enhanced measurement are disabled.",
   ],
   [
     "Your choices",
-    "You can clear site data or restrict cookies in your browser. Doing so may reset preferences or affect security checks. Questions about storage or privacy can be sent to support@nygagency.com. Last updated: 13 September 2026.",
+    "Your optional analytics choice is stored in this browser so the preference can be remembered. You can change it at any time using the control below, or clear the site’s local storage in your browser. Questions about storage or privacy can be sent to support@nygagency.com. Last updated: 22 October 2026.",
   ],
 ] as const;
 export const Route = createFileRoute("/cookies")({
@@ -38,6 +39,11 @@ function Page() {
       title="Cookies & Storage"
       intro="How browser storage and external services relate to this website."
       sections={sections}
+      footerAction={
+        <button type="button" onClick={openAnalyticsSettings}>
+          Change analytics preference
+        </button>
+      }
     />
   );
 }
