@@ -11,6 +11,16 @@ export function ensureSentryServerInitialized() {
   Sentry.init({
     dsn: SENTRY_DSN,
     environment: import.meta.env.MODE,
+    // Keep visitor IPs out of issue and transaction payloads. Error context
+    // does not require customer identity data for this application.
+    beforeSend(event) {
+      if (event.user?.ip_address) delete event.user.ip_address;
+      return event;
+    },
+    beforeSendTransaction(event) {
+      if (event.user?.ip_address) delete event.user.ip_address;
+      return event;
+    },
     tracesSampleRate: import.meta.env.DEV ? 1 : 0.2,
   });
   initialized = true;
