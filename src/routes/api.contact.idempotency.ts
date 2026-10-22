@@ -116,6 +116,16 @@ async function handleIdempotencyRequest(request: Request): Promise<Response> {
       .bind(state, submissionId)
       .all<{ submission_id: string }>();
 
+    if (!updated.results?.length && operation === "recorded") {
+      const existing = await database
+        .prepare("SELECT state FROM contact_idempotency WHERE submission_id = ?")
+        .bind(submissionId)
+        .all<{ state: "processing" | "recorded" | "failed" }>();
+      if (existing.results?.[0]?.state === "recorded") {
+        return jsonResponse({ updated: false, recorded: true, submissionId });
+      }
+    }
+
     if (!updated.results?.length) {
       return jsonResponse({ error: "submission_not_processing" }, 409);
     }
