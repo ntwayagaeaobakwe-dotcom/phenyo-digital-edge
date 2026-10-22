@@ -16,7 +16,7 @@ Business owners and teams seeking websites, connected operations, and AI integra
 
 ## Capabilities and Constraints
 
-Preserve the existing TanStack Start / React stack, contact webhook and email fallback, WhatsApp, social links, project detail dialogs, workflow scenarios, comparison controls, diagnostic-to-contact context, and /card route. No new dependencies required. Canonical domain from the user brief: https://nygagency.com.
+Preserve the existing TanStack Start / React stack, contact webhook and email fallback, WhatsApp, social links, project detail dialogs, workflow scenarios, comparison controls, and diagnostic-to-contact context. The retired /card URL permanently redirects to the homepage contact section. No new dependencies required. Canonical domain from the user brief: https://nygagency.com.
 
 ## Brand Commitments
 

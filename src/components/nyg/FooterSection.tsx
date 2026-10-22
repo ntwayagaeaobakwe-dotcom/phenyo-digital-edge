@@ -39,9 +39,6 @@ export function FooterSection() {
             <a href="/services/booking-websites">Booking websites</a>
             <a href="/#approach">Our process</a>
             <a href="/work/lead-generation-automation">Lead-generation automation</a>
-            <a href="/card">
-              Digital business card <ArrowUpRight size={13} />
-            </a>
           </div>
           <div className="footer-entity">
             <p>{`${COMPANY_INFO.registeredJurisdiction}, ${COMPANY_INFO.registeredLocality}, ${COMPANY_INFO.registeredCountry}.`}</p>

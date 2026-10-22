@@ -52,6 +52,6 @@ Until the production URL, bearer token, n8n persistence response, Google Sheets 
 
 Type checking, changed-component lint, production build, and local desktop/tablet/mobile interaction checks passed. Local evidence is under `output/playwright/identity/`; published-site checks are under `output/playwright/live-identity/`. Generated evidence is ignored by Git.
 
-After deployment check `/`, `/card`, menus, services, dialogs, contact validation, LinkedIn, canonical URLs, JSON-LD, crawl files and branding assets. Automated smoke checks must not send real inquiries.
+After deployment check `/`, the permanent `/card` redirect to `/#contact`, menus, services, dialogs, contact validation, LinkedIn, canonical URLs, JSON-LD, crawl files and branding assets. Automated smoke checks must not send real inquiries.
 
 If recovery is needed, use Cloudflare deployment history for the named Worker and previous version above, retaining the same route. This release did not migrate DNS, create a new hosting project or add an integration.

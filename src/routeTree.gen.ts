@@ -11,7 +11,6 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CancellationsRouteImport } from './routes/cancellations'
-import { Route as CardRouteImport } from './routes/card'
 import { Route as CookiesRouteImport } from './routes/cookies'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as TermsRouteImport } from './routes/terms'
@@ -34,11 +33,6 @@ const IndexRoute = IndexRouteImport.update({
 const CancellationsRoute = CancellationsRouteImport.update({
   id: '/cancellations',
   path: '/cancellations',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CardRoute = CardRouteImport.update({
-  id: '/card',
-  path: '/card',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CookiesRoute = CookiesRouteImport.update({
@@ -114,7 +108,6 @@ const ApiContactIdempotencyRoute = ApiContactIdempotencyRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cancellations': typeof CancellationsRoute
-  '/card': typeof CardRoute
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -132,7 +125,6 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cancellations': typeof CancellationsRoute
-  '/card': typeof CardRoute
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -151,7 +143,6 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/cancellations': typeof CancellationsRoute
-  '/card': typeof CardRoute
   '/cookies': typeof CookiesRoute
   '/privacy': typeof PrivacyRoute
   '/terms': typeof TermsRoute
@@ -171,7 +162,6 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/cancellations'
-    | '/card'
     | '/cookies'
     | '/privacy'
     | '/terms'
@@ -189,7 +179,6 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/cancellations'
-    | '/card'
     | '/cookies'
     | '/privacy'
     | '/terms'
@@ -207,7 +196,6 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/cancellations'
-    | '/card'
     | '/cookies'
     | '/privacy'
     | '/terms'
@@ -226,7 +214,6 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CancellationsRoute: typeof CancellationsRoute
-  CardRoute: typeof CardRoute
   CookiesRoute: typeof CookiesRoute
   PrivacyRoute: typeof PrivacyRoute
   TermsRoute: typeof TermsRoute
@@ -255,13 +242,6 @@ declare module '@tanstack/react-router' {
       path: '/cancellations'
       fullPath: '/cancellations'
       preLoaderRoute: typeof CancellationsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/card': {
-      id: '/card'
-      path: '/card'
-      fullPath: '/card'
-      preLoaderRoute: typeof CardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cookies': {
@@ -373,7 +353,6 @@ const ApiContactRouteWithChildren = ApiContactRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CancellationsRoute: CancellationsRoute,
-  CardRoute: CardRoute,
   CookiesRoute: CookiesRoute,
   PrivacyRoute: PrivacyRoute,
   TermsRoute: TermsRoute,

@@ -30,11 +30,14 @@ test("keeps editor previews frameable and avoids HSTS on HTTP", () => {
   assert.equal(preview.headers.get("strict-transport-security"), null);
   const www = secureResponse(
     new Response("site", { headers: { "content-type": "text/html" } }),
-    new Request("https://www.nygagency.com/card"),
+    new Request("https://www.nygagency.com/services/web-design"),
   );
   assert.equal(www.headers.get("x-frame-options"), "SAMEORIGIN");
   assert.equal(www.headers.get("strict-transport-security"), "max-age=31536000");
-  assert.equal(www.headers.get("link"), '<https://nygagency.com/card>; rel="canonical"');
+  assert.equal(
+    www.headers.get("link"),
+    '<https://nygagency.com/services/web-design>; rel="canonical"',
+  );
 });
 
 test("adds canonicals only to successful HTML pages", () => {

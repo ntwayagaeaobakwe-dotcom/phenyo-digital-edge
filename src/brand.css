@@ -492,16 +492,6 @@ section[id] {
 .footer-bottom p {
   max-width: 760px;
 }
-.card-page {
-  background: var(--canvas);
-}
-.card-top .nyg-logo {
-  width: 220px;
-  height: auto;
-}
-.card-body .system-visual {
-  filter: grayscale(1);
-}
 @media (max-width: 1100px) {
   .page-width {
     width: calc(100% - 64px);
