@@ -15,6 +15,11 @@ const sentryAuthToken = process.env.SENTRY_AUTH_TOKEN ?? sentryBuildEnv.SENTRY_A
 const hasSentryAuthToken = Boolean(sentryAuthToken);
 
 export default defineConfig({
+  // Register the durable contact outbox retry hook with Nitro. This is
+  // explicit because the site keeps its application server entry in src/.
+  nitro: {
+    plugins: ["./plugins/contact-retry.ts"],
+  } as never,
   plugins: [
     sentryTanstackStart({
       org: "nyg-digital",
