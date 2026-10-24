@@ -172,7 +172,7 @@ export function HomeContent() {
               studio works remotely with clients in the UAE, United States, and other markets.
             </p>
             <a
-              href="https://www.linkedin.com/in/aobakwe-ntwayagae-3a8016423/"
+              href="https://www.linkedin.com/in/phenyo-ntwayagae-3a8016423/"
               target="_blank"
               rel="noopener noreferrer"
             >
