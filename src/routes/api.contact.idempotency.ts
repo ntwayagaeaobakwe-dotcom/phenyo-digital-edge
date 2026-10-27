@@ -116,19 +116,40 @@ async function handleIdempotencyRequest(request: Request): Promise<Response> {
       .bind(state, submissionId)
       .all<{ submission_id: string }>();
 
+    let alreadyRecorded = false;
     if (!updated.results?.length && operation === "recorded") {
       const existing = await database
         .prepare("SELECT state FROM contact_idempotency WHERE submission_id = ?")
         .bind(submissionId)
         .all<{ state: "processing" | "recorded" | "failed" }>();
-      if (existing.results?.[0]?.state === "recorded") {
-        return jsonResponse({ updated: false, recorded: true, submissionId });
-      }
+      alreadyRecorded = existing.results?.[0]?.state === "recorded";
     }
 
-    if (!updated.results?.length) {
+    if (!updated.results?.length && !alreadyRecorded) {
       return jsonResponse({ error: "submission_not_processing" }, 409);
     }
+
+    if (operation === "recorded") {
+      const sheetState = await database
+        .prepare(
+          `UPDATE contact_submissions
+           SET sheets_status = 'recorded',
+               updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+           WHERE submission_id = ?
+           RETURNING submission_id`,
+        )
+        .bind(submissionId)
+        .all<{ submission_id: string }>();
+      if (!sheetState.results?.length) {
+        return jsonResponse({ error: "submission_not_found" }, 404);
+      }
+      return jsonResponse({
+        updated: updated.results?.length === 1,
+        recorded: true,
+        submissionId,
+      });
+    }
+
     return jsonResponse({ updated: true, recorded: state === "recorded", submissionId });
   } catch {
     console.error("Contact idempotency store request failed.");

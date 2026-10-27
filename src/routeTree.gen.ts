@@ -24,6 +24,7 @@ import { Route as ServicesWebDesignRouteImport } from './routes/services.web-des
 import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
 import { Route as WorkLeadGenerationAutomationRouteImport } from './routes/work.lead-generation-automation'
 import { Route as ApiContactIdempotencyRouteImport } from './routes/api.contact.idempotency'
+import { Route as ApiContactNotificationRouteImport } from './routes/api.contact.notification'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -104,6 +105,11 @@ const ApiContactIdempotencyRoute = ApiContactIdempotencyRouteImport.update({
   path: '/idempotency',
   getParentRoute: () => ApiContactRoute,
 } as any)
+const ApiContactNotificationRoute = ApiContactNotificationRouteImport.update({
+  id: '/notification',
+  path: '/notification',
+  getParentRoute: () => ApiContactRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
   '/api/contact/idempotency': typeof ApiContactIdempotencyRoute
+  '/api/contact/notification': typeof ApiContactNotificationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -138,6 +145,7 @@ export interface FileRoutesByTo {
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
   '/api/contact/idempotency': typeof ApiContactIdempotencyRoute
+  '/api/contact/notification': typeof ApiContactNotificationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -156,6 +164,7 @@ export interface FileRoutesById {
   '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
   '/work/lead-generation-automation': typeof WorkLeadGenerationAutomationRoute
   '/api/contact/idempotency': typeof ApiContactIdempotencyRoute
+  '/api/contact/notification': typeof ApiContactNotificationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -175,6 +184,7 @@ export interface FileRouteTypes {
     | '/services/website-redesign'
     | '/work/lead-generation-automation'
     | '/api/contact/idempotency'
+    | '/api/contact/notification'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -192,6 +202,7 @@ export interface FileRouteTypes {
     | '/services/website-redesign'
     | '/work/lead-generation-automation'
     | '/api/contact/idempotency'
+    | '/api/contact/notification'
   id:
     | '__root__'
     | '/'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/services/website-redesign'
     | '/work/lead-generation-automation'
     | '/api/contact/idempotency'
+    | '/api/contact/notification'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -335,15 +347,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiContactIdempotencyRouteImport
       parentRoute: typeof ApiContactRoute
     }
+    '/api/contact/notification': {
+      id: '/api/contact/notification'
+      path: '/notification'
+      fullPath: '/api/contact/notification'
+      preLoaderRoute: typeof ApiContactNotificationRouteImport
+      parentRoute: typeof ApiContactRoute
+    }
   }
 }
 
 interface ApiContactRouteChildren {
   ApiContactIdempotencyRoute: typeof ApiContactIdempotencyRoute
+  ApiContactNotificationRoute: typeof ApiContactNotificationRoute
 }
 
 const ApiContactRouteChildren: ApiContactRouteChildren = {
   ApiContactIdempotencyRoute: ApiContactIdempotencyRoute,
+  ApiContactNotificationRoute: ApiContactNotificationRoute,
 }
 
 const ApiContactRouteWithChildren = ApiContactRoute._addFileChildren(

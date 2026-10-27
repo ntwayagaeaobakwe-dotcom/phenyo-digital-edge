@@ -116,7 +116,7 @@ export function ContactSection() {
 
     const submissionId = attemptRef.current.submissionId;
     const controller = new AbortController();
-    const timeoutId = window.setTimeout(() => controller.abort(), 12_000);
+    const timeoutId = window.setTimeout(() => controller.abort(), 15_000);
 
     try {
       const response = await fetch("/api/contact", {

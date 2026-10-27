@@ -25,8 +25,16 @@ export type ContactOutboxItem = {
   retry_count: number;
 };
 
+type ContactNotificationRetryItem = ContactOutboxItem & {
+  notification_attempts: number;
+  notification_status: string;
+  notification_next_retry_at: number;
+  notification_lease_expires_at: number | null;
+};
+
 const MAX_RETRIES = 5;
-const WEBHOOK_TIMEOUT_MS = 6_000;
+const MAX_NOTIFICATION_ATTEMPTS = 5;
+const WEBHOOK_TIMEOUT_MS = 10_000;
 const LEASE_SECONDS = 60;
 
 export async function dispatchContactSubmission(
@@ -173,8 +181,121 @@ export async function retryDueContactSubmissions(
     for (const submission of due.results ?? []) {
       await dispatchContactSubmission(environment, submission.submission_id);
     }
+
+    const notificationDue = await database
+      .prepare(
+        `SELECT submission_id FROM contact_submissions
+         WHERE n8n_status = 'forwarded' AND sheets_status = 'recorded'
+           AND notification_status IN ('not_verified', 'failed')
+           AND notification_attempts < ?
+           AND notification_next_retry_at <= ?
+           AND (notification_lease_expires_at IS NULL OR notification_lease_expires_at < ?)
+           AND (lease_expires_at IS NULL OR lease_expires_at < ?)
+         ORDER BY notification_next_retry_at, created_at LIMIT ?`,
+      )
+      .bind(MAX_NOTIFICATION_ATTEMPTS, now, now, now, limit)
+      .all<{ submission_id: string }>();
+    for (const submission of notificationDue.results ?? []) {
+      await retryContactNotification(environment, submission.submission_id);
+    }
   } catch (error) {
     console.error("Contact outbox retry scan failed.", { reason: safeErrorName(error) });
+  }
+}
+
+async function retryContactNotification(
+  environment: ContactOutboxEnvironment,
+  submissionId: string,
+): Promise<void> {
+  const database = environment.CONTACT_IDEMPOTENCY_DB;
+  const endpoint = getWebhookEndpoint(environment.N8N_CONTACT_WEBHOOK_URL);
+  const webhookToken = environment.N8N_CONTACT_WEBHOOK_TOKEN;
+  if (!database || !endpoint || !webhookToken) return;
+
+  const now = Math.floor(Date.now() / 1000);
+  let item: ContactNotificationRetryItem | undefined;
+  try {
+    const claimed = await database
+      .prepare(
+        `UPDATE contact_submissions
+         SET lease_expires_at = ?,
+             updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+         WHERE submission_id = ?
+           AND n8n_status = 'forwarded' AND sheets_status = 'recorded'
+           AND notification_status IN ('not_verified', 'failed')
+           AND notification_attempts < ? AND notification_next_retry_at <= ?
+           AND (notification_lease_expires_at IS NULL OR notification_lease_expires_at < ?)
+           AND (lease_expires_at IS NULL OR lease_expires_at < ?)
+         RETURNING submission_id, submitted_at, name, email, company, service,
+                   message, industry_context, source_path, retry_count,
+                   notification_attempts, notification_status,
+                   notification_next_retry_at, notification_lease_expires_at`,
+      )
+      .bind(now + LEASE_SECONDS, submissionId, MAX_NOTIFICATION_ATTEMPTS, now, now, now)
+      .all<ContactNotificationRetryItem>();
+    item = claimed.results?.[0];
+  } catch (error) {
+    console.error("Contact notification retry claim failed.", {
+      submissionId,
+      reason: safeErrorName(error),
+    });
+    return;
+  }
+  if (!item) return;
+
+  try {
+    await fetch(endpoint, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${webhookToken}`,
+        "Content-Type": "application/json",
+        "Idempotency-Key": item.submission_id,
+        "X-NYG-Notification-Retry": "1",
+      },
+      body: JSON.stringify({
+        submissionId: item.submission_id,
+        submittedAt: item.submitted_at,
+        name: item.name,
+        email: item.email,
+        company: item.company,
+        service: item.service,
+        message: item.message,
+        industryContext: item.industry_context,
+        sourcePath: item.source_path,
+      }),
+      redirect: "manual",
+      signal: AbortSignal.timeout(WEBHOOK_TIMEOUT_MS),
+    });
+  } catch (error) {
+    console.error("Contact notification retry dispatch failed.", {
+      submissionId,
+      reason: safeErrorName(error),
+    });
+  } finally {
+    try {
+      await database
+        .prepare(
+          `UPDATE contact_submissions
+           SET lease_expires_at = NULL,
+               updated_at = strftime('%Y-%m-%dT%H:%M:%fZ', 'now')
+           WHERE submission_id = ? AND lease_expires_at = ?`,
+        )
+        .bind(submissionId, now + LEASE_SECONDS)
+        .all();
+    } catch {
+      console.error("Contact notification retry lease could not be cleared.", { submissionId });
+    }
+  }
+}
+
+function getWebhookEndpoint(webhookUrl?: string): URL | undefined {
+  if (!webhookUrl) return undefined;
+  try {
+    const endpoint = new URL(webhookUrl);
+    if (endpoint.protocol !== "https:" || endpoint.username || endpoint.password) return undefined;
+    return endpoint;
+  } catch {
+    return undefined;
   }
 }
 
