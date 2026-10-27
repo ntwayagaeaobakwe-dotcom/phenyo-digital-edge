@@ -21,6 +21,12 @@ function handleReviewClick(event: React.MouseEvent<HTMLAnchorElement>) {
   navigateToSection("#contact", { focusInput: true });
 }
 
+function handleWorkClick(event: React.MouseEvent<HTMLAnchorElement>) {
+  if (window.location.pathname !== "/") return;
+  event.preventDefault();
+  navigateToSection("#work");
+}
+
 function BrandLockup() {
   return (
     <span className="brand-lockup-digital">
@@ -73,6 +79,7 @@ export function HeaderNav({
               key={link.id}
               href={link.href}
               aria-current={active === link.id ? "location" : undefined}
+              onClick={link.id === "work" ? handleWorkClick : undefined}
             >
               {link.name}
             </a>
@@ -116,7 +123,14 @@ export function HeaderNav({
               </DialogDescription>
               <nav aria-label="Mobile navigation">
                 {links.map((link, index) => (
-                  <a href={link.href} key={link.id} onClick={() => setOpen(false)}>
+                  <a
+                    href={link.href}
+                    key={link.id}
+                    onClick={(event) => {
+                      setOpen(false);
+                      if (link.id === "work") handleWorkClick(event);
+                    }}
+                  >
                     <span className="menu-index">{String(index + 1).padStart(2, "0")}</span>
                     {link.name}
                     <ArrowUpRight size={22} aria-hidden="true" />
