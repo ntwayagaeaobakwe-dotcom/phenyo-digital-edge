@@ -12,9 +12,17 @@ export function canonicalRedirect(request: Request): Response | undefined {
     return Response.redirect(url.toString(), 308);
   }
 
-  if (url.protocol === "https:" && url.hostname === "nygagency.com") return;
+  const canonicalPath = url.pathname === "/" ? "/" : url.pathname.replace(/\/+$/, "");
+  if (
+    url.protocol === "https:" &&
+    url.hostname === "nygagency.com" &&
+    canonicalPath === url.pathname
+  ) {
+    return;
+  }
   url.protocol = "https:";
   url.hostname = "nygagency.com";
   url.port = "";
+  url.pathname = canonicalPath;
   return Response.redirect(url.toString(), 308);
 }

@@ -1,6 +1,7 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { HOMEPAGE_SERVICES } from "@/data/web-agency-content";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
+import { FeaturedPortfolioSection } from "@/components/marketing/FeaturedPortfolioSection";
 
 const problems = [
   [
@@ -146,6 +147,8 @@ export function HomeContent() {
           </ol>
         </div>
       </section>
+
+      <FeaturedPortfolioSection />
 
       <section id="about" className="home-section founder-section" aria-labelledby="about-heading">
         <div className="page-width founder-layout">

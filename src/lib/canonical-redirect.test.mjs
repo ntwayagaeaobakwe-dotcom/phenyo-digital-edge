@@ -19,6 +19,23 @@ test("production variants redirect to the canonical origin in one hop", () => {
   }
 });
 
+test("permanently redirects trailing-slash routes to their slashless canonical URL", () => {
+  for (const [url, expected] of [
+    [
+      "https://nygagency.com/services/web-design/?utm_source=linkedin",
+      "https://nygagency.com/services/web-design?utm_source=linkedin",
+    ],
+    [
+      "https://www.nygagency.com/industries/home-services///?ref=campaign",
+      "https://nygagency.com/industries/home-services?ref=campaign",
+    ],
+  ]) {
+    const response = canonicalRedirect(new Request(url));
+    assert.equal(response.status, 308);
+    assert.equal(response.headers.get("location"), expected);
+  }
+});
+
 test("permanently redirects the removed business-card route to the contact section", () => {
   for (const origin of [
     "http://nygagency.com",
