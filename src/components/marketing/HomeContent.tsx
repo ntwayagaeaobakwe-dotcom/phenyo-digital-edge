@@ -45,6 +45,8 @@ const homepageProcess = [
 export function HomeContent() {
   return (
     <>
+      <FeaturedPortfolioSection />
+
       <section className="home-section problem-section" aria-labelledby="problem-heading">
         <div className="page-width problem-layout">
           <div className="problem-statement">
@@ -147,8 +149,6 @@ export function HomeContent() {
           </ol>
         </div>
       </section>
-
-      <FeaturedPortfolioSection />
 
       <section id="about" className="home-section founder-section" aria-labelledby="about-heading">
         <div className="page-width founder-layout">
