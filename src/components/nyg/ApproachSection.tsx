@@ -47,13 +47,6 @@ export function ApproachSection() {
 
           {/* Right side: Content */}
           <div className="flex flex-col pt-12 lg:pt-0">
-            {/* Eyebrow */}
-            <div className="flex items-center gap-3 mb-6">
-              <span className="text-[12px] uppercase tracking-widest text-[--color-accent] font-bold">
-                ABOUT OUR COMPANY
-              </span>
-            </div>
-
             {/* Headline */}
             <h2 className="font-display font-bold leading-[1.15] text-[clamp(2rem,4vw,3.5rem)] mb-6 text-white">
               Professional IT Experts

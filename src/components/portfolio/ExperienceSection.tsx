@@ -6,7 +6,6 @@ export function ExperienceSection() {
   return (
     <SectionShell
       id="experience"
-      eyebrow="Operating Standards"
       iconGlyph="08"
       declarativeTitle="A practical engineering approach"
       qualifierTitle="grounded in measurable business outcomes."

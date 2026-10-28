@@ -14,7 +14,6 @@ export function ExpertiseSection() {
   return (
     <SectionShell
       id="expertise"
-      eyebrow="Core Capabilities"
       title={
         <>
           Five core disciplines. <span className="text-gradient-gold">Practical execution.</span>

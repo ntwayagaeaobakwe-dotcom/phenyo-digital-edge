@@ -10,7 +10,6 @@ export function ServicesSection() {
   return (
     <SectionShell
       id="services"
-      eyebrow="Our capabilities"
       declarativeTitle="Build. Automate. Grow."
       qualifierTitle="Six connected capabilities. One clear direction for your business."
       className="services-visual"

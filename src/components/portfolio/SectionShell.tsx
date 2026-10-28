@@ -1,7 +1,6 @@
 import { useEffect, useRef, type ReactNode } from "react";
 interface SectionShellProps {
   id: string;
-  eyebrow: string;
   title?: ReactNode;
   declarativeTitle?: string;
   qualifierTitle?: string;
@@ -18,7 +17,6 @@ export function SectionShell({
   title,
   declarativeTitle,
   qualifierTitle,
-  eyebrow,
   children,
   className = "",
 }: SectionShellProps) {

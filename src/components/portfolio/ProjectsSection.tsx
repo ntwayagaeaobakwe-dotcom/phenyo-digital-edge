@@ -44,7 +44,6 @@ export function ProjectsSection() {
   return (
     <SectionShell
       id="projects"
-      eyebrow="Selected work"
       declarativeTitle="Good thinking. Working systems."
       qualifierTitle="A closer look at the builds, experiments, and practical problems behind the work."
     >

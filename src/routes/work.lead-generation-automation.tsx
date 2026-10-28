@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import type { ReactNode } from "react";
 import {
   ArrowLeft,
   ArrowRight,
@@ -195,10 +194,6 @@ function CaseStudyHeader() {
   );
 }
 
-function SectionLabel({ children }: { children: ReactNode }) {
-  return <p className="case-kicker">{children}</p>;
-}
-
 function LeadGenerationCaseStudy() {
   return (
     <div className="nyg-site case-study-page">
@@ -217,7 +212,6 @@ function LeadGenerationCaseStudy() {
           </nav>
           <div className="case-hero-grid">
             <div>
-              <SectionLabel>Workflow case study · Actual n8n systems</SectionLabel>
               <h1 id="case-title">Lead generation and enrichment automation.</h1>
             </div>
             <div className="case-hero-intro">
@@ -263,7 +257,6 @@ function LeadGenerationCaseStudy() {
 
         <section className="case-section page-width case-split" aria-labelledby="problem-heading">
           <div>
-            <SectionLabel>01 / The business problem</SectionLabel>
             <h2 id="problem-heading">Prospecting becomes a chain of repetitive decisions.</h2>
           </div>
           <div className="case-prose">
@@ -284,7 +277,6 @@ function LeadGenerationCaseStudy() {
           <div className="page-width">
             <div className="case-split">
               <div>
-                <SectionLabel>02 / The automated solution</SectionLabel>
                 <h2 id="solution-heading">
                   One search brief. A structured path to qualified research.
                 </h2>
@@ -321,7 +313,6 @@ function LeadGenerationCaseStudy() {
         </section>
 
         <section className="case-section page-width" aria-labelledby="process-heading">
-          <SectionLabel>03 / How the workflow works</SectionLabel>
           <div className="case-heading-row">
             <h2 id="process-heading">From search configuration to a reviewable lead database.</h2>
             <p>
@@ -345,7 +336,6 @@ function LeadGenerationCaseStudy() {
 
         <section className="case-section case-proof" aria-labelledby="proof-heading">
           <div className="page-width">
-            <SectionLabel>04 / Workflow evidence</SectionLabel>
             <div className="case-heading-row">
               <h2 id="proof-heading">Evidence from the system itself.</h2>
               <p>
@@ -474,7 +464,6 @@ function LeadGenerationCaseStudy() {
         </section>
 
         <section className="case-section page-width" aria-labelledby="reliability-heading">
-          <SectionLabel>05 / Reliability features</SectionLabel>
           <div className="case-heading-row">
             <h2 id="reliability-heading">
               Controls around the automation, not just actions inside it.
@@ -495,7 +484,6 @@ function LeadGenerationCaseStudy() {
         <section className="case-section case-panel" aria-labelledby="technology-heading">
           <div className="page-width technology-layout">
             <div>
-              <SectionLabel>06 / Technologies used</SectionLabel>
               <h2 id="technology-heading">A practical automation stack.</h2>
               <p>
                 Each tool has a defined role: discovery, structured storage, research, processing,
@@ -512,7 +500,6 @@ function LeadGenerationCaseStudy() {
 
         <section className="case-section page-width business-value" aria-labelledby="value-heading">
           <div>
-            <SectionLabel>07 / Business value</SectionLabel>
             <h2 id="value-heading">Make prospect research repeatable before making it bigger.</h2>
           </div>
           <ul>
@@ -526,7 +513,6 @@ function LeadGenerationCaseStudy() {
         </section>
 
         <section className="case-cta page-width" aria-labelledby="cta-heading">
-          <p className="case-kicker">Have a manual process worth improving?</p>
           <h2 id="cta-heading">Build an automation like this.</h2>
           <p>
             Bring the workflow you use today. We’ll map the steps, define the controls, and build a

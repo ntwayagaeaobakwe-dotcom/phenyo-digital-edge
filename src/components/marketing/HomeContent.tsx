@@ -50,7 +50,6 @@ export function HomeContent() {
       <section className="home-section problem-section" aria-labelledby="problem-heading">
         <div className="page-width problem-layout">
           <div className="problem-statement">
-            <p className="section-kicker">Websites for commercial contractors</p>
             <h2 id="problem-heading">Your work deserves more than a gallery.</h2>
             <p>
               NYG Digital designs websites for commercial contractors that make capabilities easier
@@ -81,7 +80,6 @@ export function HomeContent() {
         aria-labelledby="services-heading"
       >
         <div className="page-width">
-          <p className="section-kicker">Commercial contractor websites</p>
           <div className="home-heading-row services-heading-row">
             <h2 id="services-heading">Website design and development for commercial contractors</h2>
             <p>
@@ -123,7 +121,6 @@ export function HomeContent() {
         aria-labelledby="approach-heading"
       >
         <div className="page-width">
-          <p className="section-kicker">A deliberate process</p>
           <div className="home-heading-row">
             <h2 id="approach-heading">A clear route from review to handover.</h2>
             <p>
@@ -167,7 +164,6 @@ export function HomeContent() {
             <figcaption>{PERSONAL_INFO.name} · Founder</figcaption>
           </figure>
           <div className="founder-copy">
-            <p className="section-kicker">Founder</p>
             <h2 id="about-heading">Work directly with the founder.</h2>
             <p>
               {PERSONAL_INFO.name} founded NYG Digital, an independent web design and development

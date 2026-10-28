@@ -29,7 +29,6 @@ export function IntentPage({ page }: { page: MarketingPage }) {
             <span aria-hidden="true">/</span>
             <span aria-current="page">{page.eyebrow}</span>
           </nav>
-          <p className="section-kicker">{page.eyebrow}</p>
           <div className="intent-hero-grid">
             <h1 id="page-title">{page.h1}</h1>
             <div>
@@ -45,7 +44,6 @@ export function IntentPage({ page }: { page: MarketingPage }) {
         <section className="intent-section intent-dark" aria-labelledby="challenge-title">
           <div className="page-width intent-split">
             <div>
-              <p className="section-kicker">The challenge</p>
               <h2 id="challenge-title">{page.challengeTitle}</h2>
             </div>
             <ul className="challenge-list">
@@ -60,7 +58,6 @@ export function IntentPage({ page }: { page: MarketingPage }) {
         </section>
 
         <section className="intent-section page-width" aria-labelledby="deliverable-title">
-          <p className="section-kicker">What we build</p>
           <div className="intent-heading-row">
             <h2 id="deliverable-title">{page.deliverableTitle}</h2>
             <p>{page.outcome}</p>
@@ -78,7 +75,6 @@ export function IntentPage({ page }: { page: MarketingPage }) {
 
         <section className="intent-section process-panel" aria-labelledby="process-title">
           <div className="page-width">
-            <p className="section-kicker">How the work moves</p>
             <h2 id="process-title">A clear route from requirements to launch.</h2>
             <ol className="intent-process">
               {page.process.map((step, index) => (
@@ -98,7 +94,6 @@ export function IntentPage({ page }: { page: MarketingPage }) {
           className="intent-section page-width related-section"
           aria-labelledby="related-title"
         >
-          <p className="section-kicker">Related expertise</p>
           <h2 id="related-title">Continue exploring.</h2>
           <div className="related-links">
             {page.related.map((link) => (
@@ -112,7 +107,6 @@ export function IntentPage({ page }: { page: MarketingPage }) {
 
         <section className="intent-cta page-width" aria-labelledby="intent-cta-title">
           <div>
-            <p className="section-kicker">Start with the requirement</p>
             <h2 id="intent-cta-title">Tell us what your website needs to make easier.</h2>
           </div>
           <div>

@@ -39,7 +39,6 @@ export function IndustrySolutionsSection() {
       {/* ── 1. Industry service cards ──────────────────────────────────────── */}
       <SectionShell
         id="industry-solutions"
-        eyebrow="Built for Service Businesses"
         title={
           <>
             Built Around the Work Your{" "}
@@ -130,7 +129,6 @@ export function IndustrySolutionsSection() {
       {/* ── 2. Four-step process ───────────────────────────────────────────── */}
       <SectionShell
         id="how-it-works"
-        eyebrow="The Process"
         title={
           <>
             From Inquiry to Next Action <span className="text-gradient-gold">in Four Steps</span>

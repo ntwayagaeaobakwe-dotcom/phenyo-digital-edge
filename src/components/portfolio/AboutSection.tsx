@@ -5,7 +5,6 @@ export function AboutSection() {
   return (
     <SectionShell
       id="about"
-      eyebrow="Direct Studio Model"
       iconGlyph="07"
       declarativeTitle="Direct access to the systems consultant"
       qualifierTitle="designing and building your connected digital systems."

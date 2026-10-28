@@ -22,7 +22,6 @@ export function FeaturedPortfolioSection() {
       <div className="page-width">
         <header className="home-heading-row featured-portfolio-heading">
           <div>
-            <p className="section-kicker">Selected work</p>
             <h2 id="featured-work-heading">Built to show what better looks like.</h2>
           </div>
           <p>

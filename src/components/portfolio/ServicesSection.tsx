@@ -25,7 +25,6 @@ export function ServicesSection() {
   return (
     <SectionShell
       id="services"
-      eyebrow="Service architecture"
       iconGlyph="03"
       declarativeTitle="Select your primary service path"
       qualifierTitle="to focus effort where return is highest."

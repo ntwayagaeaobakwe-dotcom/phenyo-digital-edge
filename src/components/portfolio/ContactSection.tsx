@@ -159,7 +159,6 @@ export function ContactSection() {
   return (
     <SectionShell
       id="contact"
-      eyebrow="Discuss your website"
       declarativeTitle="Tell us what your website needs to achieve."
       qualifierTitle="Share the current situation, the audience and the outcome you want. We’ll reply with a practical next step."
       className="contact-section"

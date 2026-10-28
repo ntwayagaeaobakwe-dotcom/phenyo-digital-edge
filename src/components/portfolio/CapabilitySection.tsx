@@ -5,7 +5,6 @@ export function CapabilitySection() {
   return (
     <SectionShell
       id="about"
-      eyebrow="About NYG"
       declarativeTitle="Clear thinking. Direct accountability."
       qualifierTitle="A direct partnership with the person designing, building, and connecting your systems."
     >

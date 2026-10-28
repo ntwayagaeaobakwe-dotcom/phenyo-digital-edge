@@ -71,7 +71,6 @@ export function BottleneckConfigurator() {
   return (
     <SectionShell
       id="diagnostic"
-      eyebrow="Find your next step"
       declarativeTitle="Where could things work better?"
       qualifierTitle="Start with a challenge. Explore the system that could solve it."
     >

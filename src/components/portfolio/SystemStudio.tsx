@@ -88,7 +88,6 @@ export function SystemStudio() {
   return (
     <SectionShell
       id="systems"
-      eyebrow="Interactive workflow demo"
       declarativeTitle="Less friction. More flow."
       qualifierTitle="Follow the journey from an incoming request to an organized next action."
     >

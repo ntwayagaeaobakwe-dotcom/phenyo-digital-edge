@@ -36,7 +36,6 @@ export function EngagementBlueprint() {
   return (
     <SectionShell
       id="process"
-      eyebrow="Our process"
       declarativeTitle="A clear path from idea to impact."
       qualifierTitle="Good collaboration makes better systems. Here’s how we get there."
     >
