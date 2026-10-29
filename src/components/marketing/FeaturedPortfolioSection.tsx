@@ -57,7 +57,6 @@ export function FeaturedPortfolioSection() {
           </figure>
 
           <div className="featured-project-copy">
-            <p className="featured-project-category">Commercial contractor website concept</p>
             <h3 id="northline-project-heading">Northline Commercial</h3>
             <p className="featured-project-description">
               A fully interactive website concept for North American commercial renovation and
