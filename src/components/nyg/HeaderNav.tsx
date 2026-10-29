@@ -122,7 +122,7 @@ export function HeaderNav({
                 Explore NYG Digital web design and development services.
               </DialogDescription>
               <nav aria-label="Mobile navigation">
-                {links.map((link, index) => (
+                {links.map((link) => (
                   <a
                     href={link.href}
                     key={link.id}
@@ -131,7 +131,6 @@ export function HeaderNav({
                       if (link.id === "work") handleWorkClick(event);
                     }}
                   >
-                    <span className="menu-index">{String(index + 1).padStart(2, "0")}</span>
                     {link.name}
                     <ArrowUpRight size={22} aria-hidden="true" />
                   </a>
