@@ -111,19 +111,9 @@
   border-top: 1px solid rgb(242 242 239 / 24%);
 }
 .problem-index li {
-  display: grid;
-  grid-template-columns: 2.75rem minmax(0, 1fr);
-  gap: 1.1rem;
-  align-items: start;
+  display: block;
   padding: 1.9rem 0;
   border-bottom: 1px solid rgb(242 242 239 / 20%);
-}
-.problem-index span {
-  padding-top: 0.2rem;
-  color: #c7ccd2;
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  letter-spacing: 0.1em;
 }
 .problem-index h3 {
   margin: 0;
@@ -187,7 +177,7 @@
 .service-row {
   position: relative;
   display: grid;
-  grid-template-columns: 3rem minmax(16rem, 0.92fr) minmax(23rem, 1.2fr) minmax(12rem, auto);
+  grid-template-columns: minmax(16rem, 0.92fr) minmax(23rem, 1.2fr) minmax(12rem, auto);
   gap: clamp(1.25rem, 2.5vw, 2.5rem);
   align-items: center;
   padding: clamp(2rem, 3.6vw, 3.35rem) 0;
@@ -214,15 +204,6 @@
 .service-row:hover::before {
   width: 100%;
   opacity: 0.88;
-}
-.service-row-number {
-  align-self: start;
-  padding-top: 0.45rem;
-  color: #c7ccd2;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  line-height: 1.4;
-  letter-spacing: 0.1em;
 }
 .service-row h3 {
   max-width: 19ch;
@@ -654,17 +635,9 @@
     column-gap: clamp(1.5rem, 5vw, 3rem);
   }
   .service-row {
-    grid-template-columns: 2.5rem minmax(0, 1fr);
-    gap: 0.9rem 1rem;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.9rem;
     align-items: start;
-  }
-  .service-row-number {
-    grid-row: 1 / span 2;
-  }
-  .service-row h3,
-  .service-row-copy,
-  .service-row-link {
-    grid-column: 2;
   }
   .service-row h3 {
     max-width: 24ch;
@@ -735,12 +708,6 @@
   }
   .problem-statement h2 {
     max-width: 12ch;
-  }
-  .problem-index li {
-    grid-template-columns: 2.5rem 1fr;
-  }
-  .problem-index p {
-    grid-column: 2;
   }
   .process-section .home-heading-row {
     gap: 1.25rem;

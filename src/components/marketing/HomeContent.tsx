@@ -58,9 +58,8 @@ export function HomeContent() {
             </p>
           </div>
           <ol className="problem-index">
-            {problems.map(([title, detail], index) => (
+            {problems.map(([title, detail]) => (
               <li key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
                 <div className="problem-copy">
                   <h3>{title}</h3>
                   <p>{detail}</p>
@@ -95,9 +94,6 @@ export function HomeContent() {
                 className={`service-row${index === 0 ? " service-row-primary" : ""}`}
                 key={service.href}
               >
-                <span className="service-row-number" aria-hidden="true">
-                  {service.number}
-                </span>
                 <h3>{service.title}</h3>
                 <div className="service-row-copy">
                   <p>{service.description}</p>

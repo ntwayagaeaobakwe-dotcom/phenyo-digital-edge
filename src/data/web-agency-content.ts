@@ -56,7 +56,6 @@ export const PRIMARY_SERVICES = [
 // The homepage uses a focused set while the broader service catalog and booking route remain intact.
 export const HOMEPAGE_SERVICES = [
   {
-    number: "01",
     title: "Website Redesign for Commercial Contractors",
     href: "/services/website-redesign",
     description:
@@ -65,7 +64,6 @@ export const HOMEPAGE_SERVICES = [
       "Project presentation · Sector clarity · Mobile navigation · Inquiry pathways · SEO preservation",
   },
   {
-    number: "02",
     title: "Website Design & Development",
     href: "/services/web-design",
     description:
@@ -74,7 +72,6 @@ export const HOMEPAGE_SERVICES = [
       "Service and sector pages · Project portfolio structure · Technical SEO · Accessibility · Clear inquiry experience",
   },
   {
-    number: "03",
     title: "Custom Web Development",
     href: "/services/custom-web-development",
     description:
