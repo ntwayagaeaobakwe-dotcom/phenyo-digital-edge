@@ -129,11 +129,8 @@ export function HomeContent() {
             </p>
           </div>
           <ol className="process-grid">
-            {homepageProcess.map(({ title, detail, deliverable }, index) => (
+            {homepageProcess.map(({ title, detail, deliverable }) => (
               <li className="process-stage" key={title}>
-                <span className="process-stage-number" aria-hidden="true">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <div className="process-stage-copy">
                   <h3>{title}</h3>
                   <p>{detail}</p>
