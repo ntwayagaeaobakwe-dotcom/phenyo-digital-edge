@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import { navigateToSection } from "@/lib/navigation";
 import "./hero-section.css";
 
@@ -46,7 +45,6 @@ export function HeroSection() {
               id="hero-cta-services"
             >
               <span>Explore Services</span>
-              <ArrowRight size={16} aria-hidden="true" />
             </a>
           </div>
         </div>

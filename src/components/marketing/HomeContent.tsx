@@ -1,4 +1,3 @@
-import { ArrowRight } from "lucide-react";
 import { HOMEPAGE_SERVICES } from "@/data/web-agency-content";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 import { FeaturedPortfolioSection } from "@/components/marketing/FeaturedPortfolioSection";
@@ -68,7 +67,7 @@ export function HomeContent() {
             ))}
           </ol>
           <a className="problem-link hero-btn-secondary" href="/services/website-redesign">
-            Explore our website redesign approach <ArrowRight aria-hidden="true" size={15} />
+            Explore our website redesign approach
           </a>
         </div>
       </section>
@@ -167,7 +166,7 @@ export function HomeContent() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Connect with Phenyo on LinkedIn <ArrowRight size={15} />
+              Connect with Phenyo on LinkedIn
             </a>
           </div>
         </div>

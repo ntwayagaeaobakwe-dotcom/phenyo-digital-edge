@@ -185,7 +185,7 @@ function CaseStudyHeader() {
             <ArrowLeft size={15} /> Selected work
           </a>
           <a href="/#contact" className="button button-small">
-            Discuss your workflow <ArrowRight size={15} />
+            Discuss your workflow
           </a>
         </div>
       </nav>
@@ -519,7 +519,7 @@ function LeadGenerationCaseStudy() {
           </p>
           <div>
             <a className="button" href="/#contact">
-              Discuss your workflow <ArrowRight size={17} />
+              Discuss your workflow
             </a>
             <a className="case-email" href={`mailto:${PERSONAL_INFO.email}`}>
               {PERSONAL_INFO.email}

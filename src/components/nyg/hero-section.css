@@ -88,13 +88,16 @@
   border: 1px solid var(--text, #f2f2ef);
   background: var(--text, #f2f2ef);
   color: var(--canvas, #0b0c0e);
-  box-shadow: 0 1px 0 rgb(255 255 255 / 35%) inset;
+  box-shadow: var(--cta-shadow-130), 0 1px 0 rgb(255 255 255 / 35%) inset;
 }
 
 .hero-btn-primary:hover {
   border-color: var(--signal, #c7ccd2);
   background: var(--signal, #c7ccd2);
-  box-shadow: 0 6px 20px rgb(255 255 255 / 10%);
+  box-shadow:
+    var(--cta-shadow-130),
+    0 6px 20px rgb(255 255 255 / 10%),
+    0 1px 0 rgb(255 255 255 / 35%) inset;
   transform: translateY(-1px);
 }
 
@@ -102,6 +105,7 @@
   border: 1px solid var(--line, #34383f);
   background: rgb(255 255 255 / 4%);
   color: var(--text, #f2f2ef);
+  box-shadow: var(--cta-shadow-130), inset 0 1px 0 rgb(255 255 255 / 10%);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }

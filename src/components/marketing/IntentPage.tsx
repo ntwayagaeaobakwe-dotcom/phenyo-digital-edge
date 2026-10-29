@@ -35,7 +35,7 @@ export function IntentPage({ page }: { page: MarketingPage }) {
               <p className="intent-lead">{page.intro}</p>
               <p>{page.audience}</p>
               <a className="button" href={contactHref}>
-                {ctaLabel} <ArrowRight size={17} />
+                {ctaLabel}
               </a>
             </div>
           </div>
@@ -115,7 +115,7 @@ export function IntentPage({ page }: { page: MarketingPage }) {
               practical next step.
             </p>
             <a className="button" href={contactHref}>
-              {ctaLabel} <ArrowRight size={17} />
+              {ctaLabel}
             </a>
           </div>
         </section>

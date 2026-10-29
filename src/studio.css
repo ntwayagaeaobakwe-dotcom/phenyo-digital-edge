@@ -8,6 +8,7 @@
   --signal: #c7ccd2;
   --line: #34383f;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --cta-shadow-130: -2.5px 3px 7px rgb(0 0 0 / 28%);
 }
 html {
   scroll-padding-top: 0px;
@@ -109,6 +110,7 @@ section[id],
   border-radius: 5px;
   background: var(--text);
   color: var(--canvas);
+  box-shadow: var(--cta-shadow-130);
   font-size: 13px;
   font-weight: 650;
   transition:
