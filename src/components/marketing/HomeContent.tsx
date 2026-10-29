@@ -67,7 +67,7 @@ export function HomeContent() {
               </li>
             ))}
           </ol>
-          <a className="problem-link" href="/services/website-redesign">
+          <a className="problem-link hero-btn-secondary" href="/services/website-redesign">
             Explore our website redesign approach <ArrowRight aria-hidden="true" size={15} />
           </a>
         </div>
@@ -101,7 +101,7 @@ export function HomeContent() {
                     <span>Capabilities</span> {service.capabilities}
                   </p>
                 </div>
-                <a className="service-row-link" href={service.href}>
+                <a className="service-row-link hero-btn-secondary" href={service.href}>
                   <span>Explore this service</span>
                 </a>
               </li>

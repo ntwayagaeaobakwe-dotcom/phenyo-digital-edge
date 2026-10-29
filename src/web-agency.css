@@ -133,26 +133,6 @@
 .problem-link {
   grid-column: 2;
   justify-self: start;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  min-height: 2.75rem;
-  color: #e2e5e9;
-  font-size: 0.94rem;
-  text-decoration-color: rgb(226 229 233 / 48%);
-  text-underline-offset: 0.28em;
-  transition:
-    color 180ms ease,
-    gap 180ms ease;
-}
-.problem-link:hover {
-  gap: 0.85rem;
-  color: #fff;
-}
-.problem-link:focus-visible {
-  border-radius: 2px;
-  outline: 2px solid #d7dde5;
-  outline-offset: 4px;
 }
 
 .web-agency-site #services {
@@ -241,30 +221,8 @@
   text-transform: uppercase;
 }
 .service-row-link {
-  display: inline-flex;
   justify-self: end;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.7rem;
   min-width: 11.5rem;
-  min-height: 2.75rem;
-  padding: 0.55rem 0;
-  color: #e4e7eb;
-  font-size: 1rem;
-  line-height: 1.25;
-  text-decoration: none;
-  transition: color 180ms ease;
-}
-.service-row-link:hover {
-  color: #fff;
-}
-.service-row-link:focus-visible {
-  border-radius: 2px;
-  outline: 2px solid #d7dde5;
-  outline-offset: 4px;
-}
-.service-row-link:active {
-  transform: scale(0.985);
 }
 .founder-copy > a {
   display: inline-flex;
