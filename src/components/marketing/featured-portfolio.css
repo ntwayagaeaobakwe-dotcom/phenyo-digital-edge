@@ -155,6 +155,10 @@
   text-decoration: none;
 }
 
+.web-agency-site .featured-project-demo-link {
+  width: 100%;
+}
+
 .web-agency-site .featured-project-demo-status {
   margin: 0;
   color: var(--muted);
