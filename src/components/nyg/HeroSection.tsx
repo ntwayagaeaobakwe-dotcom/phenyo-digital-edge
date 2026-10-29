@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { navigateToSection } from "@/lib/navigation";
 import "./hero-section.css";
 
@@ -37,7 +37,6 @@ export function HeroSection() {
               id="hero-cta-review"
             >
               <span>Request a Website Review</span>
-              <ArrowUpRight size={17} aria-hidden="true" />
             </a>
 
             <a

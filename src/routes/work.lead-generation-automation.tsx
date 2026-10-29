@@ -4,7 +4,6 @@ import {
   ArrowRight,
   Check,
   Database,
-  ExternalLink,
   Gauge,
   MapPin,
   Search,
@@ -523,7 +522,7 @@ function LeadGenerationCaseStudy() {
               Discuss your workflow <ArrowRight size={17} />
             </a>
             <a className="case-email" href={`mailto:${PERSONAL_INFO.email}`}>
-              {PERSONAL_INFO.email} <ExternalLink size={15} />
+              {PERSONAL_INFO.email}
             </a>
           </div>
         </section>

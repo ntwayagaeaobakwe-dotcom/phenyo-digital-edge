@@ -1,6 +1,6 @@
 import "./policies.css";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, ArrowUp } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 import { PERSONAL_INFO, COMPANY_INFO } from "@/data/portfolio-data";
 export function FooterSection() {
   const [time, setTime] = useState("--:--");
@@ -44,7 +44,6 @@ export function FooterSection() {
             <p>{`${COMPANY_INFO.registeredJurisdiction}, ${COMPANY_INFO.registeredLocality}, ${COMPANY_INFO.registeredCountry}.`}</p>
             <a href={`mailto:${PERSONAL_INFO.email}`}>
               {PERSONAL_INFO.email}
-              <ArrowUpRight size={14} />
             </a>
             <div className="social-links">
               {PERSONAL_INFO.socials.map((social) => (

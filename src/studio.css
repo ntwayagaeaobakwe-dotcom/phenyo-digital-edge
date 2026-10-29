@@ -133,7 +133,6 @@ section[id],
 .button-small {
   min-height: 44px;
   padding: 10px 17px;
-  gap: 20px;
   font-size: 12px;
 }
 .button-outline {
@@ -1399,10 +1398,6 @@ section[id],
 .contact-direct > svg:first-child {
   color: var(--signal);
 }
-.contact-direct > svg:last-child {
-  margin-left: auto;
-  color: var(--muted);
-}
 .contact-direct small {
   display: block;
   font-size: 10px;
@@ -2042,7 +2037,6 @@ section[id],
   .button-small {
     padding-inline: 12px;
     font-size: 10px;
-    gap: 12px;
   }
   .hero-section {
     padding-top: 78px;

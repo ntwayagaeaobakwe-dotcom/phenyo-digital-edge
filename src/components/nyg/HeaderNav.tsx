@@ -102,7 +102,7 @@ export function HeaderNav({
             </button>
           )}
           <a href="/#contact" onClick={handleReviewClick} className="button button-small">
-            Request a Website Review <ArrowUpRight size={15} aria-hidden="true" />
+            Request a Website Review
           </a>
           <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
@@ -144,7 +144,6 @@ export function HeaderNav({
                   }}
                 >
                   Request a Website Review
-                  <ArrowUpRight size={20} aria-hidden="true" />
                 </a>
               </nav>
             </DialogContent>

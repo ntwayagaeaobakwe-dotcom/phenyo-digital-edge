@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import "./featured-portfolio.css";
 
 const northlineDemo = {
@@ -87,7 +86,7 @@ export function FeaturedPortfolioSection() {
                 rel="noopener noreferrer"
                 aria-label="Explore the Northline Commercial live demo (opens in a new tab)"
               >
-                Explore Live Demo <ArrowUpRight size={17} aria-hidden="true" />
+                Explore Live Demo
               </a>
             </div>
           </div>

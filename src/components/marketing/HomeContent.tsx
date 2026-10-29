@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { HOMEPAGE_SERVICES } from "@/data/web-agency-content";
 import { COMPANY_INFO, PERSONAL_INFO } from "@/data/portfolio-data";
 import { FeaturedPortfolioSection } from "@/components/marketing/FeaturedPortfolioSection";
@@ -103,7 +103,6 @@ export function HomeContent() {
                 </div>
                 <a className="service-row-link" href={service.href}>
                   <span>Explore this service</span>
-                  <ArrowUpRight aria-hidden="true" size={18} />
                 </a>
               </li>
             ))}

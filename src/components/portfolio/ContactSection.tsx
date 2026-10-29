@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { toast } from "sonner";
-import { Mail, Phone, CheckCircle2, Loader2, ArrowUpRight } from "lucide-react";
+import { Mail, Phone, CheckCircle2, Loader2 } from "lucide-react";
 import { PERSONAL_INFO, FORM_SERVICE_OPTIONS } from "@/data/portfolio-data";
 import { trackAcceptedLead } from "@/lib/analytics";
 import {
@@ -177,7 +177,6 @@ export function ContactSection() {
           <a className="contact-direct" href={`mailto:${PERSONAL_INFO.email}`}>
             <Mail size={19} />
             <span>{PERSONAL_INFO.email}</span>
-            <ArrowUpRight size={19} />
           </a>
           <a
             className="contact-direct"
@@ -189,7 +188,6 @@ export function ContactSection() {
             <span>
               Talk on WhatsApp<small>{PERSONAL_INFO.phone}</small>
             </span>
-            <ArrowUpRight size={19} />
           </a>
           <p className="contact-note">We’ll reply using the contact details you provide.</p>
         </div>
@@ -218,7 +216,7 @@ export function ContactSection() {
                   });
                 }}
               >
-                Start another inquiry <ArrowUpRight size={16} />
+                Start another inquiry
               </button>
             </div>
           ) : (
@@ -327,10 +325,10 @@ export function ContactSection() {
                     disabled={isSubmitting}
                     onClick={() => void handleSubmit(onSubmit)()}
                   >
-                    Retry inquiry <ArrowUpRight size={16} />
+                    Retry inquiry
                   </button>
                   <a className="text-link" href={openMailtoFallback(values)}>
-                    Open a prepared email <ArrowUpRight size={16} />
+                    Open a prepared email
                   </a>
                 </div>
               )}
@@ -350,7 +348,6 @@ export function ContactSection() {
                     <span>
                       {submissionError ? "Retry project inquiry" : "Send project inquiry"}
                     </span>
-                    <ArrowUpRight size={18} />
                   </>
                 )}
               </button>

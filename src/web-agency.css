@@ -255,15 +255,8 @@
   text-decoration: none;
   transition: color 180ms ease;
 }
-.service-row-link svg {
-  flex: none;
-  transition: transform 180ms var(--ease-out);
-}
 .service-row-link:hover {
   color: #fff;
-}
-.service-row-link:hover svg {
-  transform: translate(3px, -3px);
 }
 .service-row-link:focus-visible {
   border-radius: 2px;
