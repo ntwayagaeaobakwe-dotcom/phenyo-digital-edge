@@ -16,5 +16,8 @@ Sentry.init({
     if (event.user?.ip_address) delete event.user.ip_address;
     return event;
   },
+  // Outlook Safe Links and other CefSharp-based email scanners can emit this
+  // rejection from their embedded browser, without a corresponding app stack.
+  ignoreErrors: [/Object Not Found Matching Id:\d+, MethodName:update, ParamCount:4/],
   tracesSampleRate: import.meta.env.DEV ? 1 : 0.2,
 });

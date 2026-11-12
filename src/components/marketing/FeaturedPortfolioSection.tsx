@@ -32,24 +32,31 @@ export function FeaturedPortfolioSection() {
 
         <article className="featured-project" aria-labelledby="northline-project-heading">
           <figure className="featured-project-visual">
-            <div className="featured-project-frame">
-              <picture>
-                <source
-                  media="(max-width: 760px)"
-                  srcSet="/portfolio/northline-commercial-mobile.webp"
-                  width="390"
-                  height="590"
-                />
-                <img
-                  src="/portfolio/northline-commercial-desktop.webp"
-                  alt="Northline Commercial concept website, featuring a commercial renovation headline and a warm lobby design."
-                  width="1440"
-                  height="900"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </picture>
-            </div>
+            <a
+              className="featured-project-preview-link"
+              href={northlineDemo.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <div className="featured-project-frame">
+                <picture>
+                  <source
+                    media="(max-width: 760px)"
+                    srcSet="/portfolio/northline-commercial-mobile.webp"
+                    width="390"
+                    height="590"
+                  />
+                  <img
+                    src="/portfolio/northline-commercial-desktop.webp"
+                    alt="Northline Commercial concept website, featuring a commercial renovation headline and a warm lobby design."
+                    width="1440"
+                    height="900"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </picture>
+              </div>
+            </a>
             <figcaption className="featured-project-caption">
               <span>Independent concept project</span>
               <span>Commercial renovation · tenant improvement</span>

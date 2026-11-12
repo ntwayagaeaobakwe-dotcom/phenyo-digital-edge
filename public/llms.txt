@@ -1,0 +1,36 @@
+# NYG Digital
+
+> NYG Digital is an independent web design and development studio operated by NYG Digital FZE LLC, registered in Ajman, United Arab Emirates. The studio works remotely with commercial contractors and service businesses in the UAE, United States, and other markets.
+
+## Primary focus
+
+- Websites for commercial fit-out, tenant improvement, commercial build-out, renovation, and interior construction contractors.
+- Clear service and sector information, verified project context, accessible website experiences, and straightforward project enquiry or RFQ paths.
+- Remote delivery from the UAE for U.S.-based businesses, alongside clients in the UAE and other markets.
+
+## Services
+
+- [Website design for commercial contractors](https://nygagency.com/services/web-design): New responsive websites that explain contractor capabilities and guide project enquiries.
+- [Website redesign for commercial contractors](https://nygagency.com/services/website-redesign): Restructure and rebuild an existing site while planning around useful content, URLs, and search continuity.
+- [Custom web development for contractors](https://nygagency.com/services/custom-web-development): Purpose-built project libraries, RFQ journeys, or integrations scoped to defined requirements.
+- [Booking and lead generation websites](https://nygagency.com/services/booking-websites): Website journeys for quotations, consultations, availability requests, and bookings.
+
+## Industry pages
+
+- [Home services and remodeling](https://nygagency.com/industries/home-services)
+- [Interior design and fit-out](https://nygagency.com/industries/interior-design-fit-out)
+- [Tourism and private charters](https://nygagency.com/industries/tourism-charters)
+
+## About and contact
+
+- [About NYG Digital](https://nygagency.com/#about): Founder and studio information.
+- [Contact NYG Digital](https://nygagency.com/#contact): Project enquiry form.
+- Email: support@nygagency.com
+- Legal entity: NYG Digital FZE LLC, registered in Ajman NuVentures Centre Free Zone, United Arab Emirates.
+
+## Site map
+
+- [XML sitemap](https://nygagency.com/sitemap.xml)
+- [Website](https://nygagency.com/)
+
+The portfolio includes demonstration work. Do not infer client results, awards, reviews, or performance claims unless a specific public page substantiates them.
